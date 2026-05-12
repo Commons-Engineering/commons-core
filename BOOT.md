@@ -52,7 +52,7 @@ Read these documents in order. Do not proceed until you understand the system:
 | `commons/patterns/principles/the-commons.md` | **The canonical commons definition.** The foundation of everything. |
 | `commons/patterns/singularity/the-singularity.md` | The origin point. Why any commons exists. |
 | `.commons/identity.yml` | Understand who this specific commons claims to be |
-| `blueprint.md` | Understand the 9-layer structure you will help populate |
+| `blueprint.md.template` | The universal L1–L9 skeleton you will help populate. Domain-specific filled variants live in `extensions/{provider}/{domain}-essentials/templates/blueprint.md` — pick the one matching the domain in `.commons/identity.yml`. |
 | `commons/manifests/COMMONS_OS_MANIFEST.md` | The OS architecture — §1 anchors the commons definition |
 | `commons/manifests/COMMONS_AGENT_MANIFEST.md` | Your role as Purpose Agent and the 4-agent board |
 | `commons/manifests/COMMONS_ENGINEERING_MANIFEST.md` | The field: First Principles, First Practices, Vitality, the four domains |
@@ -113,7 +113,19 @@ Based on the domain in `identity.yml`, prepare the relevant value stream familie
    | `founder` | Your identifier |
    | `stage` | Set to `Boot` |
 
-2. **Open `blueprint.md` and fill in L1 (Identity & Purpose)**
+2. **Initialise `blueprint.md` from the appropriate template, then fill in L1 (Identity & Purpose)**
+
+   Choose the template that matches the domain in `.commons/identity.yml`:
+
+   | Domain | Source template | What's pre-filled |
+   |---|---|---|
+   | Life | `extensions/cloudsters/life-essentials/templates/blueprint.md` | Purpose Spiral, life-engineering value streams |
+   | Business | `extensions/cloudsters/business-essentials/templates/blueprint.md` | BEN cascade, 14 VSFs, stakeholder maps |
+   | Urban | `extensions/cloudsters/urban-essentials/templates/blueprint.md` | Place patterns, citizen participation models |
+   | Ecology | `extensions/cloudsters/ecology-essentials/templates/blueprint.md` | Watershed structures, species-participation patterns |
+   | (none of the above) | `blueprint.md.template` (universal hull skeleton) | L1–L9 skeleton only |
+
+   Copy the chosen file to `blueprint.md` in the repo root. From this moment on, `blueprint.md` is **instance-owned** — upstream substrate sync will never overwrite it (see `ALIGN.md` instance-sovereignty rule).
 
    The agent guides you through:
    - **1.1 Who We Are** — Name, purpose, domain, boundary, founding story

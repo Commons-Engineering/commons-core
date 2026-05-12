@@ -93,7 +93,7 @@ The file system must match the specification.
 |---|---|---|
 | **Identity valid** | `.commons/identity.yml` must be valid YAML with: slug, name, purpose, domain, locale, stage | Critical |
 | **Config valid** | `.commons/config.yml` must be valid YAML | High |
-| **Blueprint exists** | `blueprint.md` must exist and be non-empty | Critical |
+| **Blueprint exists** | `blueprint.md` must exist and be non-empty (initialised during boot from a domain extension template or from `blueprint.md.template`). The presence of `blueprint.md.template` alone does **not** satisfy this check — it is the upstream skeleton, not the instance's Living Blueprint. | Critical |
 | **Agent config** | `AGENT.md` must exist (OS-standard AI configuration file) and not reference a specific AI product by name | High |
 | **Commons manifests** | `commons/manifests/` must contain all required manifests | High |
 | **Commons specs** | `commons/specs/` must contain all required specs | High |
@@ -122,7 +122,7 @@ Forks must stay connected to upstream evolution.
 |---|---|---|
 | **Sync workflow** | `.github/workflows/sync-upstream.yml` must exist and be active | Normal |
 | **Commons untouched** | Files in `commons/` must not be locally modified (check via git diff against upstream) | High |
-| **Instance sovereign** | Upstream sync must never touch `instance/`, `extensions/`, or `blueprint.md` | Critical |
+| **Instance sovereign** | Upstream sync must never touch `instance/`, `extensions/`, `blueprint.md`, `AGENT.md`, `README.md`, or `.commons/identity.yml`. Upstream-owned counterparts (`blueprint.md.template`, `AGENT.md.template`, `README.md.template`) may be updated freely. | Critical |
 
 ---
 
