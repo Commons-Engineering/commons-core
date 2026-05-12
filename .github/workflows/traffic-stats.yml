@@ -1,0 +1,56 @@
+name: Capture Traffic Stats
+
+# Daily capture of clone and view counts (GitHub Traffic API only retains 14 days).
+# Appends to analytics/clones.jsonl and analytics/views.jsonl for long-term tracking.
+
+on:
+  schedule:
+    - cron: '7 4 * * *'   # 04:07 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Capture clone stats
+        env:
+          GH_TOKEN: ${{ secrets.TRAFFIC_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p analytics
+          DATE=$(date -u +%Y-%m-%d)
+
+          # Clone stats — daily counts for last 14 days
+          gh api repos/${{ github.repository }}/traffic/clones \
+            --jq '.clones[] | {date: (.timestamp | split("T") | .[0]), count, uniques}' \
+            | jq -c --arg captured "$DATE" '. + {captured: $captured}' \
+            >> analytics/clones.jsonl || true
+
+          # View stats — daily counts for last 14 days
+          gh api repos/${{ github.repository }}/traffic/views \
+            --jq '.views[] | {date: (.timestamp | split("T") | .[0]), count, uniques}' \
+            | jq -c --arg captured "$DATE" '. + {captured: $captured}' \
+            >> analytics/views.jsonl || true
+
+          # Sort+dedupe (same date might appear with different captured values; keep latest)
+          for f in analytics/clones.jsonl analytics/views.jsonl; do
+            if [ -f "$f" ]; then
+              sort -u "$f" -o "$f"
+            fi
+          done
+
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain analytics/)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add analytics/
+            git commit -m "analytics: traffic capture $(date -u +%Y-%m-%d)"
+            git push
+          else
+            echo "No traffic changes to commit."
+          fi
