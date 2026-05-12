@@ -1,3 +1,20 @@
+<!--
+Template — Living Blueprint skeleton
+
+This is the universal L1-L9 architecture every Commons OS instance fills in during boot.
+
+Three-layer template structure:
+  1. Hull template (this file)             — universal L1-L9 contract; what any commons IS at any scale
+  2. Domain extension templates             — universal skeleton filled with domain-specific patterns:
+       extensions/cloudsters/life-essentials/templates/blueprint.md       (Life)
+       extensions/cloudsters/business-essentials/templates/blueprint.md   (Business — BEN cascade, 14 VSFs)
+       extensions/cloudsters/urban-essentials/templates/blueprint.md      (Urban — Place patterns)
+       extensions/cloudsters/ecology-essentials/templates/blueprint.md    (Ecology — Watershed structures)
+  3. Instance Living Blueprint              — blueprint.md in your instance, filled during boot
+
+Boot flow: the agent picks the right domain template, copies it to blueprint.md, and fills it with you. Extensions may extend this skeleton, but they cannot break the L1-L9 contract.
+-->
+
 # Living Blueprint
 
 *The single-document, 9-layer architecture of this commons. This is the most important document in the repository — it describes what this system IS and what it should BECOME.*
