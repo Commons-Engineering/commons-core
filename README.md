@@ -1,49 +1,153 @@
 # Commons OS
 
-**The forkable operating system for living systems.** Patterns, manifests, agents, and templates for designing and governing organisations, cities, and ecosystems as commons.
+**The forkable operating system for living systems.**
 
-This is the **public distribution** of Commons OS — the canonical release published from the internal editorial pipeline. Fork this repository to start your own Commons OS instance, or to study the architecture.
+Commons OS is a complete operating environment for any commons — an organisation, a city district, a personal system, an ecological watershed, or any community that chooses to govern itself as a living system.
 
-## Quick start
+---
 
-```bash
-gh repo clone Commons-Engineering/commons-os my-commons
-cd my-commons
-cat BOOT.md
-```
+## Why
 
-For the agent contract and operating principles, read in order:
+The Cognitive Age creates extraordinary new possibilities for shared value creation — at every scale, from a local cooperative to a global enterprise. But without deliberate architecture, the tools, platforms, and intelligence of this era concentrate into fewer hands. Organisations become tenants of their own future.
 
-1. `BOOT.md` — boot sequence
-2. `AGENT.md.template` — the agent contract template
-3. `ALIGN.md` — alignment principles
-4. `blueprint.md` — the Living Blueprint template
+**A commons systematically creates value that is alive, shared, just, and built to last.**
 
-## What's in here
+Commons OS is the infrastructure that makes this buildable. It gives every commons — regardless of domain — the same quality of sovereign operating system that today only trillion-dollar platforms possess. Human-governed. AI-driven. Open source. Near-zero cost.
 
-| Path | Content |
+> **[▶ Watch the Deck — The Age of Living Systems](https://commons-engineering.github.io/commons-os/deck/)**
+> The full 20-slide strategic presentation, playable directly in your browser.
+
+---
+
+## How to Start Your Commons
+
+There are three ways to begin, depending on your needs:
+
+| Path | Best for | How |
+|---|---|---|
+| **Template** (private) | Individuals, internal teams, private experiments | Click **Use this template** → **Create a new repository** → choose **Private** → follow `BOOT.md` |
+| **Fork** (public) | Open source projects, public communities | Click **Fork** → follow `BOOT.md` |
+| **Lighthouse** (guided) | Established organisations seeking a co-creation partnership | [Contact Commons Engineering](mailto:contact@commons.engineering) |
+
+### After You Template or Fork
+
+1. **Rename** your repository to `[your-commons]` (e.g., `luebeck-os`, `my-life`, `acme-commons`)
+2. **Edit** `.commons/identity.yml` — set your slug, name, purpose, domain, and locale
+3. **Copy** `AGENT.md.template` → `AGENT.md` — this is the OS-standard AI governance configuration
+4. **Wire** your AI tool to `AGENT.md` (see `BOOT.md` for tool-specific instructions)
+5. **Read** `BOOT.md` — the Purpose Agent guides you through the founding conversation
+
+The boot process takes 2-4 hours. It is a founding act, not a setup wizard. The quality of your boot determines everything that follows.
+
+---
+
+## What You Get
+
+| Component | What it does |
 |---|---|
-| `commons/manifests/` | Framework manifests — COMMONS_OS_MANIFEST, COMMONS_AGENT_MANIFEST, COMMONS_TAXONOMY_MANIFEST, etc. |
-| `commons/specs/` | Framework specifications — PATTERN_SPEC, ENTITY_SPEC, PACK_SPEC, COMMONS_OS_SPEC |
-| `commons/patterns/singularity/` | The origin axiom (the-singularity, the-commons) |
-| `commons/patterns/principles/` | The 28+ Universal Principles |
-| `commons/scripts/`, `commons/templates/` | Build tooling and pattern templates |
-| `extensions/commons-engineering/commons-essentials/patterns/commons/` | ~1800 commons-constitutive patterns |
-| `extensions/commons-engineering/commons-essentials/patterns/transversals/` | ~270 cross-domain transversal patterns |
-| `extensions/commons-engineering/base/patterns/` | Operational base patterns |
-| `extensions/cloudsters/business-essentials/` | Business-domain extension |
-| `instance/` | Template scaffolding for any forked instance |
+| **Commons** | Upstream patterns, manifests, specifications, templates — with upstream sync |
+| **Extensions** | Domain-specific extension packs (business-essentials, urban-essentials, life-essentials, ecology-essentials) |
+| **Instance** | Your space — registry (workspace), operations, portals, workshop, and local patterns |
+| **Agent Configuration** | AI-ready governance with 4-agent board architecture |
+| **Living Blueprint** | Single-document, 9-layer architecture for your commons |
+| **MCP Connections** | Shared intelligence (Commons MCP) + local knowledge (Blueprint MCP) + your systems (Fabric MCPs) |
 
-## License
+### The Four Universal Dimensions
 
-Commons Engineering is licensed under **CC-BY-SA-4.0** — free for all, forever. Use it, fork it, build on it. The only requirement: share derivative work back under the same licence.
+Every commons, regardless of domain, operates across four dimensions:
+
+| Dimension | What it governs |
+|---|---|
+| **D1 — Definition & Purpose** | Direction, governance, impact, architectural integrity |
+| **D2 — Participation & Relationship** | Community, stakeholders, workforce, non-human participants |
+| **D3 — Proposition & Exchange** | Value creation, products, services, knowledge exchange |
+| **D4 — Production & Resilience** | Infrastructure, production lines, delivery, economics |
+
+Each dimension has an **agent** (conversational governance) and may have **engines** (production at volume, supervised by D4).
+
+### The Intelligence Grid
+
+Your fork connects you to a shared intelligence network:
+
+| Asset | Scale |
+|---|---|
+| **Documented patterns** | 64,000+ across business, urban, ecology, and life |
+| **Business lighthouses** | 1,000+ documented organisations |
+| **Urban lighthouses** | 1,400+ documented places |
+| **Access method** | Model Context Protocol (MCP) — native AI retrieval |
+
+Every pattern and lighthouse is connected through a knowledge graph and retrievable for every Commons OS fork.
+
+---
 
 ## Architecture
 
-The Commons OS distribution corresponds to **Orbit 3** of the Commons Engineering orbital architecture (Singularity · Principles · Commons · Transversals · Domains · Edge). The internal editorial pipeline lives in `commons-os-0` through `commons-os-5` (private). New patterns are observed at the Edge in active instances, then promoted inward through the orbits as their generality is confirmed.
+### Directory Structure
 
-For the full architecture, read `cloudsters/CLOUDSTERS_NET_ARCHITECTURE.md` §4 in the cloudsters network.
+```
+[your-commons]/
+├── AGENT.md.template          Agent configuration (copy to AGENT.md)
+├── BOOT.md                    Boot guide — the founding conversation
+├── ALIGN.md                   Alignment check rules
+├── blueprint.md               Living Blueprint (L1-L9)
+├── .commons/                  Identity and configuration
+├── commons/                   THE LIBRARY — upstream patterns, manifests, specs, templates
+├── extensions/                EXTENSION PACKS — domain-specific (business, urban, life, ecology)
+├── instance/                  YOUR SPACE — sovereign, never touched by upstream
+│   ├── registry/              THE WORKSPACE — journeys, touchpoints, value streams, capabilities, entities
+│   ├── operations/            Operating rhythms and processes
+│   ├── portals/               Intranet and extranet (including the Lighthouse deck)
+│   └── workshop/              THE FORGE — experiments, drafts, WIP
+└── ...
+```
+
+### Three Layers
+
+| Layer | Path | Who owns it | Sync behaviour |
+|---|---|---|---|
+| **Commons** | `commons/` | Upstream (commons-os template) | Read-only in forks, updated via upstream sync |
+| **Extensions** | `extensions/{provider}/{pack}/` | Pack providers (any Commons Incubator) | Loaded via Commons MCP, cached locally |
+| **Instance** | `instance/` | Your commons | Yours entirely — upstream never touches it |
+
+### Everything is Open
+
+| What | License | Cost |
+|---|---|---|
+| Content (manifests, specs, patterns) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | Free |
+| Code (scripts, workflows, templates) | [MIT](https://opensource.org/licenses/MIT) | Free |
+| Hosting | GitHub | Free |
+| AI integration | Any MCP-compatible model | Your choice |
+
+See [LICENSE](LICENSE) for details.
+
+---
+
+## Documentation
+
+| Document | What it covers |
+|---|---|
+| `BOOT.md` | The founding conversation — how to boot your commons |
+| `ALIGN.md` | Alignment rules — how to keep your commons healthy |
+| `blueprint.md` | The Living Blueprint — 9-layer architecture template |
+| `commons/manifests/COMMONS_OS_MANIFEST.md` | What Commons OS is — vision, principles, architecture |
+| `commons/manifests/COMMONS_AGENT_MANIFEST.md` | The 4-agent governance model |
+| `commons/specs/COMMONS_OS_SPEC.md` | Technical specification — directory structure, lifecycle, layers |
+| `commons/specs/COMMONS_MCP_ARCHITECTURE_SPEC.md` | The 3-MCP channel architecture |
+| `commons/specs/PATTERN_SPEC.md` | How patterns work — orbital layers, structure, vitality |
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute patterns, improvements, and fixes back upstream.
+
+---
+
+*Commons OS is part of [Commons Engineering](https://commons.engineering) and distributed by [cloudsters](https://cloudsters.net).*
+
+*Licensed under CC-BY-SA-4.0 — Distributed by cloudsters*
+
+
+---
 
 ## How releases work
 
-This public `commons-os` repository is editorially released from `commons-os-3` (private). Internal commits to `-3` do not automatically flow here — releases are deliberate. Look at this repository's tags for release versions.
+This public `commons-os` repository is editorially released from `commons-os-3` (private). Internal commits to `-3` do not automatically flow here — releases are deliberate. See this repository's tags for release versions, and `commons/manifests/COMMONS_OS_MANIFEST.md` for the full chain architecture.
