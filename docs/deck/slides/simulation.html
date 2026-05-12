@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container { 
+            width: 1280px; 
+            height: 720px; overflow: hidden; 
+            background-color: #0f172a; 
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(58, 170, 220, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(58, 170, 220, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+
+        .header {
+            padding-top: 50px;
+            padding-left: 80px;
+            padding-right: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+        }
+        .slide-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: #3aaadc;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .content-area {
+            display: flex;
+            flex: 1;
+            padding: 28px 80px 0 80px;
+            gap: 60px;
+            z-index: 10;
+        }
+
+        .text-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .intro-text {
+            font-size: 20px;
+            color: #ffffff;
+            line-height: 1.4;
+            font-weight: 300;
+        }
+        .intro-text strong {
+            font-weight: 600;
+            color: #f59e0b;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-left: 18px;
+            border-left: 2px solid rgba(245, 158, 11, 0.3);
+        }
+        
+        .feature-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: #3aaadc;
+            letter-spacing: 1px;
+        }
+        
+        .feature-desc {
+            font-size: 15px;
+            color: #94a3b8;
+            line-height: 1.45;
+        }
+
+        .visual-col {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .diagram-container {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-axis {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background: rgba(58, 170, 220, 0.3);
+            transform: translateY(-50%);
+        }
+
+        .node {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .node-point {
+            width: 18px;
+            height: 18px;
+            background: #0f172a;
+            border: 3px solid;
+            border-radius: 50%;
+            position: relative;
+            z-index: 5;
+        }
+
+        .node-label {
+            position: absolute;
+            top: 28px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            white-space: nowrap;
+            text-align: center;
+        }
+        .node-title {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .node-sub {
+            font-size: 10px;
+            color: #94a3b8;
+        }
+
+        .node-domain { left: 60px; }
+        .node-domain .node-point { border-color: #ffffff; box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); }
+        .node-domain .node-title { color: #ffffff; }
+
+        .node-os { left: 180px; }
+        .node-os .node-point { border-color: #3aaadc; box-shadow: 0 0 15px rgba(58, 170, 220, 0.3); background: #3aaadc; }
+        .node-os .node-title { color: #3aaadc; }
+
+        .node-game { left: 310px; }
+        .node-game .node-point { border-color: #f59e0b; box-shadow: 0 0 15px rgba(245, 158, 11, 0.5); background: #f59e0b; }
+        .node-game .node-title { color: #f59e0b; }
+
+        .delta-bracket {
+            position: absolute;
+            top: 50%;
+            left: 60px;
+            width: 250px;
+            height: 50px;
+            border: 1px solid rgba(58, 170, 220, 0.5);
+            border-bottom: none;
+            transform: translateY(-90px);
+        }
+        .delta-bracket::before, .delta-bracket::after {
+            content: ''; position: absolute; bottom: 0; width: 1px; height: 10px; background: rgba(58, 170, 220, 0.5);
+        }
+        .delta-bracket::before { left: -1px; }
+        .delta-bracket::after { right: -1px; }
+        
+        .delta-label {
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #3aaadc;
+            background: #0f172a;
+            padding: 0 8px;
+            letter-spacing: 1px;
+        }
+
+        .branches {
+            position: absolute;
+            top: 50%;
+            left: 310px;
+            width: 140px;
+            height: 180px;
+            transform: translateY(-50%);
+        }
+        
+        .branch {
+            position: absolute;
+            left: 0;
+            width: 120px;
+            border-top: 2px dashed rgba(245, 158, 11, 0.6);
+            transform-origin: left center;
+        }
+        
+        .branch-1 { top: 90px; transform: rotate(-30deg); }
+        .branch-2 { top: 90px; transform: rotate(-10deg); }
+        .branch-3 { top: 90px; transform: rotate(10deg); }
+        .branch-4 { top: 90px; transform: rotate(30deg); }
+        
+        .branch-dot {
+            position: absolute;
+            right: 0;
+            top: -4px;
+            width: 6px;
+            height: 6px;
+            background: #f59e0b;
+            border-radius: 50%;
+        }
+
+        .scenario-label {
+            position: absolute;
+            right: -55px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            color: #94a3b8;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 2px 4px;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+        .sl-1 { top: -12px; }
+        .sl-2 { top: -12px; }
+        .sl-3 { top: -12px; }
+        .sl-4 { top: -12px; }
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: rgba(58, 170, 220, 0.1);
+            border-top: 1px solid rgba(58, 170, 220, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            color: #ffffff;
+            letter-spacing: 1px;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="bg-grid"></div>
+        
+        <div class="header">
+            <div class="slide-number">02 // THE INFRASTRUCTURE</div>
+            <h1>Your Organisation, Years from Now</h1>
+        </div>
+
+        <div class="content-area">
+            <div class="text-col">
+                <p class="intro-text">
+                    The Game fork is a simulation laboratory. It subjects your organisation to <strong>dozens of future scenarios simultaneously.</strong>
+                </p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-title">RUNNING YEARS AHEAD</div>
+                        <div class="feature-desc">
+                            The Domain fork is the present. The OS fork is the shared infrastructure. The Game fork runs years into the future, testing the limits of your architecture.
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-title">SCENARIO INJECTION</div>
+                        <div class="feature-desc">
+                            Regulatory shifts, demographic changes, technology disruptions, funding crises. Forcing the system to adapt, survive, and thrive.
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-title">THE DELTA</div>
+                        <div class="feature-desc">
+                            What breaks in simulation becomes a pattern that strengthens the real operating system. The gap between Game and Domain is the construction manual.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visual-col">
+                <div class="diagram-container">
+                    <div class="timeline-axis"></div>
+                    
+                    <div class="delta-bracket">
+                        <div class="delta-label">THE DELTA</div>
+                    </div>
+                    
+                    <div class="node node-domain">
+                        <div class="node-point"></div>
+                        <div class="node-label">
+                            <div class="node-title">DOMAIN FORK</div>
+                            <div class="node-sub">T = 0 (Present)</div>
+                        </div>
+                    </div>
+
+                    <div class="node node-os">
+                        <div class="node-point"></div>
+                        <div class="node-label">
+                            <div class="node-title">OS FORK</div>
+                            <div class="node-sub">Shared Infra</div>
+                        </div>
+                    </div>
+                    
+                    <div class="node node-game">
+                        <div class="node-point"></div>
+                        <div class="node-label">
+                            <div class="node-title">GAME FORK</div>
+                            <div class="node-sub">T + N Years</div>
+                        </div>
+                    </div>
+                    
+                    <div class="branches">
+                        <div class="branch branch-1"><div class="branch-dot"></div><div class="scenario-label sl-1">SCENARIO A</div></div>
+                        <div class="branch branch-2"><div class="branch-dot"></div><div class="scenario-label sl-2">SCENARIO B</div></div>
+                        <div class="branch branch-3"><div class="branch-dot"></div><div class="scenario-label sl-3">SCENARIO C</div></div>
+                        <div class="branch branch-4"><div class="branch-dot"></div><div class="scenario-label sl-4">SCENARIO D</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-bar">
+            >_ THE DELTA BETWEEN GAME AND DOMAIN IS THE CONSTRUCTION MANUAL FOR RESILIENCE.
+        </div>
+    </div>
+</body>
+</html>

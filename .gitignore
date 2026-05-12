@@ -1,0 +1,24 @@
+# Secrets
+.env
+*.key
+_secrets/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Build output
+_site/
+public/
+node_modules/
+
+# Temporary files
+~$*
+*.tmp

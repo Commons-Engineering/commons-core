@@ -1,0 +1,80 @@
+# Commons Identity
+locale: en                             # Primary language (ISO 639-1: de, en, fr, es, ...)
+fallback_locale: en                    # Fallback when MCP patterns aren't available in primary locale
+
+slug: my-commons                       # Unique identifier — rename after fork
+name: "My Commons"                     # Human-readable name — rename after fork
+purpose: ""                            # One sentence: what this commons exists for
+domain: Business                       # Life | Business | Urban | Ecology
+instance_type: os                      # os | domain | game — what this instance IS
+                                       #   os     = sovereign operating system (governance mode)
+                                       #   domain = observed profile (research mode)
+                                       #   game   = projected future (simulation mode)
+founder: ""                            # GitHub handle
+founded: 2026-01-01                    # Date of fork
+stage: Fork                            # Fork | Boot | Seed | Active | Gathering | Established | Mature
+
+# Optional: parent commons or incubator
+incubator: null                        # e.g., "cloudsters" if incubated
+parent_commons: null                   # e.g., "baltic-hanse-os" if a regional layer exists
+
+# Self-entity identity (the commons itself as an entity in the registry)
+self_entity_slug: null                 # Links to registry/5_entities/purpose/[slug].md
+
+# Stewards — the humans who tend this commons
+# The cognition system notifies stewards on critical events, escalations, and alignment issues.
+stewards:
+  - handle: ""                         # GitHub handle of primary steward
+    role: founder                      # founder | steward | advisor
+    notify: [critical, escalation]     # What triggers notification
+#  - handle: ""
+#    role: steward
+#    notify: [critical, escalation, heartbeat-summary]
+
+# Cognition — how this instance thinks, acts, and communicates
+cognition:
+  # Local identity — the instance's self-awareness
+  identity:
+    enabled: false                     # Set true to activate autonomous cognition
+    model: null                        # null = programme-driven (Phase 0). Path to local weights when available.
+    fallback: program.md               # Without a local model, program.md drives the heartbeat.
+
+  # Autonomous heartbeat — the instance's pulse
+  heartbeat:
+    enabled: false                     # Set true to activate the cognition.yml workflow
+    schedule: "0 3 * * 1"             # Cron schedule (default: weekly Monday 3am)
+    budget: 10min                      # Max wall-clock time per heartbeat cycle
+    metric: alignment_score            # What the heartbeat optimises for:
+                                       #   os:     alignment_score
+                                       #   domain: data_quality
+                                       #   game:   scenario_coverage
+
+  # External specialists — called by the heartbeat or on demand
+  specialists: []
+  # Example:
+  # - name: enrichment
+  #   provider: anthropic
+  #   model: claude-sonnet-4-20250514
+  #   trigger: heartbeat               # heartbeat | on-demand
+  #   budget: 5min
+  # - name: deep-analysis
+  #   provider: anthropic
+  #   model: claude-opus-4-6
+  #   trigger: on-demand
+  #   budget: 15min
+
+  # Agent-to-Agent communication
+  a2a:
+    discoverable: false                # Can other instances find and address this instance?
+    broadcast:
+      enabled: false
+      target: null                     # e.g., "Commons-OS/lighthouses" for domain instances
+      frequency: weekly                # How often to broadcast public profile
+    accepts: []                        # What A2A requests this instance handles
+    # Example:
+    # - pattern-recommendation
+    # - enrichment-data
+    # - connection-request
+    rejects:                           # What A2A requests are always refused
+      - purpose-change                 # No external agent can change this instance's purpose
+      - score-override                 # No external agent can override dimension scores

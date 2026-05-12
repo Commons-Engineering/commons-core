@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container { 
+            width: 1280px; 
+            height: 720px; overflow: hidden; 
+            background-color: #0f172a; 
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(58, 170, 220, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(58, 170, 220, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+
+        .header {
+            padding-top: 50px;
+            padding-left: 80px;
+            padding-right: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+        }
+        .slide-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: #3aaadc;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            font-size: 20px;
+            color: #94a3b8;
+            font-weight: 300;
+            margin-top: 4px;
+        }
+
+        .diagram-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            padding-top: 10px;
+        }
+
+        .group-labels {
+            display: flex;
+            width: 960px;
+            margin-bottom: 12px;
+        }
+        .group-label {
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+        .gl-1 { width: 240px; color: #f59e0b; text-align: left; padding-left: 40px; }
+        .gl-2 { flex: 1; color: #3aaadc; }
+        .gl-3 { width: 240px; color: rgba(255,255,255,0.8); text-align: right; padding-right: 40px; }
+
+        canvas { display: block; }
+
+        .phase-labels {
+            display: flex;
+            width: 960px;
+            margin-top: 16px;
+        }
+        .phase-label {
+            width: 160px;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            color: #94a3b8;
+            letter-spacing: 1px;
+        }
+
+        .loop-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 36px;
+        }
+        .loop-line {
+            width: 600px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(58,170,220,0.3), rgba(245,158,11,0.3));
+        }
+        .loop-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: #94a3b8;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: rgba(58, 170, 220, 0.1);
+            border-top: 1px solid rgba(58, 170, 220, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="bg-grid"></div>
+        
+        <div class="header">
+            <div class="slide-number">02 // THE INFRASTRUCTURE</div>
+            <h1>The Discipline</h1>
+            <div class="subtitle">An endless loop of understanding, wisdom, and making.</div>
+        </div>
+
+        <div class="diagram-section">
+            <div class="group-labels">
+                <div class="group-label gl-1">CONTEXT</div>
+                <div class="group-label gl-2">PATTERNS</div>
+                <div class="group-label gl-3">BUILD</div>
+            </div>
+
+            <canvas id="tripleDiamond" width="960" height="260"></canvas>
+
+            <div class="phase-labels">
+                <div class="phase-label">Discover</div>
+                <div class="phase-label">Define</div>
+                <div class="phase-label">Ideate</div>
+                <div class="phase-label">Design</div>
+                <div class="phase-label">Build</div>
+                <div class="phase-label">Iterate</div>
+            </div>
+
+            <div class="loop-row">
+                <div class="loop-text">&larr; ITERATE</div>
+                <div class="loop-line"></div>
+                <div class="loop-text">DISCOVER &rarr;</div>
+            </div>
+        </div>
+
+        <div class="bottom-bar">
+            >_ CONTEXT &rarr; PATTERNS &rarr; BUILD &rarr; CONTEXT &rarr; ...
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('tripleDiamond');
+        const ctx = canvas.getContext('2d');
+        const W = 960;
+        const H = 260;
+        const cy = H / 2;       // vertical center = 130
+        const peakH = 110;      // how far peaks go from center
+
+        // Key x-positions for the 6 phases (evenly spaced)
+        // Discover=80, Define=240, Ideate=400, Design=560, Build=720, Iterate=880
+        
+        // Key vertices:
+        const P0  = [0, cy];          // far left — Discover start
+        const P1  = [240, cy - peakH]; // top at Define
+        const P2  = [240, cy + peakH]; // bottom at Define
+        const P3  = [400, cy - peakH]; // top at Ideate
+        const P4  = [400, cy + peakH]; // bottom at Ideate
+        const P5  = [480, cy];         // center touch point
+        const P6  = [560, cy - peakH]; // top at Design
+        const P7  = [560, cy + peakH]; // bottom at Design
+        const P8  = [720, cy - peakH]; // top at Build
+        const P9  = [720, cy + peakH]; // bottom at Build
+        const P10 = [960, cy];         // far right — Iterate end
+
+        function drawPolyline(points, color, width) {
+            ctx.beginPath();
+            ctx.moveTo(points[0][0], points[0][1]);
+            for (let i = 1; i < points.length; i++) {
+                ctx.lineTo(points[i][0], points[i][1]);
+            }
+            ctx.strokeStyle = color;
+            ctx.lineWidth = width;
+            ctx.stroke();
+        }
+
+        function drawDashedLine(x, y1, y2, color) {
+            ctx.beginPath();
+            ctx.setLineDash([6, 6]);
+            ctx.moveTo(x, y1);
+            ctx.lineTo(x, y2);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.setLineDash([]);
+        }
+
+        // Draw dashed vertical lines at peaks
+        const dashColor = 'rgba(255, 255, 255, 0.12)';
+        drawDashedLine(240, 0, H, dashColor);  // Define
+        drawDashedLine(400, 0, H, dashColor);  // Ideate
+        drawDashedLine(480, 0, H, dashColor);  // Center touch
+        drawDashedLine(560, 0, H, dashColor);  // Design
+        drawDashedLine(720, 0, H, dashColor);  // Build
+
+        // Line A: P0 → P1 (Define top) → P4 (Ideate bottom) → P5 (center) → P6 (Design top) → P9 (Build bottom) → P10
+        // This line goes: start → up → crosses down → center → up → crosses down → end
+        const lineColor = 'rgba(255, 255, 255, 0.5)';
+        drawPolyline([P0, P1, P4, P5, P6, P9, P10], lineColor, 1.5);
+
+        // Line B: P0 → P2 (Define bottom) → P3 (Ideate top) → P5 (center) → P7 (Design bottom) → P8 (Build top) → P10
+        // This line goes: start → down → crosses up → center → down → crosses up → end
+        drawPolyline([P0, P2, P3, P5, P7, P8, P10], lineColor, 1.5);
+
+        // Small dots at key vertices
+        function drawDot(point, color, radius) {
+            ctx.beginPath();
+            ctx.arc(point[0], point[1], radius, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+
+        drawDot(P0, 'rgba(245, 158, 11, 0.6)', 4);   // Discover start
+        drawDot(P5, 'rgba(58, 170, 220, 0.6)', 4);    // Center touch
+        drawDot(P10, 'rgba(255, 255, 255, 0.5)', 4);  // Iterate end
+    </script>
+</body>
+</html>

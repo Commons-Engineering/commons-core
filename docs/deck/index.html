@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Age of Living Systems — Commons Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0a0f1e;
+      color: #ffffff;
+      font-family: 'Inter', -apple-system, sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Slide viewport */
+    .deck-viewport {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide-frame {
+      width: 1280px;
+      height: 720px;
+      border: none;
+      transform-origin: center center;
+      background: #0f172a;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Controls bar */
+    .controls-bar {
+      height: 56px;
+      min-height: 56px;
+      flex-shrink: 0;
+      background: rgba(15, 23, 42, 0.95);
+      border-top: 1px solid rgba(58, 170, 220, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 0 24px;
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid rgba(58, 170, 220, 0.3);
+      background: rgba(58, 170, 220, 0.08);
+      color: #3aaadc;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background: rgba(58, 170, 220, 0.2);
+      border-color: #3aaadc;
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    .slide-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: #94a3b8;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    .slide-counter .current {
+      color: #3aaadc;
+      font-weight: 500;
+    }
+
+    .progress-bar {
+      flex: 1;
+      max-width: 400px;
+      height: 3px;
+      background: rgba(58, 170, 220, 0.15);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #3aaadc, #5bc0de);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .fullscreen-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: transparent;
+      color: #94a3b8;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .fullscreen-btn:hover {
+      background: rgba(148, 163, 184, 0.1);
+      color: #ffffff;
+    }
+
+    .home-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #5a738e;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+
+    .home-link:hover {
+      color: #3aaadc;
+    }
+
+    .home-dot {
+      width: 6px;
+      height: 6px;
+      background: #f59e0b;
+      border-radius: 50%;
+    }
+
+    /* Slide thumbnails panel */
+    .thumb-panel {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 56px;
+      width: 200px;
+      background: rgba(10, 15, 30, 0.97);
+      border-right: 1px solid rgba(58, 170, 220, 0.1);
+      overflow-y: auto;
+      transform: translateX(-200px);
+      transition: transform 0.3s ease;
+      z-index: 200;
+      padding: 12px;
+    }
+
+    .thumb-panel.open {
+      transform: translateX(0);
+    }
+
+    .thumb-panel::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .thumb-panel::-webkit-scrollbar-thumb {
+      background: rgba(58, 170, 220, 0.3);
+      border-radius: 2px;
+    }
+
+    .thumb-item {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      background: #0f172a;
+    }
+
+    .thumb-item.active {
+      border-color: #3aaadc;
+      box-shadow: 0 0 12px rgba(58, 170, 220, 0.3);
+    }
+
+    .thumb-item:hover {
+      border-color: rgba(58, 170, 220, 0.5);
+    }
+
+    .thumb-num {
+      position: absolute;
+      bottom: 4px;
+      right: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #94a3b8;
+      background: rgba(15, 23, 42, 0.8);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    .thumb-iframe {
+      width: 1280px;
+      height: 720px;
+      border: none;
+      transform: scale(0.1328);
+      transform-origin: top left;
+      pointer-events: none;
+    }
+
+    .menu-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: transparent;
+      color: #94a3b8;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.2s ease;
+    }
+
+    .menu-btn:hover {
+      background: rgba(148, 163, 184, 0.1);
+      color: #ffffff;
+    }
+
+    /* Click zones for navigation */
+    .click-zone {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 15%;
+      cursor: pointer;
+      z-index: 50;
+    }
+
+    .click-zone-left {
+      left: 0;
+    }
+
+    .click-zone-right {
+      right: 0;
+    }
+
+    /* Fullscreen adjustments */
+    :fullscreen .controls-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    :fullscreen .controls-bar:hover {
+      opacity: 1;
+    }
+
+    :fullscreen .deck-viewport {
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deck-viewport" id="viewport">
+    <div class="click-zone click-zone-left" onclick="prevSlide()"></div>
+    <iframe class="slide-frame" id="slideFrame" src=""></iframe>
+    <div class="click-zone click-zone-right" onclick="nextSlide()"></div>
+  </div>
+
+  <div class="controls-bar">
+    <a href="https://github.com/Commons-Engineering/commons-os" class="home-link"><span class="home-dot"></span>COMMONS OS</a>
+
+    <button class="menu-btn" onclick="toggleThumbs()" title="Slide overview">&#9776;</button>
+
+    <button class="nav-btn" id="prevBtn" onclick="prevSlide()" title="Previous (&larr;)">&#8249;</button>
+
+    <div class="slide-counter">
+      <span class="current" id="currentNum">1</span> / <span id="totalNum">25</span>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <button class="nav-btn" id="nextBtn" onclick="nextSlide()" title="Next (&rarr;)">&#8250;</button>
+
+    <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Fullscreen (F)">&#x26F6;</button>
+  </div>
+
+  <div class="thumb-panel" id="thumbPanel"></div>
+
+  <script>
+    const slides = [
+      'title', 'singularity', 'opportunity', 'choice', 'commons',
+      'dimensions', 'discipline', 'language', 'instrument', 'architecture',
+      'blueprint', 'stakeholder', 'commons_as_code', 'knowledge_graph',
+      'simulation', 'ecosystem',
+      'your_future', 'community',
+      'next_steps', 'thankyou'
+    ];
+
+    let current = 0;
+    const total = slides.length;
+    const frame = document.getElementById('slideFrame');
+    const viewport = document.getElementById('viewport');
+
+    function loadSlide(index) {
+      current = Math.max(0, Math.min(index, total - 1));
+      frame.src = 'slides/' + slides[current] + '.html';
+      document.getElementById('currentNum').textContent = current + 1;
+      document.getElementById('totalNum').textContent = total;
+      document.getElementById('progressFill').style.width = ((current + 1) / total * 100) + '%';
+      document.getElementById('prevBtn').disabled = current === 0;
+      document.getElementById('nextBtn').disabled = current === total - 1;
+
+      // Update thumbnail active state
+      document.querySelectorAll('.thumb-item').forEach((t, i) => {
+        t.classList.toggle('active', i === current);
+      });
+
+      // Scroll active thumb into view
+      const activeThumb = document.querySelector('.thumb-item.active');
+      if (activeThumb) activeThumb.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+
+    function nextSlide() { if (current < total - 1) loadSlide(current + 1); }
+    function prevSlide() { if (current > 0) loadSlide(current - 1); }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    function toggleThumbs() {
+      document.getElementById('thumbPanel').classList.toggle('open');
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      switch(e.key) {
+        case 'ArrowRight':
+        case 'ArrowDown':
+        case ' ':
+          e.preventDefault();
+          nextSlide();
+          break;
+        case 'ArrowLeft':
+        case 'ArrowUp':
+          e.preventDefault();
+          prevSlide();
+          break;
+        case 'Home':
+          e.preventDefault();
+          loadSlide(0);
+          break;
+        case 'End':
+          e.preventDefault();
+          loadSlide(total - 1);
+          break;
+        case 'f':
+        case 'F':
+          toggleFullscreen();
+          break;
+        case 'Escape':
+          document.getElementById('thumbPanel').classList.remove('open');
+          break;
+      }
+    });
+
+    // Scale slide to fit viewport
+    function scaleSlide() {
+      const vw = viewport.clientWidth;
+      const vh = viewport.clientHeight;
+      const sw = 1280;
+      const sh = 720;
+      const scale = Math.min(vw / sw, vh / sh);
+      frame.style.transform = 'scale(' + scale + ')';
+    }
+
+    window.addEventListener('resize', scaleSlide);
+
+    // Build thumbnail panel
+    function buildThumbs() {
+      const panel = document.getElementById('thumbPanel');
+      slides.forEach((id, i) => {
+        const item = document.createElement('div');
+        item.className = 'thumb-item' + (i === 0 ? ' active' : '');
+        item.onclick = function() { loadSlide(i); };
+
+        const iframe = document.createElement('iframe');
+        iframe.className = 'thumb-iframe';
+        iframe.src = 'slides/' + id + '.html';
+        iframe.loading = 'lazy';
+
+        const num = document.createElement('div');
+        num.className = 'thumb-num';
+        num.textContent = (i + 1);
+
+        item.appendChild(iframe);
+        item.appendChild(num);
+        panel.appendChild(item);
+      });
+    }
+
+    // Initialize
+    loadSlide(0);
+    scaleSlide();
+    buildThumbs();
+  </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container { 
+            width: 1280px; 
+            height: 720px; overflow: hidden; 
+            background-color: #0f172a; 
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Background Grid */
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(58, 170, 220, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(58, 170, 220, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            padding-top: 50px;
+            padding-left: 80px;
+            padding-right: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+        }
+        .slide-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: #3aaadc;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        /* Main Content Area */
+        .content-area {
+            display: flex;
+            flex: 1;
+            padding: 28px 80px 60px 80px;
+            z-index: 10;
+            align-items: center;
+        }
+
+        .layers-container {
+            display: flex;
+            width: 100%;
+            gap: 40px;
+            position: relative;
+        }
+
+        /* Connecting Line */
+        .connection-line {
+            position: absolute;
+            top: 100px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, rgba(58, 170, 220, 0.3) 0, rgba(58, 170, 220, 0.3) 10px, transparent 10px, transparent 20px);
+            z-index: 0;
+        }
+
+        .layer-box {
+            flex: 1;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(58, 170, 220, 0.2);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+            min-height: 380px;
+        }
+
+        /* Technical corners */
+        .layer-box::before, .layer-box::after {
+            content: ''; position: absolute; width: 15px; height: 15px; border: 2px solid;
+        }
+        .layer-box::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+        .layer-box::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+        .layer-box.domain { border-top: 4px solid #ffffff; }
+        .layer-box.domain::before, .layer-box.domain::after { border-color: #ffffff; }
+        
+        .layer-box.os { border-top: 4px solid #3aaadc; }
+        .layer-box.os::before, .layer-box.os::after { border-color: #3aaadc; }
+        
+        .layer-box.game { border-top: 4px solid #f59e0b; }
+        .layer-box.game::before, .layer-box.game::after { border-color: #f59e0b; }
+
+        /* Visual Icons */
+        .icon-container {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .vis-domain {
+            width: 50px; height: 50px;
+            border: 1px solid #ffffff;
+            display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px;
+            padding: 4px;
+        }
+        .vis-domain div { background: rgba(255,255,255,0.3); }
+
+        .vis-os {
+            width: 50px; height: 50px;
+            border: 2px solid #3aaadc;
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            position: relative;
+        }
+        .vis-os::after {
+            content: ''; width: 16px; height: 16px; background: #3aaadc; border-radius: 50%;
+            box-shadow: 0 0 15px #3aaadc;
+        }
+        .vis-os::before {
+            content: ''; position: absolute; width: 60px; height: 60px; border: 1px dashed rgba(58, 170, 220, 0.5); border-radius: 50%;
+        }
+
+        .vis-game {
+            width: 50px; height: 50px;
+            position: relative;
+        }
+        .g-trunk { position: absolute; left: 24px; bottom: 0; height: 20px; width: 2px; background: #f59e0b; }
+        .g-branch { position: absolute; left: 24px; bottom: 20px; width: 2px; background: #f59e0b; transform-origin: bottom center; }
+        .b1 { height: 25px; transform: rotate(-45deg); }
+        .b2 { height: 30px; transform: rotate(0deg); }
+        .b3 { height: 25px; transform: rotate(45deg); }
+        .g-dot { position: absolute; width: 6px; height: 6px; background: #f59e0b; border-radius: 50%; left: -2px; top: -2px; box-shadow: 0 0 10px #f59e0b; }
+
+        /* Text Content */
+        .layer-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .layer-box.domain .layer-label { color: #ffffff; }
+        .layer-box.os .layer-label { color: #3aaadc; }
+        .layer-box.game .layer-label { color: #f59e0b; }
+
+        .layer-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .layer-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .layer-desc {
+            font-size: 16px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* Bottom Bar */
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: rgba(58, 170, 220, 0.1);
+            border-top: 1px solid rgba(58, 170, 220, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="bg-grid"></div>
+        
+        <div class="header">
+            <div class="slide-number">02 // THE INFRASTRUCTURE</div>
+            <h1>Three Layers, One System</h1>
+        </div>
+
+        <div class="content-area">
+            <div class="layers-container">
+                <div class="connection-line"></div>
+                
+                <div class="layer-box domain">
+                    <div class="icon-container">
+                        <div class="vis-domain">
+                            <div></div><div></div><div></div><div></div>
+                        </div>
+                    </div>
+                    <div class="layer-label">FORK 01</div>
+                    <h2 class="layer-title">Domain</h2>
+                    <div class="layer-subtitle">The Specification</div>
+                    <p class="layer-desc">
+                        The human- and machine-readable blueprint. Where you map your current state: identity, manifests, value streams, capabilities, and entities. How the world sees you.
+                    </p>
+                </div>
+
+                <div class="layer-box os">
+                    <div class="icon-container">
+                        <div class="vis-os"></div>
+                    </div>
+                    <div class="layer-label">FORK 02</div>
+                    <h2 class="layer-title">OS</h2>
+                    <div class="layer-subtitle">The Engine</div>
+                    <p class="layer-desc">
+                        The tangible, operable expression. Where the actual work happens. Powered by the Knowledge Graph and executing the patterns defined in the Blueprint.
+                    </p>
+                </div>
+
+                <div class="layer-box game">
+                    <div class="icon-container">
+                        <div class="vis-game">
+                            <div class="g-trunk"></div>
+                            <div class="g-branch b1"><div class="g-dot"></div></div>
+                            <div class="g-branch b2"><div class="g-dot"></div></div>
+                            <div class="g-branch b3"><div class="g-dot"></div></div>
+                        </div>
+                    </div>
+                    <div class="layer-label">FORK 03</div>
+                    <h2 class="layer-title">Game</h2>
+                    <div class="layer-subtitle">The Simulator</div>
+                    <p class="layer-desc">
+                        Running years ahead. Subjected to dozens of future scenarios. The delta between the Game and the Domain IS the construction manual for resilience.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-bar">
+            >_ THREE LAYERS WORKING AS ONE INTEGRATED SYSTEM.
+        </div>
+    </div>
+</body>
+</html>

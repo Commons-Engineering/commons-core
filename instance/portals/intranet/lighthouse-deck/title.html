@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container { 
+            width: 1280px; 
+            height: 720px; overflow: hidden; 
+            background-color: #0f172a; 
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Technical Background Grid */
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(58, 170, 220, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(58, 170, 220, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+
+        /* Bioluminescent Network Effect */
+        .glow-center {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(58, 170, 220, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        /* Technical Frame */
+        .frame {
+            position: absolute;
+            top: 40px; left: 40px; right: 40px; bottom: 40px;
+            border: 1px solid rgba(58, 170, 220, 0.2);
+            z-index: 3;
+            pointer-events: none;
+        }
+        .frame::before, .frame::after {
+            content: ''; position: absolute; width: 20px; height: 20px; border: 2px solid #3aaadc;
+        }
+        .frame::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+        .frame::after { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+        
+        .frame-tl { position: absolute; top: -2px; right: -2px; width: 20px; height: 20px; border: 2px solid #3aaadc; border-left: none; border-bottom: none; }
+        .frame-bl { position: absolute; bottom: -2px; left: -2px; width: 20px; height: 20px; border: 2px solid #3aaadc; border-right: none; border-top: none; }
+
+        /* Content */
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            color: #3aaadc;
+            font-size: 16px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .eyebrow::before, .eyebrow::after {
+            content: '';
+            height: 1px;
+            width: 40px;
+            background-color: #3aaadc;
+            opacity: 0.5;
+        }
+
+        h1 {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            text-shadow: 0 0 40px rgba(58, 170, 220, 0.3);
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 300;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        .logo-mark {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            letter-spacing: 6px;
+            color: #7a93ae;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #f59e0b;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        }
+
+        /* Decorative data lines */
+        .data-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(58, 170, 220, 0.8), transparent);
+            height: 1px;
+            width: 200px;
+            z-index: 4;
+        }
+        .dl-1 { top: 20%; left: 10%; width: 300px; opacity: 0.3; }
+        .dl-2 { bottom: 30%; right: 15%; width: 150px; opacity: 0.5; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="bg-grid"></div>
+        <div class="glow-center"></div>
+        
+        <div class="data-line dl-1"></div>
+        <div class="data-line dl-2"></div>
+
+        <div class="frame">
+            <div class="frame-tl"></div>
+            <div class="frame-bl"></div>
+        </div>
+
+        <div class="content">
+            <div class="eyebrow">Initialization Sequence</div>
+            <h1>The Age of<br>Living Systems</h1>
+            <h2>An Operating Model for a Complex World</h2>
+        </div>
+
+        <div class="logo-mark">
+            <div class="logo-dot"></div>
+            COMMONS ENGINEERING
+        </div>
+    </div>
+</body>
+</html>

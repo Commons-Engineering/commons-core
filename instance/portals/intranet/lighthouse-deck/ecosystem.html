@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container { 
+            width: 1280px; 
+            height: 720px; overflow: hidden; 
+            background-color: #0f172a; 
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Background Grid */
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(58, 170, 220, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(58, 170, 220, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            padding-top: 50px;
+            padding-left: 80px;
+            padding-right: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+        }
+        .slide-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: #3aaadc;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        /* Main Content Area */
+        .content-area {
+            display: flex;
+            flex: 1;
+            padding: 28px 80px 60px 80px;
+            gap: 60px;
+            z-index: 10;
+        }
+
+        /* Left Column - Text */
+        .text-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .intro-text {
+            font-size: 22px;
+            color: #ffffff;
+            line-height: 1.4;
+            font-weight: 300;
+        }
+        .intro-text strong {
+            font-weight: 600;
+            color: #3aaadc;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 10px;
+        }
+        
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-left: 20px;
+            border-left: 2px solid rgba(58, 170, 220, 0.3);
+        }
+        
+        .feature-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            color: #f59e0b;
+            letter-spacing: 1px;
+        }
+        
+        .feature-desc {
+            font-size: 16px;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        /* Right Column - Visual */
+        .visual-col {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .network-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        /* Central Node */
+        .central-node {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: rgba(245, 158, 11, 0.1);
+            border: 2px solid #f59e0b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #f59e0b;
+            z-index: 10;
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
+        }
+
+        /* Satellite Nodes */
+        .satellite-node {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: #0f172a;
+            border: 2px solid #3aaadc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: #ffffff;
+            z-index: 10;
+        }
+
+        .sat-1 { top: 0; left: 50%; transform: translate(-50%, 0); }
+        .sat-2 { top: 50%; right: 0; transform: translate(0, -50%); }
+        .sat-3 { bottom: 0; left: 50%; transform: translate(-50%, 0); }
+        .sat-4 { top: 50%; left: 0; transform: translate(0, -50%); }
+
+        /* Connecting Lines */
+        .line {
+            position: absolute;
+            background: rgba(58, 170, 220, 0.3);
+            z-index: 5;
+        }
+        
+        .line-v { width: 2px; left: 50%; transform: translateX(-50%); }
+        .line-h { height: 2px; top: 50%; transform: translateY(-50%); }
+        
+        .line-1 { top: 80px; height: 60px; }
+        .line-2 { right: 80px; width: 60px; }
+        .line-3 { bottom: 80px; height: 60px; }
+        .line-4 { left: 80px; width: 60px; }
+
+        /* Directional Arrows (Pull) */
+        .arrow {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            z-index: 6;
+        }
+        
+        .arrow-1 { top: 100px; left: 50%; transform: translateX(-50%); border-width: 0 6px 10px 6px; border-color: transparent transparent #3aaadc transparent; }
+        .arrow-2 { right: 100px; top: 50%; transform: translateY(-50%); border-width: 6px 0 6px 10px; border-color: transparent transparent transparent #3aaadc; }
+        .arrow-3 { bottom: 100px; left: 50%; transform: translateX(-50%); border-width: 10px 6px 0 6px; border-color: #3aaadc transparent transparent transparent; }
+        .arrow-4 { left: 100px; top: 50%; transform: translateY(-50%); border-width: 6px 10px 6px 0; border-color: transparent #3aaadc transparent transparent; }
+
+        /* Bottom Bar */
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: rgba(58, 170, 220, 0.1);
+            border-top: 1px solid rgba(58, 170, 220, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="bg-grid"></div>
+        
+        <div class="header">
+            <div class="slide-number">02 // THE INFRASTRUCTURE</div>
+            <h1>A Network of Sovereign Commons</h1>
+        </div>
+
+        <div class="content-area">
+            <div class="text-col">
+                <p class="intro-text">
+                    Each commons is independent, but it does not stand alone. The network makes every individual commons <strong>exponentially stronger.</strong>
+                </p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-title">SOVEREIGN BY DEFAULT</div>
+                        <div class="feature-desc">
+                            You own your data, your governance, and your infrastructure. There is no central authority dictating your operations.
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-title">SHARED PATTERNS</div>
+                        <div class="feature-desc">
+                            When one commons solves a problem, the solution becomes a pattern available to the entire network. Wisdom is shared globally, applied locally.
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-title">PULL, NOT PUSH</div>
+                        <div class="feature-desc">
+                            Updates and new patterns are never forced upon you. You pull what you need, when you need it, maintaining absolute control over your system.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visual-col">
+                <div class="network-container">
+                    <!-- Lines -->
+                    <div class="line line-v line-1"></div>
+                    <div class="line line-h line-2"></div>
+                    <div class="line line-v line-3"></div>
+                    <div class="line line-h line-4"></div>
+                    
+                    <!-- Arrows -->
+                    <div class="arrow arrow-1"></div>
+                    <div class="arrow arrow-2"></div>
+                    <div class="arrow arrow-3"></div>
+                    <div class="arrow arrow-4"></div>
+                    
+                    <!-- Nodes -->
+                    <div class="central-node">
+                        SHARED<br>PATTERN<br>LIBRARY
+                    </div>
+                    
+                    <div class="satellite-node sat-1">
+                        URBAN<br>COMMONS
+                    </div>
+                    <div class="satellite-node sat-2">
+                        HEALTH<br>COMMONS
+                    </div>
+                    <div class="satellite-node sat-3">
+                        ENERGY<br>COMMONS
+                    </div>
+                    <div class="satellite-node sat-4">
+                        DATA<br>COMMONS
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-bar">
+            >_ WISDOM IS SHARED GLOBALLY. GOVERNANCE IS APPLIED LOCALLY.
+        </div>
+    </div>
+</body>
+</html>

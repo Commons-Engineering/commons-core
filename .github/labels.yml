@@ -1,0 +1,41 @@
+# Dimension labels
+- name: definition
+  color: "1d76db"
+  description: "D1 — Definition & Purpose"
+- name: participation
+  color: "0e8a16"
+  description: "D2 — Participation & Relationship"
+- name: proposition
+  color: "e4e669"
+  description: "D3 — Proposition & Exchange"
+- name: production
+  color: "d93f0b"
+  description: "D4 — Production & Resilience"
+
+# Type labels
+- name: build
+  color: "c5def5"
+  description: "Concrete build or implementation task"
+- name: spec
+  color: "bfdadc"
+  description: "Specification work"
+- name: deliberation
+  color: "fbca04"
+  description: "Needs discussion before decision"
+- name: decision
+  color: "b60205"
+  description: "Records a decision"
+- name: alignment-report
+  color: "d4c5f9"
+  description: "Automated alignment check result"
+
+# Priority labels
+- name: critical
+  color: "b60205"
+  description: "Blocking runway"
+- name: high
+  color: "d93f0b"
+  description: "Blocking next phase"
+- name: normal
+  color: "0075ca"
+  description: "Normal priority"

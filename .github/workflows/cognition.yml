@@ -1,0 +1,94 @@
+name: Cognition Heartbeat
+
+# The autonomous pulse of this Commons OS instance.
+# Executes the research programme defined in instance/program.md.
+# Enable by setting cognition.heartbeat.enabled: true in .commons/identity.yml.
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'               # Default: weekly Monday 3am. Override in identity.yml.
+  workflow_dispatch:                    # Manual trigger for testing and on-demand runs.
+    inputs:
+      reason:
+        description: 'Why are you triggering a manual heartbeat?'
+        required: false
+        type: string
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check if cognition is enabled
+        id: check
+        run: |
+          # Only run if cognition.heartbeat.enabled is true
+          # This allows the workflow to exist in the template without running
+          echo "enabled=false" >> $GITHUB_OUTPUT
+          if [ -f ".commons/identity.yml" ]; then
+            ENABLED=$(yq '.cognition.heartbeat.enabled // false' .commons/identity.yml 2>/dev/null || echo "false")
+            echo "enabled=$ENABLED" >> $GITHUB_OUTPUT
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.enabled == 'true'
+
+      - name: Load identity
+        if: steps.check.outputs.enabled == 'true'
+        id: identity
+        run: |
+          echo "slug=$(yq '.slug' .commons/identity.yml)" >> $GITHUB_OUTPUT
+          echo "type=$(yq '.instance_type' .commons/identity.yml)" >> $GITHUB_OUTPUT
+          echo "metric=$(yq '.cognition.heartbeat.metric' .commons/identity.yml)" >> $GITHUB_OUTPUT
+          echo "budget=$(yq '.cognition.heartbeat.budget' .commons/identity.yml)" >> $GITHUB_OUTPUT
+
+      - name: Execute programme
+        if: steps.check.outputs.enabled == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          INSTANCE_SLUG: ${{ steps.identity.outputs.slug }}
+          INSTANCE_TYPE: ${{ steps.identity.outputs.type }}
+          METRIC: ${{ steps.identity.outputs.metric }}
+          BUDGET: ${{ steps.identity.outputs.budget }}
+        run: |
+          # Execute the research programme
+          # The heartbeat script reads program.md and executes its instructions
+          # using the specialist defined in identity.yml
+          python scripts/heartbeat.py \
+            --programme instance/program.md \
+            --identity .commons/identity.yml \
+            --type "$INSTANCE_TYPE" \
+            --metric "$METRIC" \
+            --budget "$BUDGET"
+
+      - name: Evaluate and commit
+        if: steps.check.outputs.enabled == 'true'
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "Commons Heartbeat"
+            git config user.email "heartbeat@commons.engineering"
+            git add -A
+            git commit -m "heartbeat: ${{ steps.identity.outputs.slug }} | $(date +%Y-%m-%d) | ${{ steps.identity.outputs.metric }}"
+            git push
+          else
+            echo "No changes detected. Heartbeat complete."
+          fi
+
+      - name: Notify stewards (if critical)
+        if: steps.check.outputs.enabled == 'true' && failure()
+        run: |
+          # On failure, notify stewards defined in identity.yml
+          echo "Heartbeat failed. Steward notification would go here."
+          # TODO: Implement steward notification via GitHub Issues or email
+
+      - name: Broadcast (if enabled and scheduled)
+        if: steps.check.outputs.enabled == 'true'
+        run: |
+          # Check if broadcast is due according to identity.yml schedule
+          BROADCAST_ENABLED=$(yq '.cognition.a2a.broadcast.enabled // false' .commons/identity.yml 2>/dev/null || echo "false")
+          if [ "$BROADCAST_ENABLED" = "true" ]; then
+            echo "Broadcast check — implementation pending."
+            # TODO: python scripts/broadcast.py
+          fi

@@ -1,0 +1,68 @@
+name: Validate Structure
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check required files exist
+        run: |
+          MISSING=0
+          for f in \
+            ".commons/identity.yml" \
+            ".commons/config.yml" \
+            "blueprint.md" \
+            "ALIGN.md" \
+            "knowledge/manifests/commons/COMMONS_OS_MANIFEST.md" \
+            "knowledge/manifests/commons/COMMONS_AGENT_MANIFEST.md" \
+            "knowledge/specs/commons/COMMONS_OS_SPEC.md" \
+            "knowledge/specs/commons/PATTERN_SPEC.md"; do
+            if [ ! -f "$f" ]; then
+              echo "MISSING: $f"
+              MISSING=$((MISSING + 1))
+            fi
+          done
+          if [ $MISSING -gt 0 ]; then
+            echo "$MISSING required files missing"
+            exit 1
+          fi
+          echo "All required files present"
+
+      - name: Check required directories exist
+        run: |
+          for d in \
+            "registry/1_journeys" \
+            "registry/2_touchpoints" \
+            "registry/3_valuestreams" \
+            "registry/4_capabilities" \
+            "registry/5_entities" \
+            "knowledge/manifests/commons" \
+            "knowledge/manifests/extensions" \
+            "knowledge/manifests/instance" \
+            "knowledge/specs/commons" \
+            "knowledge/specs/extensions" \
+            "knowledge/specs/instance" \
+            "knowledge/patterns/commons" \
+            "knowledge/patterns/extensions" \
+            "knowledge/patterns/instance" \
+            "portals" \
+            "workshop"; do
+            if [ ! -d "$d" ]; then
+              echo "MISSING directory: $d"
+              exit 1
+            fi
+          done
+          echo "All required directories present"
+
+      - name: Validate identity.yml
+        run: |
+          if ! python3 -c "import yaml; yaml.safe_load(open('.commons/identity.yml'))" 2>/dev/null; then
+            echo "identity.yml is not valid YAML"
+            exit 1
+          fi
+          echo "identity.yml is valid"

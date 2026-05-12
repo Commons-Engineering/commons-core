@@ -1,0 +1,117 @@
+name: Sync Upstream
+
+# This workflow syncs OS-level files from commons-engineering/commons-os
+# into template copies. It uses file-copy (rsync) logic, not git merge,
+# because template copies have no shared git history with upstream.
+#
+# What gets synced (OS layer — upstream owns these):
+#   commons/          — manifests, specs, patterns, scripts, templates
+#   BOOT.md           — boot guide
+#   ALIGN.md          — alignment checks
+#   CONTRIBUTING.md   — contribution guide
+#   LICENSE           — license
+#   AGENT.md.template — agent template (not AGENT.md itself!)
+#
+# What NEVER gets synced (instance sovereignty):
+#   instance/         — all instance-specific content
+#   extensions/       — installed extension packs
+#   .commons/         — identity & config
+#   blueprint.md      — the living blueprint
+#   AGENT.md          — filled-in agent config
+#   CLAUDE.md         — tool-specific pointer
+#   README.md         — instance-specific readme
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'  # Weekly on Monday at 06:00 UTC
+  workflow_dispatch:       # Manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch upstream
+        run: |
+          git remote add upstream https://github.com/commons-engineering/commons-os.git || true
+          git fetch upstream main
+
+      - name: Check for upstream changes
+        id: check
+        run: |
+          # Check OS-layer files for changes
+          DIFF=$(git diff HEAD...upstream/main -- \
+            commons/ \
+            BOOT.md \
+            ALIGN.md \
+            CONTRIBUTING.md \
+            LICENSE \
+            AGENT.md.template \
+            .github/workflows/sync-upstream.yml \
+            .github/workflows/validate.yml \
+            | wc -l)
+          echo "diff_lines=$DIFF" >> $GITHUB_OUTPUT
+          echo "Upstream diff: $DIFF lines"
+
+      - name: Sync OS files
+        if: steps.check.outputs.diff_lines != '0'
+        run: |
+          BRANCH="upstream-sync-$(date +%Y%m%d-%H%M)"
+          git checkout -b "$BRANCH"
+
+          # Copy OS-layer files from upstream (file-based, not merge)
+          # This avoids merge conflicts from divergent template histories
+          git checkout upstream/main -- \
+            commons/ \
+            BOOT.md \
+            ALIGN.md \
+            CONTRIBUTING.md \
+            LICENSE \
+            AGENT.md.template \
+            .github/workflows/sync-upstream.yml \
+            .github/workflows/validate.yml \
+            2>/dev/null || true
+
+          # Check if anything actually changed
+          if git diff --cached --quiet && git diff --quiet; then
+            echo "No effective changes after sync"
+            exit 0
+          fi
+
+          git add -A
+          git commit -m "Sync upstream Commons OS ($(date +%Y-%m-%d))"
+          git push origin HEAD
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Open PR
+        if: steps.check.outputs.diff_lines != '0'
+        run: |
+          # Only create PR if branch was pushed
+          if git rev-parse --verify "origin/upstream-sync-$(date +%Y%m%d-*)" 2>/dev/null; then
+            gh pr create \
+              --title "Upstream sync — $(date +%Y-%m-%d)" \
+              --body "$(cat <<'BODY'
+          ## Automated Commons OS Sync
+
+          This PR updates the OS-layer files from `commons-engineering/commons-os`.
+
+          **Synced (OS layer — review but typically safe to merge):**
+          - `commons/` — manifests, specs, patterns, templates
+          - `BOOT.md`, `ALIGN.md`, `CONTRIBUTING.md`, `LICENSE`
+          - `AGENT.md.template`
+
+          **Never touched (instance sovereignty):**
+          - `instance/`, `extensions/`, `.commons/`
+          - `blueprint.md`, `AGENT.md`, `CLAUDE.md`, `README.md`
+
+          Review the changes, then merge. Your instance files are safe.
+          BODY
+          )" \
+              --label "production"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Age of Living Systems — Commons Engineering Lighthouse Deck</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+    .header {
+      padding: 40px 60px 20px;
+      border-bottom: 1px solid rgba(58, 170, 220, 0.2);
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+    .header p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 8px;
+    }
+    .nav {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .nav button {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 6px 12px;
+      border: 1px solid #1e293b;
+      background: transparent;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .nav button:hover, .nav button.active {
+      border-color: #3aaadc;
+      color: #3aaadc;
+      background: rgba(58, 170, 220, 0.05);
+    }
+    .slide-container {
+      padding: 40px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .slide-frame {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: 1px solid #1e293b;
+      background: #0f172a;
+    }
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+    }
+    .controls button {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      padding: 10px 24px;
+      border: 1px solid #3aaadc;
+      background: transparent;
+      color: #3aaadc;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .controls button:hover {
+      background: rgba(58, 170, 220, 0.1);
+    }
+    .controls button:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+    .controls .counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #64748b;
+    }
+    .footer {
+      padding: 20px 60px;
+      border-top: 1px solid rgba(58, 170, 220, 0.1);
+      font-size: 12px;
+      color: #475569;
+      text-align: center;
+    }
+    .footer a { color: #3aaadc; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>The Age of Living Systems</h1>
+    <p>Commons Engineering — Lighthouse Pitch Deck</p>
+    <div class="nav" id="slideNav"></div>
+  </div>
+
+  <div class="slide-container">
+    <iframe class="slide-frame" id="slideFrame" src="title.html" frameborder="0"></iframe>
+  </div>
+
+  <div class="controls">
+    <button id="prevBtn" onclick="navigate(-1)" disabled>← Previous</button>
+    <span class="counter" id="counter">1 / 22</span>
+    <button id="nextBtn" onclick="navigate(1)">Next →</button>
+  </div>
+
+  <div class="footer">
+    <a href="https://commons.engineering">Commons Engineering</a> · Licensed under CC-BY-SA-4.0 · Distributed by <a href="https://cloudsters.net">cloudsters</a>
+  </div>
+
+  <script>
+    const slides = [
+      { id: 'title', label: '01 Title' },
+      { id: 'singularity', label: '02 Singularity' },
+      { id: 'opportunity', label: '03 Opportunity' },
+      { id: 'choice', label: '04 Choice' },
+      { id: 'commons', label: '05 Commons' },
+      { id: 'dimensions', label: '06 Dimensions' },
+      { id: 'discipline', label: '07 Discipline' },
+      { id: 'language', label: '08 Language' },
+      { id: 'instrument', label: '09 OS' },
+      { id: 'architecture', label: '10 Architecture' },
+      { id: 'blueprint', label: '11 Blueprint' },
+      { id: 'stakeholder', label: '12 Stakeholder' },
+      { id: 'commons_as_code', label: '13 Code' },
+      { id: 'knowledge_graph', label: '14 Graph' },
+      { id: 'simulation', label: '15 Simulation' },
+      { id: 'ecosystem', label: '16 Ecosystem' },
+      { id: 'your_future', label: '17 Your Future' },
+      { id: 'cocreation', label: '18 Co-Creation' },
+      { id: 'partnership', label: '19 Partnership' },
+      { id: 'community', label: '20 Community' },
+      { id: 'next_steps', label: '21 Next Steps' },
+      { id: 'thankyou', label: '22 Thank You' }
+    ];
+
+    let current = 0;
+
+    function init() {
+      const nav = document.getElementById('slideNav');
+      slides.forEach((s, i) => {
+        const btn = document.createElement('button');
+        btn.textContent = s.label;
+        btn.onclick = () => goTo(i);
+        if (i === 0) btn.classList.add('active');
+        nav.appendChild(btn);
+      });
+    }
+
+    function goTo(index) {
+      current = index;
+      document.getElementById('slideFrame').src = slides[current].id + '.html';
+      document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
+      document.getElementById('prevBtn').disabled = current === 0;
+      document.getElementById('nextBtn').disabled = current === slides.length - 1;
+      document.querySelectorAll('.nav button').forEach((btn, i) => {
+        btn.classList.toggle('active', i === current);
+      });
+    }
+
+    function navigate(dir) {
+      goTo(current + dir);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' && current < slides.length - 1) navigate(1);
+      if (e.key === 'ArrowLeft' && current > 0) navigate(-1);
+    });
+
+    init();
+  </script>
+</body>
+</html>

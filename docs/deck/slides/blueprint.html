@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container { 
+            width: 1280px; 
+            height: 720px; overflow: hidden; 
+            background-color: #0f172a; 
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(58, 170, 220, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(58, 170, 220, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+
+        .header {
+            padding-top: 50px;
+            padding-left: 80px;
+            padding-right: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+        }
+        .slide-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: #3aaadc;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .content-area {
+            display: flex;
+            flex: 1;
+            padding: 20px 40px 0 60px;
+            gap: 30px;
+            z-index: 10;
+        }
+
+        .text-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        
+        .intro-text {
+            font-size: 20px;
+            color: #e2e8f0;
+            line-height: 1.4;
+            font-weight: 300;
+            border-left: 2px solid #3aaadc;
+            padding-left: 14px;
+        }
+
+        .components-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .component-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(58, 170, 220, 0.2);
+            padding: 8px 10px;
+            position: relative;
+        }
+        
+        .component-item::before {
+            content: ''; position: absolute; top: -1px; left: -1px; width: 6px; height: 6px; border: 2px solid #3aaadc; border-right: none; border-bottom: none;
+        }
+
+        .comp-icon {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: #f59e0b;
+            background: rgba(245, 158, 11, 0.1);
+            padding: 3px 7px;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .comp-text h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            color: #ffffff;
+            margin-bottom: 4px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .comp-text p {
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 1.3;
+        }
+
+        .visual-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .editor-window {
+            background: #0b1120;
+            border: 1px solid #3aaadc;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .editor-window::after {
+            content: ''; position: absolute; bottom: -1px; right: -1px; width: 15px; height: 15px; border: 2px solid #3aaadc; border-left: none; border-top: none;
+        }
+
+        .editor-header {
+            display: flex;
+            align-items: center;
+            padding: 8px 16px;
+            border-bottom: 1px solid rgba(58, 170, 220, 0.3);
+            background: rgba(58, 170, 220, 0.05);
+            gap: 12px;
+        }
+
+        .editor-tab {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .editor-tab::before {
+            content: '≡';
+            color: #3aaadc;
+        }
+
+        .editor-body {
+            padding: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #94a3b8;
+            display: flex;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        .line-numbers {
+            display: flex;
+            flex-direction: column;
+            color: #475569;
+            text-align: right;
+            user-select: none;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .code-content {
+            display: flex;
+            flex-direction: column;
+            white-space: pre;
+        }
+
+        .c-key { color: #3aaadc; }
+        .c-str { color: #f59e0b; }
+        .c-comment { color: #64748b; font-style: italic; }
+        .c-punct { color: #e2e8f0; }
+        .c-dir { color: #ffffff; font-weight: 600; }
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: rgba(58, 170, 220, 0.1);
+            border-top: 1px solid rgba(58, 170, 220, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            color: #ffffff;
+            letter-spacing: 1px;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="bg-grid"></div>
+        
+        <div class="header">
+            <div class="slide-number">02 // THE INFRASTRUCTURE</div>
+            <h1>Commons as Code</h1>
+        </div>
+
+        <div class="content-area">
+            <div class="text-col">
+                <p class="intro-text">
+                    The Blueprint is the spec where you design your commons before building it.
+                </p>
+                
+                <div class="components-list">
+                    <div class="component-item">
+                        <div class="comp-icon">ID</div>
+                        <div class="comp-text">
+                            <h3>Identity</h3>
+                            <p>The core definition, purpose, and boundaries.</p>
+                        </div>
+                    </div>
+                    <div class="component-item">
+                        <div class="comp-icon">MF</div>
+                        <div class="comp-text">
+                            <h3>Manifests</h3>
+                            <p>Declarations of intent and governance rules.</p>
+                        </div>
+                    </div>
+                    <div class="component-item">
+                        <div class="comp-icon">VS</div>
+                        <div class="comp-text">
+                            <h3>Value Streams</h3>
+                            <p>Flows of value creation, stage by stage.</p>
+                        </div>
+                    </div>
+                    <div class="component-item">
+                        <div class="comp-icon">CP</div>
+                        <div class="comp-text">
+                            <h3>Capabilities & Entities</h3>
+                            <p>Abilities required and the actors who perform them.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visual-col">
+                <div class="editor-window">
+                    <div class="editor-header">
+                        <div class="editor-tab">blueprint/structure.yml</div>
+                    </div>
+                    <div class="editor-body">
+                        <div class="line-numbers">
+                            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+                        </div>
+                        <div class="code-content">
+<span class="c-comment"># Commons Blueprint Specification</span>
+<span class="c-key">commons</span><span class="c-punct">:</span>
+  <span class="c-key">version</span><span class="c-punct">:</span> <span class="c-str">"1.0.0"</span>
+  <span class="c-key">name</span><span class="c-punct">:</span> <span class="c-str">"Lighthouse Instance"</span>
+  <span class="c-key">structure</span><span class="c-punct">:</span>
+    <span class="c-punct">-</span> <span class="c-dir">.commons/</span>
+    <span class="c-punct">-</span> <span class="c-dir">manifests/</span>
+    <span class="c-punct">-</span> <span class="c-dir">value_streams/</span>
+    <span class="c-punct">-</span> <span class="c-dir">capabilities/</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-bar">
+            >_ DESIGN THE SYSTEM. COMPILE THE GRAPH. RUN THE COMMONS.
+        </div>
+    </div>
+</body>
+</html>

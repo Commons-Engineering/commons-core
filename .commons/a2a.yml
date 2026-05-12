@@ -1,0 +1,50 @@
+# Agent-to-Agent Communication Profile
+# This file declares how this instance participates in the commons network.
+# Other instances read this to understand what they can request and what to expect.
+#
+# The a2a settings in identity.yml control the runtime behaviour.
+# This file provides the detailed protocol specification.
+
+# Identity broadcast — what this instance tells the network about itself
+identity:
+  slug: null                           # From identity.yml — auto-populated
+  name: null                           # From identity.yml — auto-populated
+  instance_type: null                  # From identity.yml — auto-populated
+  domain: null                         # From identity.yml — auto-populated
+  purpose: null                        # From identity.yml — auto-populated
+
+# Capabilities — what this instance can provide to others
+capabilities:
+  # Example capabilities:
+  # - type: pattern-recommendation
+  #   description: "I can recommend patterns based on my archetype and domain."
+  #   cost: free
+  # - type: blueprint-summary
+  #   description: "I can provide a public-safe summary of my blueprint."
+  #   cost: free
+  # - type: scenario-projection
+  #   description: "I can project a scenario based on shared parameters."
+  #   cost: reciprocal                 # Requires value exchange
+  []
+
+# Request handling — the four protection gates
+# Each incoming request is evaluated through D1–D4 before processing.
+gates:
+  d1_purpose:
+    rule: "Request must relate to my stated purpose or domain."
+    action_on_fail: reject
+  d2_participation:
+    rule: "Requestor must be a known instance or introduce itself."
+    action_on_fail: escalate           # Escalate to steward for unknown requestors
+  d3_proposition:
+    rule: "Exchange must be fair. Free capabilities are free. Reciprocal capabilities require return value."
+    action_on_fail: negotiate
+  d4_production:
+    rule: "I must have capacity to fulfil without degrading my own operations."
+    action_on_fail: defer              # "Try again later"
+
+# Rate limiting
+limits:
+  max_requests_per_hour: 10
+  max_requests_per_day: 50
+  cooldown_after_reject: 60min         # Pause before accepting from same requestor after rejection

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container { 
+            width: 1280px; 
+            height: 720px; overflow: hidden; 
+            background-color: #0f172a; 
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(58, 170, 220, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(58, 170, 220, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+
+        .header {
+            padding-top: 40px;
+            padding-left: 80px;
+            padding-right: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 10;
+        }
+        .slide-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: #3aaadc;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding-top: 20px;
+            padding-left: 80px;
+            padding-right: 80px;
+            gap: 24px;
+            z-index: 10;
+        }
+
+        .intro-text {
+            font-size: 19px;
+            color: #e2e8f0;
+            line-height: 1.4;
+            font-weight: 300;
+            max-width: 900px;
+        }
+
+        .process-container {
+            display: flex;
+            position: relative;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .process-line {
+            position: absolute;
+            top: 26px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background: rgba(58, 170, 220, 0.3);
+            z-index: 1;
+        }
+
+        .step-block {
+            width: 310px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-marker {
+            width: 52px;
+            height: 52px;
+            background: #0f172a;
+            border: 2px solid #3aaadc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 18px;
+            font-weight: 600;
+            color: #3aaadc;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        
+        .step-marker::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 8px;
+            height: 8px;
+            border: 2px solid #3aaadc;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .step-content {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(58, 170, 220, 0.2);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-height: 160px;
+        }
+
+        .step-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 17px;
+            color: #ffffff;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(58, 170, 220, 0.3);
+            padding-bottom: 8px;
+        }
+
+        .step-desc {
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 1.45;
+        }
+
+        .step-output {
+            margin-top: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #f59e0b;
+            background: rgba(245, 158, 11, 0.1);
+            padding: 6px 10px;
+            border-left: 2px solid #f59e0b;
+        }
+
+        .step-2 .step-marker { border-color: #f59e0b; color: #f59e0b; }
+        .step-2 .step-marker::after { border-color: #f59e0b; }
+        .step-2 .step-content { border-color: rgba(245, 158, 11, 0.2); }
+        .step-2 .step-title { border-bottom-color: rgba(245, 158, 11, 0.3); }
+        .step-2 .step-output { color: #3aaadc; background: rgba(58, 170, 220, 0.1); border-left-color: #3aaadc; }
+
+        .step-3 .step-marker { border-color: #ffffff; color: #ffffff; background: rgba(58, 170, 220, 0.1); }
+        .step-3 .step-marker::after { border-color: #ffffff; }
+        .step-3 .step-content { border-color: rgba(255, 255, 255, 0.2); }
+        .step-3 .step-title { border-bottom-color: rgba(255, 255, 255, 0.3); }
+        .step-3 .step-output { color: #ffffff; background: rgba(255, 255, 255, 0.1); border-left-color: #ffffff; }
+
+        .help-note {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #64748b;
+            letter-spacing: 0.5px;
+            text-align: center;
+            z-index: 10;
+        }
+        .help-note a {
+            color: #3aaadc;
+            text-decoration: none;
+        }
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: rgba(58, 170, 220, 0.1);
+            border-top: 1px solid rgba(58, 170, 220, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            color: #ffffff;
+            letter-spacing: 1px;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="bg-grid"></div>
+        
+        <div class="header">
+            <div class="slide-number">03 // GETTING STARTED</div>
+            <h1>Three Steps to Your Commons</h1>
+        </div>
+
+        <div class="content-area">
+            <p class="intro-text">
+                Everything you need is in the repository. Fork it, make it yours, and start building.
+            </p>
+            
+            <div class="process-container">
+                <div class="process-line"></div>
+                
+                <div class="step-block step-1">
+                    <div class="step-marker">01</div>
+                    <div class="step-content">
+                        <div class="step-title">Fork the Repository</div>
+                        <div class="step-desc">
+                            Clone the commons-os repo. It contains the full operating system: language, patterns, blueprints, and simulation tools. It's yours — CC-BY-SA licensed.
+                        </div>
+                        <div class="step-output">OUTPUT: YOUR_SOVEREIGN_REPO</div>
+                    </div>
+                </div>
+
+                <div class="step-block step-2">
+                    <div class="step-marker">02</div>
+                    <div class="step-content">
+                        <div class="step-title">Map Your Domain</div>
+                        <div class="step-desc">
+                            Fill in the Domain fork with your reality: stakeholders, value streams, capabilities, and governance. The blueprint templates guide you through it.
+                        </div>
+                        <div class="step-output">OUTPUT: DOMAIN_BLUEPRINT</div>
+                    </div>
+                </div>
+
+                <div class="step-block step-3">
+                    <div class="step-marker">03</div>
+                    <div class="step-content">
+                        <div class="step-title">Simulate & Iterate</div>
+                        <div class="step-desc">
+                            Create a Game fork. Inject future scenarios. Find where your model breaks and adapt. Repeat until your commons is resilient.
+                        </div>
+                        <div class="step-output">OUTPUT: RESILIENT_COMMONS</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="help-note">
+                NEED GUIDANCE? JOIN THE COMMUNITY AT <a href="https://commons.engineering">COMMONS.ENGINEERING</a> OR FOLLOW THE JOURNEY ON <a href="#">SUBSTACK</a>
+            </p>
+        </div>
+
+        <div class="bottom-bar">
+            >_ git clone → git commit → git push. YOUR COMMONS STARTS NOW.
+        </div>
+    </div>
+</body>
+</html>

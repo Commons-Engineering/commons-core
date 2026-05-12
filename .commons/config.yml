@@ -1,0 +1,42 @@
+# Commons OS Configuration
+commons_os_version: "0.2"
+forked_from: "commons-engineering/commons-os"
+
+# 3-MCP Connections (see COMMONS_MCP_ARCHITECTURE_SPEC for details)
+mcp:
+  # Channel 1: Commons MCP — shared intelligence (operated by cloudsters / CE)
+  commons:
+    endpoint: "https://mcp.commons.engineering/mcp"
+    tier: OPEN                         # OPEN | PEER | TEAM | ENTERPRISE
+    # api_key: stored in GitHub Secrets, not here
+
+  # Channel 2: Blueprint MCP — local knowledge graph (owned by this commons)
+  blueprint:
+    endpoint: null                     # Configure when Blueprint MCP is set up
+    enabled: false
+
+  # Channel 3: Fabric MCPs — Systems of Record (owned by this commons)
+  fabric: []
+  # Example:
+  # - name: "SAP S/4HANA"
+  #   endpoint: "https://erp.example.com/mcp"
+  #   capabilities: [read, subscribe]
+
+# Publishing configuration
+publishing:
+  intranet:
+    enabled: false
+    generator: hugo
+    deploy_target: gh-pages
+  extranet:
+    enabled: false
+    generator: hugo
+    deploy_target: gh-pages
+
+# Value stream families — loaded based on domain
+# Override these with your instance-specific value streams
+value_streams:
+  purpose: []                          # D1 value stream families
+  participation: []                    # D2 value stream families
+  proposition: []                      # D3 value stream families
+  production: []                       # D4 value stream families

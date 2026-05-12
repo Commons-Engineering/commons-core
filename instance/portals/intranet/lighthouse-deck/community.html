@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container { 
+            width: 1280px; 
+            height: 720px; overflow: hidden; 
+            background-color: #0f172a; 
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Background Grid */
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(58, 170, 220, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(58, 170, 220, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            padding-top: 40px;
+            padding-left: 80px;
+            padding-right: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 10;
+        }
+        .slide-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: #3aaadc;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        /* Main Content Area */
+        .content-area {
+            display: flex;
+            flex: 1;
+            padding: 20px 80px 60px 80px;
+            gap: 50px;
+            z-index: 10;
+        }
+
+        /* Left Column - Text */
+        .text-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .intro-text {
+            font-size: 20px;
+            color: #ffffff;
+            line-height: 1.4;
+            font-weight: 300;
+        }
+        .intro-text strong {
+            font-weight: 600;
+            color: #f59e0b;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-left: 20px;
+            border-left: 2px solid rgba(245, 158, 11, 0.3);
+        }
+        
+        .feature-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: #f59e0b;
+            letter-spacing: 1px;
+        }
+        
+        .feature-desc {
+            font-size: 15px;
+            color: #94a3b8;
+            line-height: 1.45;
+        }
+
+        /* Right Column - Visual */
+        .visual-col {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .diagram-container {
+            position: relative;
+            width: 420px;
+            height: 420px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Concentric Rings */
+        .ring {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .ring-outer {
+            width: 380px;
+            height: 380px;
+            border: 1px dashed rgba(58, 170, 220, 0.4);
+            background: rgba(58, 170, 220, 0.02);
+        }
+
+        .ring-middle {
+            width: 240px;
+            height: 240px;
+            border: 2px solid rgba(58, 170, 220, 0.6);
+            background: rgba(58, 170, 220, 0.05);
+        }
+
+        .ring-inner {
+            width: 110px;
+            height: 110px;
+            border: 2px solid #f59e0b;
+            background: rgba(245, 158, 11, 0.1);
+            align-items: center;
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
+        }
+
+        /* Labels */
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1px;
+            background: #0f172a;
+            padding: 2px 8px;
+            position: absolute;
+        }
+
+        .label-outer {
+            color: #94a3b8;
+            top: -10px;
+            border: 1px solid rgba(58, 170, 220, 0.4);
+        }
+
+        .label-middle {
+            color: #3aaadc;
+            top: -10px;
+            border: 1px solid #3aaadc;
+        }
+
+        .label-inner {
+            color: #f59e0b;
+            font-weight: 600;
+            font-size: 13px;
+            background: transparent;
+        }
+
+        /* Connecting Lines */
+        .crosshair {
+            position: absolute;
+            background: rgba(58, 170, 220, 0.2);
+            z-index: 0;
+        }
+        .ch-v { width: 1px; height: 100%; left: 50%; }
+        .ch-h { height: 1px; width: 100%; top: 50%; }
+
+        /* Bottom Bar */
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: rgba(58, 170, 220, 0.1);
+            border-top: 1px solid rgba(58, 170, 220, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="bg-grid"></div>
+        
+        <div class="header">
+            <div class="slide-number">03 // GETTING STARTED</div>
+            <h1>What Your Commons Needs</h1>
+        </div>
+
+        <div class="content-area">
+            <div class="text-col">
+                <p class="intro-text">
+                    The OS provides the infrastructure. <strong>You provide what makes it alive.</strong> A commons without domain expertise is an empty shell.
+                </p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-title">DOMAIN KNOWLEDGE</div>
+                        <div class="feature-desc">
+                            The deep, lived experience of your field. The nuances, the regulatory landscape, the specific challenges your domain faces. This is what fills the blueprint.
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-title">A COMMUNITY</div>
+                        <div class="feature-desc">
+                            The people who make up your ecosystem — patients, citizens, members, makers. The stakeholders who will participate in and benefit from the commons.
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-title">A PURPOSE</div>
+                        <div class="feature-desc">
+                            The driving force behind your system. The value it creates, the definition of justice it upholds, and the reason it needs to outlast its founders.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visual-col">
+                <div class="diagram-container">
+                    <div class="crosshair ch-v"></div>
+                    <div class="crosshair ch-h"></div>
+                    
+                    <div class="ring ring-outer">
+                        <div class="label label-outer">COMMUNITY_LAYER</div>
+                    </div>
+                    
+                    <div class="ring ring-middle">
+                        <div class="label label-middle">DOMAIN_KNOWLEDGE</div>
+                    </div>
+                    
+                    <div class="ring ring-inner">
+                        <div class="label label-inner">PURPOSE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-bar">
+            >_ THE OS IS THE SEED. YOUR DOMAIN IS THE SOIL.
+        </div>
+    </div>
+</body>
+</html>

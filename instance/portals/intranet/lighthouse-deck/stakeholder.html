@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container { 
+            width: 1280px; 
+            height: 720px; overflow: hidden; 
+            background-color: #0f172a; 
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Background Grid */
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(58, 170, 220, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(58, 170, 220, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            padding-top: 50px;
+            padding-left: 80px;
+            padding-right: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+        }
+        .slide-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: #3aaadc;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        /* Main Content Area */
+        .content-area {
+            display: flex;
+            flex: 1;
+            padding: 28px 80px 60px 80px;
+            gap: 80px;
+            z-index: 10;
+        }
+
+        /* Left Column - Text */
+        .text-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .intro-text {
+            font-size: 24px;
+            color: #ffffff;
+            line-height: 1.4;
+            font-weight: 300;
+        }
+        .intro-text strong {
+            font-weight: 600;
+            color: #3aaadc;
+        }
+
+        .desc-text {
+            font-size: 18px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .terminal-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(58, 170, 220, 0.3);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: #3aaadc;
+            position: relative;
+        }
+        .terminal-box::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #3aaadc;
+        }
+
+        /* Right Column - Visual Stack */
+        .visual-col {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stack-container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            position: relative;
+        }
+
+        /* Stack Connection Line */
+        .stack-line {
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 20px;
+            width: 2px;
+            background: rgba(58, 170, 220, 0.3);
+            z-index: 0;
+        }
+
+        .layer {
+            display: flex;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(58, 170, 220, 0.2);
+            padding: 12px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .layer-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            font-weight: 600;
+            color: #3aaadc;
+            width: 40px;
+        }
+
+        .layer-name {
+            font-size: 18px;
+            color: #e2e8f0;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Specific Layer Styling */
+        .layer-l0 {
+            border: 1px solid #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 16px;
+        }
+        .layer-l0 .layer-num { color: #ffffff; }
+        .layer-l0 .layer-name { color: #ffffff; font-weight: 600; }
+        
+        .layer-l0::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.2) 4px, transparent 4px, transparent 8px);
+        }
+
+        .layer-l4 {
+            border-color: rgba(245, 158, 11, 0.4);
+            background: rgba(245, 158, 11, 0.05);
+        }
+        .layer-l4 .layer-num { color: #f59e0b; }
+
+        /* Bottom Bar */
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: rgba(58, 170, 220, 0.1);
+            border-top: 1px solid rgba(58, 170, 220, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="bg-grid"></div>
+        
+        <div class="header">
+            <div class="slide-number">02 // THE INFRASTRUCTURE</div>
+            <h1>Every Actor, Mapped</h1>
+        </div>
+
+        <div class="content-area">
+            <div class="text-col">
+                <p class="intro-text">
+                    A living system is only as resilient as its understanding of its participants. <strong>Every stakeholder is modeled with precision.</strong>
+                </p>
+                
+                <p class="desc-text">
+                    We don't just map processes; we map the entire stack of human and systemic interaction. Every actor begins as a Persona — the human starting point — and is traced down through seven operational layers to the underlying organisational structure.
+                </p>
+
+                <div class="terminal-box">
+                    >_ STAKEHOLDER_STACK_INITIALISED<br>
+                    >_ TRACING: PERSONA -> ORGANISATION<br>
+                    >_ STATUS: FULLY MAPPED
+                </div>
+            </div>
+
+            <div class="visual-col">
+                <div class="stack-container">
+                    <div class="stack-line"></div>
+                    
+                    <div class="layer layer-l0">
+                        <div class="layer-num">L0</div>
+                        <div class="layer-name">Persona</div>
+                    </div>
+                    
+                    <div class="layer">
+                        <div class="layer-num">L1</div>
+                        <div class="layer-name">Journey</div>
+                    </div>
+                    
+                    <div class="layer">
+                        <div class="layer-num">L2</div>
+                        <div class="layer-name">Value Proposition</div>
+                    </div>
+                    
+                    <div class="layer">
+                        <div class="layer-num">L3</div>
+                        <div class="layer-name">Touchpoints</div>
+                    </div>
+                    
+                    <div class="layer layer-l4">
+                        <div class="layer-num">L4</div>
+                        <div class="layer-name">Valuestream | Stage</div>
+                    </div>
+                    
+                    <div class="layer">
+                        <div class="layer-num">L5</div>
+                        <div class="layer-name">Capabilities</div>
+                    </div>
+                    
+                    <div class="layer">
+                        <div class="layer-num">L6</div>
+                        <div class="layer-name">Solutions</div>
+                    </div>
+                    
+                    <div class="layer">
+                        <div class="layer-num">L7</div>
+                        <div class="layer-name">Organisation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-bar">
+            >_ THE HUMAN IS THE STARTING POINT. THE SYSTEM IS THE SUPPORT.
+        </div>
+    </div>
+</body>
+</html>
