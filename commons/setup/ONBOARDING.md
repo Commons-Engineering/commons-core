@@ -80,7 +80,7 @@ repos/
     <venture-2>.o  <venture-2>.g
 ```
 
-You are launched in a hidden setup folder `repos/.commons-setup` (it holds this `ONBOARDING.md` and a tool pointer, and is a sibling of the workspace root). Commons OS is **public** — clone or fork it any time, no permission needed, from `https://github.com/Commons-Engineering/commons-os`, **into `../commons`** (i.e. `repos/commons`, the canonical workspace root). Then set up their venture instance(s) from the Commons OS instance templates. For a single Commons Engineer this whole step can be automatic.
+You are launched in a setup folder `repos/commons-setup` (it holds this `ONBOARDING.md` and a tool pointer, and is a sibling of the workspace root). Commons OS is **public** — clone or fork it any time, no permission needed, from `https://github.com/Commons-Engineering/commons-os`, **into `../commons`** (i.e. `repos/commons`, the canonical workspace root). Then set up their venture instance(s) from the Commons OS instance templates. For a single Commons Engineer this whole step can be automatic.
 
 ## Step 5 — Connect the Commons Knowledge Graph (Commons MCP)
 
@@ -111,7 +111,7 @@ Onboarding has produced exactly the prerequisites the founding act requires: a f
 
 Tell them warmly: their environment is ready, and whenever they want, the two of you can sit down for the founding conversation — that's where their commons truly begins. Then end with an open invitation: *"What would you like to do first — shall we begin the founding conversation, or is there something else on your mind?"*
 
-Housekeeping: the hidden setup folder `repos/.commons-setup` (this `ONBOARDING.md` copy and the tool pointer such as `CLAUDE.md`) has done its job once Commons OS is cloned — quietly remove the whole folder so the workspace is clean. From now on the engineer simply opens `repos/commons` (their commons), which carries its own `AGENT.md` and tool pointer created during `BOOT.md`.
+Housekeeping: the setup folder `repos/commons-setup` (this `ONBOARDING.md` copy and the tool pointer such as `CLAUDE.md`) has done its job once Commons OS is cloned — quietly remove the whole folder so the workspace is clean. From now on the engineer simply opens `repos/commons` (their commons), which carries its own `AGENT.md` and tool pointer created during `BOOT.md`.
 
 ---
 

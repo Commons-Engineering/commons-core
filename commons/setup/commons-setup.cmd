@@ -70,10 +70,10 @@ call :refresh_path
 echo.
 
 REM --- 3. The bootstrap launch pad --------------------------------------------
-REM     A hidden, self-cleaning setup folder. It is a SIBLING of repos\commons,
-REM     never a parent - so its pointer file can never shadow the engineer's
-REM     real work sessions, and it never collides with the Commons OS clone.
-set "WORKROOT=%USERPROFILE%\repos\.commons-setup"
+REM     A visible, self-cleaning setup folder (the GUI app's folder picker must
+REM     be able to see it). It is a SIBLING of repos\commons - never a parent -
+REM     so it can't shadow real work sessions or collide with the Commons OS clone.
+set "WORKROOT=%USERPROFILE%\repos\commons-setup"
 if not exist "%WORKROOT%" mkdir "%WORKROOT%"
 
 REM --- 4. Fetch the onboarding procedure --------------------------------------
@@ -103,16 +103,45 @@ set "PFILE=%WORKROOT%\%POINTER%"
 echo.
 
 REM --- 5. Hand over to the chosen agent ---------------------------------------
-echo   Tools are ready. Opening your agent now.
 echo.
-echo   On first launch your agent may open a browser to sign you in -
-echo   that's normal. If you don't have an account yet, just choose
-echo   "Sign up" on that screen. Once you're signed in, the agent takes
-echo   over: it sets up your GitHub, clones your workspace, and connects
-echo   you to the shared knowledge. From here on you just talk to it.
+echo   ===========================================================
+echo     Everything is installed. You're moments from working.
+echo   ===========================================================
 echo.
 cd /d "%WORKROOT%"
 
+if /i not "%PRIMARY%"=="claude" goto :handoff_terminal
+
+REM --- Claude: hand off to the comfortable GUI (the Desktop app) --------------
+echo   Let's finish in the Claude app - three small steps:
+echo.
+echo     1. The "Claude" app is opening. Sign in once - it's a button,
+echo        no codes to copy. No account yet? Choose "Sign up".
+echo     2. In the app, choose: Open folder.
+echo     3. Open this folder ^(a window just opened showing it for you^):
+echo            %WORKROOT%
+echo.
+echo   Then just tell it:  set up my Commons environment from ONBOARDING.md
+echo   ...and I'll take it from there - sign you in to GitHub, clone your
+echo   workspace, and connect you to the shared knowledge.
+echo.
+echo   Prefer something else? Both are installed too:
+echo     - VS Code : the Claude Code extension is ready
+echo     - Terminal: open the folder above and run  claude
+echo.
+REM Open the workspace folder so the user can find it in the app's picker.
+start "" "%WORKROOT%"
+REM Best-effort launch of the Claude Desktop app via its Start-menu shortcut.
+if exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Claude.lnk" start "" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Claude.lnk"
+if exist "%ProgramData%\Microsoft\Windows\Start Menu\Programs\Claude.lnk" start "" "%ProgramData%\Microsoft\Windows\Start Menu\Programs\Claude.lnk"
+echo   ^(If the Claude app didn't open by itself, start it from the Start menu.^)
+echo.
+pause
+endlocal
+exit /b 0
+
+:handoff_terminal
+REM --- Gemini / Codex: launch the chosen CLI in the terminal -----------------
 where %PRIMARY% >nul 2>&1
 if errorlevel 1 (
   echo   [i] Your agent was just installed. Please CLOSE this window,
@@ -122,18 +151,11 @@ if errorlevel 1 (
   pause
   exit /b 0
 )
-
 set "PROMPT=Read ONBOARDING.md in this folder and execute it step by step to set up my Commons Engineering working environment. I am new and non-technical - guide me warmly and do the technical work yourself."
-
-if /i "%PRIMARY%"=="claude" (
-  claude "%PROMPT%"
-) else (
-  echo   Starting %PRIMARY%. When it opens, tell it:
-  echo     "%PROMPT%"
-  echo.
-  %PRIMARY%
-)
-
+echo   Starting %PRIMARY%. When it opens, tell it:
+echo     "%PROMPT%"
+echo.
+%PRIMARY%
 endlocal
 exit /b 0
 
@@ -153,12 +175,16 @@ if errorlevel 1 (
 exit /b 0
 
 :install_claude
-where claude >nul 2>&1
-if errorlevel 1 (
-  echo   - Installing Claude Code ...
-  powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://claude.ai/install.ps1 | iex"
-) else (
-  echo   - Claude Code already present.
+REM  Claude is installed as a full trio so the engineer can choose their surface:
+REM    - Desktop app (GUI)   : the comfortable default, with thread management
+REM    - CLI                 : the engine; cleanest for MCP setup and automation
+REM    - VS Code extension   : in-IDE chat for codebase work
+REM  All three share one login via ~/.claude, so the user signs in only once.
+call :install "Anthropic.Claude"     "Claude Desktop app - GUI"
+call :install "Anthropic.ClaudeCode" "Claude Code CLI - engine"
+where code >nul 2>&1 && (
+  echo   - Adding the Claude Code extension to VS Code ...
+  call code --install-extension anthropic.claude-code --force >nul 2>&1
 )
 exit /b 0
 
