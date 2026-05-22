@@ -49,7 +49,8 @@ if not defined WINGET (
 
 REM --- 1. The toolchain - deterministic, silent, no judgement needed ----------
 echo   Installing the tools the work runs on.
-echo   Each one downloads and installs - some take a minute. Please wait.
+echo   Some are large downloads and can take several minutes each - this is
+echo   completely normal. Please leave this window open and let it work.
 echo.
 call :install "Git.Git"                       "Git (versions your work)"
 call :install "GitHub.cli"                     "GitHub CLI (reaches repositories)"
@@ -72,7 +73,8 @@ set "SEL="
 set /p "SEL=  Enter numbers separated by spaces, or just press Enter for Claude Code: "
 if not defined SEL set "SEL=1"
 echo.
-echo   Setting up your agent...
+echo   Setting up your agent. The Claude app is a larger download -
+echo   please wait, this part can take a few minutes.
 echo.
 
 set "PRIMARY="

@@ -45,7 +45,8 @@ install_cask () {     # $1 = cask, $2 = friendly name
 
 # --- 1. The toolchain - deterministic, no judgement needed ------------------
 echo "  Installing the tools the work runs on."
-echo "  Each one downloads and installs - some take a minute. Please wait."
+echo "  Some are large downloads and can take several minutes each - this is"
+echo "  completely normal. Please leave this window open and let it work."
 echo ""
 install_formula "git"         "Git - versions your work"
 install_formula "gh"          "GitHub CLI - reaches repositories"
@@ -97,7 +98,8 @@ install_npm () {  # $1 = package, $2 = friendly name, $3 = command
   else echo "    Installing $2 ..."; npm install -g "$1" >>"$LOG" 2>&1; echo "      > $2 ready"; fi
 }
 
-echo "  Setting up your agent..."
+echo "  Setting up your agent. The Claude app is a larger download -"
+echo "  please wait, this part can take a few minutes."
 echo ""
 case "$SEL" in *1*) install_claude;                                          [ -z "$PRIMARY" ] && PRIMARY="claude";; esac
 case "$SEL" in *2*) install_npm "@google/gemini-cli" "Gemini CLI" "gemini";  [ -z "$PRIMARY" ] && PRIMARY="gemini";; esac
