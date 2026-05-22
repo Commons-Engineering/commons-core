@@ -46,7 +46,8 @@ Get a working environment in one of two ways — both lead to the same place: yo
 | Door | Best for | How |
 |---|---|---|
 | **One-click installer** | your own computer | Run `commons/setup/commons-setup.cmd` (Windows) or `commons/setup/commons-setup.command` (macOS). Installs the toolchain and your agent locally. |
-| **Browser — zero install** | locked-down or shared machines, or no install rights | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Commons-Engineering/commons-os?quickstart=1) — everything runs in the cloud; nothing touches your machine. |
+| **Browser — Claude Code on the web** | locked-down machines / no install rights | Open this repo in [claude.ai/code](https://claude.ai/code), connect GitHub, and say *"set up my Commons environment from ONBOARDING.md"*. Anthropic hosts the environment — nothing touches your machine. |
+| **Browser — Codespaces** (any agent) | full control, or non-Claude agents | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Commons-Engineering/commons-os?quickstart=1) |
 
 ---
 
