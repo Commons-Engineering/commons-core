@@ -190,10 +190,10 @@ set "PS=%TEMP%\ce_winget_bootstrap.ps1"
 >>"%PS%"  echo try {
 >>"%PS%"  echo   [Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12
 >>"%PS%"  echo   Write-Host '   - preparing PowerShell package source'
->>"%PS%"  echo   if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) { Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force ^| Out-Null }
+>>"%PS%"  echo   Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -ForceBootstrap ^| Out-Null
 >>"%PS%"  echo   Set-PSRepository -Name PSGallery -InstallationPolicy Trusted -ErrorAction SilentlyContinue
 >>"%PS%"  echo   Write-Host '   - installing winget client module'
->>"%PS%"  echo   if (-not (Get-Module -ListAvailable Microsoft.WinGet.Client)) { Install-Module Microsoft.WinGet.Client -Force -Scope CurrentUser }
+>>"%PS%"  echo   if (-not (Get-Module -ListAvailable Microsoft.WinGet.Client)) { Install-Module Microsoft.WinGet.Client -Force -Scope CurrentUser -Confirm:$false }
 >>"%PS%"  echo   Import-Module Microsoft.WinGet.Client
 >>"%PS%"  echo   Write-Host '   - bootstrapping winget (this downloads its dependencies)'
 >>"%PS%"  echo   Repair-WinGetPackageManager -Latest -Force
