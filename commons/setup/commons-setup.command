@@ -12,9 +12,18 @@
 
 set -u
 
+# All raw installer detail goes to this log; the screen stays calm.
+LOG="${TMPDIR:-/tmp}/commons-setup-log.txt"
+echo "Commons Engineering setup log" > "$LOG"
+
+clear 2>/dev/null || true
 echo ""
-echo "  Welcome to Commons Engineering."
-echo "  I'm setting up everything you need to work. This takes a few minutes."
+echo "  ============================================================"
+echo "                 Welcome to Commons Engineering"
+echo "  ============================================================"
+echo ""
+echo "    I'm setting up everything you need to work."
+echo "    This takes a few minutes - you can just let it run."
 echo ""
 
 # --- 0. Homebrew present? (the macOS package installer) ---------------------
@@ -27,16 +36,17 @@ fi
 [ -x /usr/local/bin/brew ]   && eval "$(/usr/local/bin/brew shellenv)"
 
 install_formula () {  # $1 = formula, $2 = friendly name
-  if brew list "$1" >/dev/null 2>&1; then echo "  - $2 already present."
-  else echo "  - Installing $2 ..."; brew install "$1"; fi
+  if brew list "$1" >/dev/null 2>&1; then echo "      > $2 ready"
+  else echo "    Installing $2 ..."; brew install "$1" >>"$LOG" 2>&1; echo "      > $2 ready"; fi
 }
 install_cask () {     # $1 = cask, $2 = friendly name
-  if brew list --cask "$1" >/dev/null 2>&1; then echo "  - $2 already present."
-  else echo "  - Installing $2 ..."; brew install --cask "$1"; fi
+  if brew list --cask "$1" >/dev/null 2>&1; then echo "      > $2 ready"
+  else echo "    Installing $2 ..."; brew install --cask "$1" >>"$LOG" 2>&1; echo "      > $2 ready"; fi
 }
 
 # --- 1. The toolchain - deterministic, no judgement needed ------------------
-echo "  Installing the tools the work runs on..."
+echo "  Installing the tools the work runs on."
+echo "  Each one downloads and installs - some take a minute. Please wait."
 echo ""
 install_formula "git"         "Git - versions your work"
 install_formula "gh"          "GitHub CLI - reaches repositories"
@@ -70,19 +80,22 @@ install_claude () {
   # Claude as a trio: Desktop GUI app, CLI engine, VS Code extension.
   # All three share one login via ~/.claude, so the user signs in only once.
   install_cask "claude" "Claude Desktop app - GUI"
-  if command -v claude >/dev/null 2>&1; then echo "  - Claude Code CLI already present."
-  else echo "  - Installing Claude Code CLI - engine ..."; curl -fsSL https://claude.ai/install.sh | bash; fi
+  if command -v claude >/dev/null 2>&1; then echo "      > Claude Code CLI ready"
+  else echo "    Installing Claude Code CLI ..."; curl -fsSL https://claude.ai/install.sh | bash >>"$LOG" 2>&1; echo "      > Claude Code CLI ready"; fi
   CODE_BIN="$(resolve_code)"
   if [ -n "$CODE_BIN" ]; then
-    echo "  - Adding the Claude Code extension to VS Code ..."
-    "$CODE_BIN" --install-extension anthropic.claude-code --force >/dev/null 2>&1
+    echo "    Installing the Claude Code extension for VS Code ..."
+    "$CODE_BIN" --install-extension anthropic.claude-code --force >>"$LOG" 2>&1
+    echo "      > VS Code extension ready"
   fi
 }
 install_npm () {  # $1 = package, $2 = friendly name, $3 = command
-  if command -v "$3" >/dev/null 2>&1; then echo "  - $2 already present."
-  else echo "  - Installing $2 ..."; npm install -g "$1"; fi
+  if command -v "$3" >/dev/null 2>&1; then echo "      > $2 ready"
+  else echo "    Installing $2 ..."; npm install -g "$1" >>"$LOG" 2>&1; echo "      > $2 ready"; fi
 }
 
+echo "  Setting up your agent..."
+echo ""
 case "$SEL" in *1*) install_claude;                                          [ -z "$PRIMARY" ] && PRIMARY="claude";; esac
 case "$SEL" in *2*) install_npm "@google/gemini-cli" "Gemini CLI" "gemini";  [ -z "$PRIMARY" ] && PRIMARY="gemini";; esac
 case "$SEL" in *3*) install_npm "@openai/codex"      "Codex CLI"  "codex";   [ -z "$PRIMARY" ] && PRIMARY="codex";; esac

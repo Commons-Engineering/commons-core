@@ -13,19 +13,31 @@ REM ============================================================
 setlocal enableextensions enabledelayedexpansion
 title Commons Engineering - setting up your working environment
 
+REM  Disable QuickEdit so a stray click never freezes the window (best-effort).
+powershell -NoProfile -Command "try{$s='[DllImport(\"kernel32.dll\")]public static extern IntPtr GetStdHandle(int n);[DllImport(\"kernel32.dll\")]public static extern bool GetConsoleMode(IntPtr h,out uint m);[DllImport(\"kernel32.dll\")]public static extern bool SetConsoleMode(IntPtr h,uint m);';$t=Add-Type -MemberDefinition $s -Name Q -Namespace CE -PassThru;$h=$t::GetStdHandle(-10);$m=0;[void]$t::GetConsoleMode($h,[ref]$m);[void]$t::SetConsoleMode($h,($m -band -bnot 0x40) -bor 0x80)}catch{}" >nul 2>&1
+
+REM  All raw installer detail goes to this log; the screen stays calm.
+set "LOG=%TEMP%\commons-setup-log.txt"
+> "%LOG%" echo Commons Engineering setup log
+
+cls
 echo.
-echo   Welcome to Commons Engineering.
-echo   I'm setting up everything you need to work. This takes a few minutes.
+echo   ============================================================
+echo                  Welcome to Commons Engineering
+echo   ============================================================
+echo.
+echo     I'm setting up everything you need to work.
+echo     This takes a few minutes - you can just let it run.
 echo.
 
 REM --- 0. winget present? (ships with Windows 10 1709+ / Windows 11) ----------
 where winget >nul 2>&1
 if errorlevel 1 (
-  echo   Windows package installer ^(winget^) not found - installing it for you...
-  echo   You'll see download progress below - this can take a few minutes.
-  echo.
+  echo   Preparing the package installer ^(one-time, this can take a few minutes^)...
   call :install_winget
   call :refresh_path
+  echo       ^> package installer ready
+  echo.
 )
 call :resolve_winget
 if not defined WINGET (
@@ -37,7 +49,8 @@ if not defined WINGET (
 )
 
 REM --- 1. The toolchain - deterministic, silent, no judgement needed ----------
-echo   Installing the tools the work runs on...
+echo   Installing the tools the work runs on.
+echo   Each one downloads and installs - some take a minute. Please wait.
 echo.
 call :install "Git.Git"                       "Git (versions your work)"
 call :install "GitHub.cli"                     "GitHub CLI (reaches repositories)"
@@ -59,6 +72,8 @@ echo.
 set "SEL="
 set /p "SEL=  Enter numbers separated by spaces, or just press Enter for Claude Code: "
 if not defined SEL set "SEL=1"
+echo.
+echo   Setting up your agent...
 echo.
 
 set "PRIMARY="
@@ -171,8 +186,9 @@ REM  which would skip every install. --source winget avoids msstore entirely.
 REM  Delayed expansion (!PKGNAME!) keeps parentheses in names parse-safe.
 set "PKGID=%~1"
 set "PKGNAME=%~2"
-echo   - !PKGNAME! ...
-"%WINGET%" install --id "!PKGID!" -e --source winget --silent --accept-package-agreements --accept-source-agreements
+echo     Installing !PKGNAME! ...
+"%WINGET%" install --id "!PKGID!" -e --source winget --silent --accept-package-agreements --accept-source-agreements --disable-interactivity >> "%LOG%" 2>&1
+echo       ^> !PKGNAME! ready
 exit /b 0
 
 :install_claude
@@ -184,8 +200,9 @@ REM  All three share one login via ~/.claude, so the user signs in only once.
 call :install "Anthropic.Claude"     "Claude Desktop app - GUI"
 call :install "Anthropic.ClaudeCode" "Claude Code CLI - engine"
 where code >nul 2>&1 && (
-  echo   - Adding the Claude Code extension to VS Code ...
-  call code --install-extension anthropic.claude-code --force >nul 2>&1
+  echo     Installing the Claude Code extension for VS Code ...
+  call code --install-extension anthropic.claude-code --force >> "%LOG%" 2>&1
+  echo       ^> VS Code extension ready
 )
 exit /b 0
 
@@ -244,6 +261,6 @@ set "PS=%TEMP%\ce_winget_bootstrap.ps1"
 >>"%PS%"  echo   Repair-WinGetPackageManager -Latest -Force
 >>"%PS%"  echo   Write-Host '   - winget installed.'
 >>"%PS%"  echo } catch { Write-Host ('   [!] winget bootstrap failed: ' + $_.Exception.Message) }
-powershell -NoProfile -ExecutionPolicy Bypass -File "%PS%"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%PS%" >> "%LOG%" 2>&1
 del "%PS%" >nul 2>&1
 exit /b 0
