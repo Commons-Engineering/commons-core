@@ -10,29 +10,38 @@ Booting a commons is not a quick setup wizard — it is the founding act. The qu
 
 **Agent: do this before anything else.** Commons OS is a shared, upstream **base**. It must **never** be founded, configured, or have its identity / `AGENT.md` / blueprint filled in **in place**. Founding belongs only to a commons the founder **owns** — a template copy or fork of Commons OS, or a venture instance.
 
-Detect where you are with a signal that does **not** travel with a clone (so it can't mislabel a legitimate fork):
+### Detect where you are (clone-safe)
+
+Use a signal that does **not** travel with a clone, so a legitimate fork is never mislabelled:
 
 ```bash
-gh repo view --json isTemplate,nameWithOwner,viewerPermission 2>/dev/null
-# fallback if gh is unavailable:
-git remote get-url origin
+gh repo view --json isTemplate,nameWithOwner 2>/dev/null   # when gh is available
+git remote get-url origin                                  # always available
 ```
 
-- If **`isTemplate` is `true`**, or the repo is the canonical **`Commons-Engineering/commons-os`**, you are sitting in the shared base — **do not boot here.**
-- Otherwise (a repo the founder owns; `isTemplate` is false), proceed to Prerequisites and boot normally.
+You are in the shared **upstream/template** if **either**:
+- `isTemplate` is `true`, **or**
+- the origin URL **contains the substring** `Commons-Engineering/commons-os` — match it as a substring so **every** URL form counts: HTTPS, SSH, and the browser sandbox's proxy form (e.g. `http://local_proxy@127.0.0.1:…/git/Commons-Engineering/commons-os`).
 
-**When you are in the upstream/template, don't just stop — carry the founder into their own commons.** This is the whole point: a bare link + a minimal instruction, and you know what to do. Offer to create it and continue there:
+If neither holds (a repo the founder owns), proceed to Prerequisites and boot normally.
 
-1. Ask for a short name, and whether it should be private or public.
-2. Create their own copy from the template and move into it:
-   ```bash
-   gh repo create <their-account>/<name> --template Commons-Engineering/commons-os --private --clone
-   cd <name>
-   ```
-   (`--public` if they chose public. A venture instance under their workspace is an equally valid alternative.)
-3. You are now in *their* commons. Continue with Prerequisites and the boot sequence **here**.
+### If you ARE in the upstream/template — carry the founder into their own commons
 
-This guard keys off the repository's **GitHub identity** (a template flag and owner that do **not** clone), never a file in the repo — so a founder's own fork or copy boots normally, while the shared base stays protected.
+Do not stop dead, and do not found here. **The remedy depends on your environment — choose the right one, or you will emit a command that fails:**
+
+**A) Local shell with `gh` available** (the installer path): create their own copy and move into it, then continue in this same session:
+```bash
+gh repo create <their-account>/<name> --template Commons-Engineering/commons-os --private --clone
+cd <name>
+```
+(`--public` if they chose public. A venture instance under their workspace is an equally valid alternative.) You are now in *their* commons — continue with Prerequisites and the boot sequence **here**.
+
+**B) Browser / sandboxed single-repo session** (Claude Code on the web): here `gh` is **not installed** and the session is bound to this one repo — you **cannot** run `gh repo create` and **cannot** `cd` into a new checkout. **Do not emit those commands.** Instead, guide the founder to make their own copy and re-enter:
+1. Create a copy from the template — simplest is the **"Use this template"** button: `https://github.com/Commons-Engineering/commons-os/generate` (or, if a GitHub connector/MCP is available to you, create it that way). Have them name it and choose private/public.
+2. **Open a new session on that new repo** (pick it in the repo selector) and give the same instruction there.
+3. That new session is in *their* commons — onboarding and BOOT run normally there.
+
+Either way, everything you found belongs to **them**, never to the upstream base. This guard keys off the repository's **GitHub identity** (a template flag and owner that do **not** clone), never a file in the repo.
 
 ---
 
