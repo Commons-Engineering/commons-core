@@ -139,12 +139,16 @@ exit /b 0
 
 REM ============================================================
 :install
-"%WINGET%" list --id %~1 -e --accept-source-agreements --disable-interactivity >nul 2>&1
+REM  Capture args into vars and use delayed expansion, so parentheses in the
+REM  friendly name can't prematurely close the if-block at parse time.
+set "PKGID=%~1"
+set "PKGNAME=%~2"
+"%WINGET%" list --id "!PKGID!" -e --accept-source-agreements --disable-interactivity >nul 2>&1
 if errorlevel 1 (
-  echo   - Installing %~2 ...
-  "%WINGET%" install --id %~1 -e --silent --accept-package-agreements --accept-source-agreements
+  echo   - Installing !PKGNAME! ...
+  "%WINGET%" install --id "!PKGID!" -e --silent --accept-package-agreements --accept-source-agreements
 ) else (
-  echo   - %~2 already present.
+  echo   - !PKGNAME! already present.
 )
 exit /b 0
 
