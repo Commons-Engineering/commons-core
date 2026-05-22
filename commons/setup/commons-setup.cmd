@@ -181,20 +181,22 @@ set "PATH=%SysPath%;%UsrPath%;%USERPROFILE%\.local\bin;%LOCALAPPDATA%\Microsoft\
 exit /b 0
 
 :install_winget
-REM  Bootstrap winget (App Installer) on stripped/older images that lack it.
+REM  Bootstrap winget on stripped/older images via Microsoft's official module,
+REM  which resolves the whole dependency chain (VCLibs, UI.Xaml, WindowsAppRuntime)
+REM  itself - far more robust than chasing individual appx dependencies.
 REM  Written to a temp .ps1 to avoid fragile caret/quote escaping.
 set "PS=%TEMP%\ce_winget_bootstrap.ps1"
 > "%PS%"  echo $ErrorActionPreference='Stop'; $ProgressPreference='SilentlyContinue'
 >>"%PS%"  echo try {
->>"%PS%"  echo   $tmp=$env:TEMP
->>"%PS%"  echo   Write-Host '   - dependency: VCLibs'
->>"%PS%"  echo   Invoke-WebRequest 'https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx' -OutFile (Join-Path $tmp 'VCLibs.appx'); Add-AppxPackage (Join-Path $tmp 'VCLibs.appx')
->>"%PS%"  echo   Write-Host '   - dependency: UI.Xaml'
->>"%PS%"  echo   Invoke-WebRequest 'https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx' -OutFile (Join-Path $tmp 'UIXaml.appx'); Add-AppxPackage (Join-Path $tmp 'UIXaml.appx')
->>"%PS%"  echo   Write-Host '   - winget (App Installer)'
->>"%PS%"  echo   $rel=Invoke-RestMethod 'https://api.github.com/repos/microsoft/winget-cli/releases/latest'
->>"%PS%"  echo   $url=($rel.assets ^| Where-Object { $_.name -like '*.msixbundle' } ^| Select-Object -First 1).browser_download_url
->>"%PS%"  echo   Invoke-WebRequest $url -OutFile (Join-Path $tmp 'winget.msixbundle'); Add-AppxPackage (Join-Path $tmp 'winget.msixbundle')
+>>"%PS%"  echo   [Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12
+>>"%PS%"  echo   Write-Host '   - preparing PowerShell package source'
+>>"%PS%"  echo   if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) { Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force ^| Out-Null }
+>>"%PS%"  echo   Set-PSRepository -Name PSGallery -InstallationPolicy Trusted -ErrorAction SilentlyContinue
+>>"%PS%"  echo   Write-Host '   - installing winget client module'
+>>"%PS%"  echo   if (-not (Get-Module -ListAvailable Microsoft.WinGet.Client)) { Install-Module Microsoft.WinGet.Client -Force -Scope CurrentUser }
+>>"%PS%"  echo   Import-Module Microsoft.WinGet.Client
+>>"%PS%"  echo   Write-Host '   - bootstrapping winget (this downloads its dependencies)'
+>>"%PS%"  echo   Repair-WinGetPackageManager -Latest -Force
 >>"%PS%"  echo   Write-Host '   - winget installed.'
 >>"%PS%"  echo } catch { Write-Host ('   [!] winget bootstrap failed: ' + $_.Exception.Message) }
 powershell -NoProfile -ExecutionPolicy Bypass -File "%PS%"
