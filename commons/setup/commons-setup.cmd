@@ -161,17 +161,15 @@ exit /b 0
 
 REM ============================================================
 :install
-REM  Capture args into vars and use delayed expansion, so parentheses in the
-REM  friendly name can't prematurely close the if-block at parse time.
+REM  Always attempt the install. winget is idempotent (skips if already there),
+REM  so we do NOT pre-check with `winget list` - its exit code is unreliable:
+REM  a failing msstore source can make it falsely report "already present",
+REM  which would skip every install. --source winget avoids msstore entirely.
+REM  Delayed expansion (!PKGNAME!) keeps parentheses in names parse-safe.
 set "PKGID=%~1"
 set "PKGNAME=%~2"
-"%WINGET%" list --id "!PKGID!" -e --accept-source-agreements --disable-interactivity >nul 2>&1
-if errorlevel 1 (
-  echo   - Installing !PKGNAME! ...
-  "%WINGET%" install --id "!PKGID!" -e --silent --accept-package-agreements --accept-source-agreements
-) else (
-  echo   - !PKGNAME! already present.
-)
+echo   - !PKGNAME! ...
+"%WINGET%" install --id "!PKGID!" -e --source winget --silent --accept-package-agreements --accept-source-agreements
 exit /b 0
 
 :install_claude
