@@ -21,9 +21,14 @@ echo.
 REM --- 0. winget present? (ships with Windows 10 1709+ / Windows 11) ----------
 where winget >nul 2>&1
 if errorlevel 1 (
-  echo   [!] Windows package installer ^(winget^) was not found.
-  echo       Please open the Microsoft Store, install "App Installer",
-  echo       then run this file again. I'll wait here for you.
+  echo   Windows package installer ^(winget^) not found - installing it for you...
+  call :install_winget
+  call :refresh_path
+)
+where winget >nul 2>&1
+if errorlevel 1 (
+  echo   [!] Couldn't set up winget automatically. Please open the Microsoft
+  echo       Store, install "App Installer", then run this file again.
   echo.
   pause
   exit /b 1
@@ -172,5 +177,26 @@ exit /b 0
 REM  Re-read PATH from the registry so this session sees freshly installed tools.
 for /f "skip=2 tokens=2,*" %%A in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PATH 2^>nul') do set "SysPath=%%B"
 for /f "skip=2 tokens=2,*" %%A in ('reg query "HKCU\Environment" /v PATH 2^>nul') do set "UsrPath=%%B"
-set "PATH=%SysPath%;%UsrPath%;%USERPROFILE%\.local\bin"
+set "PATH=%SysPath%;%UsrPath%;%USERPROFILE%\.local\bin;%LOCALAPPDATA%\Microsoft\WindowsApps"
+exit /b 0
+
+:install_winget
+REM  Bootstrap winget (App Installer) on stripped/older images that lack it.
+REM  Written to a temp .ps1 to avoid fragile caret/quote escaping.
+set "PS=%TEMP%\ce_winget_bootstrap.ps1"
+> "%PS%"  echo $ErrorActionPreference='Stop'; $ProgressPreference='SilentlyContinue'
+>>"%PS%"  echo try {
+>>"%PS%"  echo   $tmp=$env:TEMP
+>>"%PS%"  echo   Write-Host '   - dependency: VCLibs'
+>>"%PS%"  echo   Invoke-WebRequest 'https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx' -OutFile (Join-Path $tmp 'VCLibs.appx'); Add-AppxPackage (Join-Path $tmp 'VCLibs.appx')
+>>"%PS%"  echo   Write-Host '   - dependency: UI.Xaml'
+>>"%PS%"  echo   Invoke-WebRequest 'https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx' -OutFile (Join-Path $tmp 'UIXaml.appx'); Add-AppxPackage (Join-Path $tmp 'UIXaml.appx')
+>>"%PS%"  echo   Write-Host '   - winget (App Installer)'
+>>"%PS%"  echo   $rel=Invoke-RestMethod 'https://api.github.com/repos/microsoft/winget-cli/releases/latest'
+>>"%PS%"  echo   $url=($rel.assets ^| Where-Object { $_.name -like '*.msixbundle' } ^| Select-Object -First 1).browser_download_url
+>>"%PS%"  echo   Invoke-WebRequest $url -OutFile (Join-Path $tmp 'winget.msixbundle'); Add-AppxPackage (Join-Path $tmp 'winget.msixbundle')
+>>"%PS%"  echo   Write-Host '   - winget installed.'
+>>"%PS%"  echo } catch { Write-Host ('   [!] winget bootstrap failed: ' + $_.Exception.Message) }
+powershell -NoProfile -ExecutionPolicy Bypass -File "%PS%"
+del "%PS%" >nul 2>&1
 exit /b 0
