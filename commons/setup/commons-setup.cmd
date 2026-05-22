@@ -22,11 +22,13 @@ REM --- 0. winget present? (ships with Windows 10 1709+ / Windows 11) ----------
 where winget >nul 2>&1
 if errorlevel 1 (
   echo   Windows package installer ^(winget^) not found - installing it for you...
+  echo   You'll see download progress below - this can take a few minutes.
+  echo.
   call :install_winget
   call :refresh_path
 )
-where winget >nul 2>&1
-if errorlevel 1 (
+call :resolve_winget
+if not defined WINGET (
   echo   [!] Couldn't set up winget automatically. Please open the Microsoft
   echo       Store, install "App Installer", then run this file again.
   echo.
@@ -137,10 +139,10 @@ exit /b 0
 
 REM ============================================================
 :install
-winget list --id %~1 -e >nul 2>&1
+"%WINGET%" list --id %~1 -e >nul 2>&1
 if errorlevel 1 (
   echo   - Installing %~2 ...
-  winget install --id %~1 -e --silent --accept-package-agreements --accept-source-agreements >nul 2>&1
+  "%WINGET%" install --id %~1 -e --silent --accept-package-agreements --accept-source-agreements
 ) else (
   echo   - %~2 already present.
 )
@@ -170,7 +172,17 @@ if errorlevel 1 (
   exit /b 0
 )
 echo   - Installing %~2 ...
-call npm install -g %~1 >nul 2>&1
+call npm install -g %~1
+exit /b 0
+
+:resolve_winget
+REM  Resolve a usable winget, even if the App Execution Alias isn't on PATH yet.
+set "WINGET="
+where winget >nul 2>&1 && set "WINGET=winget"
+if defined WINGET exit /b 0
+if exist "%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" set "WINGET=%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe"
+if defined WINGET exit /b 0
+for /f "usebackq delims=" %%i in (`powershell -NoProfile -Command "$a=Get-AppxPackage Microsoft.DesktopAppInstaller ^| Select-Object -First 1; if($a){Join-Path $a.InstallLocation 'winget.exe'}"`) do if exist "%%i" set "WINGET=%%i"
 exit /b 0
 
 :refresh_path
@@ -186,7 +198,7 @@ REM  which resolves the whole dependency chain (VCLibs, UI.Xaml, WindowsAppRunti
 REM  itself - far more robust than chasing individual appx dependencies.
 REM  Written to a temp .ps1 to avoid fragile caret/quote escaping.
 set "PS=%TEMP%\ce_winget_bootstrap.ps1"
-> "%PS%"  echo $ErrorActionPreference='Stop'; $ProgressPreference='SilentlyContinue'
+> "%PS%"  echo $ErrorActionPreference='Stop'; $ProgressPreference='Continue'
 >>"%PS%"  echo try {
 >>"%PS%"  echo   [Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12
 >>"%PS%"  echo   Write-Host '   - preparing PowerShell package source'
