@@ -142,7 +142,7 @@ REM ============================================================
 "%WINGET%" list --id %~1 -e --accept-source-agreements --disable-interactivity >nul 2>&1
 if errorlevel 1 (
   echo   - Installing %~2 ...
-  "%WINGET%" install --id %~1 -e --silent --accept-package-agreements --accept-source-agreements --disable-interactivity
+  "%WINGET%" install --id %~1 -e --silent --accept-package-agreements --accept-source-agreements
 ) else (
   echo   - %~2 already present.
 )
