@@ -37,7 +37,7 @@ cd <name>
 (`--public` if they chose public. A venture instance under their workspace is an equally valid alternative.) You are now in *their* commons — continue with Prerequisites and the boot sequence **here**.
 
 **B) Browser / sandboxed single-repo session** (Claude Code on the web): here `gh` is **not installed** and the session is bound to this one repo — you **cannot** run `gh repo create` and **cannot** `cd` into a new checkout. **Do not emit those commands.** Instead, guide the founder to make their own copy and re-enter:
-1. Create a copy from the template — simplest is the **"Use this template"** button: `https://github.com/Commons-Engineering/commons-os/generate` (or, if a GitHub connector/MCP is available to you, create it that way). Have them name it and choose private/public.
+1. Create a copy from the template — simplest is the **"Use this template"** button: `https://github.com/Commons-Engineering/commons-os/generate` (or, if a GitHub connector/MCP is available to you, create it that way). Have them name it and choose private/public. **Creating the repo does not let you continue here** — this session stays bound to *this* repo and cannot switch to the new checkout, so step 2 is mandatory either way.
 2. **Open a new session on that new repo** (pick it in the repo selector) and give the same instruction there.
 3. That new session is in *their* commons — onboarding and BOOT run normally there.
 
