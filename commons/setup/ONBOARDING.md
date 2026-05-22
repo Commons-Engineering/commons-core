@@ -80,7 +80,7 @@ repos/
     <venture-2>.o  <venture-2>.g
 ```
 
-**If you are running in the browser (a Codespace / cloud workspace):** Commons OS is **already here** — you are *inside* it. Do **not** clone it again. Skip straight to setting up their venture instance(s) under this workspace, and note that GitHub is usually already signed in (check `gh auth status`). The rest of this procedure is identical.
+**If you are running in the browser (a Codespace / cloud workspace):** Commons OS is **already here** — you are *inside* it. Do **not** clone it again. **But note: this checkout is the shared *base*, not their commons** — if its remote is the canonical `Commons-Engineering/commons-os`, you must never found or configure it in place (see Step 8). Help them set up their **own** commons — a fork / template copy they own, or a venture instance — and work there. GitHub is usually already signed in (check `gh auth status`). The rest of this procedure is identical.
 
 **If you are running locally:** you are launched in a setup folder `repos/commons-setup` (it holds this `ONBOARDING.md` and a tool pointer, and is a sibling of the workspace root). Commons OS is **public** — clone or fork it any time, no permission needed, from `https://github.com/Commons-Engineering/commons-os`, **into `../commons`** (i.e. `repos/commons`, the canonical workspace root). Then set up their venture instance(s) from the Commons OS instance templates. For a single Commons Engineer this whole step can be automatic.
 
@@ -109,9 +109,15 @@ Read the `AGENT.md` of each cloned instance so you genuinely understand their wo
 
 ## Step 8 — Hand over to the founding conversation (BOOT)
 
-Onboarding has produced exactly the prerequisites the founding act requires: a forked/cloned commons, a connected agent, and a configured `AGENT.md`. The natural next step is **`BOOT.md`** — the founding conversation where you, as Purpose Agent, help them establish their commons' identity, stakeholders, and value (the Blueprint). Do **not** start it automatically; offer it.
+**Critical guardrail — never found Commons OS itself.** Commons OS is the shared, upstream **base**; it is *not* "their commons" and must **never** be booted, configured, or have its identity/`AGENT.md`/blueprint filled in **in place**. BOOT applies only to **the person's OWN commons** — either:
+- **(a)** a **fork** or *"Use this template"* copy of Commons OS that *they* own, or
+- **(b)** a **venture instance** under their workspace.
 
-Tell them warmly: their environment is ready, and whenever they want, the two of you can sit down for the founding conversation — that's where their commons truly begins. Then end with an open invitation: *"What would you like to do first — shall we begin the founding conversation, or is there something else on your mind?"*
+Before you even mention BOOT, **check where you are:** run `git remote get-url origin`. If it points at the canonical `Commons-Engineering/commons-os` (or any repo the person does not own), do **not** offer to boot it. Instead, first help them **create their own** — fork Commons OS or use it as a template into their account (or set up a venture instance) — and boot *that*. Everything you set up, configure, and found belongs to **them**, never to the upstream base. This matters especially in the browser/Codespace case, where they may have opened the upstream `commons-os` directly.
+
+Once they have their own commons (fork or venture), the natural next step is **`BOOT.md`** — the founding conversation where you, as Purpose Agent, help them establish *that* commons' identity, stakeholders, and value (the Blueprint). Do **not** start it automatically; offer it.
+
+Tell them warmly: their environment is ready, and whenever they want, the two of you can set up their own commons and sit down for the founding conversation — that's where it truly begins. Then end with an open invitation: *"What would you like to do first — shall we create your own commons and begin the founding conversation, or is there something else on your mind?"*
 
 Housekeeping: the setup folder `repos/commons-setup` (this `ONBOARDING.md` copy and the tool pointer such as `CLAUDE.md`) has done its job once Commons OS is cloned — quietly remove the whole folder so the workspace is clean. From now on the engineer simply opens `repos/commons` (their commons), which carries its own `AGENT.md` and tool pointer created during `BOOT.md`.
 
