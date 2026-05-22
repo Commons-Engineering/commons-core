@@ -59,7 +59,7 @@ echo "    [1] Claude Code   (recommended)"
 echo "    [2] Gemini CLI    (Google)"
 echo "    [3] Codex CLI     (OpenAI)"
 echo ""
-read -r -p "  Enter numbers separated by spaces, or just press Return for Claude Code: " SEL
+read -r -p "  Enter numbers separated by spaces, or just press Return for Claude Code: " SEL </dev/tty
 [ -z "${SEL:-}" ] && SEL="1"
 echo ""
 
@@ -150,7 +150,7 @@ if [ "$PRIMARY" = "claude" ]; then
   open -a "Claude" 2>/dev/null || true        # launch the Desktop GUI app
   echo "  (If the Claude app didn't open by itself, open it from Launchpad or Applications.)"
   echo ""
-  read -r -p "  Press Return to close this window." _
+  read -r -p "  Press Return to close this window." _ </dev/tty
   exit 0
 fi
 
@@ -161,7 +161,7 @@ if ! command -v "$PRIMARY" >/dev/null 2>&1; then
   echo "      open it again (double-click this file once more), and I'll"
   echo "      launch straight into it."
   echo ""
-  read -r -p "  Press Return to close." _
+  read -r -p "  Press Return to close." _ </dev/tty
   exit 0
 fi
 PROMPT="Read ONBOARDING.md in this folder and execute it step by step to set up my Commons Engineering working environment. I am new and non-technical - guide me warmly and do the technical work yourself."
