@@ -190,10 +190,12 @@ for /f "usebackq delims=" %%i in (`powershell -NoProfile -Command "$a=Get-AppxPa
 exit /b 0
 
 :refresh_path
-REM  Re-read PATH from the registry so this session sees freshly installed tools.
+REM  Augment PATH with freshly installed tool locations WITHOUT replacing it.
+REM  The live PATH (System32 etc.) must stay first - registry values can carry
+REM  unexpanded %vars%, so we never overwrite, only append.
 for /f "skip=2 tokens=2,*" %%A in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PATH 2^>nul') do set "SysPath=%%B"
 for /f "skip=2 tokens=2,*" %%A in ('reg query "HKCU\Environment" /v PATH 2^>nul') do set "UsrPath=%%B"
-set "PATH=%SysPath%;%UsrPath%;%USERPROFILE%\.local\bin;%LOCALAPPDATA%\Microsoft\WindowsApps"
+set "PATH=%PATH%;%SysPath%;%UsrPath%;%LOCALAPPDATA%\Microsoft\WindowsApps;%USERPROFILE%\.local\bin;%APPDATA%\npm"
 exit /b 0
 
 :install_winget
