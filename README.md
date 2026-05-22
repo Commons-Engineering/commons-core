@@ -39,6 +39,15 @@ There are three ways to begin, depending on your needs:
 
 The boot process takes 2-4 hours. It is a founding act, not a setup wizard. The quality of your boot determines everything that follows.
 
+### Set up your working environment
+
+Get a working environment in one of two ways — both lead to the same place: your AI working agent, ready to build with you. The agent then runs `commons/setup/ONBOARDING.md` to wire you up.
+
+| Door | Best for | How |
+|---|---|---|
+| **One-click installer** | your own computer | Run `commons/setup/commons-setup.cmd` (Windows) or `commons/setup/commons-setup.command` (macOS). Installs the toolchain and your agent locally. |
+| **Browser — zero install** | locked-down or shared machines, or no install rights | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Commons-Engineering/commons-os?quickstart=1) — everything runs in the cloud; nothing touches your machine. |
+
 ---
 
 ## What You Get

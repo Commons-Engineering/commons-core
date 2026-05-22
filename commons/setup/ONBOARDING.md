@@ -80,7 +80,9 @@ repos/
     <venture-2>.o  <venture-2>.g
 ```
 
-You are launched in a setup folder `repos/commons-setup` (it holds this `ONBOARDING.md` and a tool pointer, and is a sibling of the workspace root). Commons OS is **public** — clone or fork it any time, no permission needed, from `https://github.com/Commons-Engineering/commons-os`, **into `../commons`** (i.e. `repos/commons`, the canonical workspace root). Then set up their venture instance(s) from the Commons OS instance templates. For a single Commons Engineer this whole step can be automatic.
+**If you are running in the browser (a Codespace / cloud workspace):** Commons OS is **already here** — you are *inside* it. Do **not** clone it again. Skip straight to setting up their venture instance(s) under this workspace, and note that GitHub is usually already signed in (check `gh auth status`). The rest of this procedure is identical.
+
+**If you are running locally:** you are launched in a setup folder `repos/commons-setup` (it holds this `ONBOARDING.md` and a tool pointer, and is a sibling of the workspace root). Commons OS is **public** — clone or fork it any time, no permission needed, from `https://github.com/Commons-Engineering/commons-os`, **into `../commons`** (i.e. `repos/commons`, the canonical workspace root). Then set up their venture instance(s) from the Commons OS instance templates. For a single Commons Engineer this whole step can be automatic.
 
 ## Step 5 — Connect the Commons Knowledge Graph (Commons MCP)
 

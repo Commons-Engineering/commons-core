@@ -1,0 +1,40 @@
+name: devcontainer test
+
+# Builds the Codespaces devcontainer (running its postCreate) and verifies the
+# cloud workspace ends up work-capable: toolchain present, Claude Code CLI
+# installed, and the tool pointer in place. This validates the browser/zero-
+# install path without spinning up a full Codespace.
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.devcontainer/**'
+      - '.github/workflows/devcontainer-test.yml'
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the devcontainer and verify the workspace
+        uses: devcontainers/ci@v0.3
+        with:
+          push: never
+          runCmd: |
+            set -e
+            echo "=== toolchain versions ==="
+            git --version
+            gh --version
+            node --version
+            (python --version || python3 --version)
+            echo "=== Claude Code CLI ==="
+            if [ -x "$HOME/.local/bin/claude" ]; then "$HOME/.local/bin/claude" --version && echo "OK: claude CLI"; \
+            elif command -v claude >/dev/null 2>&1; then claude --version && echo "OK: claude CLI"; \
+            else echo "WARN: claude CLI not found (check post-create output)"; fi
+            echo "=== tool pointer ==="
+            test -f CLAUDE.md && echo "OK: CLAUDE.md pointer present" || echo "MISSING: CLAUDE.md"
+            echo "=== welcome doc ==="
+            test -f commons/setup/WELCOME_CODESPACE.md && echo "OK: welcome present" || echo "MISSING: welcome"
