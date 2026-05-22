@@ -86,7 +86,7 @@ repos/
 
 ## Step 5 — Connect the Commons Knowledge Graph (Commons MCP)
 
-Add the endpoint `https://mcp.commons.engineering/mcp` to this workspace. When prompted, they sign in; their access tier is set automatically from their identity provider — no password or key to manage.
+The Commons MCP is **already declared** in the Commons OS repo's `.mcp.json` (endpoint `https://mcp.commons.engineering/mcp`), so your tool offers it automatically — just **approve/trust it** when prompted. (If for any reason it isn't picked up, add the endpoint manually.) When asked, they sign in; their access tier is set automatically from their identity provider — no password or key to manage.
 
 Tell them what this *is*, warmly: the living knowledge of the whole discipline — patterns, specifications, the entire Body of Knowledge — and also how *you* answer their questions from here on. This is the third corner of the triad coming online.
 
