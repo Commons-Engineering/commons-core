@@ -85,21 +85,21 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command ^
 REM --- 4b. Drop a tool-specific pointer so the agent finds the procedure ------
 REM     The agent auto-loads this on startup, so it knows its mission even if
 REM     the launch prompt is interrupted by first-run sign-in.
+REM     Written line-by-line (not a parenthesized block) so punctuation is safe.
 set "POINTER=CLAUDE.md"
 if /i "%PRIMARY%"=="gemini" set "POINTER=GEMINI.md"
 if /i "%PRIMARY%"=="codex"  set "POINTER=AGENTS.md"
-(
-  echo # Commons Engineering - setup session
-  echo.
-  echo Read ONBOARDING.md in this folder and execute it step by step to set up
-  echo my Commons Engineering working environment. Clone Commons OS into ..\commons
-  echo (the workspace root, i.e. repos\commons - a sibling of this setup folder).
-  echo.
-  echo I am new and may be non-technical. Guide me warmly, do the technical work
-  echo yourself, and explain anything I ask. This is a one-time setup; when it
-  echo hands over to BOOT.md, the founding conversation begins. You may remove
-  echo this pointer file and ONBOARDING.md once setup is complete.
-) > "%WORKROOT%\%POINTER%"
+set "PFILE=%WORKROOT%\%POINTER%"
+> "%PFILE%"  echo # Commons Engineering - setup session
+>>"%PFILE%"  echo.
+>>"%PFILE%"  echo Read ONBOARDING.md in this folder and execute it step by step to set up
+>>"%PFILE%"  echo my Commons Engineering working environment. Clone Commons OS into ..\commons,
+>>"%PFILE%"  echo the workspace root i.e. repos\commons, a sibling of this setup folder.
+>>"%PFILE%"  echo.
+>>"%PFILE%"  echo I am new and may be non-technical. Guide me warmly, do the technical work
+>>"%PFILE%"  echo yourself, and explain anything I ask. This is a one-time setup; when it
+>>"%PFILE%"  echo hands over to BOOT.md, the founding conversation begins. You may remove
+>>"%PFILE%"  echo this pointer file and ONBOARDING.md once setup is complete.
 echo.
 
 REM --- 5. Hand over to the chosen agent ---------------------------------------
