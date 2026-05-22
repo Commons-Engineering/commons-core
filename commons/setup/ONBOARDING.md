@@ -93,7 +93,7 @@ Tell them what this *is*, warmly: the living knowledge of the whole discipline �
 Ask, gently: were they invited into a federation (for example, the **cloudsters** community)?
 
 - **No** → they are a Commons Engineer or Commons Incubator. They are now work-capable. Go to Step 7.
-- **Yes** → they additionally clone the federation overlay (e.g. `commons-os-i`) and you continue with **its** `ONBOARDING.md`, which adds the federation-specific pieces (pipeline instance, pre-granted private instances, any joint steps). Their cloudsters address governs private-repo invitations and their Commons MCP tier.
+- **Yes** → the federation adds a **membership journey, not another technical install.** You may clone the federation overlay (e.g. `commons-os-i`) for reference, but understand: its onboarding lives in its `extensions/cloudsters` pack and is a **human / joint path** — a `firstname.lastname@cloudsters.net` identity, MFA, the FREE → OPEN → PEER curriculum, and the Urban Commons of their region — done *with* the cloudsters community, not auto-installed. The technical environment is already in place from the steps above. Their cloudsters address governs private-repo invitations and their Commons MCP tier. Walk them through the membership path conversationally; do **not** expect or run a technical install script for it.
 
 ## Step 7 — Verify the triad and hand over
 

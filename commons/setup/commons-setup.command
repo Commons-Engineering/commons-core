@@ -3,12 +3,11 @@
 #  Commons Engineering - set up my working environment  (macOS)
 #
 #  A newcomer double-clicks this one file. It installs the
-#  toolchain, lets them pick an AI coding agent, then hands
-#  over to that agent, which does the conversational part
-#  (identity, GitHub, cloning, Commons MCP) by talking to them.
+#  toolchain, installs the Claude trio (Desktop GUI + CLI +
+#  VS Code extension), then hands off to the Desktop GUI app.
 #
 #  No terminal knowledge required. One double-click.
-#  (If macOS blocks it: right-click -> Open, once.)
+#  (If macOS shows a prompt: right-click -> Open, once.)
 # ============================================================
 
 set -u
@@ -29,22 +28,29 @@ fi
 
 install_formula () {  # $1 = formula, $2 = friendly name
   if brew list "$1" >/dev/null 2>&1; then echo "  - $2 already present."
-  else echo "  - Installing $2 ..."; brew install "$1" >/dev/null 2>&1; fi
+  else echo "  - Installing $2 ..."; brew install "$1"; fi
 }
 install_cask () {     # $1 = cask, $2 = friendly name
   if brew list --cask "$1" >/dev/null 2>&1; then echo "  - $2 already present."
-  else echo "  - Installing $2 ..."; brew install --cask "$1" >/dev/null 2>&1; fi
+  else echo "  - Installing $2 ..."; brew install --cask "$1"; fi
 }
 
 # --- 1. The toolchain - deterministic, no judgement needed ------------------
 echo "  Installing the tools the work runs on..."
 echo ""
-install_formula "git"         "Git (versions your work)"
-install_formula "gh"          "GitHub CLI (reaches repositories)"
-install_formula "node"        "Node.js (runs the web instances and agents)"
-install_formula "python@3.12" "Python (document and data tooling)"
-install_cask    "visual-studio-code" "VS Code (the editor)"
+install_formula "git"         "Git - versions your work"
+install_formula "gh"          "GitHub CLI - reaches repositories"
+install_formula "node"        "Node.js - runs the web instances and agents"
+install_formula "python@3.12" "Python - document and data tooling"
+install_cask    "visual-studio-code" "VS Code - the editor"
 echo ""
+
+# --- helper: locate the VS Code 'code' CLI (PATH or app bundle) -------------
+resolve_code () {
+  if command -v code >/dev/null 2>&1; then echo "code"; return; fi
+  local b="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
+  [ -x "$b" ] && echo "$b"
+}
 
 # --- 2. Choose your AI coding agent(s) --------------------------------------
 echo "  Which AI coding agent would you like? You can pick more than one."
@@ -61,25 +67,33 @@ export PATH="$HOME/.local/bin:$PATH"
 PRIMARY=""
 
 install_claude () {
-  if command -v claude >/dev/null 2>&1; then echo "  - Claude Code already present."
-  else echo "  - Installing Claude Code ..."; curl -fsSL https://claude.ai/install.sh | bash; fi
+  # Claude as a trio: Desktop GUI app, CLI engine, VS Code extension.
+  # All three share one login via ~/.claude, so the user signs in only once.
+  install_cask "claude" "Claude Desktop app - GUI"
+  if command -v claude >/dev/null 2>&1; then echo "  - Claude Code CLI already present."
+  else echo "  - Installing Claude Code CLI - engine ..."; curl -fsSL https://claude.ai/install.sh | bash; fi
+  CODE_BIN="$(resolve_code)"
+  if [ -n "$CODE_BIN" ]; then
+    echo "  - Adding the Claude Code extension to VS Code ..."
+    "$CODE_BIN" --install-extension anthropic.claude-code --force >/dev/null 2>&1
+  fi
 }
 install_npm () {  # $1 = package, $2 = friendly name, $3 = command
   if command -v "$3" >/dev/null 2>&1; then echo "  - $2 already present."
-  else echo "  - Installing $2 ..."; npm install -g "$1" >/dev/null 2>&1; fi
+  else echo "  - Installing $2 ..."; npm install -g "$1"; fi
 }
 
-case "$SEL" in *1*) install_claude;                                  [ -z "$PRIMARY" ] && PRIMARY="claude";; esac
-case "$SEL" in *2*) install_npm "@google/gemini-cli" "Gemini CLI" "gemini"; [ -z "$PRIMARY" ] && PRIMARY="gemini";; esac
-case "$SEL" in *3*) install_npm "@openai/codex"      "Codex CLI"  "codex";  [ -z "$PRIMARY" ] && PRIMARY="codex";; esac
+case "$SEL" in *1*) install_claude;                                          [ -z "$PRIMARY" ] && PRIMARY="claude";; esac
+case "$SEL" in *2*) install_npm "@google/gemini-cli" "Gemini CLI" "gemini";  [ -z "$PRIMARY" ] && PRIMARY="gemini";; esac
+case "$SEL" in *3*) install_npm "@openai/codex"      "Codex CLI"  "codex";   [ -z "$PRIMARY" ] && PRIMARY="codex";; esac
 [ -z "$PRIMARY" ] && PRIMARY="claude"
 echo ""
 
 # --- 3. The bootstrap launch pad --------------------------------------------
-#     A hidden, self-cleaning setup folder. It is a SIBLING of repos/commons,
-#     never a parent - so its pointer file can never shadow the engineer's
-#     real work sessions, and it never collides with the Commons OS clone.
-WORKROOT="$HOME/repos/.commons-setup"
+#     A visible, self-cleaning setup folder (the GUI app's folder picker must
+#     be able to see it). It is a SIBLING of repos/commons - never a parent -
+#     so it can't shadow real work sessions or collide with the Commons OS clone.
+WORKROOT="$HOME/repos/commons-setup"
 mkdir -p "$WORKROOT"
 
 # --- 4. Fetch the onboarding procedure --------------------------------------
@@ -89,8 +103,6 @@ if curl -fsSL "$ONBOARDING_URL" -o "$WORKROOT/ONBOARDING.md"; then echo "  - pro
 else echo "  - could not fetch the procedure; the agent will guide you anyway."; fi
 
 # --- 4b. Drop a tool-specific pointer so the agent finds the procedure ------
-#     The agent auto-loads this on startup, so it knows its mission even if
-#     the launch prompt is interrupted by first-run sign-in.
 POINTER="CLAUDE.md"
 [ "$PRIMARY" = "gemini" ] && POINTER="GEMINI.md"
 [ "$PRIMARY" = "codex" ]  && POINTER="AGENTS.md"
@@ -109,17 +121,41 @@ EOF
 echo ""
 
 # --- 5. Hand over to the chosen agent ---------------------------------------
-echo "  Tools are ready. Opening your agent now."
 echo ""
-echo "  On first launch your agent may open a browser to sign you in -"
-echo "  that's normal. If you don't have an account yet, just choose"
-echo "  \"Sign up\" on that screen. Once you're signed in, the agent takes"
-echo "  over: it sets up your GitHub, clones your workspace, and connects"
-echo "  you to the shared knowledge. From here on you just talk to it."
+echo "  ==========================================================="
+echo "    Everything is installed. You're moments from working."
+echo "  ==========================================================="
 echo ""
 cd "$WORKROOT" || exit 1
-export PATH="$HOME/.local/bin:$PATH"
 
+if [ "$PRIMARY" = "claude" ]; then
+  # Hand off to the comfortable GUI (the Desktop app).
+  echo "  Let's finish in the Claude app - three small steps:"
+  echo ""
+  echo "    1. The \"Claude\" app is opening. Sign in once - it's a button,"
+  echo "       no codes to copy. No account yet? Choose \"Sign up\"."
+  echo "    2. In the app, choose: Open folder."
+  echo "    3. Open this folder (a Finder window just opened showing it):"
+  echo "           $WORKROOT"
+  echo ""
+  echo "  Then just tell it:  set up my Commons environment from ONBOARDING.md"
+  echo "  ...and I'll take it from there - sign you in to GitHub, clone your"
+  echo "  workspace, and connect you to the shared knowledge."
+  echo ""
+  echo "  Prefer something else? Both are installed too:"
+  echo "    - VS Code : the Claude Code extension is ready"
+  echo "    - Terminal: open the folder above and run  claude"
+  echo ""
+  open "$WORKROOT" 2>/dev/null || true        # Finder window at the folder
+  open -a "Claude" 2>/dev/null || true        # launch the Desktop GUI app
+  echo "  (If the Claude app didn't open by itself, open it from Launchpad or Applications.)"
+  echo ""
+  read -r -p "  Press Return to close this window." _
+  exit 0
+fi
+
+# --- Gemini / Codex: launch the chosen CLI in the terminal -----------------
+export PATH="$HOME/.local/bin:$PATH"
 if ! command -v "$PRIMARY" >/dev/null 2>&1; then
   echo "  [i] Your agent was just installed. Please CLOSE this window,"
   echo "      open it again (double-click this file once more), and I'll"
@@ -128,14 +164,8 @@ if ! command -v "$PRIMARY" >/dev/null 2>&1; then
   read -r -p "  Press Return to close." _
   exit 0
 fi
-
 PROMPT="Read ONBOARDING.md in this folder and execute it step by step to set up my Commons Engineering working environment. I am new and non-technical - guide me warmly and do the technical work yourself."
-
-if [ "$PRIMARY" = "claude" ]; then
-  claude "$PROMPT"
-else
-  echo "  Starting $PRIMARY. When it opens, tell it:"
-  echo "    \"$PROMPT\""
-  echo ""
-  "$PRIMARY"
-fi
+echo "  Starting $PRIMARY. When it opens, tell it:"
+echo "    \"$PROMPT\""
+echo ""
+"$PRIMARY"

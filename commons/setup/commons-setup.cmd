@@ -131,9 +131,12 @@ echo     - Terminal: open the folder above and run  claude
 echo.
 REM Open the workspace folder so the user can find it in the app's picker.
 start "" "%WORKROOT%"
-REM Best-effort launch of the Claude Desktop app via its Start-menu shortcut.
-if exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Claude.lnk" start "" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Claude.lnk"
-if exist "%ProgramData%\Microsoft\Windows\Start Menu\Programs\Claude.lnk" start "" "%ProgramData%\Microsoft\Windows\Start Menu\Programs\Claude.lnk"
+REM Launch the Claude Desktop app by its real AppUserModelID, resolved at runtime
+REM from the installed app list. This works whether the app is an MSIX/Store
+REM package or an Electron build - both register a launchable AUMID.
+set "CLAUDEAUMID="
+for /f "usebackq delims=" %%i in (`powershell -NoProfile -Command "(Get-StartApps ^| Where-Object { $_.Name -eq 'Claude' } ^| Select-Object -First 1).AppID"`) do set "CLAUDEAUMID=%%i"
+if defined CLAUDEAUMID explorer.exe "shell:AppsFolder\!CLAUDEAUMID!"
 echo   ^(If the Claude app didn't open by itself, start it from the Start menu.^)
 echo.
 pause
