@@ -1,0 +1,4 @@
+# Line endings for the setup kit must be stable across platforms.
+*.command text eol=lf
+*.md      text eol=lf
+*.cmd     text eol=crlf
