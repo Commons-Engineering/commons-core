@@ -18,12 +18,11 @@ echo "Commons Engineering setup log" > "$LOG"
 
 clear 2>/dev/null || true
 echo ""
-echo "  ============================================================"
-echo "                 Welcome to Commons Engineering"
-echo "  ============================================================"
+echo "  Welcome to Commons Engineering"
+echo "  ------------------------------"
 echo ""
-echo "    I'm setting up everything you need to work."
-echo "    This takes a few minutes - you can just let it run."
+echo "  I'm setting up everything you need to work."
+echo "  This takes a few minutes - you can just let it run."
 echo ""
 
 # --- 0. Homebrew present? (the macOS package installer) ---------------------

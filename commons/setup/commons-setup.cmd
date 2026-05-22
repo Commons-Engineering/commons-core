@@ -22,12 +22,11 @@ set "LOG=%TEMP%\commons-setup-log.txt"
 
 cls
 echo.
-echo   ============================================================
-echo                  Welcome to Commons Engineering
-echo   ============================================================
+echo   Welcome to Commons Engineering
+echo   ------------------------------
 echo.
-echo     I'm setting up everything you need to work.
-echo     This takes a few minutes - you can just let it run.
+echo   I'm setting up everything you need to work.
+echo   This takes a few minutes - you can just let it run.
 echo.
 
 REM --- 0. winget present? (ships with Windows 10 1709+ / Windows 11) ----------
