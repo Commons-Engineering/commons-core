@@ -6,6 +6,36 @@ Booting a commons is not a quick setup wizard — it is the founding act. The qu
 
 ---
 
+## Step 0 — First, make sure this is the founder's *own* commons
+
+**Agent: do this before anything else.** Commons OS is a shared, upstream **base**. It must **never** be founded, configured, or have its identity / `AGENT.md` / blueprint filled in **in place**. Founding belongs only to a commons the founder **owns** — a template copy or fork of Commons OS, or a venture instance.
+
+Detect where you are with a signal that does **not** travel with a clone (so it can't mislabel a legitimate fork):
+
+```bash
+gh repo view --json isTemplate,nameWithOwner,viewerPermission 2>/dev/null
+# fallback if gh is unavailable:
+git remote get-url origin
+```
+
+- If **`isTemplate` is `true`**, or the repo is the canonical **`Commons-Engineering/commons-os`**, you are sitting in the shared base — **do not boot here.**
+- Otherwise (a repo the founder owns; `isTemplate` is false), proceed to Prerequisites and boot normally.
+
+**When you are in the upstream/template, don't just stop — carry the founder into their own commons.** This is the whole point: a bare link + a minimal instruction, and you know what to do. Offer to create it and continue there:
+
+1. Ask for a short name, and whether it should be private or public.
+2. Create their own copy from the template and move into it:
+   ```bash
+   gh repo create <their-account>/<name> --template Commons-Engineering/commons-os --private --clone
+   cd <name>
+   ```
+   (`--public` if they chose public. A venture instance under their workspace is an equally valid alternative.)
+3. You are now in *their* commons. Continue with Prerequisites and the boot sequence **here**.
+
+This guard keys off the repository's **GitHub identity** (a template flag and owner that do **not** clone), never a file in the repo — so a founder's own fork or copy boots normally, while the shared base stays protected.
+
+---
+
 ## Prerequisites
 
 Before you begin:
