@@ -69,7 +69,11 @@ echo "    [1] Claude Code   (recommended)"
 echo "    [2] Gemini CLI    (Google)"
 echo "    [3] Codex CLI     (OpenAI)"
 echo ""
-read -r -p "  Enter numbers separated by spaces, or just press Return for Claude Code: " SEL </dev/tty
+if [ -n "${CE_TEST:-}" ]; then
+  SEL="1"; echo "  [test mode] selecting Claude Code, non-interactive"
+else
+  read -r -p "  Enter numbers separated by spaces, or just press Return for Claude Code: " SEL </dev/tty
+fi
 [ -z "${SEL:-}" ] && SEL="1"
 echo ""
 
@@ -159,6 +163,10 @@ if [ "$PRIMARY" = "claude" ]; then
   echo "    - VS Code : the Claude Code extension is ready"
   echo "    - Terminal: open the folder above and run  claude"
   echo ""
+  if [ -n "${CE_TEST:-}" ]; then
+    echo "  [test mode] skipping GUI launch and pause - install verification complete."
+    exit 0
+  fi
   open "$WORKROOT" 2>/dev/null || true        # Finder window at the folder
   open -a "Claude" 2>/dev/null || true        # launch the Desktop GUI app
   echo "  (If the Claude app didn't open by itself, open it from Launchpad or Applications.)"

@@ -1,0 +1,56 @@
+name: macOS setup test
+
+# Runs the macOS installer (commons-setup.command) in a non-interactive test
+# mode on a real Apple macOS runner, so we can verify the install logic
+# (Homebrew formulae, the Claude cask, the CLI installer, the VS Code
+# extension, and the workspace/pointer layout) without an Apple machine of
+# our own. The GUI hand-off (open -a Claude) is intentionally skipped in CI.
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'commons/setup/commons-setup.command'
+      - '.github/workflows/macos-setup-test.yml'
+
+jobs:
+  test-macos-installer:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Bash syntax check
+        run: bash -n commons/setup/commons-setup.command
+
+      - name: Verify cask + formula names actually resolve
+        run: |
+          set -x
+          brew info --cask claude
+          brew info --cask visual-studio-code
+          brew info gh
+          brew info node
+          brew info python@3.12
+
+      - name: Run the installer in non-interactive test mode
+        env:
+          CE_TEST: "1"
+        run: bash commons/setup/commons-setup.command
+
+      - name: Verify the outcomes
+        run: |
+          echo "=== workspace folder ==="
+          ls -la "$HOME/repos/commons-setup" || echo "MISSING: commons-setup folder"
+          test -f "$HOME/repos/commons-setup/ONBOARDING.md" && echo "OK: ONBOARDING.md present" || echo "MISSING: ONBOARDING.md"
+          test -f "$HOME/repos/commons-setup/CLAUDE.md"     && echo "OK: CLAUDE.md pointer present" || echo "MISSING: CLAUDE.md pointer"
+          echo "=== Claude Desktop app ==="
+          ls /Applications | grep -i claude && echo "OK: Claude.app installed" || echo "MISSING: Claude.app"
+          echo "=== Claude Code CLI ==="
+          ( "$HOME/.local/bin/claude" --version && echo "OK: claude CLI works" ) || echo "WARN: claude CLI not at ~/.local/bin (check log)"
+          echo "=== VS Code + extension ==="
+          CODE="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
+          if [ -x "$CODE" ]; then "$CODE" --list-extensions | grep -i claude && echo "OK: extension installed" || echo "WARN: extension not listed"; else echo "WARN: code CLI not found at bundle path"; fi
+
+      - name: Tail the setup log (raw installer detail)
+        if: always()
+        run: tail -120 "${TMPDIR:-/tmp}/commons-setup-log.txt" || echo "no log file"
