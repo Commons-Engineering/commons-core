@@ -326,20 +326,29 @@ The fork path skips the template instantiation and proceeds directly to `setup.s
 3. Configure the MCP endpoints in `.commons/config.yml` (if using the knowledge service).
 4. Run the first deliberation: "Is our purpose well-defined?" — using the four-seat governance model (see pat_01kkhc8hd2asfzdp56q17jjz2h).
 
-**Step 5: Build the upstream update mechanism.** For template-created commons that add the upstream remote, provide a documented workflow for pulling improvements:
+**Step 5: Build the upstream update mechanism.** Each instance carries a small `sync-upstream` workflow (in `.github/workflows/`) that runs on a weekly schedule and on manual dispatch. It does not push, it does not auto-merge: it opens a **pull request** which the founder reviews and decides to merge. **The merge is the act of selective adoption** — every adoption is a conscious governance decision.
+
+The ownership boundary is defined at the **level of the directory tree**, not per individual file, so that new OS-canon content flows automatically without per-file scope maintenance:
+
+| Upstream owns (synced — whole subtree) | Upstream owns (root files, small list) | Instance owns (NEVER touched) |
+|---|---|---|
+| `commons/` | `BOOT.md`, `ALIGN.md` | `instance/` *(except `instance/templates/`)* |
+| `extensions/` | `CONTRIBUTING.md`, `LICENSE` | `.commons/` (identity & config) |
+| `instance/templates/` | `AGENT.md.template`, `blueprint.md.template` | `blueprint.md`, `AGENT.md` |
+| `.devcontainer/` | `.mcp.json`, `.gitignore` | `CLAUDE.md`, `GEMINI.md`, `AGENTS.md` |
+| `.github/workflows/` | | `README.md`, `analytics/` |
+
+The mechanism is **file-checkout** (`git checkout upstream/main -- <paths>`) rather than `git merge`, because template copies share no git history with upstream. A useful property: file-checkout **adds and updates** upstream files but **never deletes** locally added files inside an upstream-owned subtree — so an instance that adds its own pack under `extensions/<own>/` keeps it; upstream packs flow in alongside.
+
+For instances that want the older, fully manual flow (no scheduled PR), the cherry-pick path remains available:
 
 ```bash
-# Fetch latest from the Commons OS template
 git fetch upstream
-
-# Review what changed
 git log upstream/main --oneline -10
-
-# Selectively merge improvements (never blind merge)
 git cherry-pick <commit-hash>
 ```
 
-The principle is selective adoption: the commons pulls improvements it wants and ignores changes that do not fit its context. This is governance, not automation — every upstream change adopted is a conscious decision.
+In both forms the principle holds: **selective adoption, never blind merge, upstream connection optional.** This is governance, not automation.
 
 ---
 
@@ -357,7 +366,7 @@ For the broader community, the pattern lowers the barrier to entry dramatically.
 
 Template dependency — the risk that commons created from the template never customise their governance beyond the defaults. The defaults are good starting points, not final configurations. A commons that runs on unmodified defaults indefinitely is not governed — it is merely instantiated. The mitigation is the blueprint: the nine-layer boot sequence requires the founder to engage with each layer of governance, adapting the defaults to their specific context.
 
-Template drift — the risk that the upstream template evolves in directions that do not serve all commons equally. If the template maintainers (cloudsters, as stewards) make opinionated changes, downstream commons that pull those changes may find their configurations overwritten. The mitigation is the selective adoption principle: upstream changes are cherry-picked, never blind-merged. And the upstream connection is optional — a commons can disconnect entirely if it outgrows the template.
+Template drift — the risk that the upstream template evolves in directions that do not serve all commons equally. If the template maintainers (cloudsters, as stewards) make opinionated changes, downstream commons that pull those changes may find their configurations overwritten. The mitigation is the selective adoption principle: every sync surfaces as a PR (or a cherry-pick) that the founder reviews and consciously merges — never a blind, automatic merge to main. The ownership boundary protects instance sovereignty by design (sovereign paths are never touched at all). And the upstream connection itself is optional — a commons can disconnect entirely if it outgrows the template.
 
 Over-automation — the risk that the setup script does so much that the founder does not understand what was created. If the founder cannot explain why their project board has these specific labels or why their agents have these specific mandates, they cannot govern effectively. The mitigation is the narrated setup: the script explains each step as it executes, telling the founder what it is creating and why. The setup is automated but not opaque.
 
