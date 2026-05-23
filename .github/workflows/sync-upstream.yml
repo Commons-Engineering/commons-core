@@ -1,25 +1,36 @@
 name: Sync Upstream
 
-# This workflow syncs OS-level files from commons-engineering/commons-os
-# into template copies. It uses file-copy (rsync) logic, not git merge,
-# because template copies have no shared git history with upstream.
+# Syncs OS-layer content from commons-engineering/commons-os into a downstream
+# instance (template copy or fork). Uses file-checkout (not git merge) so it
+# works for template copies that share no git history with upstream.
 #
-# What gets synced (OS layer — upstream owns these):
-#   commons/          — manifests, specs, patterns, scripts, templates
-#   BOOT.md           — boot guide
-#   ALIGN.md          — alignment checks
-#   CONTRIBUTING.md   — contribution guide
-#   LICENSE           — license
-#   AGENT.md.template — agent template (not AGENT.md itself!)
+# Ownership boundary (kept at the LEVEL, not per file, so new OS-canon files
+# flow automatically without per-file scope maintenance):
 #
-# What NEVER gets synced (instance sovereignty):
-#   instance/         — all instance-specific content
-#   extensions/       — installed extension packs
-#   .commons/         — identity & config
-#   blueprint.md      — the living blueprint
-#   AGENT.md          — filled-in agent config
-#   CLAUDE.md         — tool-specific pointer
-#   README.md         — instance-specific readme
+#   Upstream owns (synced — whole subtree):
+#     commons/             — manifests, specs, patterns, scripts, templates
+#     extensions/          — bundled extension packs
+#     instance/templates/  — OS-canon templates living inside the instance tree
+#     .devcontainer/       — cloud workspace (Codespaces) setup
+#     .github/workflows/   — automation that belongs to the OS
+#
+#   Upstream owns (synced — small enumerated root files):
+#     BOOT.md, ALIGN.md, CONTRIBUTING.md, LICENSE
+#     AGENT.md.template, blueprint.md.template
+#     .mcp.json, .gitignore
+#
+#   Instance owns (NEVER touched — full sovereignty):
+#     instance/  (everything except instance/templates/)
+#     .commons/  — identity & config
+#     blueprint.md, AGENT.md
+#     CLAUDE.md, GEMINI.md, AGENTS.md  — tool-specific pointers
+#     README.md  — instance-specific readme
+#     anything the instance adds inside an upstream-owned subtree
+#     (file-checkout adds/updates upstream files but does NOT delete locally
+#      added files, so instance-added content under e.g. extensions/<own>/
+#      coexists peacefully with upstream extensions).
+#
+# Adoption is always conscious: the workflow opens a PR; the founder decides.
 
 on:
   schedule:
@@ -42,16 +53,20 @@ jobs:
       - name: Check for upstream changes
         id: check
         run: |
-          # Check OS-layer files for changes
           DIFF=$(git diff HEAD...upstream/main -- \
             commons/ \
+            extensions/ \
+            instance/templates/ \
+            .devcontainer/ \
+            .github/workflows/ \
             BOOT.md \
             ALIGN.md \
             CONTRIBUTING.md \
             LICENSE \
             AGENT.md.template \
-            .github/workflows/sync-upstream.yml \
-            .github/workflows/validate.yml \
+            blueprint.md.template \
+            .mcp.json \
+            .gitignore \
             | wc -l)
           echo "diff_lines=$DIFF" >> $GITHUB_OUTPUT
           echo "Upstream diff: $DIFF lines"
@@ -62,20 +77,25 @@ jobs:
           BRANCH="upstream-sync-$(date +%Y%m%d-%H%M)"
           git checkout -b "$BRANCH"
 
-          # Copy OS-layer files from upstream (file-based, not merge)
-          # This avoids merge conflicts from divergent template histories
+          # File-checkout from upstream/main on the upstream-owned paths.
+          # This updates/adds upstream files but never deletes instance-added
+          # files within these subtrees - clean coexistence.
           git checkout upstream/main -- \
             commons/ \
+            extensions/ \
+            instance/templates/ \
+            .devcontainer/ \
+            .github/workflows/ \
             BOOT.md \
             ALIGN.md \
             CONTRIBUTING.md \
             LICENSE \
             AGENT.md.template \
-            .github/workflows/sync-upstream.yml \
-            .github/workflows/validate.yml \
+            blueprint.md.template \
+            .mcp.json \
+            .gitignore \
             2>/dev/null || true
 
-          # Check if anything actually changed
           if git diff --cached --quiet && git diff --quiet; then
             echo "No effective changes after sync"
             exit 0
@@ -90,25 +110,32 @@ jobs:
       - name: Open PR
         if: steps.check.outputs.diff_lines != '0'
         run: |
-          # Only create PR if branch was pushed
           if git rev-parse --verify "origin/upstream-sync-$(date +%Y%m%d-*)" 2>/dev/null; then
             gh pr create \
               --title "Upstream sync — $(date +%Y-%m-%d)" \
               --body "$(cat <<'BODY'
           ## Automated Commons OS Sync
 
-          This PR updates the OS-layer files from `commons-engineering/commons-os`.
+          Updates the OS-layer content from `commons-engineering/commons-os`.
+          Adoption is conscious: review the diff, then merge.
 
-          **Synced (OS layer — review but typically safe to merge):**
-          - `commons/` — manifests, specs, patterns, templates
+          **Synced (upstream owns — whole subtree):**
+          - `commons/`, `extensions/`, `instance/templates/`
+          - `.devcontainer/`, `.github/workflows/`
+
+          **Synced (upstream owns — root files):**
           - `BOOT.md`, `ALIGN.md`, `CONTRIBUTING.md`, `LICENSE`
-          - `AGENT.md.template`
+          - `AGENT.md.template`, `blueprint.md.template`
+          - `.mcp.json`, `.gitignore`
 
           **Never touched (instance sovereignty):**
-          - `instance/`, `extensions/`, `.commons/`
-          - `blueprint.md`, `AGENT.md`, `CLAUDE.md`, `README.md`
+          - `instance/` (except `instance/templates/`)
+          - `.commons/`, `blueprint.md`, `AGENT.md`
+          - `CLAUDE.md`, `GEMINI.md`, `AGENTS.md`, `README.md`
 
-          Review the changes, then merge. Your instance files are safe.
+          Your instance-owned files are untouched. Files you added inside an
+          upstream-owned subtree (e.g. your own pack under `extensions/`) also
+          coexist - file-checkout adds and updates, never deletes your additions.
           BODY
           )" \
               --label "production"
