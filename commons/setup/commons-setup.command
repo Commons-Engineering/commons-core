@@ -52,11 +52,15 @@ if command -v brew >/dev/null 2>&1; then
   say "  - Homebrew already present."
 else
   say "  Installing Homebrew (the package installer)..."
-  say "  You may be asked for your Mac password - that's your local admin"
-  say "  password, used only to install Homebrew. Type it; the characters"
-  say "  won't show as you type. That's normal."
+  say "  Homebrew will ask you two things - this is normal:"
+  say "    1. \"Press RETURN/ENTER to continue\"  -> just hit Return."
+  say "    2. \"Password:\"  -> your Mac login password. The characters won't"
+  say "       show as you type - that's normal, just type and Return."
   say ""
-  if NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >>"$LOG" 2>&1; then
+  # No NONINTERACTIVE here: Homebrew reads its own prompts from /dev/tty, which
+  # works under  bash <(curl ...) . Setting NONINTERACTIVE=1 would force
+  # Homebrew to require passwordless sudo and abort on a normal Mac.
+  if /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 2>&1 | tee -a "$LOG"; then
     say "  - Homebrew installed."
   else
     say "  [!] Homebrew install reported an error (details in $LOG)."
