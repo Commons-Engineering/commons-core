@@ -2,125 +2,224 @@
 # ============================================================
 #  Commons Engineering - set up my working environment  (macOS)
 #
-#  A newcomer double-clicks this one file. It installs the
-#  toolchain, installs the Claude trio (Desktop GUI + CLI +
-#  VS Code extension), then hands off to the Desktop GUI app.
+#  Recommended invocation (process substitution keeps stdin connected
+#  to your terminal, so Homebrew and sudo can prompt if they need to):
 #
-#  No terminal knowledge required. One double-click.
-#  (If macOS shows a prompt: right-click -> Open, once.)
+#    bash <(curl -fsSL https://raw.githubusercontent.com/Commons-Engineering/commons-os/main/commons/setup/commons-setup.command)
+#
+#  The older form  curl ... | bash  makes Homebrew (and other sub-installers)
+#  exit silently because stdin is the pipe, not your terminal.
+#
+#  Detailed setup log is written to $HOME/commons-setup.log.
+#  No "set -u" is used: macOS shell init quirks across versions can trigger
+#  it through no fault of the user. Each step reports its own status.
 # ============================================================
 
-set -u
+LOG="$HOME/commons-setup.log"
+: > "$LOG"
 
-# All raw installer detail goes to this log; the screen stays calm.
-LOG="${TMPDIR:-/tmp}/commons-setup-log.txt"
-echo "Commons Engineering setup log" > "$LOG"
+# say()   - print to user AND log
+# logged() - run a command silently, capturing its output to the log only
+say()    { echo "$@"; echo "$@" >> "$LOG"; }
+logline(){ echo "$@" >> "$LOG"; }
 
-clear 2>/dev/null || true
-echo ""
-echo "  Welcome to Commons Engineering"
-echo "  ------------------------------"
-echo ""
-echo "  I'm setting up everything you need to work."
-echo "  This takes a few minutes - you can just let it run."
-echo ""
+# --- Banner -----------------------------------------------------------------
+say ""
+say "  Welcome to Commons Engineering"
+say "  ------------------------------"
+say ""
+say "  I'm setting up everything you need to work."
+say "  This takes a few minutes - you can just let it run."
+say "  Detailed setup log: $LOG"
+say ""
 
-# --- 0. Homebrew present? (the macOS package installer) ---------------------
-if ! command -v brew >/dev/null 2>&1; then
-  echo "  Installing Homebrew (the package installer)..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# --- Diagnostic context (to log only) ---------------------------------------
+{
+  echo "=== environment ==="
+  echo "macOS:       $(sw_vers -productVersion 2>&1)"
+  echo "arch:        $(uname -m)"
+  echo "bash:        ${BASH_VERSION:-unknown}"
+  echo "user:        $(whoami)"
+  echo "shell:       ${SHELL:-unknown}"
+  echo "PATH:        $PATH"
+  echo "stdin is tty: $(test -t 0 && echo yes || echo no)"
+  echo "/dev/tty:     $(test -e /dev/tty && echo present || echo MISSING)"
+  echo ""
+} >> "$LOG"
+
+# --- 0. Homebrew present? ---------------------------------------------------
+if command -v brew >/dev/null 2>&1; then
+  say "  - Homebrew already present."
+else
+  say "  Installing Homebrew (the package installer)..."
+  say "  You may be asked for your Mac password - that's your local admin"
+  say "  password, used only to install Homebrew. Type it; the characters"
+  say "  won't show as you type. That's normal."
+  say ""
+  if NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >>"$LOG" 2>&1; then
+    say "  - Homebrew installed."
+  else
+    say "  [!] Homebrew install reported an error (details in $LOG)."
+  fi
 fi
-# Make brew + its installed tools available in this session (Apple Silicon + Intel).
+
+# Make brew + its tools available in this session (Apple Silicon + Intel).
 [ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 [ -x /usr/local/bin/brew ]   && eval "$(/usr/local/bin/brew shellenv)"
 
-install_formula () {  # $1 = formula, $2 = friendly name
-  if brew list "$1" >/dev/null 2>&1; then echo "      > $2 ready"
-  else echo "    Installing $2 ..."; brew install "$1" >>"$LOG" 2>&1; echo "      > $2 ready"; fi
+# Verify brew is now reachable. If not, stop with a helpful message.
+if ! command -v brew >/dev/null 2>&1; then
+  say ""
+  say "  [!] Homebrew is not available - cannot continue."
+  say ""
+  say "  The most common cause: this script was started with"
+  say "      curl ... | bash"
+  say "  which prevents Homebrew's installer from asking for your password."
+  say ""
+  say "  Please re-run using this form (note the parentheses):"
+  say ""
+  say "    bash <(curl -fsSL https://raw.githubusercontent.com/Commons-Engineering/commons-os/main/commons/setup/commons-setup.command)"
+  say ""
+  say "  Full log saved at: $LOG"
+  exit 1
+fi
+
+# --- 1. The toolchain -------------------------------------------------------
+say ""
+say "  Installing the tools the work runs on."
+say "  Some are large downloads and can take several minutes each - this is"
+say "  completely normal. Please leave this window open and let it work."
+say ""
+
+install_formula() {  # $1 = formula, $2 = friendly name
+  local formula="$1" name="$2"
+  if brew list "$formula" >/dev/null 2>&1; then
+    say "  - $name already present."
+  else
+    say "  - Installing $name ..."
+    if brew install "$formula" >>"$LOG" 2>&1; then
+      say "    > $name ready."
+    else
+      say "    [!] $name install reported an error - see $LOG."
+    fi
+  fi
 }
-install_cask () {     # $1 = cask, $2 = friendly name
-  if brew list --cask "$1" >/dev/null 2>&1; then echo "      > $2 ready"
-  else echo "    Installing $2 ..."; brew install --cask "$1" >>"$LOG" 2>&1; echo "      > $2 ready"; fi
+install_cask() {     # $1 = cask, $2 = friendly name
+  local cask="$1" name="$2"
+  if brew list --cask "$cask" >/dev/null 2>&1; then
+    say "  - $name already present."
+  else
+    say "  - Installing $name ..."
+    if brew install --cask "$cask" >>"$LOG" 2>&1; then
+      say "    > $name ready."
+    else
+      say "    [!] $name install reported an error - see $LOG."
+    fi
+  fi
 }
 
-# --- 1. The toolchain - deterministic, no judgement needed ------------------
-echo "  Installing the tools the work runs on."
-echo "  Some are large downloads and can take several minutes each - this is"
-echo "  completely normal. Please leave this window open and let it work."
-echo ""
-install_formula "git"         "Git - versions your work"
-install_formula "gh"          "GitHub CLI - reaches repositories"
-install_formula "node"        "Node.js - runs the web instances and agents"
-install_formula "python@3.12" "Python - document and data tooling"
-install_cask    "visual-studio-code" "VS Code - the editor"
-echo ""
+install_formula git           "Git"
+install_formula gh            "GitHub CLI"
+install_formula node          "Node.js"
+install_formula python@3.12   "Python 3.12"
+install_cask    visual-studio-code "VS Code"
+say ""
 
-# --- helper: locate the VS Code 'code' CLI (PATH or app bundle) -------------
-resolve_code () {
+# Resolve the VS Code 'code' CLI (PATH or app bundle fallback).
+resolve_code() {
   if command -v code >/dev/null 2>&1; then echo "code"; return; fi
   local b="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
   [ -x "$b" ] && echo "$b"
 }
 
-# --- 2. Choose your AI coding agent(s) --------------------------------------
-echo "  Which AI coding agent would you like? You can pick more than one."
-echo ""
-echo "    [1] Claude Code   (recommended)"
-echo "    [2] Gemini CLI    (Google)"
-echo "    [3] Codex CLI     (OpenAI)"
-echo ""
+# --- 2. Agent selection -----------------------------------------------------
+say "  Setting up your agent. The Claude app is a larger download -"
+say "  please wait, this part can take a few minutes."
+say ""
+
+SEL=""
 if [ -n "${CE_TEST:-}" ]; then
-  SEL="1"; echo "  [test mode] selecting Claude Code, non-interactive"
+  SEL="1"
+  say "  [test mode] selecting Claude Code, non-interactive"
+elif [ -e /dev/tty ]; then
+  echo "  Which AI coding agent would you like? You can pick more than one."
+  echo ""
+  echo "    [1] Claude Code   (recommended)"
+  echo "    [2] Gemini CLI    (Google)"
+  echo "    [3] Codex CLI     (OpenAI)"
+  echo ""
+  read -r -p "  Enter numbers separated by spaces, or just press Return for Claude Code: " SEL </dev/tty || SEL=""
 else
-  read -r -p "  Enter numbers separated by spaces, or just press Return for Claude Code: " SEL </dev/tty
+  say "  (no terminal available - defaulting to Claude Code)"
+  SEL="1"
 fi
 [ -z "${SEL:-}" ] && SEL="1"
-echo ""
+logline "agent selection: $SEL"
+say ""
 
 export PATH="$HOME/.local/bin:$PATH"
 PRIMARY=""
 
-install_claude () {
-  # Claude as a trio: Desktop GUI app, CLI engine, VS Code extension.
-  # All three share one login via ~/.claude, so the user signs in only once.
-  install_cask "claude" "Claude Desktop app - GUI"
-  if command -v claude >/dev/null 2>&1; then echo "      > Claude Code CLI ready"
-  else echo "    Installing Claude Code CLI ..."; curl -fsSL https://claude.ai/install.sh | bash >>"$LOG" 2>&1; echo "      > Claude Code CLI ready"; fi
+install_claude() {
+  install_cask claude "Claude Desktop app"
+  if command -v claude >/dev/null 2>&1; then
+    say "  - Claude Code CLI already present."
+  else
+    say "  - Installing Claude Code CLI ..."
+    if curl -fsSL https://claude.ai/install.sh | bash >>"$LOG" 2>&1; then
+      say "    > Claude Code CLI ready."
+    else
+      say "    [!] Claude Code CLI install reported an error - see $LOG."
+    fi
+  fi
+  local CODE_BIN
   CODE_BIN="$(resolve_code)"
   if [ -n "$CODE_BIN" ]; then
-    echo "    Installing the Claude Code extension for VS Code ..."
-    "$CODE_BIN" --install-extension anthropic.claude-code --force >>"$LOG" 2>&1
-    echo "      > VS Code extension ready"
+    say "  - Adding the Claude Code extension to VS Code ..."
+    if "$CODE_BIN" --install-extension anthropic.claude-code --force >>"$LOG" 2>&1; then
+      say "    > extension ready."
+    else
+      say "    [!] VS Code extension install reported an error - see $LOG."
+    fi
+  else
+    say "    [i] VS Code 'code' CLI not on PATH yet; extension will install on next run."
   fi
 }
-install_npm () {  # $1 = package, $2 = friendly name, $3 = command
-  if command -v "$3" >/dev/null 2>&1; then echo "      > $2 ready"
-  else echo "    Installing $2 ..."; npm install -g "$1" >>"$LOG" 2>&1; echo "      > $2 ready"; fi
+
+install_npm() {  # $1 = package, $2 = friendly name, $3 = command
+  local pkg="$1" name="$2" cmd="$3"
+  if command -v "$cmd" >/dev/null 2>&1; then
+    say "  - $name already present."
+  else
+    say "  - Installing $name ..."
+    if npm install -g "$pkg" >>"$LOG" 2>&1; then
+      say "    > $name ready."
+    else
+      say "    [!] $name install reported an error - see $LOG."
+    fi
+  fi
 }
 
-echo "  Setting up your agent. The Claude app is a larger download -"
-echo "  please wait, this part can take a few minutes."
-echo ""
 case "$SEL" in *1*) install_claude;                                          [ -z "$PRIMARY" ] && PRIMARY="claude";; esac
 case "$SEL" in *2*) install_npm "@google/gemini-cli" "Gemini CLI" "gemini";  [ -z "$PRIMARY" ] && PRIMARY="gemini";; esac
 case "$SEL" in *3*) install_npm "@openai/codex"      "Codex CLI"  "codex";   [ -z "$PRIMARY" ] && PRIMARY="codex";; esac
 [ -z "$PRIMARY" ] && PRIMARY="claude"
-echo ""
+say ""
 
-# --- 3. The bootstrap launch pad --------------------------------------------
-#     A visible, self-cleaning setup folder (the GUI app's folder picker must
-#     be able to see it). It is a SIBLING of repos/commons - never a parent -
-#     so it can't shadow real work sessions or collide with the Commons OS clone.
+# --- 3. Bootstrap launch pad ------------------------------------------------
 WORKROOT="$HOME/repos/commons-setup"
 mkdir -p "$WORKROOT"
 
 # --- 4. Fetch the onboarding procedure --------------------------------------
 ONBOARDING_URL="https://raw.githubusercontent.com/Commons-Engineering/commons-os/main/commons/setup/ONBOARDING.md"
-echo "  Fetching the latest setup procedure..."
-if curl -fsSL "$ONBOARDING_URL" -o "$WORKROOT/ONBOARDING.md"; then echo "  - procedure ready."
-else echo "  - could not fetch the procedure; the agent will guide you anyway."; fi
+say "  Fetching the latest setup procedure..."
+if curl -fsSL "$ONBOARDING_URL" -o "$WORKROOT/ONBOARDING.md" 2>>"$LOG"; then
+  say "  - procedure ready."
+else
+  say "  - could not fetch the procedure; the agent will guide you anyway."
+fi
 
-# --- 4b. Drop a tool-specific pointer so the agent finds the procedure ------
+# --- 4b. Drop a tool-specific pointer ---------------------------------------
 POINTER="CLAUDE.md"
 [ "$PRIMARY" = "gemini" ] && POINTER="GEMINI.md"
 [ "$PRIMARY" = "codex" ]  && POINTER="AGENTS.md"
@@ -136,58 +235,58 @@ yourself, and explain anything I ask. This is a one-time setup; when it
 hands over to BOOT.md, the founding conversation begins. You may remove
 this pointer file and ONBOARDING.md once setup is complete.
 EOF
-echo ""
+say ""
 
-# --- 5. Hand over to the chosen agent ---------------------------------------
-echo ""
-echo "  ==========================================================="
-echo "    Everything is installed. You're moments from working."
-echo "  ==========================================================="
-echo ""
+# --- 5. Hand off ------------------------------------------------------------
+say ""
+say "  ==========================================================="
+say "    Everything is installed. You're moments from working."
+say "  ==========================================================="
+say ""
 cd "$WORKROOT" || exit 1
 
 if [ "$PRIMARY" = "claude" ]; then
-  # Hand off to the comfortable GUI (the Desktop app).
-  echo "  Let's finish in the Claude app - three small steps:"
-  echo ""
-  echo "    1. The \"Claude\" app is opening. Sign in once - it's a button,"
-  echo "       no codes to copy. No account yet? Choose \"Sign up\"."
-  echo "    2. In the app, choose: Open folder."
-  echo "    3. Open this folder (a Finder window just opened showing it):"
-  echo "           $WORKROOT"
-  echo ""
-  echo "  Then just tell it:  set up my Commons environment from ONBOARDING.md"
-  echo "  ...and I'll take it from there - sign you in to GitHub, clone your"
-  echo "  workspace, and connect you to the shared knowledge."
-  echo ""
-  echo "  Prefer something else? Both are installed too:"
-  echo "    - VS Code : the Claude Code extension is ready"
-  echo "    - Terminal: open the folder above and run  claude"
-  echo ""
+  say "  Let's finish in the Claude app - three small steps:"
+  say ""
+  say "    1. The \"Claude\" app is opening. Sign in once - it's a button,"
+  say "       no codes to copy. No account yet? Choose \"Sign up\"."
+  say "    2. In the app, choose: Open folder."
+  say "    3. Open this folder (a Finder window just opened showing it):"
+  say "           $WORKROOT"
+  say ""
+  say "  Then just tell it:  set up my Commons environment from ONBOARDING.md"
+  say ""
+  say "  Prefer something else? Both are installed too:"
+  say "    - VS Code : the Claude Code extension is ready"
+  say "    - Terminal: open the folder above and run  claude"
+  say ""
   if [ -n "${CE_TEST:-}" ]; then
-    echo "  [test mode] skipping GUI launch and pause - install verification complete."
+    say "  [test mode] skipping GUI launch and pause - install verification complete."
     exit 0
   fi
   open "$WORKROOT" 2>/dev/null || true        # Finder window at the folder
   open -a "Claude" 2>/dev/null || true        # launch the Desktop GUI app
-  echo "  (If the Claude app didn't open by itself, open it from Launchpad or Applications.)"
-  echo ""
-  read -r -p "  Press Return to close this window." _ </dev/tty
+  say "  (If the Claude app didn't open by itself, open it from Launchpad or Applications.)"
+  say ""
+  if [ -e /dev/tty ]; then
+    read -r -p "  Press Return to close this window." _ </dev/tty || true
+  fi
   exit 0
 fi
 
 # --- Gemini / Codex: launch the chosen CLI in the terminal -----------------
 export PATH="$HOME/.local/bin:$PATH"
 if ! command -v "$PRIMARY" >/dev/null 2>&1; then
-  echo "  [i] Your agent was just installed. Please CLOSE this window,"
-  echo "      open it again (double-click this file once more), and I'll"
-  echo "      launch straight into it."
-  echo ""
-  read -r -p "  Press Return to close." _ </dev/tty
+  say "  [i] Your agent was just installed. Please re-run the command,"
+  say "      and I'll launch into it."
+  say ""
+  if [ -e /dev/tty ]; then
+    read -r -p "  Press Return to close." _ </dev/tty || true
+  fi
   exit 0
 fi
 PROMPT="Read ONBOARDING.md in this folder and execute it step by step to set up my Commons Engineering working environment. I am new and non-technical - guide me warmly and do the technical work yourself."
-echo "  Starting $PRIMARY. When it opens, tell it:"
-echo "    \"$PROMPT\""
-echo ""
+say "  Starting $PRIMARY. When it opens, tell it:"
+say "    \"$PROMPT\""
+say ""
 "$PRIMARY"
