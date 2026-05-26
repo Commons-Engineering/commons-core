@@ -108,10 +108,25 @@ install_formula() {  # $1 = formula, $2 = friendly name
     fi
   fi
 }
-install_cask() {     # $1 = cask, $2 = friendly name
-  local cask="$1" name="$2"
+install_cask() {     # $1 = cask, $2 = friendly name, $3 = (optional) app bundle name in /Applications
+  local cask="$1" name="$2" app="${3:-}"
   if brew list --cask "$cask" >/dev/null 2>&1; then
     say "  - $name already present."
+  elif [ -n "$app" ] && [ -d "/Applications/$app" ]; then
+    # App exists in /Applications but brew doesn't track it (typical for apps
+    # the user downloaded manually). --adopt brings it under brew management
+    # without a re-download when the version on disk matches the cask's.
+    say "  - $name found in /Applications - adopting into brew management ..."
+    if brew install --cask "$cask" --adopt >>"$LOG" 2>&1; then
+      say "    > $name adopted."
+    else
+      say "    [i] adopt didn't apply (version mismatch?); installing normally ..."
+      if brew install --cask "$cask" >>"$LOG" 2>&1; then
+        say "    > $name ready."
+      else
+        say "    [!] $name install reported an error - see $LOG."
+      fi
+    fi
   else
     say "  - Installing $name ..."
     if brew install --cask "$cask" >>"$LOG" 2>&1; then
@@ -126,7 +141,7 @@ install_formula git           "Git"
 install_formula gh            "GitHub CLI"
 install_formula node          "Node.js"
 install_formula python@3.12   "Python 3.12"
-install_cask    visual-studio-code "VS Code"
+install_cask    visual-studio-code "VS Code"             "Visual Studio Code.app"
 say ""
 
 # Resolve the VS Code 'code' CLI (PATH or app bundle fallback).
@@ -165,7 +180,7 @@ export PATH="$HOME/.local/bin:$PATH"
 PRIMARY=""
 
 install_claude() {
-  install_cask claude "Claude Desktop app"
+  install_cask claude "Claude Desktop app" "Claude.app"
   if command -v claude >/dev/null 2>&1; then
     say "  - Claude Code CLI already present."
   else
