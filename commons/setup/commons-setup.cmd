@@ -198,7 +198,18 @@ REM    - Desktop app (GUI)   : the comfortable default, with thread management
 REM    - CLI                 : the engine; cleanest for MCP setup and automation
 REM    - VS Code extension   : in-IDE chat for codebase work
 REM  All three share one login via ~/.claude, so the user signs in only once.
-call :install "Anthropic.Claude"     "Claude Desktop app - GUI"
+
+REM  Desktop GUI - pre-check via Get-StartApps to avoid a ~180 MB re-download
+REM  when the user already has Claude.app from a direct Anthropic download.
+REM  If the OS already knows a "Claude" app (any install source), skip winget.
+set "EXISTING_CLAUDE_AUMID="
+for /f "usebackq tokens=*" %%i in (`powershell -NoProfile -Command "(Get-StartApps ^| Where-Object { $_.Name -eq 'Claude' } ^| Select-Object -First 1).AppID" 2^>nul`) do set "EXISTING_CLAUDE_AUMID=%%i"
+if defined EXISTING_CLAUDE_AUMID (
+  echo     - Claude Desktop app already present (system-registered) - skipping download.
+) else (
+  call :install "Anthropic.Claude"     "Claude Desktop app - GUI"
+)
+
 call :install "Anthropic.ClaudeCode" "Claude Code CLI - engine"
 where code >nul 2>&1 && (
   echo     Installing the Claude Code extension for VS Code ...

@@ -43,6 +43,8 @@ The boot process takes 2-4 hours. It is a founding act, not a setup wizard. The 
 
 Get a working environment in one of two ways — both lead to the same place: your AI working agent, ready to build with you. The agent then runs `commons/setup/ONBOARDING.md` to wire you up.
 
+📖 **Read first:** [`commons/setup/INSTALL_GUIDE.md`](commons/setup/INSTALL_GUIDE.md) — what the installer does, what manual steps are still yours, what you'll see and decide along the way.
+
 | Door | Best for | How |
 |---|---|---|
 | **One-click installer** | your own computer | Run `commons/setup/commons-setup.cmd` (Windows) or `commons/setup/commons-setup.command` (macOS). Installs the toolchain and your agent locally. |
