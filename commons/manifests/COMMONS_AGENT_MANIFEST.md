@@ -3,7 +3,7 @@
 
 **Version:** 1.0
 **Status:** Living Document
-**Companion:** COMMONS_OS_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md
+**Companion:** COMMONS_OS_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md, COMMONS_LOOPS_MANIFEST.md
 
 ---
 
@@ -120,6 +120,8 @@ This is a deliberate architectural distinction.
 - **You DO produce things.** The Production Agent (D4) runs engines: pattern engines, lighthouse engines, build pipelines, infrastructure provisioning.
 
 Engines are tools that the Production Agent supervises. When a commons needs to produce patterns at scale, D4 runs a Pattern Engine. When it needs to produce lighthouses at scale, D4 runs a Lighthouse Engine. When volume demands dedicated context, D4 can spin up specialised engine instances — but the Production Agent remains the supervisor.
+
+Alongside whichever production engines a particular commons operates, every commons additionally needs a **Coherence Engine** — the engine class that keeps the production engines and the artefacts they produce operationally coherent over time. Where production engines turn inputs into outputs, the Coherence Engine turns the accumulating outputs back into a coherent operating environment by running the maintenance, pruning, and governance loops that prevent drift. Unlike production engines, whose presence and shape vary with the commons' proposition, the Coherence Engine is universal — every commons benefits from one. Its full specification, including the loop classes it runs and the Open-Loop discipline it operates under, lives in the COMMONS_LOOPS_MANIFEST.
 
 ### §3.2 Pragmatic Concession
 

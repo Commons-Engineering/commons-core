@@ -3,7 +3,7 @@
 
 **Version:** 1.2
 **Status:** Living Document
-**Companion:** COMMONS_AGENT_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md, COMMONS_OS_SPEC.md, COMMONS_DOMAINS_MANIFEST.md, COMMONS_GAMES_MANIFEST.md
+**Companion:** COMMONS_AGENT_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md, COMMONS_LOOPS_MANIFEST.md, COMMONS_OS_SPEC.md, COMMONS_DOMAINS_MANIFEST.md, COMMONS_GAMES_MANIFEST.md
 
 ---
 
@@ -194,7 +194,7 @@ Every commons gets this governance runtime by forking the OS. The issue tracker,
 
 ### §2.6 Recursive Self-Improvement
 
-The Commons OS improves itself through use. This is not aspiration — it is architecture. Concretely, every commons can run a continuous improvement loop (SENSE → ASSESS → PROPOSE → REVIEW → ACT → LEARN) via GitHub Actions, producing structured improvement proposals on the issue board. See COMMONS_OS_SPEC.md §10.2 for the implementation.
+The Commons OS improves itself through use. This is not aspiration — it is architecture. Concretely, every commons can run a continuous improvement loop (SENSE → ASSESS → PROPOSE → REVIEW → ACT → LEARN) via GitHub Actions, producing structured improvement proposals on the issue board. See COMMONS_OS_SPEC.md §10.2 for the implementation. This single workflow is one instance of a broader architectural pattern — the four loop classes (production, maintenance, governance, pruning), the Open-Loop discipline, the Loop Registry, and the Coherence Engine that runs the maintenance and pruning loops are specified in the COMMONS_LOOPS_MANIFEST.
 
 | Loop | How it works |
 |---|---|

@@ -3,7 +3,7 @@
 
 **Version:** 1.0
 **Status:** Living Document
-**Companion:** COMMONS_OS_MANIFEST.md, COMMONS_ENGINEER_MANIFEST.md, COMMONS_INCUBATOR_MANIFEST.md
+**Companion:** COMMONS_OS_MANIFEST.md, COMMONS_ENGINEER_MANIFEST.md, COMMONS_INCUBATOR_MANIFEST.md, COMMONS_LOOPS_MANIFEST.md
 
 ---
 
@@ -108,7 +108,7 @@ The operational layer where the system's daily life is specified: operational ca
 The system's capacity to observe itself and its environment: performance sensing (internal state against purpose) and environment sensing (external conditions against scenarios). A system that cannot sense itself cannot govern itself. L8 generates the data that L9 processes — and provides the early warning signals of vitality loss before they become structural failures. Critically, L8 does not only monitor operational performance. It monitors the continued relevance of purpose. When the environment changes in ways that make the stated purpose obsolete or misaligned, L8 should generate the signal that triggers a purpose review.
 
 **L9: Intelligence**
-The adaptive intelligence layer: multi-speed feedback loops that process sensing data at different timescales, and feedback escalation mechanisms that route anomalies to the appropriate response level. L9 is where the system learns — and where the most important decisions about whether to update the Anatomy are initiated. When L9 detects a persistent and significant pattern in sensing data that contradicts a design assumption in L1-L6, it escalates to L5 (integrity), which elevates to L3 (governance), which decides whether to initiate an Anatomy revision. This is the feedback loop that keeps the Blueprint alive.
+The adaptive intelligence layer: multi-speed feedback loops that process sensing data at different timescales, and feedback escalation mechanisms that route anomalies to the appropriate response level. L9 is where the system learns — and where the most important decisions about whether to update the Anatomy are initiated. When L9 detects a persistent and significant pattern in sensing data that contradicts a design assumption in L1-L6, it escalates to L5 (integrity), which elevates to L3 (governance), which decides whether to initiate an Anatomy revision. This is the feedback loop that keeps the Blueprint alive. L9 is also the canonical home of the commons' **Loop Registry** — the structured directory of every documented loop the commons runs, including the operational loops rooted in L7, the sensing loops rooted in L8, the coherence loops rooted in L5, and the decision-currency loops rooted in L3. The Loop Registry is what makes the commons' adaptive intelligence legible: a commons whose Loop Registry is governed — loops added deliberately, retired deliberately, reviewed at the same cadence as the rest of the Blueprint — is a commons whose self-improvement is alive. The full specification lives in the COMMONS_LOOPS_MANIFEST.
 
 ---
 
