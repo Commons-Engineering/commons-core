@@ -1,441 +1,567 @@
+<!--
+Template v2 — cloudsters/business-essentials/templates/blueprint.md
+Living Blueprint (L1-L9 substrate) with the BEN Cascade at L5.
+
+Two-layer document:
+  • §0 Pipeline Annotation Card — Pipeline-side observer content,
+    STRIPPED at copy-time when this .d is transferred into a customer's
+    sovereign .o instance. See Spec §"Customer Transfer".
+  • Foreword + Parts I/II/III + Appendices — Wir-Perspektive throughout,
+    transfers verbatim to {customer-org}/{slug}.o on engagement.
+
+Agent Briefs at the head of every section declare depth, triangulation
+requirement, output shape, and time budget. Loop contract hooks per
+value stream point to instance/operations/loops/ per COMMONS_LOOPS_MANIFEST §8.
+
+Conforms to:
+  • COMMONS_OS_MANIFEST · COMMONS_BLUEPRINT_MANIFEST · COMMONS_LOOPS_MANIFEST
+  • LIGHTHOUSE_BUSINESS_SPEC/1.2 · BUSINESS_ENGINEERING_MANIFEST
+  • INSTANCE_PIPELINE_SPEC v0.3.9+
+-->
+
 ---
 instance_type: domain
-version: 0.1
+instance_class: business_digital_twin
+version: 0.2
+template_version: business-essentials/blueprint v2
 last_updated: {{YYYY-MM-DD}}
-sources: {{List primary sources of information used to build this blueprint}}
-commons_signal_score: {{Overall Score}}
+subject: {{Subject Legal Name}}
+slug: {{slug}}
+language: {{de|en|fr|...}}
+sector: {{sector slug}}
+region: {{Region — cloudsters-EUROPE | cloudsters-AMERICAS | …}}
+city: {{city slug if applicable}}
+brightness_orbit: {{0–5 with label, e.g. "3 — Dim"}}
+lifecycle_stage: {{Collect|Qualify|Nurture|Engage|Propose|Collaborate|Expand}}
+archetype: {{archetype slug}}
+commons_signal_score: {{n.n/9}}
+sources:
+  - {{primary URL}}
+  - {{primary URL}}
+  - {{statutory primary disclosure source, e.g. Northdata / Bundesanzeiger / EUIPO}}
+sibling_g: {{org}}/{{slug}}.g
 ---
 
-# Business Blueprint: {{Business Name}}
+# Business Blueprint: {{Subject Name}}
+
+> ⚠️ **Pipeline-side observation.** This is the Pipeline-side `.d` instance of {{Subject Name}} — a federation-readable Digital Twin built from public sources, authored by cloudsters. It is *not* the subject's own commons. If {{Subject Name}} engages, the Pipeline-side blueprint becomes the substrate for a sovereign `.o` in their own GitHub namespace: the §0 Pipeline Annotation Card is stripped at copy-time; everything below the strip marker transfers verbatim. The Wir-Perspektive of the main body is deliberate — it lets the customer adopt the document as their own voice without rewriting.
+
+---
+
+## §0 — Pipeline Annotation Card
+
+> *Pipeline-side only; **removed on transfer to {{customer-org}}/{{slug}}.o**. The strip boundary is the `<!-- pipeline-annotation:end -->` marker below.*
+
+### Stewardship Card
+
+| Property | Value |
+|---|---|
+| **Steward** | {{Incubator-GmbH or @handle; *not assigned* if open}} |
+| **Region** | {{cloudsters-REGION}} |
+| **Brightness Orbit** | {{0 — Beacon | 1 — Bright | 2 — Active | 3 — Dim | 4 — Faint | 5 — Dark}} |
+| **Lifecycle stage** | {{Collect → Expand per Spec}} |
+| **MCP subscription status** | {{not active | bridging period | live; tier (Small Business / Mid-Market / Enterprise)}} |
+| **Source freshness — last full refresh** | {{ISO date}} |
+| **Source freshness — next due** | {{ISO date — driven by `{{slug}}-trajectory-refresh` Maintenance Loop}} |
+| **Evidence quality** | {{low | medium | medium-high | high}} — {{one-sentence justification}} |
+| **Account Issue** | {{org}}/{{ops-repo}}#{{number}} |
+| **Workstream Board** | {{org}}/projects/{{n}} *(per Phase 5)* |
+
+### Engagement Opportunity *(Pipeline observation)*
+
+> *Agent Brief:* Depth = **medium**. Triangulation = the assessment must reference §2 SWOT, §4.3 Competitive Landscape, §4.4 Strategic Initiatives. Output = 3-5 sentences of structured opportunity logic. Time budget = 30 minutes.
+
+{{Two-paragraph reasoning: where the cloudsters proposition lands on this account, what the most credible first conversation looks like, what makes a tractable initial engagement.}}
+
+### Active Pipeline-side Loops *(Loop Registry summary; full contracts in `instance/operations/loops/`)*
+
+| Loop | Class | Cadence | Status |
+|---|---|---|---|
+| `{{slug}}-trajectory-refresh` | Maintenance, Open | quarterly + event | {{status / next run}} |
+| `{{slug}}-named-contacts-freshness` | Maintenance, Open | annual + LinkedIn event | {{status / next run}} |
+| `{{slug}}-financial-refresh` | Maintenance, Open | annual *(post fiscal-year publication)* | {{status / next run}} |
+| `{{slug}}-strategic-initiative-tracking` | Governance, Open | quarterly | {{status / next run}} |
+| `{{slug}}-hiring-signal-scan` | Sensing, Closed-under-policy | monthly | {{status / next run}} |
+
+### Known data discrepancies *(to verify in first dialogue)*
+
+- {{e.g. "Statutory register lists X as alleinvertretungsberechtigt; website lists Y as operational lead. Resolve in first conversation."}}
+- {{additional discrepancies}}
+
+<!-- pipeline-annotation:end -->
+<!-- Content above is Pipeline-side observation, removed on transfer to {{customer-org}}/{{slug}}.o -->
+
+---
+
+*— end of Pipeline Annotation Card. Everything below is customer-portable Wir-Perspektive. —*
+
+---
 
 ## Foreword
 
-### For whom is this document?
-This blueprint is designed for anyone who wants to understand {{Business Name}} as a living system—whether you are a founder, employee, partner, investor, or an autonomous agent assisting the organization. It is written as if the system itself is speaking.
+> *Agent Brief:* Depth = **shallow**. Triangulation = none required. Output = ~3 short paragraphs, formal first-person. Time budget = 15 minutes. Wir-Perspektive disciplined throughout — no third-person observations bleed into the body.
 
-### What is a Living Blueprint?
-A blueprint is a **time-layered specification** of a living system. It describes not only what the system is today (Baseline), but also where it aims to go (Near Future, Distant Future) and how it gets there (Iterative Path).
+### What this document is
 
-This document always describes the **Near Future** — the next state we are working toward. The Git history *is* the Baseline progression. Every past commit was once the Near Future. Every current commit is the next step forward.
+This blueprint describes **us — {{Subject Name}}** — as a living system. It is a structured, time-layered specification of what we are today *(Baseline)*, what we aim to become *(Near Future)*, and how we move between the two *(Iterative Path)*. It is written as though the system itself were speaking.
 
-### How to use this template
-- **Humans:** Fill in the sections with the best available knowledge. Use the guiding questions to reflect on the true nature of the business.
-- **Agents:** When booting a Commons OS instance in "Business" mode, use this template to interview the founders/stakeholders. Populate the sections based on their answers, referencing the `business-essentials` extension pack (patterns and entities) where applicable.
+Wir-Perspektive disciplined throughout: when we write "we", we mean {{Subject Name}} — its board, its leadership, its team, its members and partners. We do not speak about ourselves; we speak as ourselves.
+
+### For whom it is written
+
+| Reader | Why this lands on their desk |
+|---|---|
+| {{Board / Leadership}} | Strategic continuity — a structured baseline against which decisions can be tested |
+| {{Funders / Owners / Shareholders / Members}} | Transparency at the level of structure, not only of finance |
+| {{Operational partners}} | A shared reference for how the partnership holds itself coherent over time |
+| {{Peer organisations in the sector}} | A reproducible reference; how our practice describes itself |
+| {{Future co-creators}} | What we are, what we are becoming, what we ask of those who join us |
+
+### A note on time
+
+A blueprint is a *temporal specification*. It describes us **today** *(the Baseline, what we have committed to)* and points toward **what we are working to become** *(the Near Future, the next 12-24 months)*. The git history of this document is the record of every prior Baseline — each commit was, at some earlier moment, the Near Future, and is now what we have actually become. The long horizon *(2030+, 2040)* lives in our **Game** instance *(see §8)*.
 
 ---
 
 # PART I — WHO WE ARE
 
-## 1. Identity & Purpose
+## §1 Identity and Purpose
 
-### 1.1 Profile
+### §1.1 Profile
+
+> *Agent Brief:* Depth = **shallow**. Triangulation = 2 sources for headcount, revenue, founding date. Output = the table below, every cell filled or marked `unknown`. Time budget = 20 minutes.
+
 | Attribute | Value |
 |---|---|
-| **Name** | {{Official Name}} |
-| **Legal Form** | {{e.g., LLC, Cooperative, B-Corp, DAO}} |
-| **Location/HQ** | {{Physical or Digital HQ}} |
-| **Founded** | {{Year}} |
-| **Status** | {{e.g., Startup, Scaling, Mature Enterprise}} |
-| **Primary Market** | {{Target Market/Industry}} |
+| **Legal name** | {{Full Legal Name}} |
+| **Legal form** | {{e.g. GmbH, AG, e. V., Cooperative}} |
+| **Statutory register** | {{Vereinsregister/Handelsregister entry, EUID where applicable}} |
+| **NACE / sector code** | {{e.g. 94.99}} |
+| **Tax / charity status** | {{gemeinnützig + tax ID / charity registration / —}} |
+| **Founded** | {{Year(s) — note any predecessor / merger / rebrand}} |
+| **Headquarters** | {{Street, city, country}} |
+| **Contact** | {{phone · email · website}} |
+| **Patron / Honorary roles** | {{Schirmherr / Honorary chair / —}} |
+| **Primary geography** | {{Region of operation}} |
+| **Sector / archetype** | {{Sector + Business Archetype slug}} |
 
-### 1.2 Our Purpose
+### §1.2 Our purpose
+
 > **A commons systematically creates value that is alive, shared, just, and built to last.**
 
-{{Business Name}} exists to {{Core Mission/Purpose}}.
+{{Subject Name}} exists to {{one-sentence Bestimmung — the why; for German-language instances render "Purpose" as "Bestimmung", never "Zweck"}}.
 
-*Agent Prompt: Ask the user "Why does this business exist? What fundamental problem does it solve for its ecosystem?" Map their answer to the four dimensions below.*
+We articulate this through the four dimensions:
 
-| Dimension | In this system |
+| Dimension | In our system |
 |---|---|
-| **D1 — Identity & Purpose** | {{Why do we exist? For whom? What is the ultimate outcome we serve?}} |
-| **D2 — Participation & Relationship** | {{Who participates? Employees, customers, partners, the community, the environment.}} |
-| **D3 — Proposition & Exchange** | {{What do we offer? What is exchanged? (e.g., products for revenue, data for service, equity for labor)}} |
-| **D4 — Production & Resilience** | {{How is value produced? What infrastructure, assets, and processes sustain us?}} |
+| **D1 — Bestimmung / Definition & Purpose** | {{What we exist for, the systemic outcome we serve}} |
+| **D2 — Teilhabe / Participation & Relationship** | {{Who participates with us — human and non-human}} |
+| **D3 — Angebot / Proposition & Exchange** | {{What we offer; what we receive in exchange}} |
+| **D4 — Resilienz / Production & Resilience** | {{How value is produced and made resilient over time}} |
 
-### 1.3 Values & Commitments
-- **{{Value 1}}:** {{Description of how this value is lived in practice}}
-- **{{Value 2}}:** {{Description}}
-- **{{Value 3}}:** {{Description}}
+### §1.3 Our values and commitments
 
-### 1.4 Commons Qualities Self-Assessment
-*Agent Prompt: Evaluate the business against the five Commons qualities. Score them as Strong, Partial, or At Risk.*
+> *Agent Brief:* Depth = **medium**. Triangulation = our public commitments (Initiative Transparente Zivilgesellschaft / B-Corp / charter / Satzung / values statement). Output = 4-7 values, each with 1-2 sentences on how it is lived in practice. Time budget = 30 minutes.
 
-| Quality | Manifestation in this business | Assessment |
+| Value | How it is lived in our practice |
+|---|---|
+| **{{Value 1}}** | {{Lived practice — not aspiration}} |
+| **{{Value 2}}** | {{Lived practice}} |
+| **{{Value 3}}** | {{Lived practice}} |
+| **{{Value 4}}** | {{Lived practice}} |
+
+### §1.4 Commons-Qualities self-assessment
+
+> *Agent Brief:* Depth = **medium**. Triangulation = the assessment is grounded in observable facts from §2 Situation Report and §5 Value Streams. Output = the table below with one-line justification per row, score 🟢 Strong / 🟡 Partial / 🔴 At Risk. Time budget = 30 minutes.
+
+| Quality | How it shows in us | Assessment |
 |---|---|---|
-| **Systematic** | {{How is governance structured? Is value creation systematic or ad-hoc?}} | {{Score}} |
-| **Alive** | {{Does the system regenerate its participants and resources, or deplete them?}} | {{Score}} |
-| **Shared** | {{Is ownership, governance, or value shared among participants?}} | {{Score}} |
-| **Just** | {{Are the exchange models fair? Do contributors receive proportionate value? Are the voiceless considered?}} | {{Score}} |
-| **Built to Last** | {{Is the business model sustainable long-term? Would it survive its founders?}} | {{Score}} |
+| **Systematic** | {{How is governance and value creation structured rather than ad hoc?}} | 🟢/🟡/🔴 |
+| **Alive** | {{Does the system regenerate its participants and resources?}} | 🟢/🟡/🔴 |
+| **Shared** | {{Is ownership, governance, or value shared among participants?}} | 🟢/🟡/🔴 |
+| **Just** | {{Are exchanges fair? Do contributors receive proportionate value? Are the voiceless considered?}} | 🟢/🟡/🔴 |
+| **Built to last** | {{Is the model sustainable? Would it survive its founders?}} | 🟢/🟡/🔴 |
+
+### §1.5 Recent Trajectory — the events that shaped where we stand today
+
+> *Agent Brief:* Depth = **deep**. Triangulation = primary register history *(Bundesanzeiger / Handelsregister / Vereinsregister)* plus press releases plus the company's own news archive — minimum 3 sources spanning the last 36-60 months. Output = chronological table, named-event with 1-2 sentence consequence per row. Time budget = 60-90 minutes.
+> *Maintained by Loop:* `{{slug}}-trajectory-refresh` *(Maintenance, Open, quarterly + event trigger)*.
+
+| Date / Period | Event | What it changed for us |
+|---|---|---|
+| {{ISO date}} | {{event}} | {{consequence}} |
+| {{ISO date}} | {{event}} | {{consequence}} |
+
+### §1.6 What we are *(in one paragraph for those who need it short)*
+
+> *Agent Brief:* Depth = **shallow**. Triangulation = synthesis of §1.1-§1.5. Output = one paragraph, ~150 words, no bullets — readable aloud. Time budget = 20 minutes.
+
+*{{Single-paragraph summary of who we are.}}*
 
 ---
 
-## 2. Situation Report
+## §2 Situation Report — Where we stand
 
-*Where do we stand? How are we doing? What shapes our environment?*
+> *Agent Brief — section:* Depth = **deep**. Triangulation per Data Triangulation Standard. SWOT block in §2.2 is mandatory output. Time budget for the full §2 section = 2-3 hours.
+> *Maintained by Loops:* `{{slug}}-trajectory-refresh` *(quarterly)* and `{{slug}}-financial-refresh` *(annual)*.
 
-### 2.1 Key Metrics
-| Area | Metric | Value |
-|---|---|---|
-| **Value Creation** | {{e.g., Active Users, Units Sold}} | {{Value}} |
-| **Financials** | {{e.g., MRR, Profit Margin, Runway}} | {{Value}} |
-| **Participation** | {{e.g., Team Size, Partner Count}} | {{Value}} |
-| **Resilience** | {{e.g., Churn Rate, Carbon Footprint}} | {{Value}} |
+### §2.1 Key metrics
 
-### 2.2 Strengths
-- {{Core strength 1}}
-- {{Core strength 2}}
+| Area | Metric | Value | Source | Status |
+|---|---|---|---|---|
+| **Headcount** | FTE | {{value}} | {{source}} | {{confirmed / unconfirmed / inferred}} |
+| **Headcount** | Total people incl. volunteers / contractors | {{value}} | {{source}} | {{status}} |
+| **Financial** | Revenue / total income | {{value}} | {{source}} | {{confirmed / unconfirmed / inferred}} |
+| **Financial** | Equity / reserves | {{value}} | {{source}} | {{status}} |
+| **Reach** | Locations / markets / users served | {{value}} | {{source}} | {{status}} |
+| **Sector-specific 1** | {{e.g. members, volunteers placed/year, units shipped, ...}} | {{value}} | {{source}} | {{status}} |
+| **Sector-specific 2** | {{...}} | {{value}} | {{source}} | {{status}} |
 
-### 2.3 Burdens / Challenges
-- {{Current structural burden or bottleneck 1}}
-- {{Current structural burden or bottleneck 2}}
+### §2.2 SWOT — at the {{year}} Baseline
 
-### 2.4 Opportunities
-- {{Market or systemic opportunity 1}}
+| **Strengths** | **Weaknesses** |
+|---|---|
+| {{strength}} | {{weakness}} |
+| {{strength}} | {{weakness}} |
+| {{strength}} | {{weakness}} |
 
-### 2.5 Risks
-- {{Existential or operational risk 1}}
+| **Opportunities** | **Risks** |
+|---|---|
+| {{opportunity}} | {{risk}} |
+| {{opportunity}} | {{risk}} |
+| {{opportunity}} | {{risk}} |
 
----
+### §2.3 Strengths — narrative
 
-## 3. Our Ecosystem
+{{Two paragraphs translating the strengths into the narrative of who we are.}}
 
-*Who participates in this system? What do they bring? What do they get in return?*
-*Agent Prompt: Reference the `business-essential-entities.xlsx` (Master entities like Employee, Customer, Partner, Supplier) to populate these tables.*
+### §2.4 Burdens
 
-### 3.1 Customers / Users
-| Archetype | Volume | What we offer | What they bring |
-|---|---|---|---|
-| **{{Archetype 1}}** | {{Count}} | {{Value Proposition}} | {{Revenue, Data, Attention}} |
+{{One paragraph on the structural fragility we live with.}}
 
-### 3.2 Team / Contributors
-| Archetype | Count | What we offer | What they bring |
-|---|---|---|---|
-| **{{Role/Team}}** | {{Count}} | {{Compensation, Purpose, Growth}} | {{Skills, Time, Network}} |
+### §2.5 Opportunities
 
-### 3.3 Partners & Suppliers
-| Archetype | What we offer | What they bring |
-|---|---|---|
-| **{{Partner Type}}** | {{Market access, Revenue share}} | {{Capabilities, Materials, Reach}} |
+{{One paragraph on the systemic openings we can move into.}}
 
-### 3.4 Non-Human Participants
-*Every living system depends on participants that don't speak. AI agents, local ecosystems, open source communities, the built environment. Name them. They have stakes too.*
+### §2.6 Risks
 
-| Participant | What it contributes | What it needs | How we steward it |
-|---|---|---|---|
-| **{{e.g., Local Ecosystem}}** | {{e.g., Clean water, pollination, climate regulation}} | {{e.g., Low pollution, habitat preservation}} | {{e.g., Environmental impact monitoring}} |
-| **{{e.g., AI Agents}}** | {{e.g., Automation, analysis, pattern matching}} | {{e.g., Good data, clear governance, ethical boundaries}} | {{e.g., Responsible AI policy}} |
-| **{{e.g., Open Source Stack}}** | {{e.g., Infrastructure, tools, community knowledge}} | {{e.g., Contributions back, responsible usage}} | {{e.g., Upstream contributions, license compliance}} |
+{{One paragraph on the long-shadow risks.}}
 
 ---
 
-## 4. Our Value Proposition
+## §3 Our Ecosystem — Who participates in our system
 
-*What do we offer—and in what exchange model?*
+> *Agent Brief — section:* Depth = **deep**. Triangulation = named-people verification across at least 2 sources *(website + LinkedIn + register filings)*. Output = the tables below, named decision-makers with role + responsibility + LinkedIn. Time budget = 90-120 minutes.
+> *Maintained by Loop:* `{{slug}}-named-contacts-freshness` *(Maintenance, Open, annual + change event)*.
 
-### 4.1 Core Offerings
-| Offering | Volume/Scale | Key Differentiator |
+### §3.1 Our governance — Vorstand / Board *(named decision-makers)*
+
+| Name | Role | External context | Area of responsibility with us | LinkedIn |
+|---|---|---|---|---|
+| {{Name}} | {{Chair / Treasurer / Beisitzer / ...}} | {{employer / civic role}} | {{what they own with us}} | {{URL}} |
+| {{Name}} | {{role}} | {{context}} | {{responsibility}} | {{URL}} |
+
+### §3.2 Our leadership — Geschäftsführung / Executive
+
+| Name | Role | Focus | LinkedIn |
+|---|---|---|---|
+| {{Name}} | {{Geschäftsführung / CEO / Co-Lead}} | {{remit}} | {{URL}} |
+| {{Name}} | {{role}} | {{remit}} | {{URL}} |
+
+### §3.3 Our team
+
+| Name (or role) | Responsibility | Notes |
 |---|---|---|
-| **{{Product/Service 1}}** | {{Metrics}} | {{Why it matters}} |
+| {{Name or role}} | {{responsibility}} | {{notes}} |
 
-### 4.2 Exchange Models
-| Model | Volume/Impact | Trend |
+### §3.4 Our members / contributors *(structural)*
+
+| Member class | Count | Right / role |
 |---|---|---|
-| **{{e.g., SaaS Subscription, One-off Sales, Freemium}}** | {{Revenue %}} | {{Growing/Shrinking}} |
+| {{e.g. institutional members}} | {{n}} | {{voting / advisory / supportive}} |
+| {{e.g. personal members}} | {{n}} | {{rights}} |
+
+### §3.5 Our stakeholder landscape
+
+| Stakeholder archetype | What we offer them | What they bring us | Scale |
+|---|---|---|---|
+| {{Archetype}} | {{value proposition}} | {{value received}} | {{scale}} |
+
+### §3.6 Non-human participants
+
+| Non-human participant | What we tend | What it gives us |
+|---|---|---|
+| {{e.g. local ecosystem}} | {{stewardship act}} | {{regulation / context / identity}} |
+| {{e.g. AI agents on our platform}} | {{governance of their use}} | {{capacity / reach}} |
+| {{e.g. our open-source stack}} | {{contribution back}} | {{infrastructure}} |
+
+### §3.7 Hiring Signals — where we are currently investing through hiring
+
+> *Agent Brief:* Depth = **shallow**. Triangulation = the organisation's careers page + LinkedIn jobs + sector job boards. Output = top 5-10 open positions with role, focus area, and what it signals about our priorities. Time budget = 30 minutes.
+> *Maintained by Loop:* `{{slug}}-hiring-signal-scan` *(Sensing, Closed-under-policy, monthly)*.
+
+| Open position | Focus area | What this signals about our priorities |
+|---|---|---|
+| {{role title}} | {{area}} | {{signal}} |
+
+---
+
+## §4 Our Value Proposition
+
+### §4.1 Our core offerings
+
+> *Agent Brief:* Depth = **deep**. Triangulation = our own product/service catalogue + customer-facing collateral + at least one independent reference. Output = full per-offering table with key differentiator. Time budget = 60 minutes.
+
+| Offering | Engagement shape | Scale | Key differentiator |
+|---|---|---|---|
+| {{Offering / Product / Service}} | {{one-time / subscription / project / programme}} | {{scale or volume}} | {{why it matters in market}} |
+
+### §4.2 Our exchange models
+
+| Model | Counterparty | Notes |
+|---|---|---|
+| {{Revenue stream / funding stream}} | {{Counterparty}} | {{Notes}} |
+| {{...}} | {{...}} | {{...}} |
+
+### §4.3 Competitive Landscape — the peers we compete with
+
+> *Agent Brief:* Depth = **deep**. Triangulation = sector reports + competitor websites + market-intelligence sources. Output = 5-10 named peers with their positioning + relationship to us. Time budget = 60-90 minutes.
+
+| Peer | What they do | Their positioning | Relationship to us |
+|---|---|---|---|
+| {{Peer name}} | {{focus}} | {{positioning}} | {{competitor / collaborator / both}} |
+
+### §4.4 Strategic Initiatives — what we are currently doing concretely
+
+> *Agent Brief:* Depth = **deep**. Triangulation = our press releases + investor / funder reports + named-people interviews on record. Output = 5-10 named initiatives with status, horizon, owner. Time budget = 60-90 minutes.
+> *Maintained by Loop:* `{{slug}}-strategic-initiative-tracking` *(Governance, Open, quarterly)*.
+
+| # | Initiative | Status | Time horizon | Owner |
+|---|---|---|---|---|
+| 1 | {{named initiative}} | {{planning / in flight / piloting / consolidating}} | {{e.g. 2026-2028}} | {{role / name}} |
 
 ---
 
 # PART II — HOW WE WORK
 
-## 5. Value Streams Overview
+## §5 Value Streams Overview
 
-*The core value creation model. Each family is described using the BEN Cascade (Stakeholder → Value Proposition → Journey → Touchpoints → Value Stream → Capabilities → Solutions → Organisation).*
-*Agent Prompt: Map the business's operations to the 14 Value Stream Families from `business-essential-patterns.xlsx`. Only include the ones highly relevant to this specific business.*
+> *Agent Brief — section:* Depth = **very deep**. Triangulation per VSF: at least 2 sources for the Element table content; at least 2 sources for any named-people entry in Value Stream Team. Output per VSF: the 8-element BEN cascade table + Value Stream Team table + Linked Artifacts list. Time budget per VSF = 60-90 minutes. Section total = 16-20 hours; this is the heart of the work.
 
-### D1 — Identity & Purpose
+The 14 canonical business value-stream families. Each cascade is **outside-in**:
 
-#### 5.1 Identity to Mandate
-*How the business defines its identity, secures its mandate to operate, and ensures compliance and risk management.*
+**Stakeholder → Value Proposition → Journey → Touchpoints → Value Stream → Capabilities → Solutions → Organisation.**
 
-| Element | Manifestation |
-|---|---|
-| **Primary Stakeholders** | {{Founders, Board, Regulators}} |
-| **Value Proposition** | {{Legitimacy, strategic clarity, risk mitigation}} |
-| **Journeys** | {{Strategy planning, compliance audits}} |
-| **Touchpoints** | {{Board meetings, annual reports}} |
-| **Value Stream** | Define Mandate → Formulate Strategy → Set Goals → Ensure Compliance → Manage Risk |
-| **Capabilities** | {{e.g., Strategic Planning, Risk Management}} |
-| **Solutions** | {{Tools used}} |
-| **Organisation** | {{Responsible teams}} |
+For every VSF the structure below is mandatory: the 8-element Element table, the Value Stream Team table (named customer-side stakeholders with the Steward-side practitioner mapping), and the Linked Artifacts block pointing to patterns, evidence files, and the loop contract that keeps that stream honest over time.
 
-#### 5.2 Purpose to Portfolio
-*How the purpose is translated into a concrete portfolio of products, services, or initiatives.*
+### Dimension 1 — Definition & Purpose
+
+#### §5.1 Identity to Mandate
+
+*How we define our identity, secure our mandate to operate, and govern ourselves.*
 
 | Element | Manifestation |
 |---|---|
-| **Primary Stakeholders** | {{Executive Team, Product Managers}} |
-| **Value Proposition** | {{Coherent offerings aligned with mission}} |
-| **Journeys** | {{Product ideation, portfolio review}} |
-| **Touchpoints** | {{Roadmap planning, strategic reviews}} |
-| **Value Stream** | Analyze Environment → Define Portfolio → Prioritize Initiatives → Allocate Resources → Measure Impact |
-| **Capabilities** | {{e.g., Portfolio Management, Innovation Management}} |
-| **Solutions** | {{Tools used}} |
-| **Organisation** | {{Responsible teams}} |
+| **Primary stakeholders** | {{named people, roles, entities}} |
+| **Value proposition** | {{what this stream delivers to its stakeholders}} |
+| **Journeys** | {{the stakeholder journeys this stream serves}} |
+| **Touchpoints** | {{interaction points, systems, documents}} |
+| **Value Stream** | {{Step A → Step B → Step C → ...}} |
+| **Capabilities** | {{named capabilities required}} |
+| **Solutions** | {{specific tools, systems, platforms in use}} |
+| **Organisation** | {{responsible roles, teams, governance}} |
 
-#### 5.3 Value to Profit
+##### Value Stream Team
+
+| Member | Role | Lens |
+|---|---|---|
+| {{Name from §3 board / leadership / team}} | {{their role here}} | {{customer-side perspective}} |
+
+##### Linked Artifacts
+
+- Pattern: {{cross-reference to operational patterns}}
+- Evidence: `instance/workshop/evidence/{{file}}.md` *(Phase 1 source)*
+- Loop contract: `instance/operations/loops/{{slug}}-identity-mandate-review.yml`
+
+#### §5.2 Purpose to Portfolio
+
+*How our purpose is translated into a concrete portfolio of offerings.*
+
+*(Element table + Value Stream Team + Linked Artifacts per the §5.1 pattern. Loop contract: `instance/operations/loops/{{slug}}-purpose-portfolio-review.yml`)*
+
+#### §5.3 Value to Profit
+
 *How value created is captured, accounted for, and reinvested.*
 
-| Element | Manifestation |
-|---|---|
-| **Primary Stakeholders** | {{Finance Team, Investors, Shareholders}} |
-| **Value Proposition** | {{Financial sustainability, equitable distribution}} |
-| **Journeys** | {{Budgeting, invoicing, financial reporting}} |
-| **Touchpoints** | {{Financial statements, investor updates}} |
-| **Value Stream** | Deliver Value → Invoice → Collect Revenue → Manage Costs → Reinvest → Report |
-| **Capabilities** | {{e.g., Financial Accounting, Treasury, Controlling}} |
-| **Solutions** | {{Tools used}} |
-| **Organisation** | {{Responsible teams}} |
+*(Element table + Value Stream Team + Linked Artifacts per the §5.1 pattern. Loop contract: `instance/operations/loops/{{slug}}-financial-currency-check.yml`)*
 
-#### 5.4 Portfolio to System
+#### §5.4 Portfolio to System
+
 *How the technological and informational architecture is designed and managed.*
 
-| Element | Manifestation |
-|---|---|
-| **Primary Stakeholders** | {{IT Team, All Employees}} |
-| **Value Proposition** | {{Secure, scalable, and efficient infrastructure}} |
-| **Journeys** | {{System implementation, IT support, security audits}} |
-| **Touchpoints** | {{Helpdesk, internal portals, software interfaces}} |
-| **Value Stream** | Define IT Strategy → Design Architecture → Select Systems → Implement → Operate → Evolve |
-| **Capabilities** | {{e.g., Enterprise Architecture, Cybersecurity, IT Operations}} |
-| **Solutions** | {{Tools used}} |
-| **Organisation** | {{Responsible teams}} |
+*(Element table + Value Stream Team + Linked Artifacts per the §5.1 pattern. Loop contract: `instance/operations/loops/{{slug}}-portfolio-system-review.yml`)*
 
----
+### Dimension 2 — Participation & Relationship
 
-### D2 — Participation & Relationship
+#### §5.5 Participants to Community
 
-#### 5.5 Participants to Community
 *How isolated stakeholders become a living community. Public narrative, governance participation.*
 
-| Element | Manifestation |
-|---|---|
-| **Primary Stakeholders** | {{All Participants, Public, Media}} |
-| **Value Proposition** | {{Belonging, transparent communication, trust}} |
-| **Journeys** | {{Community engagement, PR campaigns}} |
-| **Touchpoints** | {{Newsletters, social media, community forums}} |
-| **Value Stream** | Identify Stakeholders → Build Voice Architectures → Shape Narrative → Nurture Relationships → Measure Trust |
-| **Capabilities** | {{e.g., Community Management, Public Relations}} |
-| **Solutions** | {{Tools used}} |
-| **Organisation** | {{Responsible teams}} |
+*(Element table + Value Stream Team + Linked Artifacts. Loop contract: `instance/operations/loops/{{slug}}-community-pulse.yml`)*
 
-#### 5.6 Collaboration to Automation
+#### §5.6 Collaboration to Automation
+
 *How collaboration turns into reliable patterns, quality management, and eventual automation.*
 
-| Element | Manifestation |
-|---|---|
-| **Primary Stakeholders** | {{Process Owners, Quality Managers}} |
-| **Value Proposition** | {{Continuous improvement, efficiency, learning organization}} |
-| **Journeys** | {{Process optimization, quality audits}} |
-| **Touchpoints** | {{SOPs, training platforms, performance dashboards}} |
-| **Value Stream** | Capture Knowledge → Standardize Processes → Measure Quality → Benchmark → Improve → Automate |
-| **Capabilities** | {{e.g., Quality Management, Process Automation, Knowledge Management}} |
-| **Solutions** | {{Tools used}} |
-| **Organisation** | {{Responsible teams}} |
+*(Element table + Value Stream Team + Linked Artifacts. Loop contract: `instance/operations/loops/{{slug}}-collaboration-quality-check.yml`)*
 
-#### 5.7 Hire to Retire
+#### §5.7 Hire to Retire
+
 *How contributors are attracted, developed, retained, and transitioned.*
 
-| Element | Manifestation |
-|---|---|
-| **Primary Stakeholders** | {{Employees, HR Team, Candidates}} |
-| **Value Proposition** | {{Meaningful work, fair compensation, growth opportunities}} |
-| **Journeys** | {{Recruitment, performance reviews, career progression}} |
-| **Touchpoints** | {{Job portals, performance appraisals, training sessions}} |
-| **Value Stream** | Identify Need → Recruit → Onboard → Develop → Retain → Manage Transitions |
-| **Capabilities** | {{e.g., Talent Acquisition, Performance Management, Payroll}} |
-| **Solutions** | {{Tools used}} |
-| **Organisation** | {{Responsible teams}} |
+*(Element table + Value Stream Team + Linked Artifacts. Loop contract: `instance/operations/loops/{{slug}}-workforce-pulse.yml`)*
 
-#### 5.8 Welcome to Transition
-*How the entry and exit from the organization are designed to ensure psychological safety and knowledge transfer.*
+#### §5.8 Welcome to Transition
 
-| Element | Manifestation |
-|---|---|
-| **Primary Stakeholders** | {{New Hires, Departing Employees}} |
-| **Value Proposition** | {{Safe arrival, dignified exit, knowledge preservation}} |
-| **Journeys** | {{Onboarding program, offboarding process}} |
-| **Touchpoints** | {{Welcome kits, exit interviews, alumni networks}} |
-| **Value Stream** | Welcome → Orient → Build Competence → Foster Belonging → ... → Manage Exit → Secure Knowledge → Honor Contribution |
-| **Capabilities** | {{e.g., Onboarding Design, Offboarding Management, Alumni Relations}} |
-| **Solutions** | {{Tools used}} |
-| **Organisation** | {{Responsible teams}} |
+*How entry and exit are designed to ensure psychological safety and knowledge transfer.*
 
----
+*(Element table + Value Stream Team + Linked Artifacts. Loop contract: `instance/operations/loops/{{slug}}-transition-pulse.yml`)*
 
-### D3 — Proposition & Exchange
+### Dimension 3 — Proposition & Exchange
 
-#### 5.9 Discovery to Usage
+#### §5.9 Discovery to Usage
+
 *How offerings are designed, developed, and experienced by the user.*
 
-| Element | Manifestation |
-|---|---|
-| **Primary Stakeholders** | {{R&D Team, Product Designers, Users}} |
-| **Value Proposition** | {{Innovative solutions that meet real needs}} |
-| **Journeys** | {{User research, product development, user testing}} |
-| **Touchpoints** | {{Prototypes, beta programs, user feedback channels}} |
-| **Value Stream** | Discover Need → Ideate → Design → Develop → Test → Launch → Gather Feedback |
-| **Capabilities** | {{e.g., Product Design, R&D, User Experience (UX) Design}} |
-| **Solutions** | {{Tools used}} |
-| **Organisation** | {{Responsible teams}} |
+*(Element table + Value Stream Team + Linked Artifacts. Loop contract: `instance/operations/loops/{{slug}}-discovery-pulse.yml`)*
 
-#### 5.10 Lead to User
-*How potential users find the business, build trust, and convert into active participants.*
+#### §5.10 Lead to User
 
-| Element | Manifestation |
-|---|---|
-| **Primary Stakeholders** | {{Marketing Team, Sales Team, Prospects}} |
-| **Value Proposition** | {{Clear communication of value, seamless onboarding}} |
-| **Journeys** | {{Customer acquisition, sales funnel, onboarding}} |
-| **Touchpoints** | {{Website, ads, sales calls, sign-up flows}} |
-| **Value Stream** | Create Awareness → Build Trust → Enable Contact → Deepen Relationship → Convert to User |
-| **Capabilities** | {{e.g., Marketing Strategy, Sales Execution, Lead Generation}} |
-| **Solutions** | {{Tools used}} |
-| **Organisation** | {{Responsible teams}} |
+*How potential users find us, build trust, and become active participants.*
 
-#### 5.11 Distribution to Market
-*How the value proposition physically or digitally reaches the market and ecosystem.*
+*(Element table + Value Stream Team + Linked Artifacts. Loop contract: `instance/operations/loops/{{slug}}-pipeline-pulse.yml`)*
 
-| Element | Manifestation |
-|---|---|
-| **Primary Stakeholders** | {{Logistics Team, Channel Partners, Customers}} |
-| **Value Proposition** | {{Reliable, timely, and accessible delivery of value}} |
-| **Journeys** | {{Order fulfillment, digital delivery, channel management}} |
-| **Touchpoints** | {{Delivery platforms, retail stores, partner networks}} |
-| **Value Stream** | Define Channels → Manage Inventory/Capacity → Process Orders → Deliver Value → Manage Returns/Support |
-| **Capabilities** | {{e.g., Channel Management, Logistics, Digital Distribution}} |
-| **Solutions** | {{Tools used}} |
-| **Organisation** | {{Responsible teams}} |
+#### §5.11 Distribution to Market
 
----
+*How the value proposition reaches the market and the ecosystem.*
 
-### D4 — Production & Resilience
+*(Element table + Value Stream Team + Linked Artifacts. Loop contract: `instance/operations/loops/{{slug}}-distribution-pulse.yml`)*
 
-#### 5.12 Demand to Fulfillment
-*How products or services are actually produced and delivered (Supply chain, manufacturing, service delivery).*
+### Dimension 4 — Production & Resilience
 
-| Element | Manifestation |
-|---|---|
-| **Primary Stakeholders** | {{Operations Team, Production Staff, Customers}} |
-| **Value Proposition** | {{High-quality, efficient, and safe production/delivery}} |
-| **Journeys** | {{Production planning, service execution, quality control}} |
-| **Touchpoints** | {{Manufacturing facilities, service portals, support desks}} |
-| **Value Stream** | Receive Demand → Plan Production/Service → Allocate Resources → Execute → Quality Check → Fulfill |
-| **Capabilities** | {{e.g., Production Planning, Service Delivery, Supply Chain Management}} |
-| **Solutions** | {{Tools used}} |
-| **Organisation** | {{Responsible teams}} |
+#### §5.12 Demand to Fulfillment
 
-#### 5.13 Source to Pay
+*How products or services are actually produced and delivered.*
+
+*(Element table + Value Stream Team + Linked Artifacts. Loop contract: `instance/operations/loops/{{slug}}-fulfillment-pulse.yml`)*
+
+#### §5.13 Source to Pay
+
 *How materials, tools, and external services are procured and paid for.*
 
-| Element | Manifestation |
-|---|---|
-| **Primary Stakeholders** | {{Procurement Team, Suppliers, Finance}} |
-| **Value Proposition** | {{Reliable supply, fair partnerships, cost efficiency}} |
-| **Journeys** | {{Vendor selection, purchasing, invoice processing}} |
-| **Touchpoints** | {{Supplier portals, purchase orders, payment systems}} |
-| **Value Stream** | Identify Need → Select Supplier → Procure → Receive → Consume → Pay → Evaluate Supplier |
-| **Capabilities** | {{e.g., Strategic Sourcing, Vendor Management, Accounts Payable}} |
-| **Solutions** | {{Tools used}} |
-| **Organisation** | {{Responsible teams}} |
+*(Element table + Value Stream Team + Linked Artifacts. Loop contract: `instance/operations/loops/{{slug}}-procurement-pulse.yml`)*
 
-#### 5.14 Acquire to Retire
+#### §5.14 Acquire to Retire
+
 *How physical and digital assets are managed throughout their lifecycle.*
 
-| Element | Manifestation |
-|---|---|
-| **Primary Stakeholders** | {{Facilities Management, IT, Finance}} |
-| **Value Proposition** | {{Optimal asset utilization, sustainability, safety}} |
-| **Journeys** | {{Asset acquisition, maintenance scheduling, decommissioning}} |
-| **Touchpoints** | {{Facilities, equipment, software licenses}} |
-| **Value Stream** | Plan Asset Need → Acquire/Build → Commission → Operate → Maintain → Upgrade → Decommission |
-| **Capabilities** | {{e.g., Asset Management, Facility Management, Maintenance Planning}} |
-| **Solutions** | {{Tools used}} |
-| **Organisation** | {{Responsible teams}} |
+*(Element table + Value Stream Team + Linked Artifacts. Loop contract: `instance/operations/loops/{{slug}}-asset-pulse.yml`)*
 
----
+### §5.15 Capability Heatmap *(consolidated)*
 
-## 5.15 Capability Heatmap (Consolidated)
-
-*Agent Prompt: Extract all capabilities from the value streams above and consolidate into a single heatmap. Reference `business-essential-patterns.xlsx` (capability rows) for the canonical capability names. Assess each capability's maturity.*
+> *Agent Brief:* Depth = **deep**. Triangulation = drawn from the 14 VSF cascade tables above. Output = consolidated table with one row per named capability, scored Maturity 🟢/🟡/🔴 with named gap and priority. Time budget = 60 minutes.
 
 | Dimension | Capability | Maturity | Gap | Priority |
 |---|---|---|---|---|
-| D1 | {{e.g., Strategic Planning}} | 🟢 Strong | — | — |
-| D1 | {{e.g., Risk Management}} | 🟡 Partial | {{What's missing}} | {{High/Med/Low}} |
-| D2 | {{e.g., Talent Acquisition}} | 🔴 Weak | {{What's missing}} | {{High}} |
+| D1 | {{Capability}} | 🟢 Strong | — | — |
+| D1 | {{Capability}} | 🟡 Partial | {{gap}} | {{High / Mid / Low}} |
 | ... | ... | ... | ... | ... |
 
-*This heatmap is the diagnostic instrument. It shows where the system is strong, where it is fragile, and where investment is needed. The gaps feed directly into Part III (Change Drivers and Change Needs).*
+*Heatmap reading: {{2-3 sentences synthesising where we are strong, where we are fragile, what investments matter most.}}*
 
 ---
 
 # PART III — WHERE WE ARE HEADING
 
-## 6. Change Drivers
+## §6 Change Drivers — What is forcing the system to change
 
-*What is forcing the system to change? What external or internal pressures make the status quo unsustainable?*
+> *Agent Brief:* Depth = **deep**. Triangulation = §1.5 Recent Trajectory + §4.3 Competitive Landscape + §2.6 Risks + §1.4 Commons-Qualities assessment. Output = 5-10 drivers in the table, intensity scaled ●●●●●. Time budget = 60 minutes.
 
-| # | Driver | Time Horizon | Affected Value Streams | Intensity |
+| # | Driver | Time horizon | Affected VSFs | Intensity |
 |---|---|---|---|---|
-| T1 | **{{Driver Name}}** — {{Description}} | {{Years}} | {{e.g., 5.3, 5.10}} | ●●●●○ |
-| T2 | **{{Driver Name}}** — {{Description}} | {{Years}} | {{e.g., 5.7}} | ●●●○○ |
+| T1 | **{{Driver}}** — {{description}} | {{years}} | {{e.g. 5.3, 5.10}} | ●●●●○ |
+| T2 | **{{Driver}}** — {{description}} | {{years}} | {{...}} | ●●●○○ |
 
-## 7. Change Needs per Value Stream
-
-*What must change in each value stream to address the drivers?*
+## §7 Change Needs per Value Stream
 
 | # | Value Stream | Driver | Required Change | Urgency |
 |---|---|---|---|---|
-| 5.X | {{Name}} | T1 | {{What needs to be done}} | 🔴 High |
-| 5.Y | {{Name}} | T2 | {{What needs to be done}} | 🟡 Medium |
+| 5.X | {{Name}} | T1 | {{Required change}} | 🔴 High |
+| 5.Y | {{Name}} | T2 | {{Required change}} | 🟡 Medium |
 
-## 8. Bridge to OS and Game
+## §8 Bridge to OS and Game
 
-### 8.1 The Three Instances
-- **Domain (Observation):** This document. How the world sees the business.
-- **OS (Work):** The `main` branch. Where the business actually operates in the Near Future. Every commit is a new Baseline.
-- **Game (Vision):** A separate fork. How the business could look in 5-10 years. Radical scenarios.
+### §8.1 The three instances
 
-### 8.2 What the Game Projects (Distant Future)
-*Agent Prompt: Based on the business's purpose and change drivers, project a radical, commons-aligned future state.*
+| Instance | Suffix | Owner / Author | Visibility | Location |
+|---|---|---|---|---|
+| **Domain** | `.d` | {{this document — Pipeline-side cloudsters / sovereign customer post-transfer}} | {{visibility}} | {{location}} |
+| **Operations** | `.o` | {{Customer-sovereign — post-engagement only}} | {{visibility}} | {{location}} |
+| **Game** | `.g` | {{Pipeline-side cloudsters / sovereign customer post-transfer}} | {{visibility}} | {{location}} |
 
-| Value Stream | Game Projection |
-|---|---|
-| **{{Value Stream}}** | {{Visionary state, e.g., "Transition from SaaS subscriptions to a user-owned cooperative model."}} |
+### §8.2 What the Game Blueprint projects *(short version)*
 
-### 8.3 What the OS Should Do Next (Near Future)
-*Agent Prompt: Translate the urgent change needs into concrete initiatives for the next 12-36 months. Each initiative becomes a GitHub Issue on the project board, labelled by dimension and priority.*
+*See `{{slug}}.g/blueprint.md` for the full Δ view and `{{slug}}.g/instance/workshop/analysis/scenarios-2050.md` for the 50-scenario environment scan. In short:*
+
+- **Near-term *(transition timeslice)*:** {{1-2 sentences}}
+- **Mid-term *(consolidation timeslice)*:** {{1-2 sentences}}
+- **Horizon *(2032 / equivalent)*:** {{1-2 sentences}}
+- **North Star *(2040)*:** {{1-2 sentences}}
+
+### §8.3 What is next concretely
 
 | # | Initiative | Driver | Dimension | Urgency |
 |---|---|---|---|---|
-| 1 | {{Concrete Action/Project}} | T1 | `d1-purpose` | 🔴 Immediate |
-| 2 | {{Concrete Action/Project}} | T2 | `d4-production` | 🟡 Next 12 months |
-
-*The Issue Board is the governance surface. If it's not on the board, it doesn't exist. These initiatives close the loop between Blueprint analysis and operational action.*
+| 1 | {{Concrete next step}} | T1 | `d1-purpose` | 🔴 Immediate |
+| 2 | {{...}} | T2 | `d4-production` | 🟡 Next 12 months |
 
 ---
 
 # APPENDICES
 
 ## Appendix A — Entity Map
-*List of core entities utilized from the `business-essentials` pack.*
+
+*The core entities involved with us. Activated in `instance/registry/5_entities/`.*
+
+| Entity | Type | Relationship to us |
+|---|---|---|
+| {{Entity}} | {{type from business-essentials pack}} | {{relationship}} |
 
 ## Appendix B — Capability Map
-*List of critical capabilities required to run the value streams.*
 
-## Appendix C — Evidence References
-*Links to supporting files, relative to this blueprint's location.*
-- `./evidence/d1_purpose/vision_workshop.md`
-- `./evidence/d2_participation/org_chart.md`
-- `./evidence/d3_proposition/market_analysis.md`
-- `./evidence/d4_production/tech_stack.md`
+*Critical capabilities for our operating model. See §5.15 for the heatmap.*
+
+- {{Capability 1}}
+- {{Capability 2}}
+- ...
+
+## Appendix C — Source References
+
+*All sources used in the construction of this blueprint. Underpins the evidence directory at `instance/workshop/evidence/`.*
+
+- [{{Source title}}]({{URL}})
+- ...
+
+## Appendix D — Open Questions for First Dialogue *(Pipeline-side annotation; stripped on transfer)*
+
+> *Pipeline-side observer questions that sharpen what we know. Removed on transfer to customer's `.o`.*
+
+| # | Question | Why it helps |
+|---|---|---|
+| 1 | {{Question}} | {{Why}} |
+
+---
+
+*Domain Blueprint v0.2 · {{Subject Name}} · {{Pipeline-side | Customer-sovereign}} · {{Region or Customer Org}} · {{ISO date}}*
+*Maintained on the loops declared in §0 / `instance/operations/loops/`. Companion: `{{slug}}.g/blueprint.md` (Game).*
