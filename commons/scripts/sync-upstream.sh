@@ -233,6 +233,21 @@ fi
 
 echo "✓ All ${#PROTECTED_PATHS[@]} protected path(s) preserved exactly."
 
+# --- Guarantee the canonical hull structure (additive, non-destructive) ----
+# After merging upstream, ensure every canonical directory exists. This heals
+# structural drift (e.g. a missing extensions/ skeleton) at every sync, at any
+# scale. Only adds empty-dir .keep markers; never deletes or overwrites content.
+if [ -f commons/scripts/ensure-structure.sh ]; then
+  bash commons/scripts/ensure-structure.sh || true
+  if [ -n "$(git status --porcelain)" ]; then
+    git add -A
+    git -c user.email="$(git config user.email || echo sync@commons-os)" \
+        -c user.name="$(git config user.name || echo sync-upstream)" \
+        commit --amend --no-edit >/dev/null
+    echo "  (canonical hull structure healed; merge commit amended)"
+  fi
+fi
+
 # --- Push ------------------------------------------------------------------
 if [ $NO_PUSH -eq 0 ]; then
   echo "→ Pushing to origin/$BRANCH..."

@@ -16,48 +16,34 @@ jobs:
           for f in \
             ".commons/identity.yml" \
             ".commons/config.yml" \
-            "blueprint.md" \
             "ALIGN.md" \
-            "knowledge/manifests/commons/COMMONS_OS_MANIFEST.md" \
-            "knowledge/manifests/commons/COMMONS_AGENT_MANIFEST.md" \
-            "knowledge/specs/commons/COMMONS_OS_SPEC.md" \
-            "knowledge/specs/commons/PATTERN_SPEC.md"; do
+            "BOOT.md" \
+            "commons/manifests/COMMONS_OS_MANIFEST.md" \
+            "commons/manifests/COMMONS_AGENT_MANIFEST.md" \
+            "commons/specs/COMMONS_OS_SPEC.md" \
+            "commons/specs/PATTERN_SPEC.md"; do
             if [ ! -f "$f" ]; then
               echo "MISSING: $f"
               MISSING=$((MISSING + 1))
             fi
           done
+          # A blueprint must exist as either the living instance file or the hull template
+          if [ ! -f "blueprint.md" ] && [ ! -f "blueprint.md.template" ]; then
+            echo "MISSING: blueprint.md (or blueprint.md.template)"
+            MISSING=$((MISSING + 1))
+          fi
           if [ $MISSING -gt 0 ]; then
-            echo "$MISSING required files missing"
+            echo "$MISSING required file(s) missing"
             exit 1
           fi
           echo "All required files present"
 
-      - name: Check required directories exist
+      - name: Check canonical hull structure
         run: |
-          for d in \
-            "registry/1_journeys" \
-            "registry/2_touchpoints" \
-            "registry/3_valuestreams" \
-            "registry/4_capabilities" \
-            "registry/5_entities" \
-            "knowledge/manifests/commons" \
-            "knowledge/manifests/extensions" \
-            "knowledge/manifests/instance" \
-            "knowledge/specs/commons" \
-            "knowledge/specs/extensions" \
-            "knowledge/specs/instance" \
-            "knowledge/patterns/commons" \
-            "knowledge/patterns/extensions" \
-            "knowledge/patterns/instance" \
-            "portals" \
-            "workshop"; do
-            if [ ! -d "$d" ]; then
-              echo "MISSING directory: $d"
-              exit 1
-            fi
-          done
-          echo "All required directories present"
+          # Single source of truth: the canonical directory skeleton lives in
+          # commons/scripts/ensure-structure.sh. --check fails the PR if any
+          # canonical directory is missing (e.g. a dropped extensions/ skeleton).
+          bash commons/scripts/ensure-structure.sh --check
 
       - name: Validate identity.yml
         run: |

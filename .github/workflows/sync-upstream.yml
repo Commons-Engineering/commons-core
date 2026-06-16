@@ -96,6 +96,10 @@ jobs:
             .gitignore \
             2>/dev/null || true
 
+          # Heal the canonical hull structure (additive; only adds empty-dir
+          # .keep, e.g. a missing extensions/ skeleton). Never touches content.
+          bash commons/scripts/ensure-structure.sh || true
+
           if git diff --cached --quiet && git diff --quiet; then
             echo "No effective changes after sync"
             exit 0
