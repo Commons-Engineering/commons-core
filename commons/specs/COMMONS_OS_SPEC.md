@@ -959,10 +959,10 @@ The OS separates touchpoint **definitions** from publishing **configuration** fr
 The five cascade layers (1_journeys through 5_entities) are not isolated silos. They form a **queryable graph** through YAML frontmatter references. Every file in the cascade declares which files in adjacent layers it connects to.
 
 ```yaml
-# instance/registry/3_valuestreams/lead-to-user.yml
+# instance/registry/3_valuestreams/interest-to-relationship.yml
 ---
-slug: lead-to-user
-title: Lead to User
+slug: interest-to-relationship
+title: Interest to Relationship
 dimension: proposition
 journeys:                              # ← upward link to layer 1
   - instance/registry/1_journeys/customer-acquisition.yml
@@ -1056,7 +1056,7 @@ Every commons connects to intelligence through three MCP channels (see COMMONS_M
 ```
 Agent receives a task: "Check our supplier qualification status"
 
-1. Agent reads the value stream pattern "Source to Pay" (extensions/commons-engineering/base/patterns/)
+1. Agent reads the value stream pattern "Source to Alliance" (extensions/commons-engineering/base/patterns/)
    → Pattern says: "Verify supplier qualification before order"
 
 2. Agent queries Blueprint MCP (or reads instance/registry/ directly)

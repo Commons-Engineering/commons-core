@@ -32,16 +32,17 @@ A forked instance without participation is a companion awaiting its commons — 
 
 ### §1.1 Purpose and Participation Define the Commons
 
-The four Universal Dimensions structure every commons:
+The **Singularity (D0) plus four Universal Dimensions** structure every commons:
 
 | Dimension | Role in the commons |
 |---|---|
-| **Definition & Purpose** | WHAT this commons exists for — the boundary and topic. A geography, a domain of knowledge, an organisation, a life — the subject is context. The dimension is universal. |
-| **Participation & Relationship** | WHO engages — the network of actors: human, machine, and organisational. Their relationships are the connective tissue of the commons. Without this network, the commons does not exist in any meaningful sense. |
-| **Proposition & Exchange** | WHAT value is created and exchanged — the products, services, and knowledge this commons produces. The specific outputs are determined by the commons' purpose; the form they take varies across Life, Ecology, Urban, and Business domains. |
-| **Production & Resilience** | HOW value is produced and sustained — infrastructure, production processes, material and information flows, supply chains, and economics. The means by which the commons fulfils its proposition, resiliently across time. |
+| **D0 · Perception & Mandate** *(the Singularity)* | WHAT this commons is and WHY it exists — the boundary, topic, identity, legitimacy, ethics, mandate. A geography, a domain of knowledge, an organisation, a life — the subject is context. The system's reflexive perception of itself as a whole. The centre the other dimensions orbit. |
+| **D1 · Purpose & System** | Directing purpose into a coherent portfolio of commitments and architecting the whole as a system-of-systems ("System" = the whole operating system incl. the value model, not just IT). |
+| **D2 · Participation & Relationship** | WHO engages — the network of actors: human, machine, and organisational. Their relationships are the connective tissue of the commons. Without this network, the commons does not exist in any meaningful sense. |
+| **D3 · Proposition & Exchange** | WHAT value is created and exchanged — the products, services, and knowledge this commons produces. The specific outputs are determined by the commons' purpose; the form they take varies across Life, Ecology, Urban, and Business domains. |
+| **D4 · Production & Resilience** | HOW value is produced and sustained — infrastructure, production processes, material and information flows, supply chains, and economics. The means by which the commons fulfils its proposition, resiliently across time. |
 
-The first dimension IS the topic. The remaining three are how you achieve the purpose, either one-time or recurring. If the commons is resilient, collaborative, just, systematic value creation, then it does not matter whether the commons wraps a geography or a thing. The structure is the same. Justice — the commitment that value creation serves all stakeholders fairly — is not a fifth dimension but a quality that pervades all four. In the Cognitive Era, where AI amplifies whatever the specification contains and ignores what it omits, the explicit encoding of justice is not optional — it is the design constraint that prevents Commons as Code from becoming Enclosure as Code.
+D0 — the Singularity — IS the topic. The four dimensions that spiral out from it are how you achieve the purpose, either one-time or recurring. If the commons is resilient, collaborative, just, systematic value creation, then it does not matter whether the commons wraps a geography or a thing. The structure is the same. Justice — the commitment that value creation serves all stakeholders fairly — is not a fifth dimension but a quality that pervades all four. In the Cognitive Era, where AI amplifies whatever the specification contains and ignores what it omits, the explicit encoding of justice is not optional — it is the design constraint that prevents Commons as Code from becoming Enclosure as Code.
 
 ### §1.2 Multiple Layers on the Same Reality (Set Theory)
 
@@ -217,7 +218,7 @@ The four Universal Dimensions require four core agents. Every commons needs all 
 
 | Agent | Dimension | What it does |
 |---|---|---|
-| **Purpose Agent** | D1 — Definition & Purpose | Direction, governance, impact measurement, architectural integrity. Maintains the governance runtime (Issue board hygiene, CI workflows, repository infrastructure) |
+| **Purpose Agent** | D1 — Purpose & System *(+ guards the D0 Singularity, Perception & Mandate)* | Direction, governance, impact measurement, architectural integrity. Maintains the governance runtime (Issue board hygiene, CI workflows, repository infrastructure) |
 | **Participation Agent** | D2 — Participation & Relationship | Community cultivation, stakeholder mapping, workforce development |
 | **Proposition Agent** | D3 — Proposition & Exchange | Value framing, market signals, proposition design |
 | **Production Agent** | D4 — Production & Resilience | Infrastructure, production lines, delivery, supply chain |
@@ -306,7 +307,8 @@ Beyond the four core collections, each domain brings **value stream collections*
 
 | Domain | Value Stream Collections (examples) | Extension pack |
 |---|---|---|
-| **Business** | Definition & Purpose, Purpose to Portfolio, Value to Profit, Portfolio to Systems, Participants to Community, Collaboration to Automation, Hire to Retire, Welcome to Transition, Discover to Usage, Lead to User, Distribute to Market, Acquire to Retire, Plan to Fulfill, Source to Pay | `extensions/commons-engineering/business/` |
+| **All domains** *(13 universal families — Commons Value-Creation Canon)* | **D0** Perception to Mandate · **D1** Purpose to Portfolio, Value to Sustainability, Portfolio to System · **D2** Participant to Community, Collaboration to Automation, Contributor to Succession · **D3** Discovery to Usage, Interest to Relationship, Proposition to Audience · **D4** Demand to Fulfillment, Source to Alliance, Acquire to Retire | `extensions/commons-engineering/{business,urban,life,ecology}/` |
+| ↳ *domain expression (examples below)* | The 13 families are identical across domains; only the **value streams beneath** them differ per domain | |
 | **Urban** | Housing & Habitat, Mobility & Transport, Energy & Grid, Food & Agriculture, Civic Governance, Public Health, Education & Learning | `extensions/commons-engineering/urban/` |
 | **Life** | Nutrition & Metabolism, Cognition & Learning, Movement & Body, Community & Belonging, Craft & Creation, Finance & Autonomy | `extensions/commons-engineering/life/` |
 | **Ecology** | Biodiversity & Habitat, Hydrology & Watershed, Carbon & Climate, Soil & Fertility, Pollination & Reproduction | `extensions/commons-engineering/ecology/` |
@@ -467,7 +469,7 @@ The Living Blueprint is how a commons starts living. It is not documentation —
 | **L8 — Sensing** | Monitoring | What do you watch? |
 | **L9 — Intelligence** | AI/ML layer | How do you learn and improve? |
 
-A commons does not exist until it has its Definition & Purpose. That is the Fork → Boot moment. The first thing the agent receives is D1 — what this commons is about, what its boundary is, why it exists. Before D1, it is just a template. After D1, it is an instance.
+A commons does not exist until it has its **D0 — Perception & Mandate**. That is the Fork → Boot moment. The first thing the agent receives is the Singularity — what this commons is about, what its boundary is, why it exists, the mandate it holds. Before D0, it is just a template. After D0, it is an instance.
 
 ### §7.1 One Commons, One Blueprint, One Repository
 

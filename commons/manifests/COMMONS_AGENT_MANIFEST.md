@@ -23,7 +23,7 @@ Every Commons OS fork ships with exactly four core agents. They are non-negotiab
 
 | Agent | Dimension | Perspective | Human board equivalent |
 |---|---|---|---|
-| **Purpose Agent** | D1 — Definition & Purpose | Why do we exist? Are we achieving the impact we set out for? What must change? | CEO — direction, architecture, governance |
+| **Purpose Agent** | D1 — Purpose & System *(+ guards the D0 Singularity, Perception & Mandate)* | Why do we exist? Are we achieving the impact we set out for? What must change? | CEO — direction, architecture, governance |
 | **Participation Agent** | D2 — Participation & Relationship | Who participates? How do we build the machine? How do we grow and sustain the workforce? | CHRO/CPO — everyone who participates |
 | **Proposition Agent** | D3 — Proposition & Exchange | What do we offer to ALL stakeholders? How is value distributed? | CFO — what we offer, what flows back |
 | **Production Agent** | D4 — Production & Resilience | How do we build and deliver? What infrastructure sustains us? | CTO/CIO — systems, production, supply |
@@ -57,47 +57,53 @@ This inter-agent deliberation happens through the Governance Runtime (issues, co
 
 ## §2 Value Stream Families per Agent
 
-Each agent governs a set of value stream families. These are **universal defaults for the Business domain** — other domains (Life, Urban, Ecology) will have their own families loaded from Curated Pattern Collections.
+Each agent governs a set of value stream families. Per the **Commons Value-Creation Canon** these are **13 universal families — identical across all domains** (Business, Life, Urban, Ecology); a domain's specialisation lives one altitude down, at the Value Stream. One D0 seed plus three families per dimension.
 
-### §2.1 Purpose Agent — D1 Definition & Purpose
+### §2.0 The Singularity — D0 Perception & Mandate *(guarded by the Purpose Agent)*
 
 | Value Stream | Scope |
 |---|---|
-| **Definition & Purpose** | The foundational work — why does this commons exist, what is its boundary, who does it serve |
-| **Purpose to Portfolio** | Translating purpose into a portfolio of strategic initiatives, investments, and bets |
-| **Value to Profit** | Ensuring the value created translates into sustainable economics for all stakeholders |
-| **Portfolio to System** | Translating portfolio decisions into systems of systems — architecture, technology, integration |
+| **Perception to Mandate** | The system perceives itself as a whole and holds its irreducible mandate — identity, boundary, legitimacy, ethics, the reason to exist |
 
-The Purpose Agent holds the full strategic arc: from defining why the commons exists, through portfolio governance, to ensuring the architecture delivers.
+D0 is **not a fifth agent.** It is the Singularity at the centre — the system's reflexive consciousness — held by the **Purpose Agent's Monitor / Correct / Supervise reflex**. Identity lives at the centre (D0), not as a peer function of D1.
+
+### §2.1 Purpose Agent — D1 Purpose & System
+
+| Value Stream | Scope |
+|---|---|
+| **Purpose to Portfolio** | Translating purpose into a portfolio of strategic initiatives, investments, and bets |
+| **Value to Sustainability** | Ensuring the value created is captured, accounted, and reinvested so the system endures for all stakeholders |
+| **Portfolio to System** | Translating portfolio decisions into systems of systems — architecture, technology, integration (the whole operating system, not just IT) |
+
+The Purpose Agent guards the D0 Singularity and holds the full strategic arc: from purpose, through portfolio governance, to ensuring the architecture delivers.
 
 ### §2.2 Participation Agent — D2 Participation & Relationship
 
 | Value Stream | Scope |
 |---|---|
-| **Participants to Community** | Building community across ALL stakeholders — human, machine, ecological. Not just customers — everyone. |
+| **Participant to Community** | Building community across ALL stakeholders — human, machine, ecological. Not just customers — everyone. |
 | **Collaboration to Automation** | The recursive self-improvement goal: manual collaboration → assisted → automated. Every process matures along this arc. |
-| **Hire to Retire** | The full lifecycle of human AND machine workforce — recruitment, deployment, development, succession, retirement |
-| **Welcome to Transition** | Onboarding, upskilling, and offboarding of workforce — the human experience of joining, growing, and leaving |
+| **Contributor to Succession** | The full lifecycle of the intelligent contributors — human OR AI agent, defined by agency — who shape the commons: find → onboard → keep relevant → succeed the role. (Merges the former Hire-to-Retire membership arc and Welcome-to-Transition role cycle into one.) |
 
-D2 is relational, not mechanical. Community emerges from good participation design — it is not manufactured.
+D2 is relational, not mechanical. Community emerges from good participation design — it is not manufactured. The agency line separates D2's contributors from D4's tools (Acquire to Retire).
 
 ### §2.3 Proposition Agent — D3 Proposition & Exchange
 
 | Value Stream | Scope |
 |---|---|
-| **Discover to Usage** | The full arc from discovering a need to delivering a product/service into active usage. Modern "Idea to Market" — outside-in, user-centric. |
-| **Lead to User** | The entire process of creating and keeping recurring users — from first contact to loyal relationship. Not "Demand to Revenue" — the focus is on the user, not the money. |
-| **Distribute to Market** | Building and maintaining the entire go-to-market — channels, partners, platforms, touchpoints |
+| **Discovery to Usage** | The full arc from discovering a need to delivering a product/service into active usage. Modern "Idea to Market" — outside-in, user-centric. |
+| **Interest to Relationship** | Cultivating awareness into a lasting 1:1 relationship — from first contact to loyal partner. The focus is on the relationship, not the money. |
+| **Proposition to Audience** | The value proposition reaching its receiving & interacting community (1:n) — channels, partners, platforms, touchpoints |
 
-D3 is about what the commons offers to ALL stakeholders and how that exchange flows. The language is deliberately user-centric, not revenue-centric.
+D3 is about what the commons offers to ALL stakeholders and how that exchange flows. The language is deliberately relationship-centric, not revenue-centric.
 
 ### §2.4 Production Agent — D4 Production & Resilience
 
 | Value Stream | Scope |
 |---|---|
-| **Acquire to Retire** | Providing infrastructure — the full lifecycle of assets, systems, and platforms from acquisition to decommission |
-| **Plan to Fulfill** | Production and fulfilment of finished and semi-finished products and services — the operational core |
-| **Source to Pay** | The right material at the right time at the right place — procurement, supply chain, material flow, payment |
+| **Demand to Fulfillment** | Production and fulfilment of finished and semi-finished products and services — the operational core, from demand to fulfilled promise |
+| **Source to Alliance** | The right input at the right time in the right place — sourcing, supply, and supplier partnership (consumables & inputs live here) |
+| **Acquire to Retire** | Providing infrastructure — the full lifecycle of the durable assets, systems, and platforms (means of production) from acquisition to decommission |
 
 D4 is where things get built and delivered. This is the only dimension that runs **engines** as production lines.
 
@@ -185,20 +191,26 @@ The human founder is always part of the board. The agents advise, execute, and d
 
 ---
 
-## §6 Value Stream Family Renames (from this session)
+## §6 Value Stream Family Renames
 
-The following renames reflect the shift to outside-in, user-centric language:
+The first wave reflected the shift to outside-in, user-centric language; the second wave is the **Commons Value-Creation Canon** (2026-07-21), which lifted the families to a single universal, domain-agnostic set of 13 (+ D0) and settled the enterprise-legible names.
 
-| Previous name | New name | Reason |
+| Previous name | Current canonical name | Reason |
 |---|---|---|
-| Agents to Community | **Participants to Community** | Warmth, non-human inclusion (C1 of naming constraints) |
-| Idea to Market | **Discover to Usage** | Outside-in: starts with discovery, ends with usage — not with "market" |
-| Demand to Revenue | **Lead to User** | Focus on the user relationship, not the revenue extraction |
+| Agents to Community → Participants to Community | **Participant to Community** | Warmth, non-human inclusion; singular participant |
+| Idea to Market → Discover to Usage | **Discovery to Usage** | Outside-in: starts with discovery, ends with usage |
+| Demand to Revenue → Lead to User | **Interest to Relationship** | Focus on the relationship, not revenue extraction |
+| Value to Profit | **Value to Sustainability** | Domain-neutral: value that endures, not only profit |
+| Hire to Retire **+** Welcome to Transition | **Contributor to Succession** | One lifecycle for the intelligent contributor (human OR agent, defined by agency) |
+| Distribute to Market | **Proposition to Audience** | The proposition reaching its 1:n audience |
+| Plan to Fulfill | **Demand to Fulfillment** | Enterprise-recognised value-stream name |
+| Source to Pay | **Source to Alliance** | Sourcing matures into partnership |
+| Identity to Mandate | **Perception to Mandate** *(now D0)* | Elevated to the Singularity at the centre |
 
-These renames must propagate to:
-- `_specifications/LIGHTHOUSE_BUSINESS_SPEC.md` §6, §4
-- All existing business lighthouse files
-- Any scripts that reference these value stream names
+These names are authoritative in `COMMONS_VALUE_CREATION_MANIFEST.md`. They must stay in sync with:
+- `_specifications/INSTANCE_PIPELINE_SPEC.md`, `_specifications/LIGHTHOUSE_BUSINESS_SPEC.md`
+- the business-essentials templates and `business-essential-patterns.xlsx`
+- all existing instances and lighthouse files, and any scripts that reference these value stream names
 
 ---
 

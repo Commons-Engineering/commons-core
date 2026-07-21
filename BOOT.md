@@ -118,7 +118,7 @@ Based on the domain in `identity.yml`, prepare the relevant value stream familie
 | Domain | Default Value Stream Families |
 |---|---|
 | **Life** | Personal purpose, relationships, health, learning, livelihood |
-| **Business** | Definition & Purpose, Purpose to Portfolio, Value to Profit, Participants to Community, Discover to Usage, Lead to User, Acquire to Retire, Plan to Fulfill, Source to Pay |
+| **Business** | *(13 canonical families — Commons Value-Creation Canon)* Perception to Mandate · Purpose to Portfolio, Value to Sustainability, Portfolio to System · Participant to Community, Collaboration to Automation, Contributor to Succession · Discovery to Usage, Interest to Relationship, Proposition to Audience · Demand to Fulfillment, Source to Alliance, Acquire to Retire |
 | **Urban** | Place identity, citizen participation, urban services, urban metabolism, spatial planning |
 | **Ecology** | Ecosystem identity, species participation, ecosystem services, biogeochemical cycles |
 
@@ -159,7 +159,7 @@ Based on the domain in `identity.yml`, prepare the relevant value stream familie
    | Domain | Source template | What's pre-filled |
    |---|---|---|
    | Life | `extensions/cloudsters/life-essentials/templates/blueprint.md` | Purpose Spiral, life-engineering value streams |
-   | Business | `extensions/cloudsters/business-essentials/templates/blueprint.md` | BEN cascade, 14 VSFs, stakeholder maps |
+   | Business | `extensions/cloudsters/business-essentials/templates/blueprint.md` | C\|EN cascade, 13 canonical families + D0, stakeholder maps |
    | Urban | `extensions/cloudsters/urban-essentials/templates/blueprint.md` | Place patterns, citizen participation models |
    | Ecology | `extensions/cloudsters/ecology-essentials/templates/blueprint.md` | Watershed structures, species-participation patterns |
    | (none of the above) | `blueprint.md.template` (universal hull skeleton) | L1–L9 skeleton only |

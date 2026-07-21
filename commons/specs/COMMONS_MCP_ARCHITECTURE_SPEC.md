@@ -39,7 +39,7 @@ The MCP architecture preserves structure. RAG becomes one tool among many:
 | "What patterns does Deutsche Bahn need?" | Might find relevant text | `load_lighthouse(slug="deutsche-bahn")` → reads `relationships.needs` array |
 | "Walk the graph from operational-resilience" | Not possible | `traverse_graph(pattern_slug="operational-resilience", depth=2)` — returns typed, weighted edges |
 | "All Urban lighthouses using Orbit 1 Resilience patterns" | Not possible | Graph traversal: Cypher query across lighthouse → pattern → hub edges |
-| "Navigate Plan to Fulfill for Deutsche Bahn" | Cannot route through value streams | `navigate_value_stream(lighthouse_slug="deutsche-bahn", stream_name="plan-to-fulfill")` |
+| "Navigate Demand to Fulfillment for Deutsche Bahn" | Cannot route through value streams | `navigate_value_stream(lighthouse_slug="deutsche-bahn", stream_name="demand-to-fulfillment")` |
 | "What are the systemic patterns across post-industrial cities?" | Generic text matching | GraphRAG: aggregate graph clusters, find emergent cross-lighthouse patterns |
 
 ### 1.4 Core Principles

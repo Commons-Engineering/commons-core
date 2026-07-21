@@ -141,26 +141,34 @@ These multiple gravitational attachments are not noise. They are the **cross-dom
 
 ## §3 The Universal Taxonomy
 
-### §3.1 The 4×4 Cross-Taxonomy Matrix
+> **Canon alignment (2026-07-21).** The value-stream-**family** layer is now defined once, universally, by the **Commons Value-Creation Canon** (`_manifests/COMMONS_VALUE_CREATION_MANIFEST.md` + `_extensions/value-creation-canon.draft.json`): **one D0 Singularity seed + three families per dimension = 13 universal families**, identical across all domains. Domain specialisation begins one altitude *below* the family, at the **Value Stream (VS)** — so the "63 Business domains" in §4.4 are VS-level expressions, not families. Where this manifest historically spoke of "~48–64 families" or per-domain family names, read the **13 canonical families** as authoritative; the domain columns below show how those same families *express* per scale, not different families. The centripetal Orbit-0 singularity of §1 **is** the canon's **D0 — Perception & Mandate**.
 
-The taxonomy is organised as a matrix of **4 Universal Dimensions** (Orbit 1 structural principles) × **4 Domain Scales** (the living system scales Commons Engineering serves).
+### §3.1 The Cross-Taxonomy Matrix — universal families × domain expression
+
+The taxonomy is organised as a matrix of the **Universal Dimensions** (Orbit 1 structural principles — **D0 the Singularity at the centre, D1–D4 spiralling out**) × **4 Domain Scales** (the living system scales Commons Engineering serves). The **families** are the same at every scale; each cell shows that scale's *expression* of them.
+
+The **13 canonical families** (bold, per dimension) hold across all four columns; each cell names that scale's expression.
 
 |                    | **Business** (Enterprise) | **Urban** (Settlement) | **Ecology** (Planetary) | **Life** (Organism) |
 |--------------------|---------------------------|------------------------|-------------------------|---------------------|
-| **PURPOSE**        | Strategy & Governance     | Vision & Planning      | Ecosystem Purpose       | Identity & Meaning  |
-| *Definition & Purpose* | Portfolio, Profit, System, Board | Urban Vision, Land Use, Mobility Plan, Civic Identity | Biodiversity Goals, Climate Strategy, Conservation Mandate, Stewardship Charter | Purpose Discovery, Values Alignment, Life Design, Legacy Planning |
-| **AGENTS**         | People & Partners         | Citizens & Institutions | Species & Actors       | Self & Relationships |
-| *Participation & Relationship* | Hire to Retire, Community, Collaborate to Automate, Welcome to Transition | Residents, Civic Orgs, Public-Private, Migration & Integration | Keystone Species, Pollinators, Decomposers, Human Stewards | Inner Development, Family Systems, Social Networks, Professional Identity |
-| **OFFERS**         | Products & Services       | Services & Infrastructure | Ecosystem Services    | Skills & Contributions |
-| *Proposition & Exchange* | Discover to Usage, Lead to User, Distribute to Market, Customer Value Exchange | Public Services, Housing, Education, Healthcare | Carbon Sequestration, Water Purification, Soil Fertility, Biodiversity Banking | Knowledge Work, Creative Output, Care Work, Community Service |
-| **OPERATIONS**     | Run & Maintain            | Operate & Sustain      | Cycles & Maintenance   | Habits & Metabolism  |
-| *Production & Resilience* | Acquire to Retire, Plan to Fulfill, Source to Pay, IT & Maintenance | Utilities, Waste Management, Transport Ops, Building Maintenance | Nutrient Cycling, Hydrological Cycle, Seasonal Migration, Decomposition | Sleep & Recovery, Nutrition, Exercise, Cognitive Maintenance |
+| **D0 · SINGULARITY** | Mandate & Legitimacy    | Civic Charter          | Ecosystem Self-Regulation | Self & Identity   |
+| *Perception & Mandate* — **Perception to Mandate** | perceive the whole; hold identity, boundary, legitimacy, ethics | civic self-perception, charter, legitimacy | ecosystem identity & self-regulation | self-awareness, values, the reason to be |
+| **D1 · PURPOSE**   | Strategy & Governance     | Vision & Planning      | Ecosystem Purpose       | Identity & Meaning  |
+| *Purpose & System* — **Purpose to Portfolio · Value to Sustainability · Portfolio to System** | Portfolio, Sustainability, System-of-Systems | Urban Vision, Land Use, Mobility Plan, Civic Identity | Biodiversity Goals, Climate Strategy, Conservation Mandate, Stewardship Charter | Purpose Discovery, Values Alignment, Life Design, Legacy Planning |
+| **D2 · AGENTS**    | People & Partners         | Citizens & Institutions | Species & Actors       | Self & Relationships |
+| *Participation & Relationship* — **Participant to Community · Collaboration to Automation · Contributor to Succession** | Community, human+agent collaboration, contributor lifecycle | Residents, Civic Orgs, Public-Private, Migration & Integration | Keystone Species, Pollinators, Decomposers, Human Stewards | Inner Development, Family Systems, Social Networks, Professional Identity |
+| **D3 · OFFERS**    | Products & Services       | Services & Infrastructure | Ecosystem Services    | Skills & Contributions |
+| *Proposition & Exchange* — **Discovery to Usage · Interest to Relationship · Proposition to Audience** | offering lifecycle, 1:1 relationship, 1:n audience | Public Services, Housing, Education, Healthcare | Carbon Sequestration, Water Purification, Soil Fertility, Biodiversity Banking | Knowledge Work, Creative Output, Care Work, Community Service |
+| **D4 · OPERATIONS** | Run & Maintain           | Operate & Sustain      | Cycles & Maintenance   | Habits & Metabolism  |
+| *Production & Resilience* — **Demand to Fulfillment · Source to Alliance · Acquire to Retire** | fulfilment, sourcing & inputs, durable infrastructure | Utilities, Waste Management, Transport Ops, Building Maintenance | Nutrient Cycling, Hydrological Cycle, Seasonal Migration, Decomposition | Sleep & Recovery, Nutrition, Exercise, Cognitive Maintenance |
 
-### §3.2 The Four Universal Dimensions
+### §3.2 The Singularity and the Four Universal Dimensions
 
-These four dimensions are Orbit 1 structural principles. They are true at every scale:
+At the centre sits **D0**, the Singularity; the four dimensions D1–D4 spiral out from it. All are Orbit 1 structural principles, true at every scale:
 
-**PURPOSE — Definition & Purpose** — Every living system defines what it is and why it exists. The ongoing process of drawing boundaries between self and environment, and the state of having direction. At Business scale: strategy, portfolio, governance. At Urban scale: vision, spatial planning, civic identity. At Ecology scale: ecosystem function, biodiversity targets. At Life scale: purpose, values, meaning.
+**D0 · SINGULARITY — Perception & Mandate** — Every living system perceives itself as a whole and holds an irreducible mandate: its identity, boundary, legitimacy, ethics, and reason to exist. This is the reflexive consciousness of the system — the centre the other dimensions orbit. It is **not a fifth dimension alongside the others but the point at the centre**; in agent terms it is guarded by the Purpose Agent's Monitor/Correct/Supervise reflex, not a separate agent. At Business scale: mandate, legitimacy, governance charter. At Urban scale: civic charter and legitimacy. At Ecology scale: ecosystem identity and self-regulation. At Life scale: self-awareness, values, meaning.
+
+**D1 · PURPOSE — Purpose & System** — Every living system translates its purpose into a coherent portfolio and architects itself as a whole system-of-systems ("System" = the whole operating system incl. the value model, not just IT). The ongoing process of directing, and the state of being coherently structured. At Business scale: strategy, portfolio, sustainability, enterprise architecture. At Urban scale: vision, spatial planning, civic identity. At Ecology scale: ecosystem function, biodiversity targets. At Life scale: purpose, values, life design.
 
 **AGENTS — Participation & Relationship** — Every living system is composed of participants — human, digital, biological, institutional — who take part in its life and form relationships that sustain it. The ongoing process of taking part, and the state of being connected. At Business scale: employees, partners, communities, automated systems. At Urban scale: residents, institutions, civic organisations. At Ecology scale: species, populations, human stewards. At Life scale: the self, relationships, networks.
 
@@ -172,7 +180,8 @@ These four dimensions are Orbit 1 structural principles. They are true at every 
 
 The four Universal Dimensions are not an arbitrary classification. They are the Orbit 1 expression of the fundamental physics of living systems:
 
-- **PURPOSE (Definition & Purpose)** derives from the Orbit 0 principle that every living system defines itself — drawing a boundary between self and environment, establishing coherence and direction.
+- **SINGULARITY (Perception & Mandate)** is the Orbit 0 principle itself made explicit as a family: the system perceives itself as a whole and holds its mandate — the centripetal centre from which the four dimensions spiral.
+- **PURPOSE (Purpose & System)** derives from the Orbit 0 principle that every living system directs itself and coheres as a whole — translating purpose into portfolio and architecting itself as a system-of-systems.
 - **AGENTS (Participation & Relationship)** derives from the Orbit 0 principle that life is collaborative — no living system exists alone; all value creation requires participation and relationship.
 - **OFFERS (Proposition & Exchange)** derives from the Orbit 0 principle that living systems put forward propositions and exchange with their environment — from the apple tree's fruit to the enterprise's value proposition.
 - **OPERATIONS (Production & Resilience)** derives from the Orbit 0 principle that living systems must produce and sustain themselves — without continuous production and the resilience to persist through disruption, every system decays.
@@ -202,47 +211,44 @@ Patterns inform **Capabilities** within **Valuestreams**. The pattern library is
 
 ### §4.2 Structural Layers
 
-**Universal Dimension** (4) — Purpose, Agents, Offers, Operations
+**Singularity + Universal Dimension** (D0 + D1–D4) — Perception & Mandate · Purpose · Agents · Offers · Operations
   ↓
-**Segment** (4 per dimension = 16 total) — e.g., within Purpose: CEO Office, CFO Office, CIO/CTO Office, Board Governance
+**Value Stream Family** (13 canonical, universal — one D0 seed + three per dimension; the Commons Value-Creation Canon) — e.g., Perception to Mandate, Purpose to Portfolio, Contributor to Succession, Source to Alliance
   ↓
-**Value Stream Family** (~3–4 per segment = ~48–64 total) — e.g., Purpose to Portfolio, Portfolio to Profit, Portfolio to System
-  ↓
-**Value Stream / Domain** (63 in Business, mapped to PCF traditions) — e.g., Strategic Planning, Financial Reporting, Enterprise Architecture
+**Value Stream / Domain** (domain-specialised — 63 in Business, mapped to PCF traditions; this is where the domain's Stallgeruch begins) — e.g., Strategic Planning, Financial Reporting, Enterprise Architecture
   ↓
 **Process** (multiple per domain) — the operational steps within a value stream
   ↓
 **Pattern** (multiple per process) — the design knowledge that informs how processes should work
 
-### §4.3 Value Stream Family Naming Convention (Business Domain)
+### §4.3 The 13 Canonical Value Stream Families
 
-Business domain Value Stream Families use a deliberate "X to Y" naming convention:
+The families are **universal** (identical across Business, Urban, Ecology, Life) and use a deliberate "X to Y" transformation-arc convention. They are defined authoritatively in `COMMONS_VALUE_CREATION_MANIFEST.md`; reproduced here for navigation:
 
-**PURPOSE segment:**
-- Purpose to Portfolio (CEO perspective)
-- Portfolio to Profit (CFO perspective)
-- Portfolio to System (CIO/CTO perspective)
-- Board-Level Governance
+**D0 · SINGULARITY — Perception & Mandate:**
+- Perception to Mandate (perceive the whole; hold identity, boundary, legitimacy, ethics)
 
-**AGENTS segment:**
-- Hire to Retire (talent lifecycle)
-- Participants to Community (stakeholder engagement)
-- Collaborate to Automate (human-machine coordination)
-- Welcome to Transition (onboarding through offboarding)
+**D1 · PURPOSE — Purpose & System:**
+- Purpose to Portfolio (translate purpose into a coherent portfolio of commitments)
+- Value to Sustainability (capture, account, reinvest value so the system endures)
+- Portfolio to System (architect the whole as a coherent system-of-systems)
 
-**OFFERS segment:**
-- Discover to Usage (product/service lifecycle)
-- Lead to User (customer acquisition and retention)
-- Distribute to Market (channel and market access)
-- Customer Value Exchange
+**D2 · AGENTS — Participation & Relationship:**
+- Participant to Community (cultivate individuals into a thriving community)
+- Collaboration to Automation (evolve human+agent collaboration into reliable, automated patterns)
+- Contributor to Succession (the full lifecycle of intelligent contributors — human OR AI agent — with agency)
 
-**OPERATIONS segment:**
-- Acquire to Retire (asset lifecycle)
-- Plan to Fulfill (demand-to-delivery)
-- Source to Pay (procurement cycle)
-- Predictive Maintenance & IT Operations
+**D3 · OFFERS — Proposition & Exchange:**
+- Discovery to Usage (conceive, craft, deliver, evolve the offerings)
+- Interest to Relationship (cultivate awareness into a lasting 1:1 relationship)
+- Proposition to Audience (the value proposition reaches its receiving community, 1:n)
 
-This naming is deliberately business-flavoured for Orbit 4 — it helps classic organisations find their place within the taxonomy. The same structural logic applies at other domain scales (Urban, Ecology, Life) with domain-appropriate naming.
+**D4 · OPERATIONS — Production & Resilience:**
+- Demand to Fulfillment (orchestrate production & delivery from demand to fulfilled promise)
+- Source to Alliance (supplier & input relationships — sourcing → partnership; consumables live here)
+- Acquire to Retire (steward the durable infrastructure / means of production)
+
+The **family** names are universal and never change per domain. The domain's Stallgeruch — and the business-flavoured "X to Y" that helps classic Orbit-4 organisations find their place — lives one altitude down, at the **Value Stream (VS)** level (§4.4). *(Superseded pre-canon names: Value to Profit → Value to Sustainability; Hire to Retire + Welcome to Transition → Contributor to Succession; Lead to User → Interest to Relationship; Distribute to Market → Proposition to Audience; Plan to Fulfill → Demand to Fulfillment; Source to Pay → Source to Alliance; Identity to Mandate → D0 Perception to Mandate.)*
 
 ### §4.4 The 63 Business Domains
 
@@ -356,7 +362,7 @@ Steps 1–4 determine *where it goes*. Steps 5–6 determine *what forces act on
 
 The taxonomy aligned to Orbit 1 enables **emerging pattern detection**: when field signals cluster in ways that don't match existing patterns, the taxonomy structure tells you *what kind of pattern is missing*.
 
-If GraphRAG reveals a cluster of relationships between patterns in "Hire to Retire" and "Collaborate to Automate" that don't map to any existing Orbit 3 Bridge pattern, that's a signal: a new cross-domain pattern may be emerging at the intersection of human talent lifecycle and human-machine coordination. The taxonomy doesn't just organise what exists — it reveals what's missing.
+If GraphRAG reveals a cluster of relationships between patterns in "Contributor to Succession" and "Collaboration to Automation" that don't map to any existing Orbit 3 Bridge pattern, that's a signal: a new cross-domain pattern may be emerging at the intersection of the contributor lifecycle and human-machine coordination. The taxonomy doesn't just organise what exists — it reveals what's missing.
 
 ---
 
