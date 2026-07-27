@@ -1,0 +1,85 @@
+# {SUBJECT} — Claims with Provenance (machine-readable)  [TEMPLATE]
+# ---------------------------------------------------------------------------
+# One Claim = one assertion (a metric OR a qualitative fact). Each carries:
+#   statement   → the assertion in words
+#   value/unit  → for metrics (omit for qualitative claims)
+#   year        → reference year
+#   scope       → group | entity | brand | region | segment  (disambiguates level)
+#   confidence  → belegt | marktreport | unbestätigt
+#   tier        → headline | context     (headline ⇒ belegregel: ≥2 sources or unbestätigt)
+# Edges (id-reference fields):
+#   asserted_by:[S..]  corroborated_by:[S..]  about:[E..]
+#   contradicts:[C..]  supersedes:[C..]  used_in:["d§..","scn:..","ia:§.."]
+# Rule: no estimate without a tag. Headline claims need ≥2 distinct sources.
+#       Any `contradicts` edge must be resolved (supersedes) before Gate 1.
+# ---------------------------------------------------------------------------
+
+meta:
+  subject: "{Legal name}"
+  compiled: {YYYY-MM-DD}
+  currency: "{USD | EUR | …}"
+  belegregel: "headline claim ⇒ ≥2 distinct sources OR confidence:unbestätigt"
+
+claims:
+  # ---- size / scale ----
+  - id: C_001
+    statement: "{Revenue}"
+    value: {number}
+    unit: "{USD m | EUR m}"
+    year: {YYYY}
+    scope: group
+    confidence: belegt
+    tier: headline
+    asserted_by: [S1]
+    corroborated_by: [S2]
+    about: [E_SUBJECT]
+
+  - id: C_002
+    statement: "{Headcount}"
+    value: {number}
+    unit: "FTE"
+    year: {YYYY}
+    scope: group
+    confidence: belegt
+    tier: headline
+    asserted_by: [S1]
+    corroborated_by: [S3]
+    about: [E_SUBJECT]
+
+  # ---- market / competition ----
+  - id: C_010
+    statement: "{Primary market size, order of magnitude}"
+    value: {number}
+    unit: "{USD bn}"
+    year: {YYYY}
+    scope: segment
+    confidence: marktreport      # read as a band, ±30%
+    tier: context
+    asserted_by: [S4]
+    about: [E_MARKET_CORE]
+
+  # ---- qualitative structural claim (no value) ----
+  - id: C_020
+    statement: "{e.g. 'Ownership sits in a purpose trust, not tradable equity'}"
+    year: {YYYY}
+    scope: group
+    confidence: belegt
+    tier: headline
+    asserted_by: [S1]
+    corroborated_by: [S5]
+    about: [E_OWNER, E_SUBJECT]
+
+  # ---- example of a resolved contradiction (keep the pattern visible) ----
+  # - id: C_030
+  #   statement: "…figure, corrected value"
+  #   confidence: belegt
+  #   supersedes: [C_029]        # C_029 was an earlier/estimated value
+  #   asserted_by: [S1]
+  # - id: C_029
+  #   statement: "…figure, superseded"
+  #   confidence: unbestätigt
+  #   contradicts: [C_030]       # flagged, NOT used_in anything
+
+  # … one Claim per hard figure or structural fact the analysis/blueprint uses.
+  # Every figure that appears in blueprint.md / industry-analysis.md / scenarios
+  # must exist here and carry a `used_in` edge.

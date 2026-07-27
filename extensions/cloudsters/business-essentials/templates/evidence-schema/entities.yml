@@ -1,0 +1,35 @@
+# {SUBJECT} — Entity Registry (machine-readable)  [TEMPLATE]
+# Nodes of the graph that are NOT documents: the subject, its parts, its market,
+# its competitors, key people, programmes. Claims point at these via `about:`.
+
+meta:
+  subject: "{Legal name}"
+  compiled: {YYYY-MM-DD}
+
+# entity types (business-essentials vocabulary — a pack concern, see extension-manifest):
+#   subject · business-unit · brand · owner · competitor · person ·
+#   market · channel · programme · regulator · geography
+entities:
+  - id: E_SUBJECT
+    type: subject
+    name: "{Subject name}"
+    note: "{one line — what it is}"
+
+  - id: E_MARKET_CORE
+    type: market
+    name: "{primary market/category}"
+    note: "{order of magnitude, region}"
+
+  - id: E_COMP_1
+    type: competitor
+    name: "{competitor}"
+    note: "{scale relative to subject}"
+
+  - id: E_OWNER
+    type: owner
+    name: "{owner / parent / member-body}"
+    note: "{ownership form}"
+
+  # relations between entities (optional, id-referenced):
+  #   part_of: [E_PARENT]   peer_of: [E_COMP_1]   operates_in: [E_GEO]
+  # … add the entities the analysis actually references.

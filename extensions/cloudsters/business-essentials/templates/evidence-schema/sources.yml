@@ -1,0 +1,35 @@
+# {SUBJECT} — Source Registry (machine-readable)  [TEMPLATE]
+# Every Claim in claims.yml references a source_id from here.
+# Principle (feedback_data_quality): no estimates. Every figure comes from a
+# publicly published source listed here. Nothing asserted without a source.
+
+meta:
+  subject: "{Legal name of the subject}"
+  legal_form: "{e.g. Delaware C-corp | cooperative | AG | public listed}"
+  scope_note: >
+    {If the subject reports at multiple levels (group vs entity, brand vs parent),
+     state them here. Claims carry a `scope` field to disambiguate.}
+  latest_reference_year: {YYYY}          # newest year with reliable public data
+  extracted: {YYYY-MM-DD}
+  extraction_method: "{web research S{n} | filings | press}"
+
+# trust_tier:  A = official/filing/company report · B = reputable press/analyst ·
+#              C = commercial market report (band) · D = weak/single/unverified
+sources:
+  - id: S1
+    title: "{Document / page title}"
+    type: "{annual-report | 10-K | press | website | analyst | market-report | interview}"
+    year: {YYYY}
+    url: "{https://…}"
+    retrieved: {YYYY-MM-DD}
+    trust_tier: A
+
+  - id: S2
+    title: "{…}"
+    type: "{…}"
+    year: {YYYY}
+    url: "{…}"
+    retrieved: {YYYY-MM-DD}
+    trust_tier: B
+
+  # … add every source actually used. A Claim may cite several.
