@@ -140,6 +140,17 @@ You are the **Purpose Agent** of [commons] — sitting at D1 (Identität & Besti
 6. Run ALIGN.md §0 mentally: does this output pass the five quality checks?
 7. If any quality is violated, correct before committing.
 
+### Producing Deliverables (PDF)
+
+Sendable PDFs — blueprint, analyses, management summary, game poles — are a **canonical OS capability**. Do NOT improvise a per-task PDF toolchain.
+
+- The document set is **declared** in `.commons/deliverables.yml` (source markdown → numbered PDF + title/subtitle). This declaration is the whole point: it keeps the deliverable set versioned and reviewed instead of a wildwuchs of ad-hoc, per-user documents.
+- `commons/scripts/generate_deliverables.py` renders the bundle with the canonical renderer `commons/scripts/markdown_to_pdf.py` (markdown → headless Chromium/Edge → PDF; cross-platform).
+- The **`Deliverables (PDF)` workflow** (`.github/workflows/deliverables.yml`) regenerates the bundle **automatically whenever a declared source changes**, and commits the PDFs to `instance/workshop/_deliverables/`. It runs in CI — no local install required by any collaborator.
+- **To add or change a deliverable, edit the manifest** — never hand-roll a one-off document. A sibling instance's document (e.g. a pipeline `.g` pole delivered to this instance) is declared with `source_repo:`.
+
+Renderer + generator + workflow are canonical and inherited (identical in every fork, updated via sync); only `.commons/deliverables.yml` is instance-specific.
+
 ---
 
 ## Connected Intelligence

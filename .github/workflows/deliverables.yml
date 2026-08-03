@@ -1,0 +1,73 @@
+name: Deliverables (PDF)
+
+# Canonical Commons OS capability (inherited by every fork). Regenerates the
+# instance's declared deliverable bundle (.commons/deliverables.yml) whenever an
+# underlying source changes, and commits the PDFs. Renderer + generator are
+# canonical (commons/scripts/); only the manifest is instance-specific.
+#
+# The commit only touches _deliverables/, and the path filter excludes it, so
+# regeneration never re-triggers itself ([skip ci] on the auto-commit as a guard).
+# A private sibling `source_repo` in the manifest needs a token with read access
+# (add a PAT secret and pass it to the checkout/clone); GITHUB_TOKEN covers same-repo.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'blueprint.md'
+      - 'instance/workshop/**'
+      - '.commons/deliverables.yml'
+      - 'commons/scripts/markdown_to_pdf.py'
+      - 'commons/scripts/generate_deliverables.py'
+      - '.github/workflows/deliverables.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deliverables-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install markdown pyyaml
+
+      - name: Locate Chrome (preinstalled on ubuntu-latest)
+        run: |
+          BIN="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium-browser || command -v chromium || true)"
+          if [ -z "$BIN" ]; then
+            sudo apt-get update && sudo apt-get install -y chromium-browser
+            BIN="$(command -v chromium-browser || command -v chromium)"
+          fi
+          echo "CHROME_BIN=$BIN" >> "$GITHUB_ENV"
+          echo "Using browser: $BIN"
+
+      - name: Generate declared deliverables
+        run: |
+          if [ -f .commons/deliverables.yml ]; then
+            python commons/scripts/generate_deliverables.py
+          else
+            echo "No .commons/deliverables.yml — nothing declared; skipping."
+          fi
+
+      - name: Commit regenerated PDFs
+        run: |
+          git config user.name "higgerix"
+          git config user.email "holger.eggerichs@cloudsters.net"
+          git add instance/workshop/_deliverables/*.pdf 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No deliverable changes to commit."
+          else
+            git commit -m "Auto-regenerate deliverables from updated sources [skip ci]"
+            git push
+          fi

@@ -562,10 +562,12 @@ The registry is the **Minimum Viable System of Record**. During incubation — w
 │
 ├── .github/
 │   ├── ISSUE_TEMPLATE/               # Deliberation, decision, build templates
-│   ├── workflows/                    # CI, publishing, improvement loop
+│   ├── workflows/                    # CI, publishing, improvement loop, deliverables (PDF)
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   └── labels.yml                    # Pre-configured labels by dimension
 ```
+
+**Deliverables are a canonical capability.** Sendable PDFs are *declared* in `.commons/deliverables.yml` and rendered by `commons/scripts/{markdown_to_pdf,generate_deliverables}.py`; the `Deliverables (PDF)` workflow regenerates them in CI whenever a declared source changes. The renderer/generator/workflow are inherited (identical in every fork); only the manifest is instance-specific — so the document set stays declared and versioned instead of a wildwuchs of ad-hoc files. See AGENT.md § Producing Deliverables.
 
 #### The Outside-In Cascade (BEN Flow)
 

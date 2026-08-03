@@ -1,0 +1,35 @@
+# Deliverables — the declarative document bundle for THIS instance.
+#
+# This is a first-class Commons OS capability: `commons/scripts/generate_deliverables.py`
+# reads this file and renders each entry to PDF with the canonical renderer
+# (`commons/scripts/markdown_to_pdf.py`); the `.github/workflows/deliverables.yml`
+# workflow regenerates the bundle automatically whenever a declared source changes.
+#
+# Declaring the set here (versioned, reviewed) is deliberate — it prevents a wildwuchs
+# of ad-hoc, per-user documents. Renderer + workflow are canonical (inherited from the
+# OS, identical in every fork); only THIS manifest is instance-specific.
+#
+# Each bundle entry:
+#   source:       path to the markdown, relative to the repo root (required)
+#   output:       PDF filename written into output_dir (required)
+#   kicker:       optional eyebrow line on the title page
+#   subtitle:     optional subtitle on the title page
+#   source_repo:  optional git URL — render a SIBLING instance's document (e.g. a
+#                 pipeline .g pole). The repo is shallow-cloned first; a private
+#                 sibling needs a token with read access provided to the workflow.
+
+output_dir: instance/workshop/_deliverables
+foot: "cloudsters · Commons Engineering"
+
+bundle:
+  - source: blueprint.md
+    output: 01_Blueprint.pdf
+    kicker: "[Commons Name]"
+    subtitle: "Business Blueprint — the living value-creation model"
+  # Forks add their own analyses / summary here, e.g.:
+  # - source: instance/workshop/analysis/industry-analysis.md
+  #   output: 02_Industry-Analysis.pdf
+  # A sibling game pole (pipeline-side), delivered to this instance:
+  # - source: blueprint.md
+  #   source_repo: https://github.com/cloudsters-EUROPE/slug.g1
+  #   output: 05_Game_Specialist.pdf
