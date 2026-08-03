@@ -1,6 +1,6 @@
 # Commons OS Configuration
 commons_os_version: "0.2"
-forked_from: "commons-engineering/commons-os"
+forked_from: "commons-engineering/commons-core"
 
 # 3-MCP Connections (see COMMONS_MCP_ARCHITECTURE_SPEC for details)
 mcp:
