@@ -39,6 +39,12 @@ def main(ev_dir):
             errors.append(f"missing or empty: {name}.yml")
 
     src_ids = {s["id"] for s in (srcs or {}).get("sources", []) if "id" in s}
+    # statutory primary sources confirm alone (spec: Klein-GmbH calibration —
+    # Handelsregister/Bundesanzeiger/IP register filed under penalty of law)
+    STATUTORY = {"register", "register-aggregator", "handelsregister", "bundesanzeiger",
+                 "statutory", "ip-register"}
+    src_type = {s["id"]: str(s.get("type", "")).lower()
+                for s in (srcs or {}).get("sources", []) if "id" in s}
     ent_ids = {e["id"] for e in (ents or {}).get("entities", []) if "id" in e}
     claims = (clms or {}).get("claims", [])
     claim_ids = {c["id"] for c in claims if "id" in c}
@@ -71,9 +77,16 @@ def main(ev_dir):
         if c.get("tier") == "headline":
             headline_ct += 1
             n = len(set((c.get("asserted_by", []) or []) + (c.get("corroborated_by", []) or [])))
-            if n < 2 and conf != "unbestätigt":
+            # Graded single-source honesty (spec triangulation standard): a single
+            # source is admissible ONLY under a tag that names the limitation.
+            # "belegt" (confirmed) always requires >=2 distinct sources.
+            SINGLE_OK = {"unbestätigt", "unbestaetigt", "website", "marktreport", "inferred"}
+            allsrc = set((c.get("asserted_by", []) or []) + (c.get("corroborated_by", []) or []))
+            statutory_single = (n == 1 and all(src_type.get(s) in STATUTORY for s in allsrc))
+            if n < 2 and conf not in SINGLE_OK and not statutory_single:
                 errors.append(
-                    f"{cid}: headline claim has {n} source(s), needs >=2 or confidence:unbestätigt")
+                    f"{cid}: headline claim has {n} source(s), needs >=2 or a "
+                    f"limitation-naming confidence ({'/'.join(sorted(SINGLE_OK))})")
         # unresolved contradiction
         if c.get("contradicts") and c.get("id") not in superseded:
             # the contradicted-away claim should itself be superseded by another

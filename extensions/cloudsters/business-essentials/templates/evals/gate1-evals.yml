@@ -1,0 +1,335 @@
+# Gate-1 Eval Suite — v1.0
+# The executable form of the Gate-1 "Verified Foundation" semantics
+# (INSTANCE_CAPABILITY_SPEC §4: evals ARE the gate verifier; versioned; exercised
+# on every fresh lead; co-evolving via the L3 chain; gate SEMANTICS stay D1).
+#
+# Harvested from: gate1-verify.py (G1.2-G1.8) + INSTANCE_PIPELINE_SPEC v0.3.14
+# Harmony Checks (Gate-1-applicable subset) + 2026-08 Cluent-batch lessons.
+#
+# status: active     = verdict-bearing
+#         probation  = runs and reports, does NOT gate (being exercised/hardened)
+#         deferred   = defined but not run (pending a named decision)
+#         retired    = harvested but rejected for Gate 1 (reason recorded)
+# method: deterministic = implemented in run-gate1-evals.py
+#         llm-judged    = rubric below; executed by a judge agent, merged into the card
+# layer:  canon         = domain-agnostic (13 families / D0-D4 / Belegregel)
+#         extension     = business-enhanced specifics
+# applies_to: pipeline-domain-twin (instance_class business_digital_twin).
+#         Self-presentation twins (business_public_self_presentation) are exempt
+#         from pipeline-side evals (E10, E17, E22, E23) — applicability keys on
+#         instance_class in the blueprint frontmatter.
+
+version: "1.0"
+gate: "Gate 1 — Verified Foundation"
+applies_to: pipeline-domain-twin
+
+evals:
+  # ---- configuration surface -------------------------------------------------
+  - id: E01
+    title: identity.yml configured + Commons Core provenance
+    layer: canon
+    method: deterministic
+    source: HC#16(.d) + HC#28
+    property: >
+      .commons/identity.yml parses; instance_type: domain; slug set; purpose
+      non-empty; commons_core_upstream block carries repository,
+      editorial_source, forked_at.
+    status: active
+
+  - id: E02
+    title: config.yml configured (language + extension + value streams)
+    layer: canon
+    method: deterministic
+    source: HC#28
+    property: >
+      .commons/config.yml parses; language set; extensions non-empty
+      (pipeline accounts: cloudsters/business-enhanced); value_streams present.
+    status: active
+
+  - id: E03
+    title: CLAUDE.md thin pointer present (exact canonical one-liner)
+    layer: canon
+    method: deterministic
+    source: lesson 2026-08-11 (Cluent batch — pointer missing on 6 twins)
+    property: >
+      CLAUDE.md exists, is a thin pointer (<= 3 lines), and contains
+      "Read and follow AGENT.md".
+    status: active
+
+  - id: E04
+    title: AGENT.md instance-specific
+    layer: canon
+    method: deterministic
+    source: HC#28
+    property: AGENT.md exists and names the subject (slug or name appears).
+    status: active
+
+  - id: E05
+    title: a2a.yml identity populated
+    layer: canon
+    method: deterministic
+    source: HC#28
+    property: .commons/a2a.yml identity block populated (slug not null).
+    status: active
+
+  - id: E06
+    title: account.yml present with steward + stage
+    layer: extension
+    method: deterministic
+    source: pipeline convention
+    property: .commons/account.yml exists; steward and stage set.
+    status: active
+
+  # ---- evidence graph --------------------------------------------------------
+  - id: E07
+    title: evidence graph node files present
+    layer: canon
+    method: deterministic
+    source: G1.2
+    property: >
+      instance/workshop/evidence/ carries sources.yml, entities.yml, claims.yml,
+      README.md, plus at least one corpus dir (knowledge/ OR scans/ OR dossier
+      dirs). Layout is declared, not prescribed (2026-08 fix: knowledge/ was
+      hardcoded; Cluent builds use scans/ + public|external dossiers).
+    status: active
+
+  - id: E08
+    title: Belegregel + referential integrity + no unresolved contradictions
+    layer: canon
+    method: deterministic
+    source: G1.3/G1.4 (evidence-validate.py)
+    property: >
+      evidence-validate.py passes: every headline claim >=2 distinct sources or
+      confidence unbestaetigt; ids resolve; contradicts answered by supersedes.
+    status: active
+
+  - id: E09
+    title: metrics.yml present (quantitative node file)
+    layer: extension
+    method: deterministic
+    source: Cluent/BirdTec graph convention
+    property: instance/workshop/evidence/metrics.yml exists and parses.
+    status: probation
+
+  # ---- industry analysis -----------------------------------------------------
+  - id: E10
+    title: industry analysis anatomy (G-R-L + D0-D4 + ICPs + VP map + sources)
+    layer: extension
+    method: deterministic
+    source: "G1.5 (fixed 2026-08: was a hardcoded §0..§10 header count)"
+    property: >
+      analysis/industry-analysis.md exists with >=8 numbered sections AND
+      carries the anatomy semantically: Global/Regional/Lokal arc, all of
+      D0..D4, an ICP inventory, a value-proposition map, and a source apparatus.
+    status: active
+
+  # ---- blueprint -------------------------------------------------------------
+  - id: E11
+    title: all 13 canonical families present, exact names
+    layer: canon
+    method: deterministic
+    source: G1.6 + HC#4/#5(family level)
+    property: blueprint.md contains all 13 canonical family names verbatim.
+    status: active
+
+  - id: E12
+    title: Constituent-VS tables per family
+    layer: canon
+    method: deterministic
+    source: HC#25
+    property: blueprint.md carries >=13 "Constituent Value Streams" tables.
+    status: active
+
+  - id: E13
+    title: pipeline annotation strip marker
+    layer: extension
+    method: deterministic
+    source: HC#19
+    property: blueprint.md contains the literal marker "<!-- pipeline-annotation:end -->".
+    status: active
+
+  - id: E14
+    title: Wir-Perspektive discipline (heuristic lint)
+    layer: canon
+    method: deterministic
+    source: HC#21 (heuristic; full lint is llm-judged E26)
+    property: >
+      Body below the strip marker is first-person dense (de: wir/unser*;
+      en: we/our) — >=60 first-person tokens.
+    status: active
+
+  - id: E15
+    title: Beobachtung/Potentiale/Risiken triplet per family
+    layer: canon
+    method: deterministic
+    source: HC#24
+    property: >
+      blueprint.md carries >=13 occurrences each of "**Beobachtung.**",
+      "**Potentiale.**", "**Risiken.**".
+    status: active
+
+  - id: E16
+    title: economic model + impact KPIs present
+    layer: extension
+    method: deterministic
+    source: G1.6 (§2.1b)
+    property: blueprint carries §2.1b / Ökonomie-Modell section and Impact-KPI table.
+    status: active
+
+  - id: E23
+    title: blueprint→claims traceability (C_ids cited)
+    layer: canon
+    method: deterministic
+    source: G1.6 traceability
+    property: >
+      >=5 distinct C_### claim ids cited in blueprint.md. Placement guidance:
+      an appendix traceability map keeps the customer-portable body clean
+      (C_ids in the Wir-Perspektive body would leak pipeline mechanics).
+    status: active
+
+  # ---- scenarios -------------------------------------------------------------
+  - id: E17
+    title: 60 scenarios = 6 perspectives x 10 + worlds + No-Regret + wildcards
+    layer: canon
+    method: deterministic
+    source: "G1.7 (fixed 2026-08: perspective letters were hardcoded N,T,W,R,K,U)"
+    property: >
+      scenarios-2050.md carries exactly 60 "### <Letter><n>" scenario headers in
+      exactly 6 distinct letter groups of 10 each (letters free per build), plus
+      No-Regret, wildcard, and axes/worlds structure. Candidate poles NAMED only
+      (Gate-1 firewall: dark-horse instantiation and .g poles are Engage-side).
+    status: active
+
+  # ---- registry / loops / deliverables --------------------------------------
+  - id: E18
+    title: registry populated (all levels, 13 value-stream families)
+    layer: canon
+    method: deterministic
+    source: HC#18
+    property: >
+      instance/registry/{1_journeys,2_touchpoints,3_valuestreams,4_capabilities,
+      5_entities,value-propositions} each carry >=1 account-specific .md;
+      3_valuestreams carries exactly 13.
+    status: active
+
+  - id: E19
+    title: loop registry scaffold present
+    layer: canon
+    method: deterministic
+    source: "HC#22 (relaxed at Gate 1: scaffold; full per-family hooks from Nurture)"
+    property: instance/operations/loops/ exists with README.md and _state/.
+    status: active
+
+  - id: E20
+    title: deliverable bundle at the instance (declarative + rendered)
+    layer: extension
+    method: deterministic
+    source: >
+      HC#30 (renderer updated: instance-side .commons/deliverables.yml +
+      vendored generate_deliverables.py supersede the central blueprint_to_pdf.py)
+    property: >
+      .commons/deliverables.yml manifest present; instance/workshop/_deliverables/
+      carries a 00_*Management_Summary*.pdf cover plus >=3 further numbered PDFs.
+    status: active
+
+  - id: E21
+    title: management summary present and linked
+    layer: extension
+    method: deterministic
+    source: HC#30
+    property: instance/workshop/management-summary.md exists and references blueprint + analyses.
+    status: active
+
+  - id: E22
+    title: gate card present (GATE1.md — the signed verdict artifact)
+    layer: canon
+    method: deterministic
+    source: G1.8
+    property: >
+      instance/workshop/GATE1.md present. The runner can generate it from the
+      eval verdict (--write-card): the card IS the eval report.
+    status: active
+
+  # ---- llm-judged (rubrics; executed by a judge agent, merged into the card) --
+  - id: E24
+    title: Kern-Befund derived from own analyses
+    layer: canon
+    method: llm-judged
+    source: HC#29
+    rubric: >
+      The core finding is derived from the account's OWN analyses (cites at
+      least one); no reflexive tropes; theses on unverified data hinge on an
+      explicit named gap; identity read from self-description/primary data.
+    status: active
+
+  - id: E25
+    title: clean instance boundary (System of Systems)
+    layer: canon
+    method: llm-judged
+    source: HC#26
+    rubric: >
+      Sub-entities modelled across (Portfolio to System), not absorbed into the
+      parent's D2/D4; boundary explicit; intercompany exchange shown where real.
+    status: active
+
+  - id: E26
+    title: full Wir-Perspektive + voice-of-the-Commons lint
+    layer: canon
+    method: llm-judged
+    source: HC#21 + HC#23
+    rubric: >
+      No third-person observer formulations about the subject below the strip
+      marker; the Vorwort names the speaking "we" as the collective (Commons),
+      not the legal shell or founders alone.
+    status: active
+
+  - id: E27
+    title: canonical VS names at stream level (no invented names)
+    layer: canon
+    method: llm-judged
+    source: HC#5 (stream level; family level is E11)
+    rubric: >
+      Every value stream named in Constituent-VS tables matches the canon
+      (value-model.yml); manifestations filled; essential streams cascaded.
+    status: active
+
+  - id: E28
+    title: flagged-claim consistency across derived artifacts
+    layer: canon
+    method: llm-judged
+    source: lesson 2026-08-11 (bk registry carried pre-correction claims)
+    rubric: >
+      No value flagged unbestaetigt/corrected in evidence or triangulation is
+      asserted as fact in registry, summary, IA, or blueprint.
+    status: active
+
+  # ---- harvested but not adopted at Gate 1 (honest triage record) ------------
+  - id: X01
+    title: Agent Briefs per section (HC#20)
+    method: deterministic
+    status: deferred
+    reason: >
+      Authoring metadata inside the customer-portable body conflicts with the
+      §0-strip portability design; template decision pending (D1).
+
+  - id: X02
+    title: L1-L9 Living Blueprint headings (HC#17)
+    method: deterministic
+    status: retired
+    reason: >
+      Superseded by the v0.4 blueprint anatomy (§0-§8 + 13-family §5); carrying
+      both would re-import pre-canon logic.
+
+  - id: X03
+    title: signal continuity / timeslice / deltas / pole checks (HC#1,3,6,7,8,13,27-poles)
+    method: deterministic
+    status: deferred
+    reason: >
+      Pole-dependent — Engage-side by the gate ladder (no .g before real contact).
+      Return as the Gate-3 eval set.
+
+  - id: X04
+    title: lighthouse + workstream board (HC#14, HC#15)
+    method: deterministic
+    status: deferred
+    reason: Nurture-side (Gate-2 eval set), not Verified Foundation.
