@@ -89,3 +89,4 @@
 {"message":"Resource not accessible by integration","documentation_url":"https://docs.github.com/rest/metrics/traffic#get-repository-clones","status":"403","captured":"2026-08-09"}
 {"message":"Resource not accessible by integration","documentation_url":"https://docs.github.com/rest/metrics/traffic#get-repository-clones","status":"403","captured":"2026-08-10"}
 {"message":"Resource not accessible by integration","documentation_url":"https://docs.github.com/rest/metrics/traffic#get-repository-clones","status":"403","captured":"2026-08-11"}
+{"message":"Resource not accessible by integration","documentation_url":"https://docs.github.com/rest/metrics/traffic#get-repository-clones","status":"403","captured":"2026-08-12"}
