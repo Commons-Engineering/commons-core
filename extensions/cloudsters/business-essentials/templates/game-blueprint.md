@@ -169,6 +169,34 @@ Woran wir gerade arbeiten.}}
 
 {{Das größere Spiel ist … — dieselbe Melodie wie die Kategorie oben, auf Welt-Höhe.}}
 
+### Wo unsere Cores sitzen
+<!-- CORE POSITIONING — D0 · boundary and sovereignty (COMMONS_CORE_MIGRATION).
+     "We engineer Commons Cores as Centers of Alignment & Productivity for
+     Value-Creating Systems." Plural grammar: a Commons Core · several Commons
+     Cores · a Constellation. Cores are the sovereign centres; the Constellation
+     is the whole. A Core is where alignment and productivity are actually HELD —
+     where a decision binds and work becomes coherent. That is an observation
+     about the organisation, not a wish: name where it sits TODAY.
+     Roles: Core (sovereign centre) · Sub-Core (own coherence, inside a Core's
+     mandate) · Companion Sphere (an own field alongside, not subordinate) ·
+     outside the boundary (modelled across via Portfolio to System, never absorbed).
+     A single-site organisation is one Core — say so plainly; do not invent a
+     constellation. This section states WHAT IS; where a Core should first be
+     instantiated is an engagement question and belongs in §0 (pipeline-side). -->
+
+{{Ein Satz: Wir sind ein Commons Core — oder: Wir sind eine Constellation aus
+N Cores. Und woran man das erkennt: wo eine Entscheidung bindet und Arbeit
+kohärent wird.}}
+
+| Einheit | Rolle | Warum |
+|---|---|---|
+| {{Einheit}} | {{Core / Sub-Core / Companion Sphere / außerhalb}} | {{worin ihre eigene Kohärenz besteht — oder warum sie keine hat}} |
+
+{{Zwei bis drei Sätze: Was das für uns bedeutet — was zentral getragen wird und
+was vor Ort entschieden werden muss. Wo die Ausrichtung heute reibt, gehört in
+§5.0 Perception to Mandate, nicht hierher.}}
+
+
 
 ### §1.1 Identity-Δ — who we are at the horizon
 
