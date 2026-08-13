@@ -127,6 +127,34 @@ A blueprint is a *temporal specification*. It describes us **today** *(the Basel
 
 ## §1 Identity and Purpose
 
+### Wenn uns jemand fragt, was wir tun
+<!-- SPOKEN FORM — D0 · Perception to Mandate (COMMONS_VALUE_CREATION_MANIFEST §3.3).
+     Four to five FLOWING paragraphs, ~170 words, first person plural, spoken register.
+     NO framework labels, NO bullets — the beats shape the prose, they must not show.
+     Spoken order: Name · Same · Pain · Fame · Aim · EXCHANGE · Game
+       (Exchange before Game: the ask belongs inside the story, the bigger game lands.)
+     The beats with their backing, reward lines and lengths belong in the WORKSHOP
+     version at instance/workshop/pitch.md — never on the stage.
+     Repeat test: a stranger must be able to give the Fame line back.
+     Belegregel: nothing asserted here that the evidence layer does not carry. -->
+
+{{Wir sind … — wer wir sind und wen „wir" umfasst. Wir machen … — die vertraute
+Kategorie, mit Absicht unspektakulär.}}
+
+{{Die Spannung in unserem Feld — nur Wiedererkennung, kein Verkauf. Und was wir
+darin können, das andere in derselben Kategorie nicht können: der besitzbare
+Mechanismus, wiederholbar formuliert. Woran wir gerade arbeiten.}}
+
+{{Was wir dazu brauchen, sagen wir offen: … — ein Commons, das nur anbietet, ist
+ein Lieferant; erst das benannte Bedürfnis macht es zum Teilnehmer.}}
+
+{{Das größere Spiel ist … — dieselbe Melodie wie die Kategorie oben, auf Welt-Höhe.}}
+
+*Die Arbeitsfassung dieser Worte — die einzelnen Züge mit ihren Belegen, Reward
+Lines und kürzeren Längen — liegt in `instance/workshop/pitch.md`.*
+
+
+
 ### §1.1 Profile
 
 > *Agent Brief:* Depth = **shallow**. Triangulation = 2 sources for headcount, revenue, founding date. Output = the table below, every cell filled or marked `unknown`. Time budget = 20 minutes.

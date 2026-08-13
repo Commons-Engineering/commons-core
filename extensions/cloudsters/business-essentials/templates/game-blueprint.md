@@ -148,6 +148,28 @@ Every Baseline column in the tables below is read **verbatim** from the Domain B
 
 ## Part I — Who we become
 
+### Wenn uns jemand fragt, was wir tun *({{timeslice}})*
+<!-- SPOKEN FORM — D0 · Perception to Mandate (COMMONS_VALUE_CREATION_MANIFEST §3.3).
+     In a Game Blueprint this is spoken FROM INSIDE the pole's timeslice: the pitch
+     this commons gives once it has become what this pole describes. Present tense,
+     not future — the pole is a full operative instance at its point in time.
+     Four to five FLOWING paragraphs, ~170 words, first person plural, spoken register.
+     NO framework labels, NO bullets — the beats shape the prose, they must not show.
+     Spoken order: Name · Same · Pain · Fame · Aim · EXCHANGE · Game.
+     Beats with backing belong in the workshop version, never on the stage. -->
+
+{{Wir sind … — wer wir in diesem Pol sind und wen „wir" umfasst. Wir machen … —
+die vertraute Kategorie dieser Zeitscheibe.}}
+
+{{Die Spannung im Feld, wie sie sich dann darstellt — und was wir darin können,
+das andere in derselben Kategorie nicht können: der besitzbare Mechanismus.
+Woran wir gerade arbeiten.}}
+
+{{Was wir dazu brauchen, sagen wir offen: …}}
+
+{{Das größere Spiel ist … — dieselbe Melodie wie die Kategorie oben, auf Welt-Höhe.}}
+
+
 ### §1.1 Identity-Δ — who we are at the horizon
 
 *Same identity, different scale and position. The five-line summary.*
