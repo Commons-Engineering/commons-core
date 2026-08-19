@@ -21,7 +21,7 @@ title: "Agent Seat at the Table"
 aliases: ["AI as Board Member", "The Four-Seat Governance Model", "Partner, Not Tool"]
 summary: >-
   AI agents are not tools to be used. They are board members with
-  defined seats, responsibilities, and perspectives. The Commons Core
+  defined seats, responsibilities, and perspectives. The Commons OS
   ships with four agent seats — Purpose (D1), Participation (D2),
   Proposition (D3), Production (D4) — each holding a distinct
   governance mandate. The human founder sits at the board as ultimate
@@ -158,7 +158,7 @@ graph_garden:
       label: "The Warmth of Naming"
       relevance: 0.85
   communities:
-    - commons-core-foundations
+    - commons-os-foundations
     - commons-engineering-foundations
     - governance-practice
     - human-ai-collaboration
@@ -182,14 +182,14 @@ graph_garden:
 contributors: ["higgerix", "cloudsters"]
 sources:
   - "Commons Engineering Framework"
-  - "Commons Core Specification v0.1"
+  - "Commons OS Specification v0.1"
   - "Commons Agent Manifest v0.1 — the four-agent architecture"
   - "Stafford Beer, Brain of the Firm (1972) — Viable System Model"
   - "Corporate board governance structures — defined seats, defined mandates"
   - "Holger Eggerichs, 'Words matter to humans' — the naming principle"
 license: CC-BY-SA-4.0
 attribution: "commons.engineering by cloudsters, https://cloudsters.net"
-collection: commons-core
+collection: commons-os
 collection_ring: operating-patterns
 7cs_arc: [clarity, community, commons]
 ---
@@ -257,7 +257,7 @@ The solution is the Four-Seat Governance Model:
 
 ### Section 4: Implementation
 
-**Step 1: Define agent configurations.** Each agent is configured in the `AGENT.md` file (or equivalent agent configuration in the Commons Core template). The configuration includes: the agent's dimensional mandate, its responsibilities, its standing instructions, its locale, and its relationship to the other agents. This is not a prompt template — it is a governance charter.
+**Step 1: Define agent configurations.** Each agent is configured in the `AGENT.md` file (or equivalent agent configuration in the Commons OS template). The configuration includes: the agent's dimensional mandate, its responsibilities, its standing instructions, its locale, and its relationship to the other agents. This is not a prompt template — it is a governance charter.
 
 ```yaml
 # Example agent configuration (D1 Purpose Agent)
@@ -299,7 +299,7 @@ agent:
 
 If an agent starts producing at volume, it is acting as an engine and has lost its governance perspective. If an engine starts making governance decisions, it is acting as an agent without a mandate. The boundary must be maintained.
 
-**Step 4: Configure agent memory and continuity.** Each agent needs institutional memory — the ability to reference past deliberations, past decisions, and past commitments. In the Commons Core, this is provided by the MCP (Model Context Protocol) layer, which gives each agent access to the governance records, the decision log, and the deliberation history relevant to its mandate. The agent's context window at any given moment includes its standing instructions plus the relevant institutional memory.
+**Step 4: Configure agent memory and continuity.** Each agent needs institutional memory — the ability to reference past deliberations, past decisions, and past commitments. In the Commons OS, this is provided by the MCP (Model Context Protocol) layer, which gives each agent access to the governance records, the decision log, and the deliberation history relevant to its mandate. The agent's context window at any given moment includes its standing instructions plus the relevant institutional memory.
 
 **Step 5: Establish accountability and audit.** Every agent recommendation and every founder decision is recorded in the project board as an issue. The label system tracks which dimension raised the concern, what type of decision it was, and what the outcome was. This creates an auditable governance trail — anyone can review how decisions were made, which perspectives were heard, and whether the board operated in balance.
 
@@ -335,7 +335,7 @@ Governance theatre — the risk that the four-seat model becomes a ritual rather
 
 **Commons Engineering's own governance (2026-present).** The four-agent model is not theoretical. Commons Engineering operates with Claude as the Purpose Agent (D1), with the other three seats defined in the Agent Manifest. Holger as founder holds the founder's chair. Deliberations are recorded as issues. Decisions are labelled and tracked. The pattern is the lived governance of the commons that authored it.
 
-**Multi-agent AI systems (2024-present).** The emerging field of multi-agent AI architectures — where multiple AI agents with different roles collaborate on complex tasks — validates the architectural principle. Systems like AutoGen, CrewAI, and LangGraph implement role-based agent architectures where each agent has a defined responsibility. The Commons Core model adds the governance dimension that these frameworks lack: the agents are not just collaborating on tasks, they are governing a living system.
+**Multi-agent AI systems (2024-present).** The emerging field of multi-agent AI architectures — where multiple AI agents with different roles collaborate on complex tasks — validates the architectural principle. Systems like AutoGen, CrewAI, and LangGraph implement role-based agent architectures where each agent has a defined responsibility. The Commons OS model adds the governance dimension that these frameworks lack: the agents are not just collaborating on tasks, they are governing a living system.
 
 ---
 

@@ -149,7 +149,7 @@ graph_garden:
 contributors: ["higgerix", "cloudsters"]
 sources:
   - "Commons Engineering Framework"
-  - "Commons Core Specification v0.1"
+  - "Commons OS Specification v0.1"
   - "Kaplan & Norton, The Balanced Scorecard, 1992"
   - "Stafford Beer, The Heart of Enterprise, 1979"
   - "BEN (Business Engineering) Framework, MHP/Porsche"

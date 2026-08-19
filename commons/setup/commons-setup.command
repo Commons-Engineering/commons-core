@@ -5,7 +5,7 @@
 #  Recommended invocation (process substitution keeps stdin connected
 #  to your terminal, so Homebrew and sudo can prompt if they need to):
 #
-#    bash <(curl -fsSL https://raw.githubusercontent.com/Commons-Engineering/commons-core/main/commons/setup/commons-setup.command)
+#    bash <(curl -fsSL https://raw.githubusercontent.com/Commons-Engineering/commons-os/main/commons/setup/commons-setup.command)
 #
 #  The older form  curl ... | bash  makes Homebrew (and other sub-installers)
 #  exit silently because stdin is the pipe, not your terminal.
@@ -82,7 +82,7 @@ if ! command -v brew >/dev/null 2>&1; then
   say ""
   say "  Please re-run using this form (note the parentheses):"
   say ""
-  say "    bash <(curl -fsSL https://raw.githubusercontent.com/Commons-Engineering/commons-core/main/commons/setup/commons-setup.command)"
+  say "    bash <(curl -fsSL https://raw.githubusercontent.com/Commons-Engineering/commons-os/main/commons/setup/commons-setup.command)"
   say ""
   say "  Full log saved at: $LOG"
   exit 1
@@ -230,7 +230,7 @@ WORKROOT="$HOME/repos/commons-setup"
 mkdir -p "$WORKROOT"
 
 # --- 4. Fetch the onboarding procedure --------------------------------------
-ONBOARDING_URL="https://raw.githubusercontent.com/Commons-Engineering/commons-core/main/commons/setup/ONBOARDING.md"
+ONBOARDING_URL="https://raw.githubusercontent.com/Commons-Engineering/commons-os/main/commons/setup/ONBOARDING.md"
 say "  Fetching the latest setup procedure..."
 if curl -fsSL "$ONBOARDING_URL" -o "$WORKROOT/ONBOARDING.md" 2>>"$LOG"; then
   say "  - procedure ready."
@@ -246,7 +246,7 @@ cat > "$WORKROOT/$POINTER" <<'EOF'
 # Commons Engineering - setup session
 
 Read ONBOARDING.md in this folder and execute it step by step to set up
-my Commons Engineering working environment. Clone Commons Core into ../commons
+my Commons Engineering working environment. Clone Commons OS into ../commons
 (the workspace root, i.e. repos/commons - a sibling of this setup folder).
 
 I am new and may be non-technical. Guide me warmly, do the technical work

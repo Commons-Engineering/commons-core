@@ -3,7 +3,7 @@
 
 **Version:** 0.2
 **Status:** Living Document
-**Companion:** COMMONS_CORE_MANIFEST.md, COMMONS_GAMES_MANIFEST.md
+**Companion:** COMMONS_OS_MANIFEST.md, COMMONS_GAMES_MANIFEST.md
 
 ---
 
@@ -13,7 +13,7 @@ A sea chart does not own the ocean. It does not own the ships that sail on it, t
 
 commons.domains is the sea chart of the commons world.
 
-Every Commons Core instance that chooses to be visible broadcasts into the shared protocol: its purpose, its propositions, its capabilities, its ecological parameters, its contact endpoint. commons.domains renders those broadcasts into a navigable, layered chart — so that commons can find each other, participants can discover commons worth joining, and the world can see what the commons economy looks like at any given moment.
+Every Commons OS instance that chooses to be visible broadcasts into the shared protocol: its purpose, its propositions, its capabilities, its ecological parameters, its contact endpoint. commons.domains renders those broadcasts into a navigable, layered chart — so that commons can find each other, participants can discover commons worth joining, and the world can see what the commons economy looks like at any given moment.
 
 commons.domains does not register commons. It does not approve them. It does not hold their data. It receives their broadcasts and renders them. When a commons goes dark, it disappears from the chart. When a new commons lights its beacon, it appears. The chart is always current because the broadcasts are continuous. No one maintains it. It maintains itself.
 
@@ -37,7 +37,7 @@ The sea chart has many layers. Each layer renders the same broadcasts through a 
 
 ### S2.1 The Reality Layer
 
-The default layer. Renders broadcasts from real-world commons instances — organisations, cities, ecosystems, and individuals operating the Commons Core against real problems with real stakes. This is the live chart of the actual commons economy.
+The default layer. Renders broadcasts from real-world commons instances — organisations, cities, ecosystems, and individuals operating the Commons OS against real problems with real stakes. This is the live chart of the actual commons economy.
 
 ### S2.2 The Simulation Layer (commons.games)
 
@@ -90,7 +90,7 @@ The architecture is open. Any layer that can be derived from broadcast data can 
 
 ## S4 The Broadcast Protocol
 
-commons.domains depends entirely on the Broadcasting capability of the Commons Core. The chart can only render what is sent. The Broadcasting specification lives in the Commons Core Manifest and Specification — not here. This manifest describes what the chart does with the broadcasts, not how the broadcasts work.
+commons.domains depends entirely on the Broadcasting capability of the Commons OS. The chart can only render what is sent. The Broadcasting specification lives in the Commons OS Manifest and Specification — not here. This manifest describes what the chart does with the broadcasts, not how the broadcasts work.
 
 What the chart needs from the protocol:
 
@@ -151,7 +151,7 @@ The chart provides the bird's-eye view. The game provides the street-level view.
 
 commons.domains is open infrastructure:
 
-- The broadcast protocol is open and specified in the Commons Core.
+- The broadcast protocol is open and specified in the Commons OS.
 - The rendering engine is open-source.
 - The chart data is derived from public broadcasts — anyone can build their own rendering.
 - The communication bridge protocol is open.
@@ -179,7 +179,7 @@ The rendering engine and communication bridge are themselves commons — governe
 
 commons.domains is the visibility layer of the Commons Engineering ecosystem:
 
-- **Commons Core Manifest** — defines the Broadcasting capability that commons.domains renders. The chart is only as rich as the protocol allows. Broadcasting specification lives in the OS, not here.
+- **Commons OS Manifest** — defines the Broadcasting capability that commons.domains renders. The chart is only as rich as the protocol allows. Broadcasting specification lives in the OS, not here.
 - **Commons Games Manifest** — defines the simulation world that appears as one layer on the chart. commons.games provides the simulation engine; commons.domains provides the visualisation.
 - **Commons Blueprint Manifest** — every commons that broadcasts has a Blueprint. The chart may render Blueprint metadata (purpose, timeslice, governance health) for commons broadcasting at Open or Transparent level.
 - **Commons Agent Manifest** — the four agents of each commons produce the governance telemetry that feeds the trust dimensions visible on the chart.

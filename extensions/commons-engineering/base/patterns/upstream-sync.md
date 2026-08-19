@@ -136,9 +136,9 @@ graph_garden:
     - npm Registry
     - Franchise Knowledge Distribution
     - Federated Learning
-    - Commons Core
+    - Commons OS
   communities:
-    - commons-core-operations
+    - commons-os-operations
     - federation-and-network
   inferred_links: []
 
@@ -150,7 +150,7 @@ contributors:
   - cloudsters
 sources:
   - "Commons Engineering Framework"
-  - "Commons Core Specification v0.1"
+  - "Commons OS Specification v0.1"
   - "Git distributed version control model"
   - "Linux distribution update architecture"
   - "npm/pip package management patterns"
@@ -167,15 +167,15 @@ attribution: "commons.engineering by cloudsters, https://cloudsters.net"
 
 ### Section 1: Context
 
-**Lineage:** This pattern generalises from Ecosystem Partnership Design and Adaptive Learning, serving the Universal sector as an Orbit 2 architectural building block for Commons Core.
+**Lineage:** This pattern generalises from Ecosystem Partnership Design and Adaptive Learning, serving the Universal sector as an Orbit 2 architectural building block for Commons OS.
 
-When a commons forks its operating system from the Commons Core distribution, it gains a complete, functional copy of the OS at that moment in time. The patterns, the specifications, the configuration templates, the tooling — all of it becomes local, owned by the forking commons, subject to its governance and adapted to its purpose. This is the fundamental promise of Commons as Code: sovereignty through forking.
+When a commons forks its operating system from the Commons OS distribution, it gains a complete, functional copy of the OS at that moment in time. The patterns, the specifications, the configuration templates, the tooling — all of it becomes local, owned by the forking commons, subject to its governance and adapted to its purpose. This is the fundamental promise of Commons as Code: sovereignty through forking.
 
 But the network does not stop evolving after the fork. New patterns are discovered. Existing patterns are refined. Vulnerabilities are patched. Tooling improves. Other commons in the network encounter problems and publish solutions. The collective intelligence of the commons network — the sum of all the experience, experimentation, and deliberation happening across every fork — continues to grow, and a fork that never syncs with this upstream intelligence is a fork that slowly falls behind.
 
 This is the same tension that every Linux distribution user, every npm package consumer, every franchise operator navigates daily. You forked because you wanted control. You sync because you want to benefit from what others have learned. The question is never "should I sync?" — isolation is always worse in the long run. The question is "how do I sync without losing my sovereignty?"
 
-The answer, proven across decades of distributed systems practice, is simple in principle and nuanced in execution: **pull, never push**. The local instance decides what to adopt, when to adopt it, and how to integrate it. The upstream never forces an update on a sovereign fork. This is not a policy choice; it is an architectural invariant of the Commons Core design.
+The answer, proven across decades of distributed systems practice, is simple in principle and nuanced in execution: **pull, never push**. The local instance decides what to adopt, when to adopt it, and how to integrate it. The upstream never forces an update on a sovereign fork. This is not a policy choice; it is an architectural invariant of the Commons OS design.
 
 ---
 
@@ -189,7 +189,7 @@ Every commons that operates within a network of related commons faces this funda
 
 **Force 2: Adoption vs. Adaptation.** When upstream offers a new pattern or an updated specification, the local commons faces a choice: adopt it wholesale, adapt it to local needs, or reject it entirely. Wholesale adoption is fast but risks importing assumptions that do not fit the local context. Adaptation is thorough but expensive — every upstream change must be reviewed, understood, and modified. Rejection preserves local coherence but sacrifices network benefit. There is no universally correct answer; the right choice depends on the specific change and the specific commons.
 
-**Force 3: Trust vs. Verification.** The upstream is maintained by stewards — in the case of Commons Core, by cloudsters and the Commons Engineering community. The local commons must trust that upstream changes are well-intentioned and well-tested, but it must also verify that they are compatible with local conditions. Blind trust leads to breakage. Excessive verification leads to sync paralysis, where every upstream change triggers weeks of review and nothing is ever actually adopted.
+**Force 3: Trust vs. Verification.** The upstream is maintained by stewards — in the case of Commons OS, by cloudsters and the Commons Engineering community. The local commons must trust that upstream changes are well-intentioned and well-tested, but it must also verify that they are compatible with local conditions. Blind trust leads to breakage. Excessive verification leads to sync paralysis, where every upstream change triggers weeks of review and nothing is ever actually adopted.
 
 **Force 4: Frequency vs. Disruption.** Syncing frequently means smaller, more manageable changes — but also more frequent interruptions to local work. Syncing infrequently means larger, more disruptive changes — but longer periods of uninterrupted local focus. The optimal frequency depends on the rate of upstream change, the stability of the local fork, and the governance capacity available for sync review.
 
@@ -205,10 +205,10 @@ The mechanism operates in three layers: the transport layer (how upstream change
 
 **Transport Layer: Git Remotes.**
 
-Every Commons Core fork is a git repository. The upstream source — the canonical Commons Core distribution maintained by cloudsters — is added as a git remote:
+Every Commons OS fork is a git repository. The upstream source — the canonical Commons OS distribution maintained by cloudsters — is added as a git remote:
 
 ```bash
-git remote add upstream https://github.com/commons-engineering/commons-core.git
+git remote add upstream https://github.com/commons-engineering/commons-os.git
 git fetch upstream
 ```
 
@@ -266,7 +266,7 @@ syncs:
 When a new commons forks its OS distribution, the very first post-fork action is to add the upstream remote. This is not optional configuration; it is part of the fork procedure. A fork without an upstream remote is a fork that has already begun the process of isolation.
 
 ```bash
-git remote add upstream https://github.com/commons-engineering/commons-core.git
+git remote add upstream https://github.com/commons-engineering/commons-os.git
 git fetch upstream
 ```
 
@@ -351,11 +351,11 @@ Upstream sync is primarily a pull operation, but the relationship is not purely 
 
 ### Section 6: Known Uses
 
-**Linux Distribution Updates.** The Linux kernel and distribution ecosystem is the canonical example of upstream sync at planetary scale. Thousands of distributions — Ubuntu, Fedora, Arch, Alpine, and many more — fork from the upstream kernel and maintain their own package repositories, patches, and configurations. Each distribution decides independently which upstream kernel version to adopt, which patches to apply, and which packages to include. The sync is always pull-based: distributions pull from upstream when they are ready, not when upstream pushes. Ubuntu's six-month release cycle, Debian's "when it's ready" philosophy, and Arch's rolling release model represent three different sync cadences applied to the same upstream, each serving a different community with different needs. The result is extraordinary diversity within a coherent ecosystem — exactly the balance that Commons Core upstream sync aims to achieve.
+**Linux Distribution Updates.** The Linux kernel and distribution ecosystem is the canonical example of upstream sync at planetary scale. Thousands of distributions — Ubuntu, Fedora, Arch, Alpine, and many more — fork from the upstream kernel and maintain their own package repositories, patches, and configurations. Each distribution decides independently which upstream kernel version to adopt, which patches to apply, and which packages to include. The sync is always pull-based: distributions pull from upstream when they are ready, not when upstream pushes. Ubuntu's six-month release cycle, Debian's "when it's ready" philosophy, and Arch's rolling release model represent three different sync cadences applied to the same upstream, each serving a different community with different needs. The result is extraordinary diversity within a coherent ecosystem — exactly the balance that Commons OS upstream sync aims to achieve.
 
 **npm and pip Package Management.** Every software project that uses a package manager practises upstream sync. The project declares its dependencies (the upstream sources it draws from), the package manager fetches the specified versions (the sync pull), and the developer reviews and tests the result before deploying (the review layer). Lock files (`package-lock.json`, `Pipfile.lock`) record the exact versions adopted, serving the same function as the sync log. The `npm audit` command checks for known vulnerabilities in upstream dependencies, paralleling the security-priority sync described in this pattern. The lesson from decades of package management is clear: unmanaged upstream dependencies are a liability, but well-managed upstream sync is a superpower.
 
-**Franchise Knowledge Distribution.** Franchise systems — from McDonald's to Montessori schools — practise a form of upstream sync that predates software by decades. The franchisor develops operating procedures, training materials, and quality standards (the upstream). Each franchisee adopts these materials and adapts them to local conditions — local menu items, local labour laws, local cultural norms (the selective merge). The franchisor distributes updates through regular communication channels — newsletters, training programmes, annual conferences (the sync cadence). The critical difference between a healthy franchise system and a controlling one is exactly the difference between pull and push: a healthy system offers guidance that franchisees adopt voluntarily; a controlling system mandates compliance that franchisees resent. Commons Core is architecturally a pull system, by design and by conviction.
+**Franchise Knowledge Distribution.** Franchise systems — from McDonald's to Montessori schools — practise a form of upstream sync that predates software by decades. The franchisor develops operating procedures, training materials, and quality standards (the upstream). Each franchisee adopts these materials and adapts them to local conditions — local menu items, local labour laws, local cultural norms (the selective merge). The franchisor distributes updates through regular communication channels — newsletters, training programmes, annual conferences (the sync cadence). The critical difference between a healthy franchise system and a controlling one is exactly the difference between pull and push: a healthy system offers guidance that franchisees adopt voluntarily; a controlling system mandates compliance that franchisees resent. Commons OS is architecturally a pull system, by design and by conviction.
 
 **Mycorrhizal Networks in Forest Ecosystems.** In ecology, mycorrhizal fungal networks connect the root systems of trees in a forest, allowing them to share nutrients, water, and chemical warning signals. A tree connected to the network benefits from the collective sensing capacity of the forest — when one tree detects a pest, it can signal others through the network, allowing them to activate chemical defences before the pest arrives. But each tree remains sovereign: it decides how much nutrient to share, how much to keep, and how to respond to signals. The network facilitates intelligence sharing; it does not override individual autonomy. This is upstream sync in its most ancient and elegant form — a pull-based intelligence network where sovereignty and connection coexist.
 

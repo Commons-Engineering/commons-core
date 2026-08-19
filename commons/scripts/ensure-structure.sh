@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
-# ensure-structure.sh — guarantee the canonical Commons Core hull structure.
+# ensure-structure.sh — guarantee the canonical Commons OS hull structure.
 #
-# The canonical empty hull skeleton (per COMMONS_CORE_SPEC §2.1) must exist in
+# The canonical empty hull skeleton (per COMMONS_OS_SPEC §2.1) must exist in
 # EVERY instance — chain repo, fork, or customer instance — at any scale.
 # This script is the SINGLE SOURCE OF TRUTH for that skeleton. It is:
 #   * ADDITIVE        — only creates missing directories and .keep markers
@@ -31,7 +31,7 @@
 
 set -e
 
-# --- The canonical hull skeleton (COMMONS_CORE_SPEC §2.1) --------------------
+# --- The canonical hull skeleton (COMMONS_OS_SPEC §2.1) --------------------
 # Layer roots and every delivery folder that Git would otherwise drop when
 # empty. Content-bearing directories appear here too: they are created if
 # absent and left untouched (no .keep) when they already hold files.

@@ -148,7 +148,7 @@ graph_garden:
 contributors: ["higgerix", "cloudsters"]
 sources:
   - "Commons Engineering Framework"
-  - "Commons Core Manifest, §10.3 Commons Portfolios"
+  - "Commons OS Manifest, §10.3 Commons Portfolios"
   - "Markowitz, Portfolio Selection, 1952"
   - "Nassim Nicholas Taleb, Antifragile, 2012"
 license: CC-BY-SA-4.0
@@ -166,7 +166,7 @@ attribution: "commons.engineering by cloudsters, https://cloudsters.net"
 
 **Lineage:** This pattern generalises from Economic Constraint (Scarcity & Opportunity Cost) and Evolutionary Adaptation (Variation & Selection), serving as the Orbit 2 portfolio architecture for any commons practitioner operating across multiple domains.
 
-The Commons Core makes it trivially easy to create a commons. Fork the template, boot the blueprint, start operating. This ease of creation is deliberate — permissionless creation is a founding principle. But ease of creation creates a new problem: the single-commons trap. A founder invests everything — time, reputation, capital, energy — into one commons. That commons becomes their identity. If it thrives, they thrive. If it falters, they have nothing to fall back on.
+The Commons OS makes it trivially easy to create a commons. Fork the template, boot the blueprint, start operating. This ease of creation is deliberate — permissionless creation is a founding principle. But ease of creation creates a new problem: the single-commons trap. A founder invests everything — time, reputation, capital, energy — into one commons. That commons becomes their identity. If it thrives, they thrive. If it falters, they have nothing to fall back on.
 
 This is not a hypothetical risk. It is the lived reality of most founders, whether they lead startups, community initiatives, or personal projects. The concentration of all resources in a single venture is the default mode of operation. And it is fragile. Markets shift. Communities change. Technologies evolve. A single commons, no matter how well-governed, operates within an environment it cannot control. The question is not whether shocks will come, but whether the founder has built a structure that can absorb them.
 
@@ -192,7 +192,7 @@ But the forces pulling toward diversification are equally real:
 
 **Learning compounds across ventures.** A pattern discovered in one commons — a governance mechanism, a community engagement practice, a production workflow — can be applied immediately in another. The founder who operates multiple commons learns faster than the founder who operates one, because they have more surfaces for experimentation and more data points for comparison.
 
-**Life has multiple dimensions.** The Commons Core recognises four domains: Life, Business, Urban, Ecology. A founder who only operates a Business commons neglects their Life dimension. The `me-os` — the personal operating system — is not a luxury. It is the feedback loop that keeps the founder healthy, reflective, and aligned with their own purpose. A founder who burns out serving their business commons has failed the most important commons of all.
+**Life has multiple dimensions.** The Commons OS recognises four domains: Life, Business, Urban, Ecology. A founder who only operates a Business commons neglects their Life dimension. The `me-os` — the personal operating system — is not a luxury. It is the feedback loop that keeps the founder healthy, reflective, and aligned with their own purpose. A founder who burns out serving their business commons has failed the most important commons of all.
 
 **Reputation compounds.** Each commons the founder operates creates visibility in a different community, a different market, a different domain. The reputation earned in one commons creates trust that opens doors in another. This is not diversification for its own sake — it is the architecture of compounding credibility.
 
@@ -202,9 +202,9 @@ But the forces pulling toward diversification are equally real:
 
 > **Therefore, operate multiple commons as a deliberate portfolio — each with its own purpose and autonomy, connected through shared learning, shared reputation, and shared infrastructure, governed by the founder's meta-purpose.**
 
-The portfolio is not a holding company. It is not a conglomerate. It is a living system of living systems, connected by the founder's identity and the shared pattern language of the Commons Core. Each commons in the portfolio is fully autonomous — its own purpose, its own participation, its own governance. But beneath the surface, the mycorrhizal network of shared learning makes the whole greater than the sum.
+The portfolio is not a holding company. It is not a conglomerate. It is a living system of living systems, connected by the founder's identity and the shared pattern language of the Commons OS. Each commons in the portfolio is fully autonomous — its own purpose, its own participation, its own governance. But beneath the surface, the mycorrhizal network of shared learning makes the whole greater than the sum.
 
-The portfolio architecture follows the GitHub org model from the Commons Core Manifest:
+The portfolio architecture follows the GitHub org model from the Commons OS Manifest:
 
 | Repo in the org | What it is | Domain | Role in portfolio |
 |---|---|---|---|
@@ -265,7 +265,7 @@ The primary consequence of portfolio resilience is exactly what the name implies
 
 **The cloudsters portfolio** is the first deliberate application of this pattern within Commons Engineering. Holger operates Commons Engineering (the pattern library and framework), plans `berlin-os` (an urban commons for incubating local enterprises), and maintains `me-os` (his personal operating system). Each commons has a distinct purpose and domain, but they share learning, reputation, and infrastructure. A pattern discovered while doing lighthouse briefings for Commons Engineering becomes a reusable pattern in the pattern library, which becomes available to `berlin-os` for local enterprise incubation. The reputation earned through 200+ enterprise briefings at MHP/Porsche creates the credibility that opens doors for Commons Engineering. The personal reflection practice in `me-os` keeps the whole system honest.
 
-**Serial entrepreneurship** is the business-domain expression of portfolio resilience, though it is typically practised sequentially rather than in parallel. Experienced serial entrepreneurs consistently report that their second and third ventures benefit enormously from learning accumulated in earlier ones — not just technical skills, but pattern recognition about markets, teams, timing, and personal energy management. The Commons Core makes this sequential pattern into a parallel architecture, where multiple ventures can operate simultaneously because the shared infrastructure (pattern library, MCP connections, agent architecture) reduces the marginal cost of each additional commons.
+**Serial entrepreneurship** is the business-domain expression of portfolio resilience, though it is typically practised sequentially rather than in parallel. Experienced serial entrepreneurs consistently report that their second and third ventures benefit enormously from learning accumulated in earlier ones — not just technical skills, but pattern recognition about markets, teams, timing, and personal energy management. The Commons OS makes this sequential pattern into a parallel architecture, where multiple ventures can operate simultaneously because the shared infrastructure (pattern library, MCP connections, agent architecture) reduces the marginal cost of each additional commons.
 
 **Mycorrhizal networks in forest ecology** are the biological archetype. In a healthy forest, trees of different species are connected by underground fungal networks that transfer nutrients, water, and chemical signals between them. A tree under stress receives resources from its neighbours through this network. A tree with surplus shares. The network makes the forest resilient in ways that no individual tree could achieve alone. The commons portfolio is the social equivalent: each commons is a tree, the shared pattern language is the fungal network, and the flows of learning, reputation, and resources are the nutrients that make the portfolio more than the sum of its parts.
 

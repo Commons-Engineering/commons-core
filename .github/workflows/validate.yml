@@ -18,9 +18,9 @@ jobs:
             ".commons/config.yml" \
             "ALIGN.md" \
             "BOOT.md" \
-            "commons/manifests/COMMONS_CORE_MANIFEST.md" \
+            "commons/manifests/COMMONS_OS_MANIFEST.md" \
             "commons/manifests/COMMONS_AGENT_MANIFEST.md" \
-            "commons/specs/COMMONS_CORE_SPEC.md" \
+            "commons/specs/COMMONS_OS_SPEC.md" \
             "commons/specs/PATTERN_SPEC.md"; do
             if [ ! -f "$f" ]; then
               echo "MISSING: $f"

@@ -1,6 +1,6 @@
-# Contributing to Commons Core
+# Contributing to Commons OS
 
-Commons Core is a shared operating system. Improvements made in any fork can flow back upstream to benefit all commons.
+Commons OS is a shared operating system. Improvements made in any fork can flow back upstream to benefit all commons.
 
 ## What You Can Contribute
 
@@ -20,10 +20,10 @@ Your `instance/` directory and `extensions/` are yours. We will never ask you to
 
 ## Process
 
-1. **Fork** the commons-core repository (if you haven't already)
+1. **Fork** the commons-os repository (if you haven't already)
 2. **Create a branch** for your change
 3. **Make your change** following the relevant spec (PATTERN_SPEC for patterns, etc.)
-4. **Open a PR** against `commons-engineering/commons-core`
+4. **Open a PR** against `commons-engineering/commons-os`
 5. **Describe** what you changed and why
 
 ## Guidelines

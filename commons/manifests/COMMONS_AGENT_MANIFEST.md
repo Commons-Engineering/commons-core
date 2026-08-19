@@ -3,7 +3,7 @@
 
 **Version:** 1.0
 **Status:** Living Document
-**Companion:** COMMONS_CORE_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md, COMMONS_LOOPS_MANIFEST.md
+**Companion:** COMMONS_OS_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md, COMMONS_LOOPS_MANIFEST.md
 
 ---
 
@@ -19,7 +19,7 @@ This manifest defines the agent architecture, their value stream families, and t
 
 ## §1 The Four Core Agents
 
-Every Commons Core fork ships with exactly four core agents. They are non-negotiable — the four Universal Dimensions require four perspectives.
+Every Commons OS fork ships with exactly four core agents. They are non-negotiable — the four Universal Dimensions require four perspectives.
 
 | Agent | Dimension | Perspective | Human board equivalent |
 |---|---|---|---|
@@ -148,7 +148,7 @@ Commons.Engineering, applying this architecture to itself:
 |---|---|---|
 | **Purpose Agent** | Oversees all engines, guards CE's mission, governs architecture | — |
 | **Participation Agent** | Cultivates the commons engineering community | — |
-| **Proposition Agent** | Positions lighthouses, collections, Commons Core to stakeholders | — |
+| **Proposition Agent** | Positions lighthouses, collections, Commons OS to stakeholders | — |
 | **Production Agent** | Supervises all production | Pattern Engine, Lighthouse Engine, Build pipelines |
 
 The old naming (Pattern Engine, Lighthouse Engine, Community Engine, Context Engine, Hub Engine) was pre-architecture — five peer engines. The new architecture: **four peer agents, with engines as production lines under D4.**
@@ -162,7 +162,7 @@ Beyond the four core agents, a commons may need additional agents for specific p
 | Type | What it is | Example |
 |---|---|---|
 | **Engine agents** | Persistent sub-agents running production lines under D4 | Pattern Engine agent, Lighthouse Engine agent |
-| **Product agents** | Specialised agents for specific products or services | A "Commons Core" agent that manages fork lifecycle |
+| **Product agents** | Specialised agents for specific products or services | A "Commons OS" agent that manages fork lifecycle |
 | **Persona agents** | Agents embodying a specific stakeholder perspective | A "Passenger Agent" for BVG, a "Patient Agent" for a hospital |
 
 On-demand agents are never peers to the four core agents. They operate **under the umbrella** of the relevant core agent:
@@ -177,7 +177,7 @@ The Purpose Agent (D1) may also have on-demand agents for specific governance ta
 
 ## §5 The Board in Practice
 
-The commons board operates through the Governance Runtime (§2.5 of the COMMONS_CORE_MANIFEST):
+The commons board operates through the Governance Runtime (§2.5 of the COMMONS_OS_MANIFEST):
 
 | Activity | How it happens |
 |---|---|
@@ -224,7 +224,7 @@ This agent architecture descends from:
 - **BVG 3-year blueprint** — proof that the methodology works at enterprise scale; proof that it needs AI to be accessible to all organisations
 - **APQC Process Classification Framework** — lineage for value stream families, but modeled as value streams not processes
 
-The ambition: what took 3 years and a consulting team on brown paper should be accessible to any organisation through an AI-enabled Commons Core.
+The ambition: what took 3 years and a consulting team on brown paper should be accessible to any organisation through an AI-enabled Commons OS.
 
 ---
 

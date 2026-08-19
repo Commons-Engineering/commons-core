@@ -1,6 +1,6 @@
 # Deliverables — the declarative document bundle for THIS instance.
 #
-# This is a first-class Commons Core capability: `commons/scripts/generate_deliverables.py`
+# This is a first-class Commons OS capability: `commons/scripts/generate_deliverables.py`
 # reads this file and renders each entry to PDF with the canonical renderer
 # (`commons/scripts/markdown_to_pdf.py`); the `.github/workflows/deliverables.yml`
 # workflow regenerates the bundle automatically whenever a declared source changes.

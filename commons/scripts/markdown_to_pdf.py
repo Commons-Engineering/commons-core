@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-markdown_to_pdf — the CANONICAL Commons Core renderer.  Markdown -> styled HTML ->
+markdown_to_pdf — the CANONICAL Commons OS renderer.  Markdown -> styled HTML ->
 headless Chromium/Edge -> PDF.  Pure Python (only the `markdown` package) + a
 Chromium-family browser.  No pandoc / LaTeX / weasyprint / npm.
 
@@ -141,7 +141,7 @@ def build(md_path, out_pdf, title=None, kicker='', subtitle='', foot='cloudsters
     print('OK -> %s (%d KB)' % (out_pdf, os.path.getsize(out_pdf)//1024))
 
 if __name__ == '__main__':
-    ap = argparse.ArgumentParser(description='Render a Commons Core blueprint markdown to a sendable PDF.')
+    ap = argparse.ArgumentParser(description='Render a Commons OS blueprint markdown to a sendable PDF.')
     ap.add_argument('input'); ap.add_argument('output')
     ap.add_argument('--title'); ap.add_argument('--kicker', default='')
     ap.add_argument('--subtitle', default=''); ap.add_argument('--foot', default='cloudsters · Commons Engineering')

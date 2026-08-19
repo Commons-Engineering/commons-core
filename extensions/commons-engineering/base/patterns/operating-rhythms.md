@@ -137,9 +137,9 @@ graph_garden:
     - Seasonal Agriculture
     - Circadian Rhythm
     - Sprint Retrospective
-    - Commons Core
+    - Commons OS
   communities:
-    - commons-core-operations
+    - commons-os-operations
     - temporal-governance
   inferred_links: []
 
@@ -151,7 +151,7 @@ contributors:
   - cloudsters
 sources:
   - "Commons Engineering Framework"
-  - "Commons Core Specification v0.1"
+  - "Commons OS Specification v0.1"
   - "Scrum Guide (Schwaber & Sutherland)"
   - "Rule of St. Benedict (monastic horarium)"
 license: CC-BY-SA-4.0
@@ -167,11 +167,11 @@ attribution: "commons.engineering by cloudsters, https://cloudsters.net"
 
 ### Section 1: Context
 
-**Lineage:** This pattern generalises from Operational Cadence and Multi-Speed Feedback, serving the Universal sector as an Orbit 2 architectural building block for Commons Core.
+**Lineage:** This pattern generalises from Operational Cadence and Multi-Speed Feedback, serving the Universal sector as an Orbit 2 architectural building block for Commons OS.
 
 Every living system operates in time. The human body has its circadian rhythm — a 24-hour cycle of waking and sleeping, activity and rest, that governs everything from hormone production to cognitive performance. A forest has its seasonal rhythm — spring growth, summer abundance, autumn harvest, winter dormancy — that governs the metabolic cycles of every organism within it. A city has its diurnal rhythm — morning commute, working day, evening leisure, night quiet — overlaid with weekly, monthly, and annual cycles of commerce, governance, and celebration.
 
-A commons operating on Commons Core is no different. It exists in time, and if it does not establish explicit rhythms for attention, review, and renewal, it will drift. Not dramatically — drift is rarely dramatic. It is the slow accumulation of unanswered questions, unreviewed assumptions, unprocessed feedback, and unacknowledged changes. A commons without operating rhythms does not collapse; it gradually becomes irrelevant to itself, an abandoned workshop where the tools are still on the bench but nobody comes to use them.
+A commons operating on Commons OS is no different. It exists in time, and if it does not establish explicit rhythms for attention, review, and renewal, it will drift. Not dramatically — drift is rarely dramatic. It is the slow accumulation of unanswered questions, unreviewed assumptions, unprocessed feedback, and unacknowledged changes. A commons without operating rhythms does not collapse; it gradually becomes irrelevant to itself, an abandoned workshop where the tools are still on the bench but nobody comes to use them.
 
 The challenge is that operating rhythms must be both structured enough to be reliable and flexible enough to accommodate the organic nature of living systems. A rhythm that is too rigid becomes a cage — the weekly meeting that nobody needs but everybody attends because it is on the calendar. A rhythm that is too loose becomes invisible — the quarterly review that gets postponed until it has been six months and nobody remembers what was supposed to be reviewed.
 
@@ -306,11 +306,11 @@ Operating rhythms erode. The daily pulse gets skipped "just this once." The mont
 
 ### Section 6: Known Uses
 
-**Scrum Ceremonies.** The Scrum framework is perhaps the most widely adopted operating rhythm in the technology industry. Its four ceremonies — daily standup, sprint planning, sprint review, and sprint retrospective — map directly to the four-layer temporal architecture described here. The daily standup is the pulse. Sprint planning (bi-weekly or monthly) is the timeslice. The sprint review is a stakeholder coordination moment. The retrospective is a self-assessment rhythm. Scrum's strength is its discipline — the ceremonies happen on schedule, and each produces a defined artefact. Its weakness is its rigidity — the framework does not easily accommodate the needs of systems that operate at different speeds or that require rhythms at timescales longer than a sprint. The Commons Core operating rhythm pattern generalises Scrum's insight (regular cadence with defined artefacts) while relaxing its constraints (fixed sprint lengths, prescribed formats).
+**Scrum Ceremonies.** The Scrum framework is perhaps the most widely adopted operating rhythm in the technology industry. Its four ceremonies — daily standup, sprint planning, sprint review, and sprint retrospective — map directly to the four-layer temporal architecture described here. The daily standup is the pulse. Sprint planning (bi-weekly or monthly) is the timeslice. The sprint review is a stakeholder coordination moment. The retrospective is a self-assessment rhythm. Scrum's strength is its discipline — the ceremonies happen on schedule, and each produces a defined artefact. Its weakness is its rigidity — the framework does not easily accommodate the needs of systems that operate at different speeds or that require rhythms at timescales longer than a sprint. The Commons OS operating rhythm pattern generalises Scrum's insight (regular cadence with defined artefacts) while relaxing its constraints (fixed sprint lengths, prescribed formats).
 
-**Monastic Horarium.** The Rule of St. Benedict, written in the sixth century, prescribes a daily, weekly, and annual rhythm for monastic communities that has sustained functioning institutions for over 1,500 years. The daily rhythm (horarium) structures the day into periods of prayer, work, study, and rest. The weekly rhythm marks Sunday as a day of greater contemplation. The annual rhythm follows the liturgical calendar, with seasons of fasting, celebration, and ordinary time. The genius of the horarium is its integration of multiple human needs — spiritual, intellectual, physical, social — into a single temporal structure. It does not separate "work time" from "reflection time" because it recognises that a living community needs both, woven together. The Commons Core pattern draws directly from this insight: each rhythm serves a different need (operational, coordinative, strategic, existential), and together they form a complete temporal metabolism.
+**Monastic Horarium.** The Rule of St. Benedict, written in the sixth century, prescribes a daily, weekly, and annual rhythm for monastic communities that has sustained functioning institutions for over 1,500 years. The daily rhythm (horarium) structures the day into periods of prayer, work, study, and rest. The weekly rhythm marks Sunday as a day of greater contemplation. The annual rhythm follows the liturgical calendar, with seasons of fasting, celebration, and ordinary time. The genius of the horarium is its integration of multiple human needs — spiritual, intellectual, physical, social — into a single temporal structure. It does not separate "work time" from "reflection time" because it recognises that a living community needs both, woven together. The Commons OS pattern draws directly from this insight: each rhythm serves a different need (operational, coordinative, strategic, existential), and together they form a complete temporal metabolism.
 
-**OKR Cycles.** Objectives and Key Results, popularised by Intel and Google, operate on a quarterly rhythm: set objectives at the beginning of the quarter, track key results throughout, and review at the end. This maps to the quarterly alignment rhythm in the Commons Core pattern. The strength of OKRs is their focus on outcomes rather than activities — the key results are measurable states, not tasks. Their weakness is that the quarterly cadence is often too slow for operational reality, and without daily and weekly rhythms to feed them, OKRs become aspirational statements reviewed once a quarter and ignored in between.
+**OKR Cycles.** Objectives and Key Results, popularised by Intel and Google, operate on a quarterly rhythm: set objectives at the beginning of the quarter, track key results throughout, and review at the end. This maps to the quarterly alignment rhythm in the Commons OS pattern. The strength of OKRs is their focus on outcomes rather than activities — the key results are measurable states, not tasks. Their weakness is that the quarterly cadence is often too slow for operational reality, and without daily and weekly rhythms to feed them, OKRs become aspirational statements reviewed once a quarter and ignored in between.
 
 **Seasonal Agricultural Rhythms.** Farming operates on rhythms dictated by biology and climate, not by management frameworks. Spring planting, summer tending, autumn harvest, winter planning and repair. These rhythms are non-negotiable — miss the planting window and no amount of overtime will compensate. Agricultural communities have developed rich operating rhythms around these natural cycles: market days, planting festivals, harvest celebrations, winter maintenance schedules. The agricultural rhythm is the original operating rhythm, and its lesson for the Cognitive Age is that some rhythms are not choices but necessities dictated by the nature of the system being tended.
 

@@ -2,7 +2,7 @@
 
 **Version:** 1.0
 **Status:** Specification
-**Companion:** PATTERN_SPEC.md (v8.2), ENGAGEMENT_GRAPH_SPEC.md (v1.0), COMMONS_AGENT_MANIFEST.md (v1.0), COMMONS_CORE_SPEC.md
+**Companion:** PATTERN_SPEC.md (v8.2), ENGAGEMENT_GRAPH_SPEC.md (v1.0), COMMONS_AGENT_MANIFEST.md (v1.0), COMMONS_OS_SPEC.md
 
 ---
 
@@ -704,7 +704,7 @@ get_spec(
 
 #### 4.4.6 Extension Pack Tools (Tier 0 — OPEN for browse, Tier 1 — PEER for install)
 
-> The extension pack architecture — pack structure, manifest.yml format, provider registry, and loading flow — is defined in COMMONS_CORE_SPEC §2.5. This section defines the MCP tools that expose the pack ecosystem to AI agents.
+> The extension pack architecture — pack structure, manifest.yml format, provider registry, and loading flow — is defined in COMMONS_OS_SPEC §2.5. This section defines the MCP tools that expose the pack ecosystem to AI agents.
 
 **`list_packs`** — Browse available extension packs in the registry. *(Tier 0 — OPEN)*
 
@@ -1415,7 +1415,7 @@ This specification descends from:
 - **v0.1 (06 March 2026)** — "The Navigator Edition." Established the two-server architecture, tool catalogue, tier model, data sovereignty principles. These remain unchanged in v1.0.
 - **Prototype (11-12 March 2026)** — SQLite-based pipeline indexing 54,266 patterns in 639s. Python MCP server with 11 tools. Cloudflare Worker at mcp.commons.engineering. Proved the data model and parsing at scale.
 - **Gemini architectural review (12 March 2026)** — Five-layer architecture, Neo4j recommendation, bootstrapper stack (~€30/month), GraphRAG synthesis ("The Weaver"), topological vector search. Validated the strategic direction and filled the infrastructure gap.
-- **BEN Ecosystem Framework** — Holger's IP from 9 years at MHP/Porsche (~200 enterprise briefings). The Purpose Spiral, value stream families, outside-in methodology. What took 3 years + consultants → Commons Core makes accessible to any organisation.
+- **BEN Ecosystem Framework** — Holger's IP from 9 years at MHP/Porsche (~200 enterprise briefings). The Purpose Spiral, value stream families, outside-in methodology. What took 3 years + consultants → Commons OS makes accessible to any organisation.
 
 ## Appendix B: Glossary
 

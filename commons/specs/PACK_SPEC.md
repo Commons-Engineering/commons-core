@@ -2,13 +2,13 @@
 
 **Version:** 1.0
 **Status:** Specification
-**Companion:** COMMONS_CORE_SPEC.md (§2.5), COMMONS_MCP_ARCHITECTURE_SPEC.md (§4.4.6), PATTERN_SPEC.md (v8.2)
+**Companion:** COMMONS_OS_SPEC.md (§2.5), COMMONS_MCP_ARCHITECTURE_SPEC.md (§4.4.6), PATTERN_SPEC.md (v8.2)
 
 ---
 
 ## §1 Purpose
 
-Extension packs are the primary mechanism for delivering domain-specific knowledge to a Commons Core instance. They enable any Commons Incubator to build, publish, and maintain curated knowledge collections — patterns, specs, templates, scripts — that extend the OS beyond its universal commons layer.
+Extension packs are the primary mechanism for delivering domain-specific knowledge to a Commons OS instance. They enable any Commons Incubator to build, publish, and maintain curated knowledge collections — patterns, specs, templates, scripts — that extend the OS beyond its universal commons layer.
 
 The extension pack architecture follows the chaordic principle: shared interface (this spec), autonomous content (each provider's IP). A hospital consortium publishes clinical pathway patterns. A Hanseatic city publishes settlement governance patterns. A sustainability network publishes circular-economy patterns. All use the same pack format; all are discoverable through the same registry; all install with the same MCP tool.
 
@@ -80,7 +80,7 @@ description: string             # One-paragraph description
 domains: string[]               # Applicable domains: life, business, urban, ecology
 dependencies: string[]          # Other packs required (format: "{provider}/{pack}")
 license: string                 # SPDX identifier (default: CC-BY-SA-4.0)
-min_os_version: string          # Minimum Commons Core version required
+min_os_version: string          # Minimum Commons OS version required
 
 # ═══════════════════════════════════════════════════════════════════
 # CONTENT CATALOGUE
@@ -116,7 +116,7 @@ changelog: string               # Relative path to CHANGELOG.md (if exists)
 | `domains` | string[] | No | `[]` | Which of the four domains this pack serves |
 | `dependencies` | string[] | No | `[]` | Format: `"{provider}/{pack}"`. Resolved at install time. |
 | `license` | string | No | `CC-BY-SA-4.0` | SPDX license identifier |
-| `min_os_version` | string | No | `1.0` | Minimum compatible Commons Core version |
+| `min_os_version` | string | No | `1.0` | Minimum compatible Commons OS version |
 | `patterns` | int | No | `0` | Must match actual file count when declared |
 | `collections` | list | No | `[]` | Each entry describes one collection index |
 | `specs` | string[] | No | `[]` | Relative paths to included spec files |
@@ -262,7 +262,7 @@ packs:
 provider: commons-engineering
 name: "Commons Engineering"
 url: https://commons.engineering
-description: "Steward of the Commons Core. Publisher of the universal commons layer and four domain packs."
+description: "Steward of the Commons OS. Publisher of the universal commons layer and four domain packs."
 mcp_endpoint: https://mcp.commons.engineering/v1
 verified: true
 contact: hello@commons.engineering
@@ -304,8 +304,8 @@ packs:
 
 | Step | Action | Who | Where |
 |---|---|---|---|
-| 1 | Create provider profile YAML | Provider | Their fork of commons-core |
-| 2 | Submit Pull Request to commons-core upstream | Provider | GitHub |
+| 1 | Create provider profile YAML | Provider | Their fork of commons-os |
+| 2 | Submit Pull Request to commons-os upstream | Provider | GitHub |
 | 3 | Review: naming conflict check, basic quality check | CE (or community reviewers) | PR review |
 | 4 | Merge | CE maintainer | GitHub |
 | 5 | Provider is registered, packs discoverable via Commons MCP | Automatic | MCP indexes on sync |
@@ -319,7 +319,7 @@ The registration process is deliberately lightweight. The PR is the governance m
 | Provider names are **globally unique** | No collisions in the extension directory |
 | Pack names are **unique within a provider** | Providers manage their own namespace |
 | Both use **lowercase-hyphenated** format | Filesystem compatibility, URL-safe, consistent with pattern IDs |
-| Reserved providers: `commons-engineering`, `commons-core` | Upstream namespace protection |
+| Reserved providers: `commons-engineering`, `commons-os` | Upstream namespace protection |
 | Provider names must not start with `commons-` | Prevents confusion with upstream. Exception: `commons-engineering`. |
 | No single-character provider names | Avoids accidental collisions and ambiguity |
 
@@ -355,7 +355,7 @@ Packs use **Semantic Versioning** (SemVer). The version field in `manifest.yml` 
 
 | Method | How | Audience | Connectivity |
 |---|---|---|---|
-| **Pre-loaded** | Included in the commons-core fork template | Ships with every fork | Offline — works from day one |
+| **Pre-loaded** | Included in the commons-os fork template | Ships with every fork | Offline — works from day one |
 | **Commons MCP** | Listed in provider registry, downloaded via `download_pack` tool, installed locally by agent | Any connected commons | Requires MCP connectivity |
 | **Direct** | Provider shares the pack directory; fork owner places it in `extensions/` | Manual distribution | Offline |
 | **Git subtree** | Provider maintains pack in separate repo; fork owner adds as subtree | Advanced distribution | Git remote access |
@@ -417,7 +417,7 @@ All patterns within a pack **must** conform to PATTERN_SPEC v8.2. The pack provi
 
 ### §5.2 Alignment Check
 
-The Commons Core ALIGN.md alignment service validates installed packs. The checks:
+The Commons OS ALIGN.md alignment service validates installed packs. The checks:
 
 | Check | What It Validates | Severity |
 |---|---|---|
@@ -443,13 +443,13 @@ The Commons MCP will support community ratings for packs at TEAM tier and above.
 | **Currency** | Are patterns up to date with current practice? |
 | **Usefulness** | Do practitioners find the patterns actionable? |
 
-Rating infrastructure is planned for Commons Core v2.0.
+Rating infrastructure is planned for Commons OS v2.0.
 
 ---
 
 ## §6 Pre-loaded Packs
 
-The commons-core template ships with these CE packs pre-loaded in `extensions/commons-engineering/`:
+The commons-os template ships with these CE packs pre-loaded in `extensions/commons-engineering/`:
 
 | Pack | Provider | Content | Patterns | Status |
 |---|---|---|---|---|
@@ -485,10 +485,10 @@ All four domain packs ship with every fork. A hospital needs urban patterns (cit
 
 | Specification | Relationship |
 |---|---|
-| **COMMONS_CORE_SPEC §2.5** | Defines the three-layer knowledge architecture and the extension pack directory convention. This spec elaborates the full schema and lifecycle. |
+| **COMMONS_OS_SPEC §2.5** | Defines the three-layer knowledge architecture and the extension pack directory convention. This spec elaborates the full schema and lifecycle. |
 | **COMMONS_MCP_ARCHITECTURE_SPEC §4.4.6** | Defines the MCP tools (`download_pack`, `check_pack_updates`) for browsing and downloading packs from the remote registry. |
 | **PATTERN_SPEC v8.2** | All patterns within extension packs must conform. The pack spec does not redefine pattern format — it defers to PATTERN_SPEC entirely. |
-| **COMMONS_CORE_MANIFEST §4** | Describes what knowledge ships with the fork and why. This spec describes *how* that knowledge is packaged. |
+| **COMMONS_OS_MANIFEST §4** | Describes what knowledge ships with the fork and why. This spec describes *how* that knowledge is packaged. |
 
 ---
 

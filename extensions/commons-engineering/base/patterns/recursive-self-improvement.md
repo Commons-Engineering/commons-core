@@ -176,7 +176,7 @@ graph_garden:
       relevance: 0.9
   communities:
     - id: commons-engineering-os
-      label: "Commons Core Operating Patterns"
+      label: "Commons OS Operating Patterns"
       source: curated
       confidence: 1.0
     - id: continuous-improvement
@@ -207,7 +207,7 @@ graph_garden:
 contributors: ["higgerix", "cloudsters"]
 sources:
   - "Commons Engineering Framework"
-  - "Commons Core Specification v0.1"
+  - "Commons OS Specification v0.1"
   - "Deming, W.E. (1986). Out of the Crisis"
   - "Rother, M. (2009). Toyota Kata"
   - "Weaveworks — GitOps Principles"
@@ -311,7 +311,7 @@ The human's sensing role is different: it is qualitative. The founder who reads 
 
 **2. Set cadences for different loop speeds.**
 
-Not all improvement operates at the same speed. The Commons Core runs three loops simultaneously:
+Not all improvement operates at the same speed. The Commons OS runs three loops simultaneously:
 
 The **operational loop** (daily to weekly): small adjustments to patterns, issues triaged and resolved, agent outputs reviewed and corrected. This loop handles the majority of tensions and operates at the speed of the issue board.
 
@@ -353,7 +353,7 @@ A second risk: improvement theatre. The commons that raises many issues, conduct
 
 **CI/CD pipelines in software engineering.** The modern software development pipeline — code, test, build, deploy, monitor — is the direct technical ancestor of this pattern's operational loop. The innovation of CI/CD was making the feedback loop tight enough that developers could sense the effect of their changes within minutes rather than days. Commons as Code applies the same principle to governance: the gap between decision and deployment approaches zero, and the sensing after deployment is automated.
 
-**The Deming Cycle (PDCA).** Plan-Do-Check-Act is the universal improvement loop from which all modern continuous improvement descends. Deming's insight was that improvement is not an event but a cycle — and that the cycle's value compounds only when the "Check" phase is honest and the "Act" phase actually updates the plan. The Commons Core improvement loop is PDCA expressed as code: Plan = Issue + Resolve, Do = Commit + Deploy, Check = Sense, Act = the next Issue.
+**The Deming Cycle (PDCA).** Plan-Do-Check-Act is the universal improvement loop from which all modern continuous improvement descends. Deming's insight was that improvement is not an event but a cycle — and that the cycle's value compounds only when the "Check" phase is honest and the "Act" phase actually updates the plan. The Commons OS improvement loop is PDCA expressed as code: Plan = Issue + Resolve, Do = Commit + Deploy, Check = Sense, Act = the next Issue.
 
 ---
 

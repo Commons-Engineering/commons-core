@@ -68,7 +68,7 @@ cognition:
     discoverable: false                # Can other instances find and address this instance?
     broadcast:
       enabled: false
-      target: null                     # e.g., "Commons-Core/lighthouses" for domain instances
+      target: null                     # e.g., "Commons-OS/lighthouses" for domain instances
       frequency: weekly                # How often to broadcast public profile
     accepts: []                        # What A2A requests this instance handles
     # Example:

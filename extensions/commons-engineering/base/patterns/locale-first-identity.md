@@ -154,7 +154,7 @@ graph_garden:
       label: "Subsidiarity at the Interface Layer"
       relevance: 0.9
   communities:
-    - commons-core-foundations
+    - commons-os-foundations
     - commons-engineering-foundations
     - localisation-practice
   inferred_links:
@@ -177,14 +177,14 @@ graph_garden:
 contributors: ["higgerix", "cloudsters"]
 sources:
   - "Commons Engineering Framework"
-  - "Commons Core Specification v0.1"
+  - "Commons OS Specification v0.1"
   - "EU Multilingualism Policy — 24 official languages, subsidiarity in practice"
   - "GNU gettext — the original i18n architecture (1995)"
   - "ICU Message Format — Unicode CLDR"
   - "Wikipedia multilingual edition architecture"
 license: CC-BY-SA-4.0
 attribution: "commons.engineering by cloudsters, https://cloudsters.net"
-collection: commons-core
+collection: commons-os
 collection_ring: operating-patterns
 7cs_arc: [clarity, commons, community]
 ---
@@ -300,13 +300,13 @@ Over-engineering for a single-language commons — many commons will operate in 
 
 ### Section 6: Known Uses
 
-**GNU gettext (1995-present).** The original internationalisation architecture for free software. gettext established the pattern that is now universal: source strings in the developer's language (English), message catalogues for each locale, runtime lookup by locale setting. Thousands of software projects use this architecture. The Commons Core locale registry follows the same structural principle, adapted for a governance operating system rather than a desktop application.
+**GNU gettext (1995-present).** The original internationalisation architecture for free software. gettext established the pattern that is now universal: source strings in the developer's language (English), message catalogues for each locale, runtime lookup by locale setting. Thousands of software projects use this architecture. The Commons OS locale registry follows the same structural principle, adapted for a governance operating system rather than a desktop application.
 
 **Wikipedia multilingual editions.** Wikipedia operates 300+ language editions, each with its own community, governance, and editorial standards. The canonical concept (an article about a topic) is shared across editions through Wikidata identifiers. The content is independently authored in each language — not translated, but natively written by speakers of that language. This is the gold standard for locale-first identity at scale: shared structure, native expression.
 
 **European Union multilingualism policy.** The EU operates in 24 official languages. Every regulation, every directive, every public communication is available in all 24 languages — not as translations of a single original, but as equally authoritative versions. The canonical identifier (the regulation number) is shared; the legal text is native in each language. This policy is expensive and complex, but it is the foundation of legitimacy in a union of diverse linguistic communities.
 
-**ICU Message Format and Unicode CLDR.** The International Components for Unicode (ICU) project and the Common Locale Data Repository (CLDR) provide the technical infrastructure for locale-aware content across all major software platforms. Date formats, number formats, pluralisation rules, name structures — all encoded per locale. The Commons Core builds on this infrastructure rather than reinventing it.
+**ICU Message Format and Unicode CLDR.** The International Components for Unicode (ICU) project and the Common Locale Data Repository (CLDR) provide the technical infrastructure for locale-aware content across all major software platforms. Date formats, number formats, pluralisation rules, name structures — all encoded per locale. The Commons OS builds on this infrastructure rather than reinventing it.
 
 ---
 

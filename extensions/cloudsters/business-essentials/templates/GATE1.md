@@ -17,7 +17,7 @@ machine-checkable (the seed of the deterministic build program).
 
 | # | Criterion | How checked | Pass |
 |---|---|---|---|
-| **G1.1** | `.d` scaffold present + config surface (identity/config/README/AGENT pointer). *(Full commons-core fork is a post-Gate-1 mechanical step; Gate-1 scope = the workshop foundation.)* | file presence | ☐ |
+| **G1.1** | `.d` scaffold present + config surface (identity/config/README/AGENT pointer). *(Full commons-os fork is a post-Gate-1 mechanical step; Gate-1 scope = the workshop foundation.)* | file presence | ☐ |
 | **G1.2** | Evidence graph present + parseable: `sources.yml` · `entities.yml` · `claims.yml` · `README.md` · `knowledge/` | `evidence-validate.py` parses | ☐ |
 | **G1.3** | **Belegregel:** every `tier: headline` Claim has ≥2 distinct `asserted_by`/`corroborated_by`, OR `confidence: unbestätigt`. No estimate without a tag. | validator | ☐ |
 | **G1.4** | **No unresolved contradictions:** every `contradicts` edge answered by a `supersedes`. | validator | ☐ |

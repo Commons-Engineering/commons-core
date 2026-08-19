@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_deliverables.py — the CANONICAL Commons Core deliverable generator.
+generate_deliverables.py — the CANONICAL Commons OS deliverable generator.
 
 Reads a DECLARATIVE bundle from `.commons/deliverables.yml` and renders each entry
 to PDF via markdown_to_pdf.py. This is the anti-wildwuchs mechanism: an instance's

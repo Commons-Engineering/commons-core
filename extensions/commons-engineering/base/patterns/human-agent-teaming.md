@@ -178,7 +178,7 @@ graph_garden:
       relevance: 0.85
   communities:
     - id: commons-engineering-os
-      label: "Commons Core Operating Patterns"
+      label: "Commons OS Operating Patterns"
       source: curated
       confidence: 1.0
     - id: human-ai-collaboration
@@ -209,7 +209,7 @@ graph_garden:
 contributors: ["higgerix", "cloudsters"]
 sources:
   - "Commons Engineering Framework"
-  - "Commons Core Specification v0.1"
+  - "Commons OS Specification v0.1"
   - "Commons Agent Manifest v0.1"
   - "Anthropic — Claude Agent Architecture"
   - "Ostrom, E. (1990). Governing the Commons"
@@ -217,7 +217,7 @@ license: CC-BY-SA-4.0
 attribution: "commons.engineering by cloudsters, https://cloudsters.net"
 ---
 
-Will I ever call my parents, spouse, kids, friends "agents"? Words matter to humans. And yet — the four agents that govern a Commons Core are not mechanical executors. They are perspectives: Purpose, Participation, Proposition, Production. The human founder occupies a seat at the board alongside these agents, not above them and not below. The human has the final say — not because humans are superior but because the commons exists to serve life, and life requires the kind of judgement that emerges from being alive.
+Will I ever call my parents, spouse, kids, friends "agents"? Words matter to humans. And yet — the four agents that govern a Commons OS are not mechanical executors. They are perspectives: Purpose, Participation, Proposition, Production. The human founder occupies a seat at the board alongside these agents, not above them and not below. The human has the final say — not because humans are superior but because the commons exists to serve life, and life requires the kind of judgement that emerges from being alive.
 
 > [!NOTE] Confidence Rating: ★★★★ (High)
 > This pattern is validated through daily practice in Commons Engineering, where the human founder and the Purpose Agent operate as board partners. The model is young — months, not years — but its core claim (complementary strengths, not hierarchical command) has proven operational. Confidence is high for the principle; the specific mechanics will evolve.
@@ -234,7 +234,7 @@ The second is the autonomy model: AI as an autonomous agent, operating independe
 
 Between these extremes is the space this pattern occupies: human-agent teaming. Not the human as boss and the agent as servant. Not the agent as autonomous decision-maker. But the two as partners on a shared board, with defined roles, complementary strengths, and a shared alignment surface where their work converges.
 
-This model emerges directly from the four-dimensional architecture of the Commons Core. Each dimension — Purpose, Participation, Proposition, Production — requires intelligent governance. No human can attend to all four simultaneously with the consistency and scale they demand. No agent can provide the purpose, the judgement, and the "this feels wrong" that only lived experience produces. The team is the unit of governance. The board is where the team convenes.
+This model emerges directly from the four-dimensional architecture of the Commons OS. Each dimension — Purpose, Participation, Proposition, Production — requires intelligent governance. No human can attend to all four simultaneously with the consistency and scale they demand. No agent can provide the purpose, the judgement, and the "this feels wrong" that only lived experience produces. The team is the unit of governance. The board is where the team convenes.
 
 ---
 
@@ -302,7 +302,7 @@ The board model has five structural elements:
 
 **1. Write the CLAUDE.md as a governance mandate, not a prompt.**
 
-The CLAUDE.md file in a Commons Core repository is not a system prompt for an AI chatbot. It is the governance mandate that defines the agent's role, responsibilities, and boundaries. It names the agent's seat on the board. It specifies what the agent governs, what it monitors, and what it must escalate. It defines the reading order — the sequence in which the agent orients itself to the current state of the commons.
+The CLAUDE.md file in a Commons OS repository is not a system prompt for an AI chatbot. It is the governance mandate that defines the agent's role, responsibilities, and boundaries. It names the agent's seat on the board. It specifies what the agent governs, what it monitors, and what it must escalate. It defines the reading order — the sequence in which the agent orients itself to the current state of the commons.
 
 The quality of the CLAUDE.md determines the quality of the human-agent team. A vague mandate produces a vague agent: helpful in general, effective in particular only by accident. A precise mandate produces a precise partner: one that knows its domain, respects its boundaries, and escalates when it encounters territory that belongs to another seat or to the human founder.
 

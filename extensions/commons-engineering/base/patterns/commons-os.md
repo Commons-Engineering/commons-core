@@ -16,8 +16,8 @@ gravitational_hubs:
     influence: 0.9
   - hub_id: "pat_01kkhajgn0z8tzgcr8rmv2nkf5"
     influence: 0.85
-slug: commons-core
-title: "Commons Core"
+slug: commons-os
+title: "Commons OS"
 aliases:
   - "The Operating System Collection"
   - "Commons as Code Pattern Set"
@@ -25,10 +25,10 @@ aliases:
 summary: >-
   The third curated pattern collection — how to operate a commons. Where the
   Blueprint defines what a commons is and the Engineer defines who builds it,
-  the Commons Core collection defines how it runs: boot sequence, governance
+  the Commons OS collection defines how it runs: boot sequence, governance
   runtime, dimensional balance, recursive improvement, and the daily rhythms
   that keep a living system alive. These 16 patterns are the operational
-  substrate of every forked Commons Core instance.
+  substrate of every forked Commons OS instance.
 
 # ═══════════════════════════════════════════════════════════════════
 # GROUP 2: CONTEXTUAL TRANSLATION (The Navigator Engine)
@@ -79,7 +79,7 @@ ontology:
     fractal_value: 5.0
     vitality: 4.8
     vitality_reasoning: >-
-      The Commons Core collection scores at the generative level because it
+      The Commons OS collection scores at the generative level because it
       provides the operational patterns that keep a commons alive — not just
       designed but running. The recursive self-improvement loop, the operating
       rhythms, and the issue board governance ensure that the system senses,
@@ -186,8 +186,8 @@ graph_garden:
 contributors: ["higgerix", "cloudsters"]
 sources:
   - "Commons Engineering Framework (CEN|F) — Orbital Architecture v8.2"
-  - "Commons Core Manifest v1.0"
-  - "Commons Core Specification v1.0"
+  - "Commons OS Manifest v1.0"
+  - "Commons OS Specification v1.0"
   - "Business Engineering (BEN) Framework — MHP/Porsche, adapted by Holger Eggerichs"
 license: CC-BY-SA-4.0
 attribution: "commons.engineering by cloudsters, https://cloudsters.net"
@@ -204,7 +204,7 @@ attribution: "commons.engineering by cloudsters, https://cloudsters.net"
 
 Consider two moments in the life of a commons.
 
-The first: someone has read the Blueprint. They understand the four dimensions, the orbital architecture, the fractal nature of living systems. They have even started developing as a Commons Engineer — building clarity, credibility, and the courage to step forward. They type `git fork`. A complete Commons Core template appears on their screen. Structure, intelligence, protocol — all present, all dormant. And then they stare at the screen. Now what? What do I do first? What do I do every day? What do I do when things go wrong?
+The first: someone has read the Blueprint. They understand the four dimensions, the orbital architecture, the fractal nature of living systems. They have even started developing as a Commons Engineer — building clarity, credibility, and the courage to step forward. They type `git fork`. A complete Commons OS template appears on their screen. Structure, intelligence, protocol — all present, all dormant. And then they stare at the screen. Now what? What do I do first? What do I do every day? What do I do when things go wrong?
 
 The second: a commons has been running for six months. It has participants, a purpose, even some traction. But something is off. Decisions accumulate in Slack threads and get lost. The founder makes all the calls because nobody else has the context. The issue board exists but nobody uses it. The four dimensions are nominally in place, but in practice Dimension 4 (Production) consumes all the energy while Dimension 2 (Participation) starves. The system is alive, but barely — running on the founder's willpower rather than on operational patterns that sustain themselves.
 
@@ -228,13 +228,13 @@ Three forces drive the tension:
 
 **The pull toward fragmentation.** As a commons grows, its parts specialise. Value streams multiply. Agents develop local context. Without operational patterns that maintain coherence across the whole — dimensional balance checks, upstream sync, shared operating rhythms — the parts optimise locally while the whole drifts apart.
 
-The Commons Core collection is the answer to all three forces. It provides the operational patterns that balance action with reflection, autonomy with coherence, and local optimisation with systemic integrity.
+The Commons OS collection is the answer to all three forces. It provides the operational patterns that balance action with reflection, autonomy with coherence, and local optimisation with systemic integrity.
 
 ---
 
 ### Section 3: Solution
 
-> **Therefore, use the Commons Core collection — 16 operational patterns organised across four operational concerns — to turn a forked commons from a template into a running system and keep it alive across time.**
+> **Therefore, use the Commons OS collection — 16 operational patterns organised across four operational concerns — to turn a forked commons from a template into a running system and keep it alive across time.**
 
 The 16 patterns address four operational concerns:
 
@@ -278,9 +278,9 @@ The 16 patterns address four operational concerns:
 
 ### Section 4: Implementation
 
-The Commons Core collection is designed to be used in three ways: as a boot sequence, as an operating manual, and as a diagnostic.
+The Commons OS collection is designed to be used in three ways: as a boot sequence, as an operating manual, and as a diagnostic.
 
-**1. Boot Sequence.** When you fork a Commons Core template, the `boot-sequence` pattern provides the 10-phase materialisation path. Phases 1-4 (Fork, Identity, Purpose, Stakeholders) happen in the first session. Phases 5-7 (Dimensions, Value Streams, Governance) happen in the first week. Phases 8-10 (Operations, Publication, Improvement) establish the ongoing rhythms. Each phase activates specific patterns from this collection. By the end of Phase 10, every pattern in the collection is operational.
+**1. Boot Sequence.** When you fork a Commons OS template, the `boot-sequence` pattern provides the 10-phase materialisation path. Phases 1-4 (Fork, Identity, Purpose, Stakeholders) happen in the first session. Phases 5-7 (Dimensions, Value Streams, Governance) happen in the first week. Phases 8-10 (Operations, Publication, Improvement) establish the ongoing rhythms. Each phase activates specific patterns from this collection. By the end of Phase 10, every pattern in the collection is operational.
 
 **2. Operating Manual.** Once running, the collection serves as the operational reference. When you need to make a decision, reach for `decision-as-issue` and `issue-board-governance`. When the system feels unbalanced, reach for `dimensional-balance`. When you feel disconnected from the wider commons, reach for `upstream-sync`. When you want to improve something, reach for `recursive-self-improvement`. The patterns are not sequential after boot — they are concurrent practices that run in parallel, like processes in an operating system.
 
@@ -292,7 +292,7 @@ The Commons Core collection is designed to be used in three ways: as a boot sequ
 |---|---|---|
 | **Commons Blueprint** | What IS a commons? | When designing the architecture. |
 | **Commons Engineer** | Who AM I as a builder? | When developing practitioner capabilities. |
-| **Commons Core** | How do I OPERATE it? | When running the system day-to-day. |
+| **Commons OS** | How do I OPERATE it? | When running the system day-to-day. |
 
 The three collections form a triad. In practice, a practitioner moves between all three constantly — the Blueprint when they need architectural clarity, the Engineer when they need personal development, and the OS when they need operational guidance. The collections are not sequential. They are concurrent.
 
@@ -310,31 +310,31 @@ The three collections form a triad. In practice, a practitioner moves between al
 
 ### Section 6: Known Uses
 
-**Unix and the process model (1969–present).** The Unix operating system provides the deepest technical lineage for this collection. Unix demonstrated that an operating system is not a single program but a collection of small, composable patterns (processes) that run concurrently, communicate through defined interfaces (pipes), and can be composed into complex behaviours. The Commons Core collection applies this insight to organisational operations: 16 composable patterns that run concurrently, communicate through the issue board, and compose into a governance runtime.
+**Unix and the process model (1969–present).** The Unix operating system provides the deepest technical lineage for this collection. Unix demonstrated that an operating system is not a single program but a collection of small, composable patterns (processes) that run concurrently, communicate through defined interfaces (pipes), and can be composed into complex behaviours. The Commons OS collection applies this insight to organisational operations: 16 composable patterns that run concurrently, communicate through the issue board, and compose into a governance runtime.
 
-**Toyota Production System (1950s–present).** The TPS demonstrated that operational excellence is not about heroic effort but about systematic patterns — kanban, kaizen, andon, jidoka. Each pattern addresses a specific operational concern. Together, they create a self-improving production system. The Commons Core collection follows the same logic: specific patterns for specific concerns, composing into a self-improving commons.
+**Toyota Production System (1950s–present).** The TPS demonstrated that operational excellence is not about heroic effort but about systematic patterns — kanban, kaizen, andon, jidoka. Each pattern addresses a specific operational concern. Together, they create a self-improving production system. The Commons OS collection follows the same logic: specific patterns for specific concerns, composing into a self-improving commons.
 
-**GitOps and Infrastructure as Code (2010s–present).** The DevOps movement demonstrated that infrastructure could be managed as code — version-controlled, auditable, reproducible. GitOps extended this to operations: the Git repository becomes the single source of truth for the desired state of the system. The Commons Core collection takes this one step further: not just infrastructure as code, but governance, identity, and value creation as code.
+**GitOps and Infrastructure as Code (2010s–present).** The DevOps movement demonstrated that infrastructure could be managed as code — version-controlled, auditable, reproducible. GitOps extended this to operations: the Git repository becomes the single source of truth for the desired state of the system. The Commons OS collection takes this one step further: not just infrastructure as code, but governance, identity, and value creation as code.
 
-**Business Engineering at MHP/Porsche (2006–2015).** The BEN Framework, developed by Holger Eggerichs over ~200 enterprise briefings, established that organisations can be systematically designed through stakeholder architecture, value streams, and capability mapping. What took 3 years and consultants and brown paper, the Commons Core patterns make accessible to any fork holder within days. The lineage is direct: outside-in flow, value stream families, dimensional balance — all are BEN patterns adapted for the Cognitive Era.
+**Business Engineering at MHP/Porsche (2006–2015).** The BEN Framework, developed by Holger Eggerichs over ~200 enterprise briefings, established that organisations can be systematically designed through stakeholder architecture, value streams, and capability mapping. What took 3 years and consultants and brown paper, the Commons OS patterns make accessible to any fork holder within days. The lineage is direct: outside-in flow, value stream families, dimensional balance — all are BEN patterns adapted for the Cognitive Era.
 
 ---
 
 ### Section 7: Cognitive Era Considerations
 
-The Cognitive Era does not just benefit from the Commons Core collection — it requires it. When AI agents participate in governance, the operational patterns must be explicit, machine-readable, and auditable. An AI agent cannot absorb organisational culture through osmosis. It needs `decision-as-issue` to know how decisions are made. It needs `dimensional-balance` to know when to raise an alert. It needs `operating-rhythms` to know when to run its quarterly review.
+The Cognitive Era does not just benefit from the Commons OS collection — it requires it. When AI agents participate in governance, the operational patterns must be explicit, machine-readable, and auditable. An AI agent cannot absorb organisational culture through osmosis. It needs `decision-as-issue` to know how decisions are made. It needs `dimensional-balance` to know when to raise an alert. It needs `operating-rhythms` to know when to run its quarterly review.
 
 **The issue board becomes the cognitive interface.** In a human-only organisation, much governance happens in heads and hallways. In a human-agent commons, the issue board is the shared cognitive surface — the place where humans and agents both read and write. The `issue-board-governance` pattern is therefore the most Cognitive-Era-critical pattern in the collection: it defines the surface through which human intent and machine capability meet.
 
 **The recursive improvement loop accelerates.** A human-only improvement loop (Sense → Issue → Resolve → Commit → Deploy → Sense) might cycle monthly. With AI agents, the sensing is continuous, the issue creation is automated, and the resolution proposals arrive in minutes. The human role shifts from executing the loop to governing it — deciding which improvements to accept, which to defer, and which to reject. The `recursive-self-improvement` pattern explicitly encodes this governance.
 
-**The boot sequence becomes AI-native.** An AI agent can fork a Commons Core template, configure identity, define purpose, map stakeholders, activate value streams, and establish governance — all in a single session. What took weeks in the pre-AI era takes hours. This makes the `boot-sequence` pattern not just faster but qualitatively different: the commons can be materialised, tested, iterated, and re-materialised at a pace that makes experimentation nearly free. The cost of starting a commons approaches zero. The cost of running it well remains non-trivial — which is exactly why this collection exists.
+**The boot sequence becomes AI-native.** An AI agent can fork a Commons OS template, configure identity, define purpose, map stakeholders, activate value streams, and establish governance — all in a single session. What took weeks in the pre-AI era takes hours. This makes the `boot-sequence` pattern not just faster but qualitatively different: the commons can be materialised, tested, iterated, and re-materialised at a pace that makes experimentation nearly free. The cost of starting a commons approaches zero. The cost of running it well remains non-trivial — which is exactly why this collection exists.
 
 ---
 
 ### Section 8: Vitality — The Quality Without a Name
 
-The vitality of the Commons Core collection is not in the patterns themselves. It is in the moment when the patterns disappear.
+The vitality of the Commons OS collection is not in the patterns themselves. It is in the moment when the patterns disappear.
 
 A well-run commons does not feel like it is following 16 patterns. It feels like it is simply operating — naturally, reliably, with a rhythm that the participants can feel but do not need to name. The boot sequence is long forgotten because the commons has been running for months. The dimensional balance check is invisible because it happens inside the quarterly review without anyone calling it by name. The recursive improvement loop is not a named practice — it is just how things work. Someone notices a friction, files an issue, and by next week the system is better.
 
