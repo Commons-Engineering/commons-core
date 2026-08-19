@@ -1,6 +1,6 @@
 name: Sync Upstream
 
-# Syncs OS-layer content from commons-engineering/commons-os into a downstream
+# Syncs OS-layer content from commons-engineering/commons-core into a downstream
 # instance (template copy or fork). Uses file-checkout (not git merge) so it
 # works for template copies that share no git history with upstream.
 #
@@ -47,7 +47,7 @@ jobs:
 
       - name: Fetch upstream
         run: |
-          git remote add upstream https://github.com/commons-engineering/commons-os.git || true
+          git remote add upstream https://github.com/commons-engineering/commons-core.git || true
           git fetch upstream main
 
       - name: Check for upstream changes
@@ -106,7 +106,7 @@ jobs:
           fi
 
           git add -A
-          git commit -m "Sync upstream Commons OS ($(date +%Y-%m-%d))"
+          git commit -m "Sync upstream Commons Core ($(date +%Y-%m-%d))"
           git push origin HEAD
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -118,9 +118,9 @@ jobs:
             gh pr create \
               --title "Upstream sync — $(date +%Y-%m-%d)" \
               --body "$(cat <<'BODY'
-          ## Automated Commons OS Sync
+          ## Automated Commons Core Sync
 
-          Updates the OS-layer content from `commons-engineering/commons-os`.
+          Updates the OS-layer content from `commons-engineering/commons-core`.
           Adoption is conscious: review the diff, then merge.
 
           **Synced (upstream owns — whole subtree):**

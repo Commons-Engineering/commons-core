@@ -3,13 +3,13 @@
 
 **Version:** 1.0
 **Status:** Living Document
-**Companion:** COMMONS_ENGINEER_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md, COMMONS_OS_MANIFEST.md
+**Companion:** COMMONS_ENGINEER_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md, COMMONS_CORE_MANIFEST.md
 
 ---
 
 ## Preamble
 
-The Commons OS — the pattern library, the agents and their engines, the manifests — is infrastructure. It maps, qualifies, and connects patterns. It reads context. It surfaces lighthouses. It builds community. But infrastructure does not act. It does not know a city's history, an organisation's culture, a sector's regulatory landscape, or a bioregion's ecological dynamics. It does not have the relationships of trust that make pattern application possible in a specific place, with specific people, at a specific moment.
+The Commons Core — the pattern library, the agents and their engines, the manifests — is infrastructure. It maps, qualifies, and connects patterns. It reads context. It surfaces lighthouses. It builds community. But infrastructure does not act. It does not know a city's history, an organisation's culture, a sector's regulatory landscape, or a bioregion's ecological dynamics. It does not have the relationships of trust that make pattern application possible in a specific place, with specific people, at a specific moment.
 
 That knowledge — contextual, relational, domain-specific — is what a Commons Incubator brings. The Incubator is not a franchise of the Distribution. It is an independent actor that draws on the shared infrastructure to do work that only a locally embedded, domain-expert, relationally trusted practitioner or organisation can do: deploy curated pattern collections into living systems, build lighthouses, and feed what they learn back into the commons.
 
@@ -75,7 +75,7 @@ The Distribution — the shared infrastructure stewarded for all — provides th
 
 **The four agents and their engines.** The four-agent governance model (Purpose, Participation, Proposition, Production) provides the governance layer. Under the Production Agent (D4), the Pattern Engine (for searching, suggesting, and qualifying patterns) and the Lighthouse Engine (for discovering and documenting vital systems) execute at volume. These are operational infrastructure that the Incubator uses, not infrastructure it must build.
 
-**The manifests.** The Commons Engineering Manifest, the Commons OS Manifest, the Commons Agent Manifest, the Commons Blueprint Manifest, the Commons Engineer Manifest, and this Incubator Manifest. These define the shared vocabulary, the shared architecture, and the shared standards that make it possible for many Incubators to operate independently while contributing to the same commons.
+**The manifests.** The Commons Engineering Manifest, the Commons Core Manifest, the Commons Agent Manifest, the Commons Blueprint Manifest, the Commons Engineer Manifest, and this Incubator Manifest. These define the shared vocabulary, the shared architecture, and the shared standards that make it possible for many Incubators to operate independently while contributing to the same commons.
 
 **The pattern specification.** The Commons Pattern Specification is the format in which patterns are documented, qualified, and exchanged. It ensures that a pattern created by one Incubator in one domain can be found, understood, and applied by another Incubator in a different domain.
 
@@ -132,7 +132,7 @@ The three functions may be stewarded by the same organisation in the early stage
 The Commons Incubator Manifest describes the deployment and feedback mechanism. The other manifests describe what is being deployed and for whom:
 
 - **Commons Engineering Manifest** — the field, its philosophical foundation, its domain taxonomy, and the imperative: *why* Commons Incubators must exist
-- **Commons OS Manifest** — the forkable operating system the Incubator deploys: registry, knowledge library, 3-MCP architecture, portal configuration
+- **Commons Core Manifest** — the forkable operating system the Incubator deploys: registry, knowledge library, 3-MCP architecture, portal configuration
 - **Commons Agent Manifest** — the four-agent governance model and AI Engines (Pattern Engine, Lighthouse Engine) that the Incubator draws on
 - **Commons Blueprint Manifest** — the primary artefact the Incubator helps communities build: the nine-layer temporal specification that is the output of every deployment
 - **Commons Engineer Manifest** — the practitioner the Incubator develops and is often staffed by: the four paths into the practice, the 7Cs developmental arc, the prize and four payoffs, and the two curated pattern collections that together form the curriculum

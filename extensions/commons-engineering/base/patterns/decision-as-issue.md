@@ -142,7 +142,7 @@ graph_garden:
     - Legal Precedent
     - Commons Engineering Project Board
   communities:
-    - commons-os-operations
+    - commons-core-operations
     - governance-and-transparency
   inferred_links: []
 
@@ -154,7 +154,7 @@ contributors:
   - cloudsters
 sources:
   - "Commons Engineering Framework"
-  - "Commons OS Specification v0.1"
+  - "Commons Core Specification v0.1"
   - "Michael Nygard, 'Documenting Architecture Decisions' (2011)"
   - "Rust RFC Process"
   - "Python Enhancement Proposals (PEPs)"
@@ -171,7 +171,7 @@ attribution: "commons.engineering by cloudsters, https://cloudsters.net"
 
 ### Section 1: Context
 
-**Lineage:** This pattern generalises from Transparency and Openness Protocol and Governance Design, serving the Universal sector as an Orbit 2 architectural building block for Commons OS.
+**Lineage:** This pattern generalises from Transparency and Openness Protocol and Governance Design, serving the Universal sector as an Orbit 2 architectural building block for Commons Core.
 
 Every living system makes decisions. A cell decides which genes to express. A tree decides where to allocate nutrients — toward root growth or canopy expansion. A beehive decides when to swarm. An enterprise decides which market to enter, which product to build, which person to hire. A city council decides where to zone for housing, where to build parks, where to route transit. Decisions are the moments where a system commits to one path and forecloses others. They are the joints in the structure — the places where the pieces connect, where load is transferred, where the building either holds or fails.
 
@@ -219,7 +219,7 @@ Issue #47: Should we use "commons" or "hub" for the forked instance?
 Labels: decision, definition
 
 Body:
-The current naming uses "hub" for a forked instance of Commons OS.
+The current naming uses "hub" for a forked instance of Commons Core.
 But "hub" implies centrality — a single point that everything connects to.
 A commons is the opposite: distributed, polycentric, community-owned.
 Options:
@@ -229,7 +229,7 @@ Options:
 
 Comments:
 - [higgerix] "You don't fork a commons." A commons is social practice.
-  You fork the Commons OS. The instance should be called a commons.
+  You fork the Commons Core. The instance should be called a commons.
 - [claude] Agree. "Hub" implies infrastructure centrality. "Commons"
   implies shared governance. The instance is governed, not routed through.
 - [higgerix] Decision: "commons" it is. Closing with rename commit.
@@ -335,7 +335,7 @@ The most important implementation principle is that the practice must not slow d
 
 **Legal Precedent Systems.** Common law legal systems are, at their core, decision-as-issue systems at civilisational scale. Every court case is an "issue" — a question of law that needs resolution. The briefs are the deliberation. The judgement is the decision. The published opinion is the record. And — crucially — future cases reference past decisions as precedent, creating a chain of reasoning that spans centuries. A lawyer researching a question of law reads the decision trail: which cases addressed similar questions, what reasoning was applied, how the law evolved through successive decisions. The Commons Engineering decision trail serves the same function at a smaller scale: when the commons faces a decision similar to one it made before, the issue archive provides the precedent.
 
-**Commons Engineering Project Board.** The Commons Engineering project has practised decision-as-issue since its founding. Issue #40 decided that forked instances should be called "commons" not "hubs." Issue #41 decided on "Commons OS" as the product name through a multi-model deliberation process. Issue #42 explored Commons Portfolios and the `me-os` concept. Each issue captures the question, the deliberation (including AI agent perspectives), and the closing commit. The decision trail is short — the project is young — but it is already proving its value: when a new conversation needs to reference a past decision, the issue number provides an unambiguous pointer to the full context.
+**Commons Engineering Project Board.** The Commons Engineering project has practised decision-as-issue since its founding. Issue #40 decided that forked instances should be called "commons" not "hubs." Issue #41 decided on "Commons Core" as the product name through a multi-model deliberation process. Issue #42 explored Commons Portfolios and the `me-os` concept. Each issue captures the question, the deliberation (including AI agent perspectives), and the closing commit. The decision trail is short — the project is young — but it is already proving its value: when a new conversation needs to reference a past decision, the issue number provides an unambiguous pointer to the full context.
 
 ---
 
@@ -349,7 +349,7 @@ The Cognitive Age amplifies the decision-as-issue pattern in three ways: AI agen
 
 **AI as governance auditor.** An AI agent can periodically audit the decision trail for consistency: are recent decisions aligned with stated purpose? Are dimension labels being applied consistently? Are decisions being implemented (i.e., do closing commits actually exist, and do they implement what the issue decided)? Are there decisions that reference each other in contradictory ways? This audit function is tedious for humans and natural for AI, and it catches governance drift that might otherwise go unnoticed.
 
-**The multi-model deliberation.** The Commons Engineering project has already experimented with multi-model deliberation for consequential decisions — posing the same question to multiple AI models and synthesising their responses. Issue #41 (the Commons OS naming decision) was deliberated across 12+ model responses in three rounds. The decision-as-issue format captured this naturally: each model's response was a comment on the issue, the synthesis was a summary comment, and the closing commit implemented the decision. This practice — using model diversity as a form of collective intelligence — is only possible when the deliberation format is flexible enough to accommodate it, and the issue comment thread is exactly that flexible.
+**The multi-model deliberation.** The Commons Engineering project has already experimented with multi-model deliberation for consequential decisions — posing the same question to multiple AI models and synthesising their responses. Issue #41 (the Commons Core naming decision) was deliberated across 12+ model responses in three rounds. The decision-as-issue format captured this naturally: each model's response was a comment on the issue, the synthesis was a summary comment, and the closing commit implemented the decision. This practice — using model diversity as a form of collective intelligence — is only possible when the deliberation format is flexible enough to accommodate it, and the issue comment thread is exactly that flexible.
 
 The risk is over-reliance on AI deliberation at the expense of human judgement. AI agents can analyse, synthesise, and recommend, but they cannot feel the weight of a decision the way a human can. The decision to name something "commons" instead of "hub" was not just an analytical choice — it was a values choice, rooted in Holger's experience and conviction about what words mean to humans. AI can inform that choice; it cannot make it. The decision-as-issue pattern preserves this distinction by keeping the human founder (or governance board) as the closing authority — the one who writes the final comment and makes the closing commit.
 

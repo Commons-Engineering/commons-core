@@ -1,7 +1,7 @@
 <!--
 Template — Living Blueprint skeleton
 
-This is the universal L1-L9 architecture every Commons OS instance fills in during boot.
+This is the universal L1-L9 architecture every Commons Core instance fills in during boot.
 
 Three-layer template structure:
   1. Hull template (this file)             — universal L1-L9 contract; what any commons IS at any scale
@@ -246,7 +246,7 @@ The work of moving between timeslices is **transition engineering**: sensing cur
 
 ### 9.4 Contribution Back
 
-*What does this commons contribute back to the upstream commons-os? What patterns, improvements, or learnings flow back?*
+*What does this commons contribute back to the upstream commons-core? What patterns, improvements, or learnings flow back?*
 
 ---
 

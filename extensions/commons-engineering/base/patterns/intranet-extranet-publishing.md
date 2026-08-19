@@ -153,7 +153,7 @@ graph_garden:
       label: "Privacy Gradient"
       relevance: 0.85
   communities:
-    - commons-os-foundations
+    - commons-core-foundations
     - commons-engineering-foundations
     - publishing-practice
   inferred_links:
@@ -176,13 +176,13 @@ graph_garden:
 contributors: ["higgerix", "cloudsters"]
 sources:
   - "Commons Engineering Framework"
-  - "Commons OS Specification v0.1"
+  - "Commons Core Specification v0.1"
   - "Git subtree documentation — selective cross-repo publishing"
   - "Corporate intranet/extranet architecture (1990s–present)"
   - "Open source dual-licensing and selective disclosure practices"
 license: CC-BY-SA-4.0
 attribution: "commons.engineering by cloudsters, https://cloudsters.net"
-collection: commons-os
+collection: commons-core
 collection_ring: operating-patterns
 7cs_arc: [clarity, credibility, commons]
 ---

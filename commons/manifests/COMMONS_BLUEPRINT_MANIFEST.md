@@ -3,7 +3,7 @@
 
 **Version:** 1.0
 **Status:** Living Document
-**Companion:** COMMONS_OS_MANIFEST.md, COMMONS_ENGINEER_MANIFEST.md, COMMONS_INCUBATOR_MANIFEST.md, COMMONS_LOOPS_MANIFEST.md
+**Companion:** COMMONS_CORE_MANIFEST.md, COMMONS_ENGINEER_MANIFEST.md, COMMONS_INCUBATOR_MANIFEST.md, COMMONS_LOOPS_MANIFEST.md
 
 ---
 
@@ -225,7 +225,7 @@ The collection is in draft status. Pattern content is substantive and well-struc
 The Commons Blueprint Manifest sits between the taxonomy and the domain manifests in the manifest hierarchy:
 
 - **Commons Engineering Manifest** — establishes the field, the four domains, the definition of a commons, vitality as the organising principle, and purpose as the load-bearing element of human commons design. The Blueprint Manifest inherits all of these foundations.
-- **Commons OS Manifest** — the forkable operating system for living systems. The Blueprint is the artefact at the heart of every commons instance.
+- **Commons Core Manifest** — the forkable operating system for living systems. The Blueprint is the artefact at the heart of every commons instance.
 - **Commons Agent Manifest** — the four-agent governance model (Purpose, Participation, Proposition, Production) and AI Engines as production lines under D4.
 - **Commons Engineer Manifest** — establishes who practices Commons Engineering: the four paths into the practice, the 7Cs developmental arc, and the two curated pattern collections that form the curriculum. The Blueprint is the primary artefact through which the Commons Engineer's practice becomes concrete — the instrument they grow toward through the 7Cs, then wield in the systems they design for and with others.
 - **Commons Incubator Manifest** — describes the deployment mechanism through which the Blueprint reaches living systems. The Incubator is the actor that helps a community build its Blueprint and establish the feedback loop that keeps it alive.

@@ -127,11 +127,11 @@ graph_garden:
     - Value Stream
     - Feature Flag
     - SAP Module Activation
-    - Commons OS
+    - Commons Core
     - config.yml
     - Capacity Management
   communities:
-    - commons-os-operations
+    - commons-core-operations
     - value-architecture
   inferred_links: []
 
@@ -143,7 +143,7 @@ contributors:
   - cloudsters
 sources:
   - "Commons Engineering Framework"
-  - "Commons OS Specification v0.1"
+  - "Commons Core Specification v0.1"
   - "SAP module activation methodology"
   - "Microservice feature flag patterns"
 license: CC-BY-SA-4.0
@@ -159,11 +159,11 @@ attribution: "commons.engineering by cloudsters, https://cloudsters.net"
 
 ### Section 1: Context
 
-**Lineage:** This pattern generalises from Value Stream Specification and Self-Organisation and Subsidiarity, serving the Universal sector as an Orbit 2 architectural building block for Commons OS.
+**Lineage:** This pattern generalises from Value Stream Specification and Self-Organisation and Subsidiarity, serving the Universal sector as an Orbit 2 architectural building block for Commons Core.
 
 Every living system has the theoretical capacity to do far more than it actually does at any given moment. A human body contains the genetic instructions for every protein it will ever need, but at any given instant only a fraction of those genes are expressed. A city has the infrastructure for dozens of public services, but budget constraints mean only some operate at full capacity in any given fiscal year. An enterprise has a reference architecture describing hundreds of capabilities, but a startup with three people cannot — and should not — attempt to run all of them.
 
-The same is true for a commons operating on Commons OS. The full value stream family catalogue describes the complete operational surface of a mature, fully realised commons: from Purpose to Portfolio, Participant to Community, Discovery to Usage, Source to Alliance. But a newly forked commons — whether it is a personal `me-os`, a startup forking `business-os`, or a neighbourhood forking `urban-os` — does not need all of them. Attempting to activate every stream from day one is not ambition; it is a form of organisational overreach that dilutes focus, burns capacity, and creates the illusion of completeness where none exists.
+The same is true for a commons operating on Commons Core. The full value stream family catalogue describes the complete operational surface of a mature, fully realised commons: from Purpose to Portfolio, Participant to Community, Discovery to Usage, Source to Alliance. But a newly forked commons — whether it is a personal `me-os`, a startup forking `business-os`, or a neighbourhood forking `urban-os` — does not need all of them. Attempting to activate every stream from day one is not ambition; it is a form of organisational overreach that dilutes focus, burns capacity, and creates the illusion of completeness where none exists.
 
 The question is not "which streams exist?" but "which streams should be alive right now?"
 
@@ -189,7 +189,7 @@ The forces at play here are universal across every domain where a system must de
 
 > **Therefore, maintain an explicit activation register that declares which value streams are active, which are dormant, and which are planned — and review this register as part of the commons' operating rhythm.**
 
-The mechanism is straightforward. Every Commons OS instance carries a configuration file — canonically `config.yml` at the root of the repository — that lists all available value streams alongside their activation status. Each stream entry declares one of three states:
+The mechanism is straightforward. Every Commons Core instance carries a configuration file — canonically `config.yml` at the root of the repository — that lists all available value streams alongside their activation status. Each stream entry declares one of three states:
 
 | State | Meaning |
 |---|---|

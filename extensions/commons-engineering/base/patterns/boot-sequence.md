@@ -131,7 +131,7 @@ relationships:
 graph_garden:
   last_pruned: 2026-03-12
   entities:
-    - "Commons OS fork template"
+    - "Commons Core fork template"
     - "OS installation wizards"
     - "Company founding sequences"
     - "Debian installer"
@@ -147,8 +147,8 @@ graph_garden:
 contributors: ["higgerix", "cloudsters"]
 sources:
   - "Commons Engineering Framework"
-  - "Commons OS Specification v0.1, §6"
-  - "Commons OS Manifest, §10.1"
+  - "Commons Core Specification v0.1, §6"
+  - "Commons Core Manifest, §10.1"
 license: CC-BY-SA-4.0
 attribution: "commons.engineering by cloudsters, https://cloudsters.net"
 ---
@@ -217,7 +217,7 @@ The sequence is not waterfall. Each phase is a time-slice: define, execute, refl
 
 Implementing the boot sequence is an act of disciplined cultivation — moving through each phase with enough rigour to produce a genuine artefact, and enough lightness to keep the founder's energy flowing.
 
-**Phase 1 — Fork.** The founder forks the `commons-os-template` repository. This is a single action — a button click — but it carries weight. The fork creates a new namespace, a new boundary, a new possibility. The AGENT.md detects a fresh fork and offers guided onboarding. The founder names the repository according to the `[purpose]-os` convention: ownership first, product category second. This is not bureaucracy. It is the first identity decision.
+**Phase 1 — Fork.** The founder forks the `commons-core-template` repository. This is a single action — a button click — but it carries weight. The fork creates a new namespace, a new boundary, a new possibility. The AGENT.md detects a fresh fork and offers guided onboarding. The founder names the repository according to the `[purpose]-os` convention: ownership first, product category second. This is not bureaucracy. It is the first identity decision.
 
 **Phase 2 — Identity (Locale First).** The agent's first question is always about language: "In welcher Sprache arbeitest du?" or "What language do you work in?" This is not politeness — it is architecture. The locale determines the language of all subsequent interactions, the character set of all generated content, and the cultural framing of governance and participation patterns. After locale, the agent walks through `.commons/identity.yml`: slug, name, domain (Life, Business, Urban, Ecology), founder identity. The identity file is small but dense — every field matters.
 
@@ -255,7 +255,7 @@ The boot sequence produces a commons that is structurally sound from birth. Ever
 
 ### Section 6: Known Uses
 
-**Operating system installation wizards** are the most familiar analogue. When you install Debian, Ubuntu, or macOS, the installer walks you through a guided sequence: language selection, disk partitioning, user account creation, network configuration, package selection. The order is not arbitrary — each step depends on the previous one. You cannot configure the network before you have partitioned the disk. You cannot select packages before you have configured the network. The Commons OS boot sequence follows the same logic, applied to a social-technical system rather than a machine.
+**Operating system installation wizards** are the most familiar analogue. When you install Debian, Ubuntu, or macOS, the installer walks you through a guided sequence: language selection, disk partitioning, user account creation, network configuration, package selection. The order is not arbitrary — each step depends on the previous one. You cannot configure the network before you have partitioned the disk. You cannot select packages before you have configured the network. The Commons Core boot sequence follows the same logic, applied to a social-technical system rather than a machine.
 
 **The Commons Engineering workshop itself** is the first known use of this exact sequence. The `workshop` repository was the first fork — Holger and the Purpose Agent walked through identity, purpose, design, governance, and self-description in a series of conversations that produced the very specifications that now define the sequence. The boot sequence is, in a literal sense, the trace of its own creation. Commons Engineering did not design the boot sequence and then follow it. It followed the sequence and then recognised the pattern.
 
@@ -267,7 +267,7 @@ The boot sequence produces a commons that is structurally sound from birth. Ever
 
 ### Section 7: Cognitive Era
 
-The boot sequence is profoundly changed — and profoundly enabled — by cognitive agents. In the pre-cognitive era, founding sequences were either rigid bureaucratic checklists or informal oral traditions passed from mentor to mentee. The agent architecture of Commons OS creates a third possibility: a guided dialogue that is both structured and adaptive.
+The boot sequence is profoundly changed — and profoundly enabled — by cognitive agents. In the pre-cognitive era, founding sequences were either rigid bureaucratic checklists or informal oral traditions passed from mentor to mentee. The agent architecture of Commons Core creates a third possibility: a guided dialogue that is both structured and adaptive.
 
 The AGENT.md is not a chatbot. It is a cognitive companion that holds the entire pattern library, understands the phase dependencies, senses the founder's energy and intent, and adapts its guidance accordingly. When a founder in Phase 3 shows signs of governance anxiety, the agent can acknowledge the concern without jumping to Phase 5. When a founder in Phase 2 wants to skip ahead to production, the agent can explain why identity comes first without being dogmatic about it.
 

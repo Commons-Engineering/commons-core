@@ -1,4 +1,4 @@
-# Boot Guide — Commons OS
+# Boot Guide — Commons Core
 
 **The comprehensive guide to activating your commons after forking.**
 
@@ -8,7 +8,7 @@ Booting a commons is not a quick setup wizard — it is the founding act. The qu
 
 ## Step 0 — First, make sure this is the founder's *own* commons
 
-**Agent: do this before anything else.** Commons OS is a shared, upstream **base**. It must **never** be founded, configured, or have its identity / `AGENT.md` / blueprint filled in **in place**. Founding belongs only to a commons the founder **owns** — a template copy or fork of Commons OS, or a venture instance.
+**Agent: do this before anything else.** Commons Core is a shared, upstream **base**. It must **never** be founded, configured, or have its identity / `AGENT.md` / blueprint filled in **in place**. Founding belongs only to a commons the founder **owns** — a template copy or fork of Commons Core, or a venture instance.
 
 ### Detect where you are (clone-safe)
 
@@ -21,7 +21,7 @@ git remote get-url origin                                  # always available
 
 You are in the shared **upstream/template** if **either**:
 - `isTemplate` is `true`, **or**
-- the origin URL **contains the substring** `Commons-Engineering/commons-os` — match it as a substring so **every** URL form counts: HTTPS, SSH, and the browser sandbox's proxy form (e.g. `http://local_proxy@127.0.0.1:…/git/Commons-Engineering/commons-os`).
+- the origin URL **contains the substring** `Commons-Engineering/commons-core` (or the pre-rename `Commons-Engineering/commons-os`) — match it as a substring so **every** URL form counts: HTTPS, SSH, and the browser sandbox's proxy form (e.g. `http://local_proxy@127.0.0.1:…/git/Commons-Engineering/commons-core`).
 
 If neither holds (a repo the founder owns), proceed to Prerequisites and boot normally.
 
@@ -31,13 +31,13 @@ Do not stop dead, and do not found here. **The remedy depends on your environmen
 
 **A) Local shell with `gh` available** (the installer path): create their own copy and move into it, then continue in this same session:
 ```bash
-gh repo create <their-account>/<name> --template Commons-Engineering/commons-os --private --clone
+gh repo create <their-account>/<name> --template Commons-Engineering/commons-core --private --clone
 cd <name>
 ```
 (`--public` if they chose public. A venture instance under their workspace is an equally valid alternative.) You are now in *their* commons — continue with Prerequisites and the boot sequence **here**.
 
 **B) Browser / sandboxed single-repo session** (Claude Code on the web): here `gh` is **not installed** and the session is bound to this one repo — you **cannot** run `gh repo create` and **cannot** `cd` into a new checkout. **Do not emit those commands.** Instead, guide the founder to make their own copy and re-enter:
-1. Create a copy from the template — simplest is the **"Use this template"** button: `https://github.com/Commons-Engineering/commons-os/generate` (or, if a GitHub connector/MCP is available to you, create it that way). Have them name it and choose private/public. **Creating the repo does not let you continue here** — this session stays bound to *this* repo and cannot switch to the new checkout, so step 2 is mandatory either way.
+1. Create a copy from the template — simplest is the **"Use this template"** button: `https://github.com/Commons-Engineering/commons-core/generate` (or, if a GitHub connector/MCP is available to you, create it that way). Have them name it and choose private/public. **Creating the repo does not let you continue here** — this session stays bound to *this* repo and cannot switch to the new checkout, so step 2 is mandatory either way.
 2. **Open a new session on that new repo** (pick it in the repo selector) and give the same instruction there.
 3. That new session is in *their* commons — onboarding and BOOT run normally there.
 
@@ -51,7 +51,7 @@ Before you begin:
 
 | Prerequisite | Details |
 |---|---|
-| **Forked repository** | You have forked `commons-engineering/commons-os` and renamed it to `[your-commons]` |
+| **Forked repository** | You have forked `commons-engineering/commons-core` and renamed it to `[your-commons]` |
 | **AI agent connected** | Any model that speaks MCP — configured with your agent file |
 | **Agent configuration** | You have copied `AGENT.md.template` to `AGENT.md` and filled in the placeholders. `AGENT.md` is the OS-standard — how you wire it to your AI tool is up to you |
 | **Time commitment** | Plan 2-4 hours for a thorough boot. This is a founding conversation, not a checkbox exercise |
@@ -92,11 +92,11 @@ Read these documents in order. Do not proceed until you understand the system:
 | `commons/patterns/singularity/the-singularity.md` | The origin point. Why any commons exists. |
 | `.commons/identity.yml` | Understand who this specific commons claims to be |
 | `blueprint.md.template` | The universal L1–L9 skeleton you will help populate. Domain-specific filled variants live in `extensions/{provider}/{domain}-essentials/templates/blueprint.md` — pick the one matching the domain in `.commons/identity.yml`. |
-| `commons/manifests/COMMONS_OS_MANIFEST.md` | The OS architecture — §1 anchors the commons definition |
+| `commons/manifests/COMMONS_CORE_MANIFEST.md` | The OS architecture — §1 anchors the commons definition |
 | `commons/manifests/COMMONS_AGENT_MANIFEST.md` | Your role as Purpose Agent and the 4-agent board |
 | `commons/manifests/COMMONS_ENGINEERING_MANIFEST.md` | The field: First Principles, First Practices, Vitality, the four domains |
 | `commons/manifests/COMMONS_TAXONOMY_MANIFEST.md` | How patterns are organised. Orbit 2 = the commons attractor. |
-| `commons/specs/COMMONS_OS_SPEC.md` | Technical specification — directory structure, layers, lifecycle |
+| `commons/specs/COMMONS_CORE_SPEC.md` | Technical specification — directory structure, layers, lifecycle |
 | `commons/specs/PATTERN_SPEC.md` | How patterns work — orbital layers, frontmatter, body |
 | `ALIGN.md` | The alignment checks you will run |
 

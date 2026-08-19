@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# sync-upstream.sh — pull Commons OS substrate updates into this instance,
+# sync-upstream.sh — pull Commons Core substrate updates into this instance,
 # while guaranteeing that instance-owned files (blueprint.md, AGENT.md,
 # README.md, .commons/identity.yml, .commons/config.yml, instance/, docs/)
 # are bit-identical before and after the sync.
@@ -196,7 +196,7 @@ if [ "${#PROTECTED_PATHS[@]}" -gt 0 ]; then
   # If anything got restored, fold it into the merge commit
   if [ -n "$(git status --porcelain)" ]; then
     git add -A
-    git -c user.email="$(git config user.email || echo sync@commons-os)" \
+    git -c user.email="$(git config user.email || echo sync@commons-core)" \
         -c user.name="$(git config user.name || echo sync-upstream)" \
         commit --amend --no-edit >/dev/null
     echo "  (instance-owned paths restored; merge commit amended)"
@@ -241,7 +241,7 @@ if [ -f commons/scripts/ensure-structure.sh ]; then
   bash commons/scripts/ensure-structure.sh || true
   if [ -n "$(git status --porcelain)" ]; then
     git add -A
-    git -c user.email="$(git config user.email || echo sync@commons-os)" \
+    git -c user.email="$(git config user.email || echo sync@commons-core)" \
         -c user.name="$(git config user.name || echo sync-upstream)" \
         commit --amend --no-edit >/dev/null
     echo "  (canonical hull structure healed; merge commit amended)"

@@ -173,7 +173,7 @@ graph_garden:
       relevance: 0.87
   communities:
     - id: commons-engineering-os
-      label: "Commons OS Operating Patterns"
+      label: "Commons Core Operating Patterns"
       source: curated
       confidence: 1.0
     - id: open-source-governance
@@ -204,7 +204,7 @@ graph_garden:
 contributors: ["higgerix", "cloudsters"]
 sources:
   - "Commons Engineering Framework"
-  - "Commons OS Specification v0.1"
+  - "Commons Core Specification v0.1"
   - "GitHub — Issues and Projects documentation"
   - "Nygard, M. (2011). Documenting Architecture Decisions"
   - "Linux Kernel Development Process"
@@ -212,7 +212,7 @@ license: CC-BY-SA-4.0
 attribution: "commons.engineering by cloudsters, https://cloudsters.net"
 ---
 
-The most important governance innovation in open source software is not the licence. It is the issue tracker. The licence defines the legal terms. The issue tracker is where the actual governance happens: where bugs are reported, features are proposed, designs are debated, decisions are made, and the resulting changes are linked to the reasoning that produced them. Every mature open source project runs on its issue tracker. The Commons OS makes this explicit: the project board is not a project management tool. It is the governance runtime.
+The most important governance innovation in open source software is not the licence. It is the issue tracker. The licence defines the legal terms. The issue tracker is where the actual governance happens: where bugs are reported, features are proposed, designs are debated, decisions are made, and the resulting changes are linked to the reasoning that produced them. Every mature open source project runs on its issue tracker. The Commons Core makes this explicit: the project board is not a project management tool. It is the governance runtime.
 
 > [!NOTE] Confidence Rating: ★★★★ (High)
 > This pattern is validated by decades of open source practice and by the Commons Engineering project itself, which has operated on issue-board governance from inception. The claim that the issue board is a governance runtime (not merely a task tracker) is the specific innovation that Orbit 2 codifies.
@@ -302,7 +302,7 @@ The label taxonomy maps to the commons' dimensions: `definition` (D1), `particip
 
 **1. Set up the board on day one.**
 
-The project board is not something you add after the commons is established. It is part of the founding infrastructure. The Commons OS fork template includes a GitHub Project board with default columns (Backlog, In Progress, Done) and a default label set (the four dimensions, the types, the priorities). The founder's first act after forking is to open the first issue — typically the purpose definition — and label it `decision`.
+The project board is not something you add after the commons is established. It is part of the founding infrastructure. The Commons Core fork template includes a GitHub Project board with default columns (Backlog, In Progress, Done) and a default label set (the four dimensions, the types, the priorities). The founder's first act after forking is to open the first issue — typically the purpose definition — and label it `decision`.
 
 This is a signal as much as a practice. The founder who opens the first issue is saying: This commons governs itself through explicit records. From the beginning. Even when the only participant is me.
 
@@ -362,7 +362,7 @@ A second risk: governance theatre. The board can become a performance of governa
 
 ### Section 6: Known Uses
 
-**Commons Engineering project board.** The most direct known use. Every idea in the workshop — from the naming of "Commons OS" (#41) to the design of the MCP architecture (#44) to the agent architecture deliberation (#40) — exists as an issue with dimensional labels, deliberation comments, and closing commits. The governance history of Commons Engineering is readable by anyone with repository access: not a narrative someone wrote after the fact, but the actual sequence of tensions, deliberations, and decisions that produced the current system. Minutes between idea and commit is common — and the record is still valid.
+**Commons Engineering project board.** The most direct known use. Every idea in the workshop — from the naming of "Commons Core" (#41) to the design of the MCP architecture (#44) to the agent architecture deliberation (#40) — exists as an issue with dimensional labels, deliberation comments, and closing commits. The governance history of Commons Engineering is readable by anyone with repository access: not a narrative someone wrote after the fact, but the actual sequence of tensions, deliberations, and decisions that produced the current system. Minutes between idea and commit is common — and the record is still valid.
 
 **The Linux kernel mailing list and patch system.** The kernel's governance surface is its mailing list and patch submission process — the precursor to the modern issue board. Every proposed change is submitted as a patch with a cover letter explaining the reasoning. Maintainers review, comment, request changes, and accept or reject. The mailing list archive is the governance record: searchable, traceable, and permanent. The kernel has been governed this way for over three decades, demonstrating that issue-based governance scales to thousands of contributors and millions of lines of code.
 

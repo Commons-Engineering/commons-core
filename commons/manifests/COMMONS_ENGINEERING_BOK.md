@@ -108,7 +108,7 @@ Specifications define *how*. They are normative: if a pattern or a script does n
 | **LIGHTHOUSE_URBAN_SPEC** | v1.2 | The lighthouse briefing format for Urban domain. Eight frontmatter groups (paralleling LIGHTHOUSE_BUSINESS_SPEC), eight body sections following the Urban Purpose Spiral (21 value streams). Includes settlement identity, regional context, and business lighthouse nesting. |
 | **PATTERN_PIPELINE_SPEC** | — | How patterns move through the pipeline: stub generation → body enrichment → GraphRAG enrichment → validation. Defines the async enrichment process, prompt templates, and quality gates. |
 | **COMMONS_MCP_ARCHITECTURE_SPEC** | v1.0 | The MCP knowledge service architecture. Five layers (GitHub → ETL → Neo4j → MCP Server → GraphRAG), tool catalogue, tier model, data sovereignty. |
-| **COMMONS_OS_SPEC** | v1.0 | The forkable OS template: fork mechanics, AGENT.md, ALIGN.md, curated collections, intranet/extranet publishing. |
+| **COMMONS_CORE_SPEC** | v1.0 | The forkable OS template: fork mechanics, AGENT.md, ALIGN.md, curated collections, intranet/extranet publishing. |
 
 ---
 
@@ -231,7 +231,7 @@ The pattern pipeline has four stages. Each stage has its own scripts and process
 | `_scripts/typeid_registry.json` | Master TypeID → slug mapping |
 | `_scripts/business_typeid_registry.json` | Business domain TypeIDs |
 | `_scripts/urban_typeid_registry.json` | Urban domain TypeIDs |
-| `_scripts/commons_os_typeid_registry.json` | Migrated Commons-OS TypeIDs |
+| `_scripts/commons_os_typeid_registry.json` | Migrated Commons-Core TypeIDs |
 | `_scripts/business_slug_mapping.json` | Business slug normalisation mapping |
 
 ---
@@ -411,7 +411,7 @@ The BoK is incomplete. The following are known gaps as of March 2026:
 | **Ecology domain patterns** — only 2 patterns exist; the domain needs stub generation and enrichment at scale | Taxonomy spreadsheet exists; generation not yet run | High |
 | **Cross-domain taxonomy** — Urban, Life, and Ecology do not yet have the detailed functional domain mapping that Business has | Domain taxonomy spreadsheets exist but are less mature | Medium |
 | **Orbit 2–3 formal separation** — GraphRAG is surfacing cross-domain and bridge patterns, but they are not yet formally classified at Orbit 2 or 3 | Emerging from GraphRAG analysis | Medium |
-| **Commons-OS migration** — ~1,598 unique legacy patterns from the Commons-OS GitHub repository need migration to v8.2 format | Migration plan exists; script not yet written | Medium |
+| **Commons-Core migration** — ~1,598 unique legacy patterns from the Commons-Core GitHub repository need migration to v8.2 format | Migration plan exists; script not yet written | Medium |
 | **Value Stream Family naming** — the value stream hierarchy (Stakeholder → Value Proposition → Journey → Touchpoint → Valuestream → Capability → Solution → Organisation) needs formal domain-to-family mapping beyond Business | Described in Taxonomy Manifest; not yet operationalised | Low |
 | **Hugo site** — the public-facing site for pattern browsing and search | Architecture described; not yet deployed | Low |
 

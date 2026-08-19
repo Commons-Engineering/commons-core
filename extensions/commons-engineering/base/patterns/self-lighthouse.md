@@ -146,8 +146,8 @@ graph_garden:
 contributors: ["higgerix", "cloudsters"]
 sources:
   - "Commons Engineering Framework"
-  - "Commons OS Specification v0.1, §6 Phase 7"
-  - "Commons OS Manifest, §1.4 Fractal Architecture"
+  - "Commons Core Specification v0.1, §6 Phase 7"
+  - "Commons Core Manifest, §1.4 Fractal Architecture"
   - "Maturana & Varela, Autopoiesis and Cognition, 1980"
   - "Hofstadter, Gödel Escher Bach, 1979"
 license: CC-BY-SA-4.0

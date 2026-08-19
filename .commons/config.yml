@@ -1,4 +1,4 @@
-# Commons OS Configuration
+# Commons Core Configuration
 commons_os_version: "0.2"
 forked_from: "commons-engineering/commons-core"
 

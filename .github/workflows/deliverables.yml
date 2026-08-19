@@ -1,6 +1,6 @@
 name: Deliverables (PDF)
 
-# Canonical Commons OS capability (inherited by every fork). Regenerates the
+# Canonical Commons Core capability (inherited by every fork). Regenerates the
 # instance's declared deliverable bundle (.commons/deliverables.yml) whenever an
 # underlying source changes, and commits the PDFs. Renderer + generator are
 # canonical (commons/scripts/); only the manifest is instance-specific.

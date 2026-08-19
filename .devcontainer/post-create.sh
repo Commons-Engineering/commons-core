@@ -26,12 +26,12 @@ WS="${CODESPACE_VSCODE_FOLDER:-$PWD}"
 cat > "$WS/CLAUDE.md" <<'EOF'
 # Commons Engineering - cloud setup session
 
-You are running inside a **Commons OS Codespace** in the browser. Commons OS
+You are running inside a **Commons Core Codespace** in the browser. Commons Core
 is ALREADY here (this very workspace) - do NOT clone it again.
 
 Read commons/setup/ONBOARDING.md and execute it to make me work-capable, with
 this adjustment for the cloud context:
-- Skip the "clone Commons OS" step - you are already inside it. Set up my
+- Skip the "clone Commons Core" step - you are already inside it. Set up my
   venture instance(s) under this workspace instead.
 - GitHub is usually already signed in here (check `gh auth status`); use it to
   see what I can reach.

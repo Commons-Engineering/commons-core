@@ -11,7 +11,7 @@ You are setting up three things that work together — the **triad**:
 | Corner | What it is | Where it lives |
 |---|---|---|
 | **You (the person)** | your identity — Git, GitHub, your cloudsters/Claude accounts | your machine and your browser |
-| **Your instance** | your own Commons OS workspace + venture instances | your account on GitHub, mirrored to your local disk |
+| **Your instance** | your own Commons Core workspace + venture instances | your account on GitHub, mirrored to your local disk |
 | **The knowledge graph** | the living body of knowledge of the discipline | a shared online service (the Commons MCP) |
 
 The **agent** (Claude Code by default) is the living connection between them. Once it's running, you talk to it in plain language — it does the technical work for you.
@@ -24,9 +24,9 @@ Three ways in. Pick the one that fits your machine — they all end at the same 
 
 | Door | When to use it | How to start |
 |---|---|---|
-| **Windows installer** | your own Windows PC (Win 10/11) | Download `commons-setup.cmd` and double-click. ([raw URL](https://raw.githubusercontent.com/Commons-Engineering/commons-os/main/commons/setup/commons-setup.cmd)) |
-| **macOS installer** | your own Mac | Open Terminal (⌘+Space → "Terminal") and paste:<br>`bash <(curl -fsSL https://raw.githubusercontent.com/Commons-Engineering/commons-os/main/commons/setup/commons-setup.command)`<br>The parentheses `<(...)` are essential — they keep your terminal connected so Homebrew and `sudo` can ask for your password if needed. |
-| **Browser (zero install)** | locked-down or shared machine, no install rights | Open `commons-os` in [claude.ai/code](https://claude.ai/code) (Anthropic-hosted) or via the **Open in Codespaces** badge in the README. Nothing touches your machine. |
+| **Windows installer** | your own Windows PC (Win 10/11) | Download `commons-setup.cmd` and double-click. ([raw URL](https://raw.githubusercontent.com/Commons-Engineering/commons-core/main/commons/setup/commons-setup.cmd)) |
+| **macOS installer** | your own Mac | Open Terminal (⌘+Space → "Terminal") and paste:<br>`bash <(curl -fsSL https://raw.githubusercontent.com/Commons-Engineering/commons-core/main/commons/setup/commons-setup.command)`<br>The parentheses `<(...)` are essential — they keep your terminal connected so Homebrew and `sudo` can ask for your password if needed. |
+| **Browser (zero install)** | locked-down or shared machine, no install rights | Open `commons-core` in [claude.ai/code](https://claude.ai/code) (Anthropic-hosted) or via the **Open in Codespaces** badge in the README. Nothing touches your machine. |
 
 If you're on Windows and the installer launches but exits in a couple of seconds, you almost certainly need administrator rights on that machine to install software — use the **Browser** door instead. Same for any locked-down corporate laptop.
 
@@ -68,7 +68,7 @@ For GitHub specifically: the agent uses **your** GitHub account, so any reposito
 
 ### Decision 2 — Create your own commons (don't found the upstream)
 
-`Commons-Engineering/commons-os` is the **shared base** for the whole network. Nobody founds it directly. To start your own commons, you need a copy that you own — the agent will help you make one.
+`Commons-Engineering/commons-core` is the **shared base** for the whole network. Nobody founds it directly. To start your own commons, you need a copy that you own — the agent will help you make one.
 
 What happens:
 
@@ -102,7 +102,7 @@ This layout is intentional. The agent moves between folders to compare ventures,
 ```
 ~/repos/
 ├── commons-setup/        ← transient setup folder; agent removes it at the end
-└── commons/              ← Commons OS, your base (this is YOUR commons after Decision 2)
+└── commons/              ← Commons Core, your base (this is YOUR commons after Decision 2)
     ├── commons/          ← the OS payload (manifests, patterns, specs, templates)
     ├── extensions/       ← bundled extension packs (commons-engineering, cloudsters, ...)
     ├── instance/         ← your sovereign instance content
@@ -125,7 +125,7 @@ The agent treats this hierarchy as load-bearing: it knows where to find the OS, 
 | Switch between ventures | Open a different folder in the Claude app — `~/repos/commons/<other venture>`. The agent picks up the new context automatically. |
 | Code edits with diffs | Use the **Claude Code extension** in VS Code — open the same folder there for inline diffs and side-by-side editing. |
 | Run the installer again | Safe to do. All steps are idempotent: tools already present are skipped, the agent picks up where it left off. Useful if something failed mid-way. |
-| Pull upstream Commons OS updates | Happens **automatically** via a weekly sync workflow in your commons repo. It opens a PR with the OS-layer changes; you review and merge. Your instance content is never touched. |
+| Pull upstream Commons Core updates | Happens **automatically** via a weekly sync workflow in your commons repo. It opens a PR with the OS-layer changes; you review and merge. Your instance content is never touched. |
 
 ---
 

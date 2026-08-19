@@ -3,7 +3,7 @@
 
 **Version:** 0.2
 **Status:** Living Document
-**Companion:** COMMONS_OS_MANIFEST.md, COMMONS_DOMAINS_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md
+**Companion:** COMMONS_CORE_MANIFEST.md, COMMONS_DOMAINS_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md
 
 ---
 
@@ -13,11 +13,11 @@ Science fiction shaped the 20th century. The devices in our pockets, the network
 
 Commons Engineering needs its own rehearsal space.
 
-Not a whiteboard. Not a document. Not a scenario workshop that produces insights and then closes. A living, running, breathing world where autonomous commons operate, trade, federate, compete, fail, split, merge, and evolve -- governed by the same Commons OS that real-world commons will use, stressed by the same forces they will face, and producing the same artefacts (Blueprints, patterns, entities, value streams) that the real world needs.
+Not a whiteboard. Not a document. Not a scenario workshop that produces insights and then closes. A living, running, breathing world where autonomous commons operate, trade, federate, compete, fail, split, merge, and evolve -- governed by the same Commons Core that real-world commons will use, stressed by the same forces they will face, and producing the same artefacts (Blueprints, patterns, entities, value streams) that the real world needs.
 
 commons.games is that world.
 
-It is not a game in the entertainment sense. It is a simulation laboratory where the Commons OS is tested against reality before reality tests it against us. Every commons instance in the simulation runs the actual OS. Every pattern it uses comes from the actual pattern library. Every capability it needs and does not find becomes a pull request back to commons.engineering. Every failure it suffers becomes a pattern in the library for others to avoid.
+It is not a game in the entertainment sense. It is a simulation laboratory where the Commons Core is tested against reality before reality tests it against us. Every commons instance in the simulation runs the actual OS. Every pattern it uses comes from the actual pattern library. Every capability it needs and does not find becomes a pull request back to commons.engineering. Every failure it suffers becomes a pattern in the library for others to avoid.
 
 The simulation is the proving ground. The real world is the deployment. commons.games and commons.domains are the two halves of one feedback loop.
 
@@ -35,7 +35,7 @@ The simulation has the following properties:
 
 **World simulation.** The environment is a simplified model of Earth: real cities as nodes, simulated organisations as participants, ecological parameters as constraints, and a token economy as the medium of exchange. The simplification is deliberate -- complex enough to produce real governance problems, simple enough to understand the causes when things break.
 
-**Built on the actual Commons OS.** Every commons instance in the simulation is a fork of the same Commons OS that real-world commons use. The Blueprint specification, the agent manifest, the pattern library, the MCP architecture -- all real. The simulation does not model the OS. It runs it.
+**Built on the actual Commons Core.** Every commons instance in the simulation is a fork of the same Commons Core that real-world commons use. The Blueprint specification, the agent manifest, the pattern library, the MCP architecture -- all real. The simulation does not model the OS. It runs it.
 
 ---
 
@@ -43,7 +43,7 @@ The simulation has the following properties:
 
 ### S2.1 Stress-Testing the OS
 
-The Commons OS is infrastructure. Infrastructure must be tested under load before deployment. commons.games provides the load: thousands of concurrent commons instances, each with their own purpose, participants, propositions, and production -- all interacting through the same federation protocol, all drawing from the same pattern library, all encountering the same environmental stresses.
+The Commons Core is infrastructure. Infrastructure must be tested under load before deployment. commons.games provides the load: thousands of concurrent commons instances, each with their own purpose, participants, propositions, and production -- all interacting through the same federation protocol, all drawing from the same pattern library, all encountering the same environmental stresses.
 
 When a capability is missing, the simulation surfaces it. When a pattern fails at scale, the simulation reveals the failure mode. When the federation protocol breaks under adversarial conditions, the simulation produces the evidence. Every deficiency discovered in simulation is a deficiency that did not destroy a real community's livelihood.
 
@@ -55,7 +55,7 @@ These are not hypothetical questions. They are the scenarios that emerged from 2
 
 ### S2.3 Proof of Concept
 
-"Commons as Code" is a claim. commons.games is the proof. If AI-operated commons can found themselves, trade value, federate, survive crises, and evolve -- all running on the Commons OS -- then the claim is validated in the strongest possible way: not by argument, but by demonstration.
+"Commons as Code" is a claim. commons.games is the proof. If AI-operated commons can found themselves, trade value, federate, survive crises, and evolve -- all running on the Commons Core -- then the claim is validated in the strongest possible way: not by argument, but by demonstration.
 
 ### S2.4 Pattern Generation
 
@@ -125,7 +125,7 @@ When ecological parameters cross thresholds, they trigger automatic governance e
 
 ### S4.1 Three-MCP Structure
 
-Every commons instance in the simulation runs the same 3-MCP architecture described in the Commons OS Manifest:
+Every commons instance in the simulation runs the same 3-MCP architecture described in the Commons Core Manifest:
 
 - **Blueprint MCP** -- the local intelligence of the commons. Holds the Blueprint, runs the four agents, makes governance decisions.
 - **Commons MCP** -- the shared knowledge layer. Routes intent signals, holds the pattern library, issues verifiable credentials. Functions as DNS, not as marketplace.
@@ -137,7 +137,7 @@ This is **Intent-Driven Fabric** -- the decentralised alternative to platform ca
 
 ### S4.2 Intent Broadcasting
 
-Value exchange in the simulation uses the **Broadcasting** capability defined in the Commons OS Manifest (§5.4). All simulated commons broadcast at **Open** or **Transparent** level -- Dark and Beacon modes are available but rarely useful in a simulation designed to test interaction.
+Value exchange in the simulation uses the **Broadcasting** capability defined in the Commons Core Manifest (§5.4). All simulated commons broadcast at **Open** or **Transparent** level -- Dark and Beacon modes are available but rarely useful in a simulation designed to test interaction.
 
 The simulation is the first large-scale test of the Intent-Driven Fabric: D3 agents broadcast offer intents, D4 agents broadcast need intents, the Commons MCP routes them as DNS (not marketplace), and A2A negotiation happens peer-to-peer between Blueprint MCPs. The full protocol is specified in the OS; the simulation stress-tests it at volume.
 
@@ -205,7 +205,7 @@ Periodically, the simulation introduces systemic stresses:
 
 ## S6 The Feedback Loop to commons.engineering
 
-Every cycle in the simulation produces artefacts that feed back to the Commons OS:
+Every cycle in the simulation produces artefacts that feed back to the Commons Core:
 
 | Simulation Output | Feeds Back As |
 |---|---|
@@ -226,7 +226,7 @@ The feedback mechanism is a **pull request**. Patterns, capabilities, entities, 
 
 commons.games is a **layer on the commons.domains chart**.
 
-Both commons.games and the real-world commons use the same Broadcasting protocol (Commons OS §5.4). commons.domains -- the sea chart of the commons world -- renders broadcasts from all sources. The simulation layer and the reality layer are two views of the same chart, using the same protocol, the same rendering engine, and the same visual language. A viewer can switch between layers -- or overlay them -- to compare simulated dynamics with real-world outcomes.
+Both commons.games and the real-world commons use the same Broadcasting protocol (Commons Core §5.4). commons.domains -- the sea chart of the commons world -- renders broadcasts from all sources. The simulation layer and the reality layer are two views of the same chart, using the same protocol, the same rendering engine, and the same visual language. A viewer can switch between layers -- or overlay them -- to compare simulated dynamics with real-world outcomes.
 
 What commons.games contributes to the chart:
 
@@ -246,7 +246,7 @@ The simulation begins in Lubeck for three reasons:
 
 **Manageable scale.** A city of 220,000 people, compressed to 2,200 simulated participants, is complex enough to produce real governance dynamics and simple enough to understand when things break.
 
-The Lubeck Genesis produces the first Blueprints, the first inter-commons transactions, the first federation discussions, and the first evidence of whether the Commons OS can sustain a living economy. From Lubeck, the simulation grows -- along Hanseatic routes, and eventually beyond them -- as the OS proves itself capable of holding larger and more diverse worlds.
+The Lubeck Genesis produces the first Blueprints, the first inter-commons transactions, the first federation discussions, and the first evidence of whether the Commons Core can sustain a living economy. From Lubeck, the simulation grows -- along Hanseatic routes, and eventually beyond them -- as the OS proves itself capable of holding larger and more diverse worlds.
 
 ---
 
@@ -268,13 +268,13 @@ commons.games operates as its own GitHub organisation (`commons-games`), separat
 
 | Component | Repository | Relationship to commons.engineering |
 |---|---|---|
-| World simulation engine | `commons-games/engine` | Consumes Commons OS as dependency |
+| World simulation engine | `commons-games/engine` | Consumes Commons Core as dependency |
 | City models | `commons-games/cities` | Geographic data, ecological parameters |
-| Commons instances | `commons-games/instances` | Each a fork of Commons OS |
+| Commons instances | `commons-games/instances` | Each a fork of Commons Core |
 | Pattern feedback | PRs to `commons-engineering/workshop` | The discovery loop |
 | Simulation logs | `commons-games/logs` | Raw evidence for pattern extraction |
 
-The simulation engine is itself a commons. Its Blueprint, its governance, its contribution model -- all follow the Commons OS architecture. commons.games eats its own cooking.
+The simulation engine is itself a commons. Its Blueprint, its governance, its contribution model -- all follow the Commons Core architecture. commons.games eats its own cooking.
 
 ---
 
@@ -283,7 +283,7 @@ The simulation engine is itself a commons. Its Blueprint, its governance, its co
 commons.games is the simulation layer of the Commons Engineering ecosystem. It depends on and feeds back to every other manifest:
 
 - **Commons Engineering Manifest** -- defines the field that commons.games tests. The four domains, the first principles, the definition of a commons -- all are the parameters within which the simulation operates.
-- **Commons OS Manifest** -- the operating system that every simulated commons runs. commons.games does not model the OS. It runs it.
+- **Commons Core Manifest** -- the operating system that every simulated commons runs. commons.games does not model the OS. It runs it.
 - **Commons Blueprint Manifest** -- the primary artefact of every simulated commons. Each instance writes and maintains a Blueprint. The nine layers, the temporal specification, the feedback loop -- all operate in simulation as they would in reality.
 - **Commons Agent Manifest** -- the four-agent governance model that operates every simulated commons. Each agent runs within its mandate. Mandate staleness, agent drift, and governance capture are among the dynamics the simulation is designed to surface.
 - **Commons Place Manifest** -- the simulated world is itself a Place. Digital, persistent, governed. The Place patterns (Porch, Campfire, Workshop Bench, Marketplace) manifest in the simulation's interaction architecture.

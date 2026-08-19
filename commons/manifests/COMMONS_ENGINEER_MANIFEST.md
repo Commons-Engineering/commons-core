@@ -3,7 +3,7 @@
 
 **Version:** 1.0
 **Status:** Living Document
-**Companion:** COMMONS_BLUEPRINT_MANIFEST.md, COMMONS_INCUBATOR_MANIFEST.md, COMMONS_OS_MANIFEST.md
+**Companion:** COMMONS_BLUEPRINT_MANIFEST.md, COMMONS_INCUBATOR_MANIFEST.md, COMMONS_CORE_MANIFEST.md
 
 ---
 
@@ -15,7 +15,7 @@ A Commons Engineer is that practitioner. They design living systems as commons: 
 
 The world needs one million of them. This manifest is for the people who are already thinking this way — and who are ready to step forward.
 
-*This manifest is part of the Commons Engineering Body of Knowledge. The Commons Engineering Manifest describes the field. The Commons OS Manifest and Commons Agent Manifest describe the infrastructure and governance. The Commons Blueprint Manifest describes the primary artefact. The Commons Incubator Manifest describes how it all reaches the world. This manifest describes the person.*
+*This manifest is part of the Commons Engineering Body of Knowledge. The Commons Engineering Manifest describes the field. The Commons Core Manifest and Commons Agent Manifest describe the infrastructure and governance. The Commons Blueprint Manifest describes the primary artefact. The Commons Incubator Manifest describes how it all reaches the world. This manifest describes the person.*
 
 ---
 
@@ -143,7 +143,7 @@ The Commons Engineer Manifest sits alongside four companion documents:
 
 - **Commons Engineering Manifest** — establishes the field, the four domains, the definition of a commons as a resilient, collaborative, vital value-creating system of systems, vitality as the organising principle, and purpose as the load-bearing element of human commons design. It defines *what* Commons Engineering is and *why* the world needs it. This manifest defines *who* practices it.
 
-- **Commons OS Manifest** — the forkable operating system for living systems: registry as workspace, knowledge as library, 3-MCP architecture. The Commons Engineer operates within this infrastructure.
+- **Commons Core Manifest** — the forkable operating system for living systems: registry as workspace, knowledge as library, 3-MCP architecture. The Commons Engineer operates within this infrastructure.
 - **Commons Agent Manifest** — the four-agent governance model and AI Engines as production lines under D4. The Commons Engineer draws from the library and contributes back to it.
 
 - **Commons Blueprint Manifest** — establishes the nine-layer temporal specification that is the primary artefact of practice. As the Commons Engineer develops through the 7Cs, the Blueprint becomes their primary instrument — first understood as a lens on their own growth, then applied to the living systems they design for and with others.

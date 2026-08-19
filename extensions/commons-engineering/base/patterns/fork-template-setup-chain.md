@@ -65,7 +65,7 @@ ontology:
     fractal_value: 5
     vitality: 4.8
     vitality_reasoning: >-
-      The setup chain is the mechanism through which the Commons OS
+      The setup chain is the mechanism through which the Commons Core
       replicates. Without it, creating a new commons requires manual
       configuration of dozens of components — governance labels,
       project boards, agent configurations, locale files, build
@@ -162,7 +162,7 @@ graph_garden:
       label: "Operational in Minutes"
       relevance: 0.85
   communities:
-    - commons-os-foundations
+    - commons-core-foundations
     - commons-engineering-foundations
     - developer-tooling
   inferred_links:
@@ -185,22 +185,22 @@ graph_garden:
 contributors: ["higgerix", "cloudsters"]
 sources:
   - "Commons Engineering Framework"
-  - "Commons OS Specification v0.1"
+  - "Commons Core Specification v0.1"
   - "GitHub Template Repositories documentation"
   - "create-react-app — scaffolding as architectural opinion (2016)"
   - "Ruby on Rails — convention over configuration (2004)"
   - "Yeoman — the web scaffolding tool (2012)"
 license: CC-BY-SA-4.0
 attribution: "commons.engineering by cloudsters, https://cloudsters.net"
-collection: commons-os
+collection: commons-core
 collection_ring: operating-patterns
 7cs_arc: [composability, commons, capital]
 ---
 
-> What took three years, a team of consultants, and brown paper on the wall — Commons OS makes accessible in minutes. Not because the work is less. Because the defaults are better.
+> What took three years, a team of consultants, and brown paper on the wall — Commons Core makes accessible in minutes. Not because the work is less. Because the defaults are better.
 
 > [!NOTE] Confidence Rating: ★★★ (High)
-> Project scaffolding is one of the most proven patterns in software engineering. From Rails' "convention over configuration" (2004) to create-react-app (2016) to GitHub's template repositories (2019), the principle is well-established: a well-designed template with a guided setup sequence allows practitioners to start producing value immediately rather than spending days on infrastructure. The Commons OS applies this principle to organisational governance, not just code — making it simultaneously more ambitious and more consequential.
+> Project scaffolding is one of the most proven patterns in software engineering. From Rails' "convention over configuration" (2004) to create-react-app (2016) to GitHub's template repositories (2019), the principle is well-established: a well-designed template with a guided setup sequence allows practitioners to start producing value immediately rather than spending days on infrastructure. The Commons Core applies this principle to organisational governance, not just code — making it simultaneously more ambitious and more consequential.
 
 ---
 
@@ -214,7 +214,7 @@ Software engineering solved this problem decades ago with scaffolding tools. Rai
 
 The insight behind all of these tools is the same: the defaults encode expertise. A well-designed template is not just empty structure waiting to be filled. It is a set of opinionated decisions about how things should be organised, what conventions should be followed, what governance (or coding) standards should apply. The practitioner who uses the template inherits these decisions without needing to make them from scratch — and can then modify them as they develop their own expertise and their own context demands.
 
-Commons Engineering applies this insight to the most complex scaffolding challenge: not a code project, but a governed living system. The Commons OS template is a GitHub template repository that contains not just directory structure but governance architecture: the four agent seats, the nine-layer blueprint, the value stream families, the dimensional navigation, the locale configuration, the publishing pipeline, and the project management infrastructure. The setup script brings this template to life in a specific context — configuring it for a specific purpose, a specific language, a specific domain, a specific team.
+Commons Engineering applies this insight to the most complex scaffolding challenge: not a code project, but a governed living system. The Commons Core template is a GitHub template repository that contains not just directory structure but governance architecture: the four agent seats, the nine-layer blueprint, the value stream families, the dimensional navigation, the locale configuration, the publishing pipeline, and the project management infrastructure. The setup script brings this template to life in a specific context — configuring it for a specific purpose, a specific language, a specific domain, a specific team.
 
 ---
 
@@ -232,7 +232,7 @@ The forces pulling toward manual setup (each commons hand-crafted from scratch) 
 
 **Force 4: The fork vs. template question.** Git offers two mechanisms for replicating a repository: fork and template. A fork creates a linked copy — the new repository retains a connection to the original, can pull updates, and is public if the original is public. A template creates an independent copy — a fresh repository with no history, no link to the original, and private by default. For a commons, the choice matters: a fork is appropriate for intentionally public projects that want to stay connected to the upstream. A template is appropriate for private-first projects that want a clean start. Most commons should use template.
 
-**Force 5: The upstream evolution question.** The Commons OS template will evolve — new patterns, improved governance structures, better agent configurations. A commons created from the template at time T has the template's state at time T. How does it receive improvements made at time T+1? A fork can pull upstream changes. A template-created repository cannot — unless it explicitly adds the template as a remote and selectively merges. The setup chain must provide the mechanism for this ongoing connection without forcing it.
+**Force 5: The upstream evolution question.** The Commons Core template will evolve — new patterns, improved governance structures, better agent configurations. A commons created from the template at time T has the template's state at time T. How does it receive improvements made at time T+1? A fork can pull upstream changes. A template-created repository cannot — unless it explicitly adds the template as a remote and selectively merges. The setup chain must provide the mechanism for this ongoing connection without forcing it.
 
 **Force 6: The "operational in minutes" promise.** The setup chain must genuinely produce an operational commons — not just a directory structure, but a functioning governance environment with working labels, a configured project board, agent seats ready for use, and a publishing pipeline that builds. If the setup produces a half-configured environment that requires hours of manual finishing, the promise is broken and the pattern fails.
 
@@ -244,7 +244,7 @@ The forces pulling toward manual setup (each commons hand-crafted from scratch) 
 
 The solution is the Fork-Template-Setup Chain — a three-stage process:
 
-**Stage 1: Template (the seed).** The Commons OS template repository contains the full directory structure, governance architecture, and configuration files for a commons. It is a GitHub template repository — using "Use this template" creates a new, independent, private repository with the template's content and no Git history link. This is the recommended path for most commons. For intentionally public projects that want to maintain an upstream connection, fork is the alternative.
+**Stage 1: Template (the seed).** The Commons Core template repository contains the full directory structure, governance architecture, and configuration files for a commons. It is a GitHub template repository — using "Use this template" creates a new, independent, private repository with the template's content and no Git history link. This is the recommended path for most commons. For intentionally public projects that want to maintain an upstream connection, fork is the alternative.
 
 **Stage 2: Setup (the germination).** The `setup.sh` script (or its platform-appropriate equivalent) is run once after the template is instantiated. It is an interactive script that asks the founder a series of questions and configures the commons based on the answers. The setup script is the boot sequence — it transforms a generic template into a specific, purpose-configured commons.
 
@@ -254,7 +254,7 @@ The solution is the Fork-Template-Setup Chain — a three-stage process:
 
 ### Section 4: Implementation
 
-**Step 1: Create the template repository structure.** The Commons OS template repository follows the structure defined in the Commons OS Specification (v0.1):
+**Step 1: Create the template repository structure.** The Commons Core template repository follows the structure defined in the Commons Core Specification (v0.1):
 
 ```
 [purpose]-os/
@@ -303,7 +303,7 @@ The solution is the Fork-Template-Setup Chain — a three-stage process:
 
 6. **Agent configuration**: Writes the four agent configurations to `AGENT.md` based on the selected domain and locale. Each agent gets its dimensional mandate, responsibilities, and standing instructions in the configured locale.
 
-7. **Upstream remote**: Adds the Commons OS template as a remote named `upstream`, enabling the commons to selectively pull improvements from the template as it evolves. This is optional — the founder can decline the upstream connection for fully independent operation.
+7. **Upstream remote**: Adds the Commons Core template as a remote named `upstream`, enabling the commons to selectively pull improvements from the template as it evolves. This is optional — the founder can decline the upstream connection for fully independent operation.
 
 8. **Verification**: The script runs a verification check — confirming that all infrastructure was created successfully, all configuration files are valid, and the publishing pipeline builds without errors. The output is a summary of what was created and a link to the first governance issue (auto-created): "Define your purpose — complete L1 of the blueprint."
 
@@ -358,7 +358,7 @@ In both forms the principle holds: **selective adoption, never blind merge, upst
 
 A commons that is operational from minute one. The founder's first interaction with the system is not infrastructure configuration — it is purpose definition. The governance structure is already in place: labels exist, the board is configured, agent seats are ready, the publishing pipeline builds. The founder can immediately start the work that matters: articulating purpose, building community, designing propositions, producing value.
 
-The pattern also creates consistency across the commons network. Every Commons OS instance shares the same foundational structure — the same dimensional labels, the same governance infrastructure, the same agent seat architecture. This consistency enables interoperability: patterns, tools, and practices developed in one commons transfer to another because the structural conventions are shared. The template is the mechanism through which the Commons OS achieves network effects.
+The pattern also creates consistency across the commons network. Every Commons Core instance shares the same foundational structure — the same dimensional labels, the same governance infrastructure, the same agent seat architecture. This consistency enables interoperability: patterns, tools, and practices developed in one commons transfer to another because the structural conventions are shared. The template is the mechanism through which the Commons Core achieves network effects.
 
 For the broader community, the pattern lowers the barrier to entry dramatically. Creating a commons is no longer an expert activity requiring months of governance design. It is accessible to anyone who can answer four questions: What language? What purpose? What domain? What name? The expertise is encoded in the template; the founder provides the context.
 
@@ -374,15 +374,15 @@ Over-automation — the risk that the setup script does so much that the founder
 
 ### Section 6: Known Uses
 
-**create-react-app (2016-present).** Facebook's scaffolding tool for React projects established the modern standard for project generators. A single command (`npx create-react-app my-app`) produces a fully configured React project with build system, test runner, development server, and deployment pipeline. The tool encodes Facebook's opinions about project structure as defaults — developers can "eject" to customise, but most never need to. The Commons OS setup chain follows the same principle: opinionated defaults that work out of the box, with full customisation available when needed.
+**create-react-app (2016-present).** Facebook's scaffolding tool for React projects established the modern standard for project generators. A single command (`npx create-react-app my-app`) produces a fully configured React project with build system, test runner, development server, and deployment pipeline. The tool encodes Facebook's opinions about project structure as defaults — developers can "eject" to customise, but most never need to. The Commons Core setup chain follows the same principle: opinionated defaults that work out of the box, with full customisation available when needed.
 
-**Ruby on Rails convention over configuration (2004-present).** Rails' founding principle — convention over configuration — is the philosophical ancestor of this pattern. Rails generates project structure, database schemas, and routing configurations based on naming conventions rather than requiring explicit configuration for every component. The developer who follows the conventions gets a working application with minimal setup. The Commons OS extends this principle from code to governance: follow the conventions and get a working commons with minimal setup.
+**Ruby on Rails convention over configuration (2004-present).** Rails' founding principle — convention over configuration — is the philosophical ancestor of this pattern. Rails generates project structure, database schemas, and routing configurations based on naming conventions rather than requiring explicit configuration for every component. The developer who follows the conventions gets a working application with minimal setup. The Commons Core extends this principle from code to governance: follow the conventions and get a working commons with minimal setup.
 
-**GitHub Template Repositories (2019-present).** GitHub's template repository feature allows any repository to be marked as a template, enabling one-click creation of new repositories with the same file structure. This is the platform mechanism that the Commons OS uses. Template repositories are now standard practice for organisations that maintain consistent project structures across teams — the Commons OS applies the same mechanism to consistent governance structures across commons.
+**GitHub Template Repositories (2019-present).** GitHub's template repository feature allows any repository to be marked as a template, enabling one-click creation of new repositories with the same file structure. This is the platform mechanism that the Commons Core uses. Template repositories are now standard practice for organisations that maintain consistent project structures across teams — the Commons Core applies the same mechanism to consistent governance structures across commons.
 
-**Yeoman generators (2012-present).** Yeoman provided a framework for building custom project scaffolding tools — generators that ask questions and produce configured project structures. The Commons OS setup script is architecturally similar to a Yeoman generator: an interactive questionnaire that produces a configured environment. The difference is scope: Yeoman generates code projects; the setup chain generates governed commons.
+**Yeoman generators (2012-present).** Yeoman provided a framework for building custom project scaffolding tools — generators that ask questions and produce configured project structures. The Commons Core setup script is architecturally similar to a Yeoman generator: an interactive questionnaire that produces a configured environment. The difference is scope: Yeoman generates code projects; the setup chain generates governed commons.
 
-**Cookiecutter (Python, 2013-present).** The Python community's project templating tool, Cookiecutter, uses Jinja2 templates and a `cookiecutter.json` configuration to generate project directories from templates. It popularised the concept of templated project creation in the Python ecosystem and has been adopted across languages. Its template variable approach (ask questions, substitute answers into templates) is the same mechanism the Commons OS setup script uses for generating locale-specific content and agent configurations.
+**Cookiecutter (Python, 2013-present).** The Python community's project templating tool, Cookiecutter, uses Jinja2 templates and a `cookiecutter.json` configuration to generate project directories from templates. It popularised the concept of templated project creation in the Python ecosystem and has been adopted across languages. Its template variable approach (ask questions, substitute answers into templates) is the same mechanism the Commons Core setup script uses for generating locale-specific content and agent configurations.
 
 ---
 
@@ -398,7 +398,7 @@ This conversational setup has two advantages. First, it is more accessible — t
 
 The risk in the Cognitive Age is the illusion of completeness. A conversational setup that feels thorough may lead the founder to believe the commons is fully configured when it is only bootstrapped. The mitigation is the blueprint cadence: the setup creates the initial infrastructure, but the nine-layer blueprint requires ongoing engagement across multiple sessions. The setup is the first five minutes; the blueprint is the first five weeks.
 
-Another Cognitive Age possibility is the template that learns. As more commons are created from the template, the patterns of customisation can inform template improvements. If 80% of German-language commons change a specific governance label, perhaps the German locale should include that change by default. This feedback loop — from downstream customisation back to upstream template improvement — is the mechanism through which the Commons OS evolves based on collective practice rather than individual opinion.
+Another Cognitive Age possibility is the template that learns. As more commons are created from the template, the patterns of customisation can inform template improvements. If 80% of German-language commons change a specific governance label, perhaps the German locale should include that change by default. This feedback loop — from downstream customisation back to upstream template improvement — is the mechanism through which the Commons Core evolves based on collective practice rather than individual opinion.
 
 ---
 

@@ -3,7 +3,7 @@
 
 **Version:** 1.0
 **Status:** Living Document
-**Companion:** COMMONS_OS_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md
+**Companion:** COMMONS_CORE_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md
 
 ---
 
@@ -67,7 +67,7 @@ The principle extends beyond today's media. Neuronal interfaces, holographic co-
 
 ## §2 When Atoms Are Irreplaceable
 
-If virtual places are powerful — and the Commons OS is designed for asynchronous, distributed operation — why would a vital commons ever need physical space?
+If virtual places are powerful — and the Commons Core is designed for asynchronous, distributed operation — why would a vital commons ever need physical space?
 
 The architecture of the commons is substrate-agnostic (§1.1), but the biology of its human participants is not. An operating system can run entirely in the cloud. Human nervous systems cannot. This is the bridge between §1 and what follows: the four dimensions can be carried by any substrate, but the humans who participate in the commons bring bodies, evolutionary wiring, and material needs that no digital substrate can fully serve.
 
@@ -173,7 +173,7 @@ Without governance, the place reverts to one of two failure modes:
 
 **Heroic stewardship.** One person holds the place alive through personal energy. The place thrives while the steward burns. When the steward exhausts — and they will — the place dies. This is the Vitality-If-Pattern: vitality that depends on one person's energy is not systemic vitality. It is heroism with an expiry date.
 
-**Rentier extraction.** A landlord or platform operator captures the value. Participants become tenants, not stewards. Whether it is a physical building lease or a proprietary digital platform that locks in data and raises prices at will, the dynamic is identical: the "community" is marketing copy, and when a cheaper option appears — or when the landlord changes terms — the tenants leave. There was never a commons, only a transaction with a friendly face. This is why the Commons OS is built on Git — the ultimate protection against digital landlords. A repository can be forked, moved, and self-hosted. A Slack workspace cannot.
+**Rentier extraction.** A landlord or platform operator captures the value. Participants become tenants, not stewards. Whether it is a physical building lease or a proprietary digital platform that locks in data and raises prices at will, the dynamic is identical: the "community" is marketing copy, and when a cheaper option appears — or when the landlord changes terms — the tenants leave. There was never a commons, only a transaction with a friendly face. This is why the Commons Core is built on Git — the ultimate protection against digital landlords. A repository can be forked, moved, and self-hosted. A Slack workspace cannot.
 
 Ostrom's principles are the antidote to both. They distribute stewardship, make contribution visible, and keep governance in the hands of the people who do the work.
 

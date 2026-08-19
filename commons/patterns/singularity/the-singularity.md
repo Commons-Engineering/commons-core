@@ -362,7 +362,7 @@ The Cognitive Era does not change what the singularity is. It changes what the s
 
 **The gravity must be explicit.** In a pre-AI world, the gravitational pull of a pattern language was maintained by the community — by shared understanding, by apprenticeship, by the slow accumulation of judgment about what is fundamental and what is derivative. AI agents do not absorb this understanding through apprenticeship. They need it specified. The singularity, the orbital layers, the gravitational dynamics — all of this must be explicit, machine-readable, and enforceable, or the AI will produce patterns that are technically competent and architecturally incoherent.
 
-**The fork as AI-native primitive.** The `fork` operation — creating a complete copy of a system as the starting point for differentiation — is perfectly suited to the Cognitive Era. An AI agent can fork a Commons OS template, configure it to a purpose, and begin operating it within minutes. This means the singularity is no longer a one-time event. Every fork is a new singularity — a new origin point for a new commons. The original template is the meta-singularity: the singularity of singularities, the origin from which all origins derive.
+**The fork as AI-native primitive.** The `fork` operation — creating a complete copy of a system as the starting point for differentiation — is perfectly suited to the Cognitive Era. An AI agent can fork a Commons Core template, configure it to a purpose, and begin operating it within minutes. This means the singularity is no longer a one-time event. Every fork is a new singularity — a new origin point for a new commons. The original template is the meta-singularity: the singularity of singularities, the origin from which all origins derive.
 
 ---
 

@@ -1,8 +1,8 @@
-# Commons OS
+# Commons Core
 
 **The forkable operating system for living systems.**
 
-Commons OS is a complete operating environment for any commons — an organisation, a city district, a personal system, an ecological watershed, or any community that chooses to govern itself as a living system.
+Commons Core is a complete operating environment for any commons — an organisation, a city district, a personal system, an ecological watershed, or any community that chooses to govern itself as a living system.
 
 ---
 
@@ -12,9 +12,9 @@ The Cognitive Age creates extraordinary new possibilities for shared value creat
 
 **A commons systematically creates value that is alive, shared, just, and built to last.**
 
-Commons OS is the infrastructure that makes this buildable. It gives every commons — regardless of domain — the same quality of sovereign operating system that today only trillion-dollar platforms possess. Human-governed. AI-driven. Open source. Near-zero cost.
+Commons Core is the infrastructure that makes this buildable. It gives every commons — regardless of domain — the same quality of sovereign operating system that today only trillion-dollar platforms possess. Human-governed. AI-driven. Open source. Near-zero cost.
 
-> **[▶ Watch the Deck — The Age of Living Systems](https://commons-engineering.github.io/commons-os/deck/)**
+> **[▶ Watch the Deck — The Age of Living Systems](https://commons-engineering.github.io/commons-core/deck/)**
 > The full 20-slide strategic presentation, playable directly in your browser.
 
 ---
@@ -49,7 +49,7 @@ Get a working environment in one of two ways — both lead to the same place: yo
 |---|---|---|
 | **One-click installer** | your own computer | Run `commons/setup/commons-setup.cmd` (Windows) or `commons/setup/commons-setup.command` (macOS). Installs the toolchain and your agent locally. |
 | **Browser — Claude Code on the web** | locked-down machines / no install rights | Open this repo in [claude.ai/code](https://claude.ai/code), connect GitHub, and say *"set up my Commons environment from ONBOARDING.md"*. Anthropic hosts the environment — nothing touches your machine. |
-| **Browser — Codespaces** (any agent) | full control, or non-Claude agents | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Commons-Engineering/commons-os?quickstart=1) |
+| **Browser — Codespaces** (any agent) | full control, or non-Claude agents | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Commons-Engineering/commons-core?quickstart=1) |
 
 ---
 
@@ -88,7 +88,7 @@ Your fork connects you to a shared intelligence network:
 | **Urban lighthouses** | 1,400+ documented places |
 | **Access method** | Model Context Protocol (MCP) — native AI retrieval |
 
-Every pattern and lighthouse is connected through a knowledge graph and retrievable for every Commons OS fork.
+Every pattern and lighthouse is connected through a knowledge graph and retrievable for every Commons Core fork.
 
 ---
 
@@ -117,7 +117,7 @@ Every pattern and lighthouse is connected through a knowledge graph and retrieva
 
 | Layer | Path | Who owns it | Sync behaviour |
 |---|---|---|---|
-| **Commons** | `commons/` | Upstream (commons-os template) | Read-only in forks, updated via upstream sync |
+| **Commons** | `commons/` | Upstream (commons-core template) | Read-only in forks, updated via upstream sync |
 | **Extensions** | `extensions/{provider}/{pack}/` | Pack providers (any Commons Incubator) | Loaded via Commons MCP, cached locally |
 | **Instance** | `instance/` | Your commons | Yours entirely — upstream never touches it |
 
@@ -141,9 +141,9 @@ See [LICENSE](LICENSE) for details.
 | `BOOT.md` | The founding conversation — how to boot your commons |
 | `ALIGN.md` | Alignment rules — how to keep your commons healthy |
 | `blueprint.md` | The Living Blueprint — 9-layer architecture template |
-| `commons/manifests/COMMONS_OS_MANIFEST.md` | What Commons OS is — vision, principles, architecture |
+| `commons/manifests/COMMONS_CORE_MANIFEST.md` | What Commons Core is — vision, principles, architecture |
 | `commons/manifests/COMMONS_AGENT_MANIFEST.md` | The 4-agent governance model |
-| `commons/specs/COMMONS_OS_SPEC.md` | Technical specification — directory structure, lifecycle, layers |
+| `commons/specs/COMMONS_CORE_SPEC.md` | Technical specification — directory structure, lifecycle, layers |
 | `commons/specs/COMMONS_MCP_ARCHITECTURE_SPEC.md` | The 3-MCP channel architecture |
 | `commons/specs/PATTERN_SPEC.md` | How patterns work — orbital layers, structure, vitality |
 
@@ -153,7 +153,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute patterns, improveme
 
 ---
 
-*Commons OS is part of [Commons Engineering](https://commons.engineering) and distributed by [cloudsters](https://cloudsters.net).*
+*Commons Core is part of [Commons Engineering](https://commons.engineering) and distributed by [cloudsters](https://cloudsters.net).*
 
 *Licensed under CC-BY-SA-4.0 — Distributed by cloudsters*
 
@@ -162,4 +162,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute patterns, improveme
 
 ## How releases work
 
-This public `commons-os` repository is editorially released from `commons-os-3` (private). Internal commits to `-3` do not automatically flow here — releases are deliberate. See this repository's tags for release versions, and `commons/manifests/COMMONS_OS_MANIFEST.md` for the full chain architecture.
+This public `commons-core` repository is editorially released from `commons-core-3 (formerly commons-core-3)` (private). Internal commits to `-3` do not automatically flow here — releases are deliberate. See this repository's tags for release versions, and `commons/manifests/COMMONS_CORE_MANIFEST.md` for the full chain architecture.

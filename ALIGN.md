@@ -1,4 +1,4 @@
-# Alignment Rules — Commons OS
+# Alignment Rules — Commons Core
 
 **Version:** 1.1
 **Status:** Living Document
@@ -80,7 +80,7 @@ The commons must follow current specifications.
 | Spec | Expected version | What to check |
 |---|---|---|
 | **PATTERN_SPEC** | v8.2 | All patterns in `commons/patterns/` and `extensions/` must conform — 8 frontmatter groups, 8 body sections |
-| **COMMONS_OS_SPEC** | v1.0 | Directory structure, commons/extensions/instance layers, identity.yml schema |
+| **COMMONS_CORE_SPEC** | v1.0 | Directory structure, commons/extensions/instance layers, identity.yml schema |
 | **COMMONS_MCP_ARCHITECTURE_SPEC** | v1.0 | 3-channel MCP configuration in `.commons/config.yml` |
 
 Agent compares local `commons/specs/` versions against Commons MCP latest (when connected).

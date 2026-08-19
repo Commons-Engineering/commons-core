@@ -3,7 +3,7 @@
 
 **Version:** 0.1 (Draft)
 **Status:** Living Document
-**Companion:** COMMONS_OS_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md, COMMONS_AGENT_MANIFEST.md, COMMONS_ENGINEERING_MANIFEST.md
+**Companion:** COMMONS_CORE_MANIFEST.md, COMMONS_BLUEPRINT_MANIFEST.md, COMMONS_AGENT_MANIFEST.md, COMMONS_ENGINEERING_MANIFEST.md
 
 ---
 
@@ -15,11 +15,11 @@ Purpose grows stale because the environment shifted and no one reviewed it. Patt
 
 The work of holding a living system coherent against drift is not occasional. It is recurring. It is not a project to be completed. It is a rhythm to be sustained. In the language of this OS, it is a **loop**.
 
-Loops are not new to Commons Engineering. They are already present, under other names, in many places: the Pattern Engine Lifecycle (Recognition → Application → Adaptation → Creation) is a loop. The three Production Engines under D4 are loops. The Blueprint Timeslices held side by side and continuously reconciled are a loop. The Triple Diamond cycle of Context → Pattern → Build is a loop. The Active Feedback Loop between Physiology and Anatomy described in the Blueprint Manifest §7 is the canonical loop of the architecture. The Recursive Self-Improvement workflow described in COMMONS_OS_SPEC §10.2 is a concrete loop shipped with every fork.
+Loops are not new to Commons Engineering. They are already present, under other names, in many places: the Pattern Engine Lifecycle (Recognition → Application → Adaptation → Creation) is a loop. The three Production Engines under D4 are loops. The Blueprint Timeslices held side by side and continuously reconciled are a loop. The Triple Diamond cycle of Context → Pattern → Build is a loop. The Active Feedback Loop between Physiology and Anatomy described in the Blueprint Manifest §7 is the canonical loop of the architecture. The Recursive Self-Improvement workflow described in COMMONS_CORE_SPEC §10.2 is a concrete loop shipped with every fork.
 
 What has been missing is the explicit statement that **these are all instances of the same architectural pattern**, and the shared vocabulary that lets a commons name, document, govern, and evolve its loops as first-class artefacts. This manifest establishes that vocabulary.
 
-A Commons OS instance is healthy to the extent that its loops are running. Not because loops produce more — the production engines already do that. But because loops are the mechanism by which a living system holds its own coherence as the environment changes around it. The Anatomy keeps the system identifiable. The Physiology keeps the system operating. The loops keep the system **recognising itself**.
+A Commons Core instance is healthy to the extent that its loops are running. Not because loops produce more — the production engines already do that. But because loops are the mechanism by which a living system holds its own coherence as the environment changes around it. The Anatomy keeps the system identifiable. The Physiology keeps the system operating. The loops keep the system **recognising itself**.
 
 ---
 
@@ -37,7 +37,7 @@ Four qualifications carry weight in this definition.
 
 **Governable** — a loop is owned by a named agent or human, has a documented contract, can be paused, can be modified, can be retired. A loop that no one can explain or stop is not a loop — it is a piece of debt.
 
-Within this definition, many things in a Commons OS are loops: the weekly alignment check, the monthly board review, the quarterly Blueprint review, the upstream sync review, the Recursive Self-Improvement workflow, the pattern deprecation sweep, the entity registry refresh, the value stream retrospective. Each of these has a trigger, a state it inspects, a feedback it produces, and a rhythm on which it returns. The Loops Manifest is the place where they are named together.
+Within this definition, many things in a Commons Core are loops: the weekly alignment check, the monthly board review, the quarterly Blueprint review, the upstream sync review, the Recursive Self-Improvement workflow, the pattern deprecation sweep, the entity registry refresh, the value stream retrospective. Each of these has a trigger, a state it inspects, a feedback it produces, and a rhythm on which it returns. The Loops Manifest is the place where they are named together.
 
 What is **not** a loop in this manifest's sense: a single-execution build script; a CI validation that runs on every PR (this is event-driven, not recurring on a temporal rhythm); a human meeting (a meeting may be triggered by a loop, but a meeting is not a loop unless it has a documented contract and stop rule); a query against the MCP (a query is a read, not a process that maintains anything). The discipline of naming what is and is not a loop is itself part of the practice.
 
@@ -45,7 +45,7 @@ What is **not** a loop in this manifest's sense: a single-execution build script
 
 ## §2 The Six Pieces of a Loop
 
-Every loop in a Commons OS — whether human-run, agent-run, or hybrid — is specified along six pieces. The six pieces are the contract a loop offers to the commons that hosts it. They are also the schema by which a loop is documented in the Loop Registry (§8).
+Every loop in a Commons Core — whether human-run, agent-run, or hybrid — is specified along six pieces. The six pieces are the contract a loop offers to the commons that hosts it. They are also the schema by which a loop is documented in the Loop Registry (§8).
 
 ### §2.1 Trigger
 
@@ -79,7 +79,7 @@ What the loop is permitted to change, and where.
 
 Isolation is the security boundary of the loop. It answers: which files can this loop write? Which Issues can it open, close, label? Which branches can it push to? Which extension packs can it modify? Which Fabric MCPs can it call with side effects?
 
-The default isolation in a Commons OS is strict. A loop proposes; it does not commit to main. A loop opens issues; it does not close them. A loop writes to a branch named after the loop; humans review and merge. This default is what makes the **Open Loop** (§4.1) the standard mode of operation.
+The default isolation in a Commons Core is strict. A loop proposes; it does not commit to main. A loop opens issues; it does not close them. A loop writes to a branch named after the loop; humans review and merge. This default is what makes the **Open Loop** (§4.1) the standard mode of operation.
 
 Isolation is also the place where the loop's relationship to the three repository layers is declared. A loop in the `instance/` layer may not write to `commons/` (upstream is read-only in forks). A loop that runs against an extension pack may not modify another pack's content. The three-layer architecture of the OS is enforced at the loop level by the Isolation piece, not by the loop's good behaviour.
 
@@ -111,13 +111,13 @@ The Pruning loop class (§3.4) is in part the loop that watches the lifecycle st
 
 ## §3 The Four Loop Classes
 
-Loops in a Commons OS fall into four classes. The classes are not arbitrary categories — they correspond to the four kinds of work a living system must do to hold itself coherent over time. Every loop in the Loop Registry declares its class.
+Loops in a Commons Core fall into four classes. The classes are not arbitrary categories — they correspond to the four kinds of work a living system must do to hold itself coherent over time. Every loop in the Loop Registry declares its class.
 
 ### §3.1 Production Loops
 
 A Production loop creates new artefacts at volume. The artefacts may be patterns, lighthouses, briefings, posts, manifests, value stream documents, entity records, or any other content the commons produces. The Production loop's job is to keep the production line moving and to ensure that what it produces conforms to the relevant specifications.
 
-Production Engines under D4, as described in the Agent Manifest, are Production loops in this sense. Each runs on a cadence, takes inputs from the registry or from the instance workshop (`instance/workshop/`), applies a specified transformation, and emits output to a defined surface. Which Production Engines a particular commons operates is determined by its purpose: a commons whose proposition is curated knowledge will run a pattern engine; a commons whose proposition is operating runbooks will run a build pipeline; a CE-style Incubator will additionally run a Lighthouse engine. The Production Engine loops are the most visible loops in a Commons OS because they are the loops most directly tied to the commons' offered propositions.
+Production Engines under D4, as described in the Agent Manifest, are Production loops in this sense. Each runs on a cadence, takes inputs from the registry or from the instance workshop (`instance/workshop/`), applies a specified transformation, and emits output to a defined surface. Which Production Engines a particular commons operates is determined by its purpose: a commons whose proposition is curated knowledge will run a pattern engine; a commons whose proposition is operating runbooks will run a build pipeline; a CE-style Incubator will additionally run a Lighthouse engine. The Production Engine loops are the most visible loops in a Commons Core because they are the loops most directly tied to the commons' offered propositions.
 
 A Production loop's default mode is bounded fan-out: take a list of items, transform each, return results, write outputs. A pattern engine takes pattern drafts and produces validated patterns. A build pipeline takes value stream specifications and produces operating runbooks. The specific engines a commons runs are determined by its proposition, not by the OS.
 
@@ -139,7 +139,7 @@ A Governance loop keeps human-agent decision-making legitimate and current. Wher
 
 Governance loops are the loops that keep the Issue Board honest. They scan for stale issues, for closed-without-decision threads, for decisions never recorded as commits, for labels missing on issues that require them, for milestones with no associated work. They do not enforce — enforcement is a human act — but they make the state of governance visible so that the human-agent team can act on it.
 
-The most important Governance loop in every Commons OS is the **Decision Currency loop**: a periodic walk of all `decision`-labelled issues to ask whether the conditions under which each decision was made still hold. A decision whose conditions have changed should be re-opened for review. A decision whose conditions still hold should be reaffirmed in the loop's State file. This loop is what prevents the commons from drifting on the strength of decisions that have quietly become wrong.
+The most important Governance loop in every Commons Core is the **Decision Currency loop**: a periodic walk of all `decision`-labelled issues to ask whether the conditions under which each decision was made still hold. A decision whose conditions have changed should be re-opened for review. A decision whose conditions still hold should be reaffirmed in the loop's State file. This loop is what prevents the commons from drifting on the strength of decisions that have quietly become wrong.
 
 Governance loops are owned by the Purpose Agent (D1) by default, because governance is the dimension of decision-making legitimacy. The Purpose Agent's "governance runtime hygiene" responsibility, named in the Agent Manifest, is operationalised as the Purpose Agent's Governance loop registry.
 
@@ -147,7 +147,7 @@ Governance loops are owned by the Purpose Agent (D1) by default, because governa
 
 A Pruning loop removes what has lost its purpose. A pattern that has been deprecated and is no longer referenced anywhere; an entity record that is duplicated; a rhythm that no longer runs; a State file from a retired loop; an `instance/workshop/` draft that has not been touched in twelve months; a label that no longer applies to any issue — these accumulate, and the commons becomes harder to read.
 
-Pruning loops are the loops that watch for waste. They do not delete unilaterally — deletion is a structural act, and the OS-level rule in COMMONS_OS_SPEC §11 still applies — but they surface candidates for retirement and route them to the appropriate decision-maker. A pattern flagged as a deprecation candidate becomes an Issue. An entity flagged as a duplication becomes an Issue. A loop flagged as ready for retirement becomes an Issue against the Loop Registry itself.
+Pruning loops are the loops that watch for waste. They do not delete unilaterally — deletion is a structural act, and the OS-level rule in COMMONS_CORE_SPEC §11 still applies — but they surface candidates for retirement and route them to the appropriate decision-maker. A pattern flagged as a deprecation candidate becomes an Issue. An entity flagged as a duplication becomes an Issue. A loop flagged as ready for retirement becomes an Issue against the Loop Registry itself.
 
 Pruning loops are what give the Loop Registry its self-regulating property. A loop in the registry whose lifecycle stop rule (§2.6) has been met is surfaced by the Pruning loop as a retirement candidate. This is how the Loop Registry stays a living artefact and not an accumulation of historical good intentions.
 
@@ -163,9 +163,9 @@ A loop is either Open or Closed. This is a property of the loop, declared in its
 
 In an **Open** loop, the loop senses, assesses, and proposes — but it does not commit to main, does not close issues, does not change state outside its declared Isolation boundary. The human-agent team reviews the proposal and acts. The loop's output is **a suggestion in a legible form**, not a fait accompli.
 
-The Open Loop is the default in a Commons OS. The architectural reason is given in the Agent Manifest: governance — decisions about purpose, design, culture, structural change — is human territory. The Anatomy of the commons is not revised by automation. A loop that detects drift in L1 purpose does not rewrite L1. It opens an Issue with the finding, labels it `definition`, and waits for the human-agent dialogue to produce a decision. The decision, when made, lands as a commit. The loop's job was to make the question visible. The closing of the loop is the human-agent team's decision, not the loop's continuation.
+The Open Loop is the default in a Commons Core. The architectural reason is given in the Agent Manifest: governance — decisions about purpose, design, culture, structural change — is human territory. The Anatomy of the commons is not revised by automation. A loop that detects drift in L1 purpose does not rewrite L1. It opens an Issue with the finding, labels it `definition`, and waits for the human-agent dialogue to produce a decision. The decision, when made, lands as a commit. The loop's job was to make the question visible. The closing of the loop is the human-agent team's decision, not the loop's continuation.
 
-The Recursive Self-Improvement workflow (COMMONS_OS_SPEC §10.2) is the archetypal Open Loop in the OS. Its six phases — SENSE, ASSESS, PROPOSE, REVIEW, ACT, LEARN — name explicitly the handoff: the loop owns SENSE, ASSESS, and PROPOSE; humans own REVIEW and ACT; both contribute to LEARN.
+The Recursive Self-Improvement workflow (COMMONS_CORE_SPEC §10.2) is the archetypal Open Loop in the OS. Its six phases — SENSE, ASSESS, PROPOSE, REVIEW, ACT, LEARN — name explicitly the handoff: the loop owns SENSE, ASSESS, and PROPOSE; humans own REVIEW and ACT; both contribute to LEARN.
 
 ### §4.2 The Closed Loop — Exception Under Policy
 
@@ -277,7 +277,7 @@ The loop's State file lives alongside, in `instance/operations/loops/_state/<loo
 
 The existing `instance/operations/rhythms.md` is a human-readable summary of the operating rhythms of the commons. With the Loop Registry in place, `rhythms.md` becomes a **generated view** over the Loop Registry — the same trigger and cadence information, formatted as the existing rhythms table.
 
-The Commons OS upstream provides a generator script that reads `instance/operations/loops/` and writes the rhythms table into `rhythms.md`. The narrative sections of `rhythms.md` — stage-specific rhythms, instance-specific notes — remain human-authored. The table at the top is generated.
+The Commons Core upstream provides a generator script that reads `instance/operations/loops/` and writes the rhythms table into `rhythms.md`. The narrative sections of `rhythms.md` — stage-specific rhythms, instance-specific notes — remain human-authored. The table at the top is generated.
 
 This relationship preserves the existing surface for the team that has been reading `rhythms.md` and adds the structured backing that the Loop Registry provides. Forks that have not yet adopted the Loop Registry continue to operate from a hand-maintained `rhythms.md`. Forks that adopt the Loop Registry gain the structured backing without losing the human-readable surface.
 
@@ -299,7 +299,7 @@ The COMMONS_ENGINEERING_MANIFEST §2.3 First Practices, under Governance, states
 
 This is the First Practice this manifest operationalises. The principle that a living system holds its coherence over time only through recurring, governed sensing and rule-revision — and that the work of recognising drift is built into the system's rhythm rather than triggered by crisis — is already canonical in the discipline. What has been missing is the operational shape: how does Adaptive Management actually run, day after day, in a commons that has forked the OS?
 
-The Loops Manifest is the answer. The six pieces of a loop (§2), the four loop classes (§3), the Open/Closed distinction (§4), the Maker/Checker separation (§5), the Blueprint anchoring (§6), the Coherence Engine (§7), and the Loop Registry as a workspace artefact (§8) are together the operational specification of Adaptive Management as a Commons OS practice.
+The Loops Manifest is the answer. The six pieces of a loop (§2), the four loop classes (§3), the Open/Closed distinction (§4), the Maker/Checker separation (§5), the Blueprint anchoring (§6), the Coherence Engine (§7), and the Loop Registry as a workspace artefact (§8) are together the operational specification of Adaptive Management as a Commons Core practice.
 
 This positioning carries two consequences worth stating explicitly.
 
@@ -317,13 +317,13 @@ The Loops Manifest sits adjacent to the Blueprint and Agent manifests in the man
 
 - **Commons Engineering Manifest** — establishes the discipline, including the First Practice **Adaptive Management** in §2.3 Governance. The Loops Manifest is the operational specification of that First Practice.
 
-- **Commons OS Manifest** — establishes the OS architecture, including §2.6 Recursive Self-Improvement at the OS-component level. The Loops Manifest expands this from a single workflow into a four-class loop taxonomy and a Loop Registry, with the Coherence Engine as a fourth Production Engine under D4.
+- **Commons Core Manifest** — establishes the OS architecture, including §2.6 Recursive Self-Improvement at the OS-component level. The Loops Manifest expands this from a single workflow into a four-class loop taxonomy and a Loop Registry, with the Coherence Engine as a fourth Production Engine under D4.
 
 - **Commons Blueprint Manifest** — establishes the Living Blueprint (L1–L9), including §7 Active Feedback Loop. The Loops Manifest anchors specific loops in specific Blueprint layers (§6) and adds the Loop Registry as an L9 Intelligence artefact.
 
 - **Commons Agent Manifest** — establishes the four-agent governance model and the distinction between Agents and Engines. The Loops Manifest adds the Coherence Engine as a distinct, universally-needed class of Engine under D4 and assigns default loop-class ownership to the four Agents.
 
-- **Commons OS Spec** — implements the file-level reality of the OS. The Loops Manifest extends the spec with `instance/operations/loops/` as the workspace location for the Loop Registry and clarifies the relationship to `rhythms.md` and `.github/workflows/`.
+- **Commons Core Spec** — implements the file-level reality of the OS. The Loops Manifest extends the spec with `instance/operations/loops/` as the workspace location for the Loop Registry and clarifies the relationship to `rhythms.md` and `.github/workflows/`.
 
 - **Commons Engineer Manifest** — establishes the practitioner. Working with loops is a practice that grows along the 7Cs. A Commons Engineer who has not yet developed the discipline of running maintenance loops on their own work cannot yet hold the discipline operational for a commons.
 
@@ -346,9 +346,9 @@ The Loops Manifest sits adjacent to the Blueprint and Agent manifests in the man
 
 ## §12 Implementation Notes
 
-This manifest is published as v0.1 (Draft). Its operational instantiation in the Commons OS proceeds in the following sequence; each step is independently shippable.
+This manifest is published as v0.1 (Draft). Its operational instantiation in the Commons Core proceeds in the following sequence; each step is independently shippable.
 
-1. **This manifest** lands in `commons/manifests/COMMONS_LOOPS_MANIFEST.md` and is referenced from `COMMONS_OS_MANIFEST.md` and `COMMONS_BLUEPRINT_MANIFEST.md` companion blocks.
+1. **This manifest** lands in `commons/manifests/COMMONS_LOOPS_MANIFEST.md` and is referenced from `COMMONS_CORE_MANIFEST.md` and `COMMONS_BLUEPRINT_MANIFEST.md` companion blocks.
 
 2. **The Loop Registry section** is added to the `COMMONS_BLUEPRINT_MANIFEST.md` description of L9 Intelligence, with a forward reference to this manifest.
 
@@ -356,13 +356,13 @@ This manifest is published as v0.1 (Draft). Its operational instantiation in the
 
 4. **The Coherence Engine** is added to the `COMMONS_AGENT_MANIFEST.md` §3 distinction between Agents and Engines, as a distinct, universally-needed class of Engine under D4.
 
-5. **The workspace skeleton** is added to the Commons OS template: `instance/operations/loops/.keep`, `instance/operations/loops/_state/.keep`, and a starter `README.md` describing the directory's contract.
+5. **The workspace skeleton** is added to the Commons Core template: `instance/operations/loops/.keep`, `instance/operations/loops/_state/.keep`, and a starter `README.md` describing the directory's contract.
 
-6. **The Recursive Self-Improvement workflow** in `COMMONS_OS_SPEC §10.2` is annotated as an instance of the Open Loop pattern, of class Governance (with embedded Maintenance and Pruning passes), with a forward reference to this manifest.
+6. **The Recursive Self-Improvement workflow** in `COMMONS_CORE_SPEC §10.2` is annotated as an instance of the Open Loop pattern, of class Governance (with embedded Maintenance and Pruning passes), with a forward reference to this manifest.
 
 7. **The `rhythms.md` generator** is added to `commons/scripts/` as an optional utility that forks may adopt when their Loop Registry has matured to a useful size.
 
-These seven steps complete the integration of Loops as a structural principle into the Commons OS without breaking any existing fork. A fork that does not adopt the Loop Registry continues to operate as before. A fork that adopts it gains the structural backing without changing its operating surface.
+These seven steps complete the integration of Loops as a structural principle into the Commons Core without breaking any existing fork. A fork that does not adopt the Loop Registry continues to operate as before. A fork that adopts it gains the structural backing without changing its operating surface.
 
 ---
 

@@ -14,7 +14,7 @@ Agent Briefs at the head of every section. Loop hooks via §0.
 Companion 50-scenario file at `instance/workshop/analysis/scenarios-2050.md`.
 
 Conforms to:
-  • COMMONS_OS_MANIFEST · COMMONS_BLUEPRINT_MANIFEST · COMMONS_LOOPS_MANIFEST
+  • COMMONS_CORE_MANIFEST · COMMONS_BLUEPRINT_MANIFEST · COMMONS_LOOPS_MANIFEST
   • INSTANCE_PIPELINE_SPEC v0.3.9+
 -->
 

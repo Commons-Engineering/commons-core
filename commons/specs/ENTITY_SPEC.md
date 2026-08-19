@@ -377,7 +377,7 @@ The instance file is intentionally minimal. It captures what is **specific to th
 |---|---|
 | **PATTERN_SPEC** | Sibling specification. Entities share Groups 0–7 with patterns for graph compatibility. Entities add Group 8 (Registry Activation) and replace `commons_assessment` with `dimensional_density`. |
 | **PACK_SPEC** | Entity definitions are delivered inside extension packs alongside patterns and collections. |
-| **COMMONS_OS_SPEC** | The OS spec defines the three-layer architecture (commons/extensions/instance) in which entity definitions and instances live. |
+| **COMMONS_CORE_SPEC** | The OS spec defines the three-layer architecture (commons/extensions/instance) in which entity definitions and instances live. |
 | **COMMONS_MCP_ARCHITECTURE_SPEC** | MCP tools navigate entities alongside patterns. Future tools: `find_entities`, `get_entity`, `activate_entity`. |
 | **COMMONS_TAXONOMY_MANIFEST** | The gravitational architecture (orbits, sectors) applies equally to entities and patterns. |
 

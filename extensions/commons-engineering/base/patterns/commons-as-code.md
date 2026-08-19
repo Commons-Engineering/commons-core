@@ -76,7 +76,7 @@ ontology:
     vitality: 4.9
     vitality_reasoning: >-
       This is the central claim of Commons Engineering — the pattern
-      from which all other Commons OS patterns derive their operational
+      from which all other Commons Core patterns derive their operational
       logic. Its vitality score reflects its generative power: every
       fork, every commit, every merge is an act of commons governance
       made visible. Without this pattern, the commons remains a
@@ -173,13 +173,13 @@ graph_garden:
       type: practice
       label: "Version-Controlled Decision Records"
       relevance: 0.88
-    - id: commons-os-template
+    - id: commons-core-template
       type: artifact
-      label: "Commons OS Fork Template"
+      label: "Commons Core Fork Template"
       relevance: 0.9
   communities:
     - id: commons-engineering-os
-      label: "Commons OS Operating Patterns"
+      label: "Commons Core Operating Patterns"
       source: curated
       confidence: 1.0
     - id: devops-gitops
@@ -210,7 +210,7 @@ graph_garden:
 contributors: ["higgerix", "cloudsters"]
 sources:
   - "Commons Engineering Framework"
-  - "Commons OS Specification v0.1"
+  - "Commons Core Specification v0.1"
   - "HashiCorp Terraform — Infrastructure as Code"
   - "Weaveworks — GitOps Principles"
   - "Ostrom, E. (1990). Governing the Commons"
@@ -227,7 +227,7 @@ A commons that exists only in people's heads is a commons that dies when those p
 
 ### Section 1: Context
 
-> **Lineage:** This pattern generalises from `engineering-attitude` (pat_01kkhajgmv156v72v1d3zyj5zd) and `patterns-over-protocols` (pat_01kkhajgn0z8tzgcr8rmv2nkf5), serving as the foundational Orbit 2 pattern for the Commons OS curated collection across all four domains.
+> **Lineage:** This pattern generalises from `engineering-attitude` (pat_01kkhajgmv156v72v1d3zyj5zd) and `patterns-over-protocols` (pat_01kkhajgn0z8tzgcr8rmv2nkf5), serving as the foundational Orbit 2 pattern for the Commons Core curated collection across all four domains.
 
 The twenty-first century has produced two convergent revolutions in how systems are governed. The first is the DevOps revolution: the insight that infrastructure should not be manually configured but declared in code, version-controlled, and automatically deployed. Infrastructure as Code transformed operations from artisanal tinkering into engineering practice. What was once tribal knowledge locked in a sysadmin's head became a reviewable, testable, reproducible artifact.
 
@@ -302,7 +302,7 @@ The mechanism has five components, each corresponding to a core capability of mo
 
 **1. Start with the fork, not the blank page.**
 
-The Commons OS template repository is designed to be forked, not built from scratch. When you fork, you inherit a complete operating environment: the agent configuration, the blueprint structure, the pattern collections, the governance runtime, the publishing pipeline. Your first act is not to build infrastructure — it is to personalise purpose. The `identity.yml` asks: What is this commons about? Who is it for? What domain does it operate in?
+The Commons Core template repository is designed to be forked, not built from scratch. When you fork, you inherit a complete operating environment: the agent configuration, the blueprint structure, the pattern collections, the governance runtime, the publishing pipeline. Your first act is not to build infrastructure — it is to personalise purpose. The `identity.yml` asks: What is this commons about? Who is it for? What domain does it operate in?
 
 This is a deliberate design choice. Building a commons from scratch requires architectural knowledge that most founders do not have. Forking a commons requires only the ability to answer the question of purpose — and every founder has that.
 
@@ -314,7 +314,7 @@ This discipline feels excessive in the early days, when the commons is small eno
 
 **3. Use the ALIGN.md checkpoint.**
 
-Every Commons OS instance includes an `ALIGN.md` file — the alignment service check that runs before every significant action. The agent reads ALIGN.md and verifies: Is what I am about to do consistent with this commons' purpose, boundaries, and current priorities? This is not a constraint on the agent — it is the mechanism by which the codified governance becomes operational governance. The code is only as alive as the frequency with which it is read and honoured.
+Every Commons Core instance includes an `ALIGN.md` file — the alignment service check that runs before every significant action. The agent reads ALIGN.md and verifies: Is what I am about to do consistent with this commons' purpose, boundaries, and current priorities? This is not a constraint on the agent — it is the mechanism by which the codified governance becomes operational governance. The code is only as alive as the frequency with which it is read and honoured.
 
 **4. Codify structural decisions; leave relational intelligence to agents.**
 
@@ -354,7 +354,7 @@ The Cognitive Age transforms Commons as Code from a disciplined practice into a 
 
 This is the deeper claim behind Commons as Code: it is not merely a good engineering practice for human governance. It is the precondition for human-agent teaming in commons governance. The moment you express your commons as code, you have created a surface on which AI agents can operate — reading the current state, proposing improvements, checking alignment, producing at volume. The moment you do not, you have confined governance to the human participants alone, which limits the commons to the scale of human attention.
 
-The four-agent architecture of the Commons OS (Purpose, Participation, Proposition, Production) is only possible because the commons is code. The Purpose Agent can read CLAUDE.md and the manifests. The Production Agent can manage the pattern engine and the build pipeline. The Participation Agent can monitor the issue board and community health. The Proposition Agent can track value streams and offers. All of this requires a codified commons. None of it works with a commons that lives in conversation alone.
+The four-agent architecture of the Commons Core (Purpose, Participation, Proposition, Production) is only possible because the commons is code. The Purpose Agent can read CLAUDE.md and the manifests. The Production Agent can manage the pattern engine and the build pipeline. The Participation Agent can monitor the issue board and community health. The Proposition Agent can track value streams and offers. All of this requires a codified commons. None of it works with a commons that lives in conversation alone.
 
 ---
 

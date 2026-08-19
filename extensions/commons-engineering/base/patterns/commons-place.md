@@ -114,7 +114,7 @@ relationships:
   specializes_to: []
   enables:
     - typeid: pat_01kkhb4rm0f8qz2v7nk3xjw5dp
-      slug: commons-os
+      slug: commons-core
       weight: 0.9
       source: curated
     - typeid: pat_01kjjvz4r7fzntjgbfedpdgdfv
@@ -337,7 +337,7 @@ Map the city's commons places: where does joint value creation actually happen? 
 
 The cognitive era fundamentally reshapes what "co-presence" means.
 
-**AI as co-present stakeholder.** When a commons place runs Commons OS with MCP integration, AI agents are participants in the space — not through robots, but through ambient intelligence. The pattern library is accessible to everyone in the room. The governance surface (issue board) is shared between humans and agents. The lighthouse data is live. This means the commons place becomes a **fourth place** in the emerging sense: a hybrid where physical and digital participants co-create.
+**AI as co-present stakeholder.** When a commons place runs Commons Core with MCP integration, AI agents are participants in the space — not through robots, but through ambient intelligence. The pattern library is accessible to everyone in the room. The governance surface (issue board) is shared between humans and agents. The lighthouse data is live. This means the commons place becomes a **fourth place** in the emerging sense: a hybrid where physical and digital participants co-create.
 
 **The death of the commute argument.** If AI handles 80% of knowledge work, the remaining 20% — creative direction, trust-building, governance, ethical deliberation — is precisely what requires co-presence. The commons place becomes the space for the 20% that matters most. This inverts the office model: instead of commuting daily for 80% work-that-could-be-remote, participants come to the commons place for the 20% work-that-requires-presence.
 
