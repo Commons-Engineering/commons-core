@@ -21,7 +21,7 @@ git remote get-url origin                                  # always available
 
 You are in the shared **upstream/template** if **either**:
 - `isTemplate` is `true`, **or**
-- the origin URL **contains the substring** `Commons-Engineering/commons-os` — match it as a substring so **every** URL form counts: HTTPS, SSH, and the browser sandbox's proxy form (e.g. `http://local_proxy@127.0.0.1:…/git/Commons-Engineering/commons-os`).
+- the origin URL **contains the substring** `Commons-Engineering/commons-core` or `Commons-Engineering/commons-os` (the repository was renamed; both forms occur) — match it as a substring so **every** URL form counts: HTTPS, SSH, and the browser sandbox's proxy form (e.g. `http://local_proxy@127.0.0.1:…/git/Commons-Engineering/commons-os`).
 
 If neither holds (a repo the founder owns), proceed to Prerequisites and boot normally.
 

@@ -14,7 +14,7 @@ The Cognitive Age creates extraordinary new possibilities for shared value creat
 
 Commons OS is the infrastructure that makes this buildable. It gives every commons — regardless of domain — the same quality of sovereign operating system that today only trillion-dollar platforms possess. Human-governed. AI-driven. Open source. Near-zero cost.
 
-> **[▶ Watch the Deck — The Age of Living Systems](https://commons-engineering.github.io/commons-os/deck/)**
+> **[▶ Watch the Deck — The Age of Living Systems](https://commons-engineering.github.io/commons-core/deck/)**
 > The full 20-slide strategic presentation, playable directly in your browser.
 
 ---
