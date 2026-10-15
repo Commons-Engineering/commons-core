@@ -1,13 +1,20 @@
-# Commons OS Configuration
-commons_os_version: "0.2"
-forked_from: "commons-engineering/commons-core"
+# Commons Core Configuration
+commons_core_version: "0.3"
 
-# 3-MCP Connections (see COMMONS_MCP_ARCHITECTURE_SPEC for details)
+# Where this house's hull and content come from (target architecture §3–§4a).
+#   hull     — synced by .commons/scripts/sync.py (a pull request, never a forced change)
+#   library  — installed by .commons/scripts/install.py; what was delivered is recorded in
+#              .commons/library.yml and .commons/library.lock
+sources:
+  hull: "Commons-Engineering/commons-core"
+  library: "Commons-Engineering/commons-library"
+
+# 3-MCP Connections (see COMMONS_MCP_SPEC, BLUEPRINT_MCP_SPEC and FABRIC_MCP_SPEC)
 mcp:
-  # Channel 1: Commons MCP — shared intelligence (operated by cloudsters / CE)
+  # Channel 1: the Federation's Commons MCP — operated by cloudsters; serves every listed extension by ring
   commons:
     endpoint: "https://mcp.commons.engineering/mcp"
-    tier: OPEN                         # OPEN | PEER | TEAM | ENTERPRISE
+    ring: OPEN                         # FREE | DOCK | OPEN | PEER | CORE | WORK | CORP — the ring decides what is served
     # api_key: stored in GitHub Secrets, not here
 
   # Channel 2: Blueprint MCP — local knowledge graph (owned by this commons)

@@ -22,8 +22,3 @@ node_modules/
 # Temporary files
 ~$*
 *.tmp
-
-# Tool pointer files (created per-tool/per-session, not OS template content)
-/CLAUDE.md
-/GEMINI.md
-/AGENTS.md

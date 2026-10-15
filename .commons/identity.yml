@@ -2,16 +2,18 @@
 locale: en                             # Primary language (ISO 639-1: de, en, fr, es, ...)
 fallback_locale: en                    # Fallback when MCP patterns aren't available in primary locale
 
-slug: my-commons                       # Unique identifier — rename after fork
-name: "My Commons"                     # Human-readable name — rename after fork
+slug: my-commons                       # Unique identifier — set at boot
+name: "My Commons"                     # Human-readable name — set at boot
 purpose: ""                            # One sentence: what this commons exists for
-domain: Business                       # Life | Business | Urban | Ecology
-instance_type: os                      # os | domain | game — what this instance IS
-                                       #   os     = sovereign operating system (governance mode)
-                                       #   domain = observed profile (research mode)
-                                       #   game   = projected future (simulation mode)
+domain: null                           # Business | Health | Life | Place | Urban | Ecology — decides the essentials pack `install` brings
+instance_type: null                    # what this house IS — decides what `install` brings (library.yml profiles):
+                                       #   os        = a sovereign house (governance mode): canon, Orbits 0–3, its domain's pack
+                                       #   incubator = an incubator's Open Book (.i): canon, Orbits 0–3, incubator-essentials
+                                       #   domain    = an observed profile (.d): canon and Orbits 0–1 only
+                                       #   game      = a projected future (.g): canon and Orbits 0–1 only
+                                       #   null      = not yet declared: canon and Orbits 0–1 only
 founder: ""                            # GitHub handle
-founded: 2026-01-01                    # Date of fork
+founded: null                          # Date the house was created
 stage: Fork                            # Fork | Boot | Seed | Active | Gathering | Established | Mature
 
 # Optional: parent commons or incubator
@@ -19,7 +21,7 @@ incubator: null                        # e.g., "cloudsters" if incubated
 parent_commons: null                   # e.g., "baltic-hanse-os" if a regional layer exists
 
 # Self-entity identity (the commons itself as an entity in the registry)
-self_entity_slug: null                 # Links to registry/5_entities/purpose/[slug].md
+self_entity_slug: null                 # Links to registry/7_entities/[slug].md
 
 # Stewards — the humans who tend this commons
 # The cognition system notifies stewards on critical events, escalations, and alignment issues.

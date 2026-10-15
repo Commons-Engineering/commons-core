@@ -88,12 +88,12 @@ echo.
 REM --- 3. The bootstrap launch pad --------------------------------------------
 REM     A visible, self-cleaning setup folder (the GUI app's folder picker must
 REM     be able to see it). It is a SIBLING of repos\commons - never a parent -
-REM     so it can't shadow real work sessions or collide with the Commons OS clone.
+REM     so it can't shadow real work sessions or collide with the Commons Core clone.
 set "WORKROOT=%USERPROFILE%\repos\commons-setup"
 if not exist "%WORKROOT%" mkdir "%WORKROOT%"
 
 REM --- 4. Fetch the onboarding procedure --------------------------------------
-set "ONBOARDING_URL=https://raw.githubusercontent.com/Commons-Engineering/commons-os/main/commons/setup/ONBOARDING.md"
+set "ONBOARDING_URL=https://raw.githubusercontent.com/Commons-Engineering/commons-core/main/commons/setup/ONBOARDING.md"
 echo   Fetching the latest setup procedure...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "try { Invoke-WebRequest -Uri '%ONBOARDING_URL%' -OutFile '%WORKROOT%\ONBOARDING.md' -UseBasicParsing; Write-Host '   - procedure ready.' } catch { Write-Host '   - could not fetch the procedure; the agent will guide you anyway.' }"
@@ -109,7 +109,7 @@ set "PFILE=%WORKROOT%\%POINTER%"
 > "%PFILE%"  echo # Commons Engineering - setup session
 >>"%PFILE%"  echo.
 >>"%PFILE%"  echo Read ONBOARDING.md in this folder and execute it step by step to set up
->>"%PFILE%"  echo my Commons Engineering working environment. Clone Commons OS into ..\commons,
+>>"%PFILE%"  echo my Commons Engineering working environment. Clone Commons Core into ..\commons,
 >>"%PFILE%"  echo the workspace root i.e. repos\commons, a sibling of this setup folder.
 >>"%PFILE%"  echo.
 >>"%PFILE%"  echo I am new and may be non-technical. Guide me warmly, do the technical work
