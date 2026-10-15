@@ -1,6 +1,6 @@
 name: Cognition Heartbeat
 
-# The autonomous pulse of this Commons OS instance.
+# The autonomous pulse of this Commons Core instance.
 # Executes the research programme defined in instance/program.md.
 # Enable by setting cognition.heartbeat.enabled: true in .commons/identity.yml.
 

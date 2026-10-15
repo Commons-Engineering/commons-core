@@ -15,6 +15,6 @@
 
 ## Checklist
 
-- [ ] Follows relevant specification (PATTERN_SPEC, LIGHTHOUSE_SPEC, etc.)
+- [ ] Follows relevant specification (COMMONS_PATTERNS_SPEC, COMMONS_EXTENSION_SPEC, etc.)
 - [ ] No breaking changes to core/ files (unless upstream contribution)
 - [ ] Tested locally

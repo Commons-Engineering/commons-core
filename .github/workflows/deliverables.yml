@@ -1,12 +1,16 @@
 name: Deliverables (PDF)
 
-# Canonical Commons OS capability (inherited by every fork). Regenerates the
+# Canonical Commons Core capability (inherited by every fork). Regenerates the
 # instance's declared deliverable bundle (.commons/deliverables.yml) whenever an
 # underlying source changes, and commits the PDFs. Renderer + generator are
-# canonical (commons/scripts/); only the manifest is instance-specific.
+# canonical (.commons/scripts/); only the manifest is instance-specific.
 #
 # The commit only touches _deliverables/, and the path filter excludes it, so
 # regeneration never re-triggers itself ([skip ci] on the auto-commit as a guard).
+#
+# The generator exits non-zero when a declared language still owes a
+# document. That failure is intended: it turns a silently incomplete
+# bundle into a red build instead of a promise the deliverables do not keep.
 # A private sibling `source_repo` in the manifest needs a token with read access
 # (add a PAT secret and pass it to the checkout/clone); GITHUB_TOKEN covers same-repo.
 
@@ -17,8 +21,8 @@ on:
       - 'blueprint.md'
       - 'instance/workshop/**'
       - '.commons/deliverables.yml'
-      - 'commons/scripts/markdown_to_pdf.py'
-      - 'commons/scripts/generate_deliverables.py'
+      - '.commons/scripts/markdown_to_pdf.py'
+      - '.commons/scripts/generate_deliverables.py'
       - '.github/workflows/deliverables.yml'
   workflow_dispatch: {}
 
@@ -55,7 +59,7 @@ jobs:
       - name: Generate declared deliverables
         run: |
           if [ -f .commons/deliverables.yml ]; then
-            python commons/scripts/generate_deliverables.py
+            python .commons/scripts/generate_deliverables.py
           else
             echo "No .commons/deliverables.yml — nothing declared; skipping."
           fi
@@ -64,7 +68,12 @@ jobs:
         run: |
           git config user.name "higgerix"
           git config user.email "holger.eggerichs@cloudsters.net"
-          git add instance/workshop/_deliverables/*.pdf 2>/dev/null || true
+          # Stage the whole directory, not a flat glob. The bundle is
+          # multilingual: PDFs live in _deliverables/<lang>/, which
+          # `_deliverables/*.pdf` never matched — so regeneration ran and
+          # committed nothing. -A also stages the REMOVAL of stale flat
+          # PDFs left over from the single-language layout.
+          git add -A -- instance/workshop/_deliverables
           if git diff --cached --quiet; then
             echo "No deliverable changes to commit."
           else

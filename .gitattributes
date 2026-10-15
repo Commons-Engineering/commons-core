@@ -1,0 +1,13 @@
+# One line ending everywhere in the chain. The same file differed between links in CRLF only,
+# which makes every merge between links report a conflict that is not one.
+* text=auto eol=lf
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.xlsx binary
+*.docx binary
+*.pptx binary
+*.zip  binary

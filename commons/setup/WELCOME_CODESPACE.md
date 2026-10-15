@@ -4,7 +4,7 @@ You're working **entirely in your browser** — nothing is installed on your
 computer. This is the path for anyone who can't (or would rather not) install
 software locally.
 
-Everything you need is already here: the tools, your Commons OS workspace, and
+Everything you need is already here: the tools, your Commons Core workspace, and
 your AI working agent.
 
 ## One step to begin

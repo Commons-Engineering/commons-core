@@ -1,165 +1,67 @@
-# Commons OS
+# Commons Core
 
-**The forkable operating system for living systems.**
+**The starting point for a commons: an organisation, a city district, a care network, any community that wants to see and steer how it creates value.**
 
-Commons OS is a complete operating environment for any commons — an organisation, a city district, a personal system, an ecological watershed, or any community that chooses to govern itself as a living system.
+Commons Core gives a commons a home for its own model of shared value creation, built on the body of knowledge of [Commons Engineering](https://commons.engineering). People and their agents work in it side by side.
 
----
+## What a commons can do with it
 
-## Why
-
-The Cognitive Age creates extraordinary new possibilities for shared value creation — at every scale, from a local cooperative to a global enterprise. But without deliberate architecture, the tools, platforms, and intelligence of this era concentrate into fewer hands. Organisations become tenants of their own future.
-
-**A commons systematically creates value that is alive, shared, just, and built to last.**
-
-Commons OS is the infrastructure that makes this buildable. It gives every commons — regardless of domain — the same quality of sovereign operating system that today only trillion-dollar platforms possess. Human-governed. AI-driven. Open source. Near-zero cost.
-
-> **[▶ Watch the Deck — The Age of Living Systems](https://commons-engineering.github.io/commons-core/deck/)**
-> The full 20-slide strategic presentation, playable directly in your browser.
+| | |
+|---|---|
+| **See itself whole** | a Living Blueprint of who it is, whom it serves and how value flows — five dimensions, thirteen value-stream families, the same in every domain, so houses stay comparable |
+| **Work with an agent that knows the discipline** | the Purpose Agent reads the canon and the patterns this commons has installed, and asks the Federation's Commons MCP for more — offline when it must, connected when it can |
+| **Stand on proven practice** | thousands of patterns from Commons Engineering, and an essentials pack for its domain: Business, Health, Life, Place, Urban or Ecology |
+| **Steer, not just describe** | measures, loops and value streams that turn the model into decisions — and futures it can walk through before choosing one |
+| **Show itself** | portals and documents generated from its own model, in its own language |
+| **Stay its own** | everything it builds belongs to it. It runs on what it has installed, for as long as it chooses |
 
 ---
 
-## How to Start Your Commons
+## Start in three steps
 
-There are three ways to begin, depending on your needs:
-
-| Path | Best for | How |
+| | What to do | What happens |
 |---|---|---|
-| **Template** (private) | Individuals, internal teams, private experiments | Click **Use this template** → **Create a new repository** → choose **Private** → follow `BOOT.md` |
-| **Fork** (public) | Open source projects, public communities | Click **Fork** → follow `BOOT.md` |
-| **Lighthouse** (guided) | Established organisations seeking a co-creation partnership | [Contact Commons Engineering](mailto:contact@commons.engineering) |
+| **1** | Press **Use this template** (top right) → choose an owner, a name, and **Private** | Your commons gets its own repository. It belongs to you. |
+| **2** | In your new repository, open `.commons/identity.yml` and fill in **`domain`** and **`instance_type`** | You say what your commons is. The file explains each choice. |
+| **3** | Open **Actions** → **Install** → **Run workflow**, then merge the pull request it opens | Your commons receives the canon, the patterns and the pack that fit what you declared. |
 
-### After You Template or Fork
+Then read **`BOOT.md`**. It walks you and your agent through the founding conversation.
 
-1. **Rename** your repository to `[your-commons]` (e.g., `luebeck-os`, `my-life`, `acme-commons`)
-2. **Edit** `.commons/identity.yml` — set your slug, name, purpose, domain, and locale
-3. **Copy** `AGENT.md.template` → `AGENT.md` — this is the OS-standard AI governance configuration
-4. **Wire** your AI tool to `AGENT.md` (see `BOOT.md` for tool-specific instructions)
-5. **Read** `BOOT.md` — the Purpose Agent guides you through the founding conversation
+You don't need to know git for any of this. Everything happens in the GitHub interface.
 
-The boot process takes 2-4 hours. It is a founding act, not a setup wizard. The quality of your boot determines everything that follows.
+## Or let an agent set you up
 
-### Set up your working environment
+Any of these three ways gives you a working environment, with your AI agent ready to build with you. The agent then runs [`commons/setup/ONBOARDING.md`](commons/setup/ONBOARDING.md) to set you up — including your own commons.
 
-Get a working environment in one of two ways — both lead to the same place: your AI working agent, ready to build with you. The agent then runs `commons/setup/ONBOARDING.md` to wire you up.
+📖 **Read first:** [`commons/setup/INSTALL_GUIDE.md`](commons/setup/INSTALL_GUIDE.md) — what the installer does, and what you'll see and decide along the way.
 
-📖 **Read first:** [`commons/setup/INSTALL_GUIDE.md`](commons/setup/INSTALL_GUIDE.md) — what the installer does, what manual steps are still yours, what you'll see and decide along the way.
-
-| Door | Best for | How |
+| Way | Where it runs | How |
 |---|---|---|
-| **One-click installer** | your own computer | Run `commons/setup/commons-setup.cmd` (Windows) or `commons/setup/commons-setup.command` (macOS). Installs the toolchain and your agent locally. |
-| **Browser — Claude Code on the web** | locked-down machines / no install rights | Open this repo in [claude.ai/code](https://claude.ai/code), connect GitHub, and say *"set up my Commons environment from ONBOARDING.md"*. Anthropic hosts the environment — nothing touches your machine. |
-| **Browser — Codespaces** (any agent) | full control, or non-Claude agents | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Commons-Engineering/commons-os?quickstart=1) |
+| **One-click installer** | your own computer | Run [`commons/setup/commons-setup.cmd`](commons/setup/commons-setup.cmd) (Windows) or [`commons/setup/commons-setup.command`](commons/setup/commons-setup.command) (macOS) |
+| **Browser — Claude Code on the web** | locked-down machines, no install rights | Open this repository in [claude.ai/code](https://claude.ai/code), connect GitHub, and say *"set up my Commons environment from ONBOARDING.md"* |
+| **Browser — Codespaces** | any agent | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Commons-Engineering/commons-core?quickstart=1) |
 
 ---
 
-## What You Get
+## What lives where
 
-| Component | What it does |
+| | |
 |---|---|
-| **Commons** | Upstream patterns, manifests, specifications, templates — with upstream sync |
-| **Extensions** | Domain-specific extension packs (business-essentials, urban-essentials, life-essentials, ecology-essentials) |
-| **Instance** | Your space — registry (workspace), operations, portals, workshop, and local patterns |
-| **Agent Configuration** | AI-ready governance with 4-agent board architecture |
-| **Living Blueprint** | Single-document, 9-layer architecture for your commons |
-| **MCP Connections** | Shared intelligence (Commons MCP) + local knowledge (Blueprint MCP) + your systems (Fabric MCPs) |
+| **This repository** | the frame of a commons: its skeleton, its settings, the scripts that keep it current |
+| **[commons-library](https://github.com/Commons-Engineering/commons-library)** | what your commons *installs*: the canon, the guides, the patterns, the essentials pack of your domain. Each release is versioned, so your commons always knows which one it runs on |
+| **The Commons MCP** | what is *served*: deeper patterns and the enhanced packs, through the Federation's MCP, according to your membership |
 
-### The Four Universal Dimensions
+Your commons runs on what it has installed, with or without a connection, for as long as you choose.
 
-Every commons, regardless of domain, operates across four dimensions:
+## Staying current
 
-| Dimension | What it governs |
-|---|---|
-| **D1 — Definition & Purpose** | Direction, governance, impact, architectural integrity |
-| **D2 — Participation & Relationship** | Community, stakeholders, workforce, non-human participants |
-| **D3 — Proposition & Exchange** | Value creation, products, services, knowledge exchange |
-| **D4 — Production & Resilience** | Infrastructure, production lines, delivery, economics |
-
-Each dimension has an **agent** (conversational governance) and may have **engines** (production at volume, supervised by D4).
-
-### The Intelligence Grid
-
-Your fork connects you to a shared intelligence network:
-
-| Asset | Scale |
-|---|---|
-| **Documented patterns** | 64,000+ across business, urban, ecology, and life |
-| **Business lighthouses** | 1,000+ documented organisations |
-| **Urban lighthouses** | 1,400+ documented places |
-| **Access method** | Model Context Protocol (MCP) — native AI retrieval |
-
-Every pattern and lighthouse is connected through a knowledge graph and retrievable for every Commons OS fork.
-
----
-
-## Architecture
-
-### Directory Structure
-
-```
-[your-commons]/
-├── AGENT.md.template          Agent configuration (copy to AGENT.md)
-├── BOOT.md                    Boot guide — the founding conversation
-├── ALIGN.md                   Alignment check rules
-├── blueprint.md               Living Blueprint (L1-L9)
-├── .commons/                  Identity and configuration
-├── commons/                   THE LIBRARY — upstream patterns, manifests, specs, templates
-├── extensions/                EXTENSION PACKS — domain-specific (business, urban, life, ecology)
-├── instance/                  YOUR SPACE — sovereign, never touched by upstream
-│   ├── registry/              THE WORKSPACE — journeys, touchpoints, value streams, capabilities, entities
-│   ├── operations/            Operating rhythms and processes
-│   ├── portals/               Intranet and extranet (including the Lighthouse deck)
-│   └── workshop/              THE FORGE — experiments, drafts, WIP
-└── ...
-```
-
-### Three Layers
-
-| Layer | Path | Who owns it | Sync behaviour |
-|---|---|---|---|
-| **Commons** | `commons/` | Upstream (commons-os template) | Read-only in forks, updated via upstream sync |
-| **Extensions** | `extensions/{provider}/{pack}/` | Pack providers (any Commons Incubator) | Loaded via Commons MCP, cached locally |
-| **Instance** | `instance/` | Your commons | Yours entirely — upstream never touches it |
-
-### Everything is Open
-
-| What | License | Cost |
+| Workflow | What it does | Run |
 |---|---|---|
-| Content (manifests, specs, patterns) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | Free |
-| Code (scripts, workflows, templates) | [MIT](https://opensource.org/licenses/MIT) | Free |
-| Hosting | GitHub | Free |
-| AI integration | Any MCP-compatible model | Your choice |
+| **Install** | brings the newest library release, or the one you name, as a pull request | whenever you want newer content |
+| **Sync** | brings updates to the frame — scripts, workflows, skeleton — as a pull request | weekly, by itself |
 
-See [LICENSE](LICENSE) for details.
+Nothing reaches your commons without a merge you choose. The first Sync also connects your repository to Commons Core once, so later updates arrive cleanly.
 
 ---
 
-## Documentation
-
-| Document | What it covers |
-|---|---|
-| `BOOT.md` | The founding conversation — how to boot your commons |
-| `ALIGN.md` | Alignment rules — how to keep your commons healthy |
-| `blueprint.md` | The Living Blueprint — 9-layer architecture template |
-| `commons/manifests/COMMONS_OS_MANIFEST.md` | What Commons OS is — vision, principles, architecture |
-| `commons/manifests/COMMONS_AGENT_MANIFEST.md` | The 4-agent governance model |
-| `commons/specs/COMMONS_OS_SPEC.md` | Technical specification — directory structure, lifecycle, layers |
-| `commons/specs/COMMONS_MCP_ARCHITECTURE_SPEC.md` | The 3-MCP channel architecture |
-| `commons/specs/PATTERN_SPEC.md` | How patterns work — orbital layers, structure, vitality |
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute patterns, improvements, and fixes back upstream.
-
----
-
-*Commons OS is part of [Commons Engineering](https://commons.engineering) and distributed by [cloudsters](https://cloudsters.net).*
-
-*Licensed under CC-BY-SA-4.0 — Distributed by cloudsters*
-
-
----
-
-## How releases work
-
-This public `commons-os` repository is editorially released from `commons-os-3` (private). Internal commits to `-3` do not automatically flow here — releases are deliberate. See this repository's tags for release versions, and `commons/manifests/COMMONS_OS_MANIFEST.md` for the full chain architecture.
+Licensed under CC BY-SA 4.0. Distributed by [cloudsters](https://cloudsters.net) through [Commons Engineering](https://commons.engineering).
