@@ -82,3 +82,5 @@ Learn more about the discipline at [Commons Engineering](https://commons.enginee
 ## License
 
 See [LICENSE](LICENSE) for the terms applying to content and code.
+
+Commons Engineering and this template are stewarded by the **cloudsters FEDERATION** ([cloudsters.net](https://cloudsters.net)).
