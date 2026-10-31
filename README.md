@@ -1,67 +1,36 @@
 # Commons Core
 
-**The starting point for a commons: an organisation, a city district, a care network, any community that wants to see and steer how it creates value.**
+**The starting point for the CORE of a commons:** an organisation, a district, a care network, any community that wants to see and steer how it creates value together.
 
-Commons Core gives a commons a home for its own model of shared value creation, built on the body of knowledge of [Commons Engineering](https://commons.engineering). People and their agents work in it side by side.
+A CORE is one repository that holds the commons' own model of its shared value creation, on the body of knowledge of [Commons Engineering](https://commons.engineering). People and their agents work in it side by side. Everything in it belongs to the commons.
 
-## What a commons can do with it
+## Start
 
-| | |
-|---|---|
-| **See itself whole** | a Living Blueprint of who it is, whom it serves and how value flows — five dimensions, thirteen value-stream families, the same in every domain, so houses stay comparable |
-| **Work with an agent that knows the discipline** | the Purpose Agent reads the canon and the patterns this commons has installed, and asks the Federation's Commons MCP for more — offline when it must, connected when it can |
-| **Stand on proven practice** | thousands of patterns from Commons Engineering, and an essentials pack for its domain: Business, Health, Life, Place, Urban or Ecology |
-| **Steer, not just describe** | measures, loops and value streams that turn the model into decisions — and futures it can walk through before choosing one |
-| **Show itself** | portals and documents generated from its own model, in its own language |
-| **Stay its own** | everything it builds belongs to it. It runs on what it has installed, for as long as it chooses |
-
----
-
-## Start in three steps
-
-| | What to do | What happens |
+| | What to do | What it does |
 |---|---|---|
-| **1** | Press **Use this template** (top right) → choose an owner, a name, and **Private** | Your commons gets its own repository. It belongs to you. |
-| **2** | In your new repository, open `.commons/identity.yml` and fill in **`domain`** and **`instance_type`** | You say what your commons is. The file explains each choice. |
-| **3** | Open **Actions** → **Install** → **Run workflow**, then merge the pull request it opens | Your commons receives the canon, the patterns and the pack that fit what you declared. |
+| 1 | Press **Use this template**, choose an owner and a name ending in `.core`, and choose **Private** | the commons gets its own repository |
+| 2 | In `.commons/commons.yml`, set `id`, `name`, `code` and `language`. In `people.yml`, name who founds it, and in `.commons/access.yml` add them under `users` in the shell `SEED` | the CORE says which commons it is and who answers for it |
+| 3 | Install the release of Commons Essentials that `commons.yml` pins (`commons-essentials` 0.1.0) into `specs/` | the commons receives the specifications and the tools that check it |
+| 4 | Record the founding as the first event in `lifecycle/events/`, and its stage in `lifecycle/stage.yml` | the commons' path begins |
 
-Then read **`BOOT.md`**. It walks you and your agent through the founding conversation.
-
-You don't need to know git for any of this. Everything happens in the GitHub interface.
-
-## Or let an agent set you up
-
-Any of these three ways gives you a working environment, with your AI agent ready to build with you. The agent then runs [`commons/setup/ONBOARDING.md`](commons/setup/ONBOARDING.md) to set you up — including your own commons.
-
-📖 **Read first:** [`commons/setup/INSTALL_GUIDE.md`](commons/setup/INSTALL_GUIDE.md) — what the installer does, and what you'll see and decide along the way.
-
-| Way | Where it runs | How |
-|---|---|---|
-| **One-click installer** | your own computer | Run [`commons/setup/commons-setup.cmd`](commons/setup/commons-setup.cmd) (Windows) or [`commons/setup/commons-setup.command`](commons/setup/commons-setup.command) (macOS) |
-| **Browser — Claude Code on the web** | locked-down machines, no install rights | Open this repository in [claude.ai/code](https://claude.ai/code), connect GitHub, and say *"set up my Commons environment from ONBOARDING.md"* |
-| **Browser — Codespaces** | any agent | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Commons-Engineering/commons-core?quickstart=1) |
-
----
+Then run `specs/tools/check_core.py .` and `specs/tools/make_agent.py .`. The first tells what is still missing; the second writes the agent file `AGENT.md` from the CORE's records.
 
 ## What lives where
 
-| | |
+| Place | Holds |
 |---|---|
-| **This repository** | the frame of a commons: its skeleton, its settings, the scripts that keep it current |
-| **[commons-library](https://github.com/Commons-Engineering/commons-library)** | what your commons *installs*: the canon, the guides, the patterns, the essentials pack of your domain. Each release is versioned, so your commons always knows which one it runs on |
-| **The Commons MCP** | what is *served*: deeper patterns and the enhanced packs, through the Federation's MCP, according to your membership |
-
-Your commons runs on what it has installed, with or without a connection, for as long as you choose.
+| `.commons/` | the settings (`commons.yml`), who takes part by shell (`access.yml`), and later the lock of what is installed |
+| `registry/` | the commons' own model, one record per file, in one folder per element |
+| `lifecycle/` | the stage and the dated events of its path |
+| `operations/` | the loops through which the commons steers itself |
+| `workshop/` | open work, studies, start files and handover notes |
+| `people.yml` | the one place that names people |
+| `AGENT.md` | generated from the records; never edited by hand above its own guidance |
 
 ## Staying current
 
-| Workflow | What it does | Run |
-|---|---|---|
-| **Install** | brings the newest library release, or the one you name, as a pull request | whenever you want newer content |
-| **Sync** | brings updates to the frame — scripts, workflows, skeleton — as a pull request | weekly, by itself |
+A CORE follows Commons Essentials, never this template. When a newer release exists, the commons reads which parts it changed and takes it up by a decision of its own (`specs/extension.md` R20). The structure moves in one run (`specs/core.md` R8).
 
-Nothing reaches your commons without a merge you choose. The first Sync also connects your repository to Commons Core once, so later updates arrive cleanly.
+## License
 
----
-
-Licensed under CC BY-SA 4.0. Distributed by [cloudsters](https://cloudsters.net) through [Commons Engineering](https://commons.engineering).
+See [LICENSE](LICENSE).

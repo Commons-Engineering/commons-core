@@ -1,0 +1,11 @@
+# The settings of this CORE (core.md R1, part 5). Fill in id, name, code and language when the commons is founded.
+id: my-commons
+name: My Commons
+code: MC
+instance_type: commons
+language: en
+structure: 0.3.0
+extensions:
+- id: commons-essentials
+  version: 0.1.0
+  primary: true
