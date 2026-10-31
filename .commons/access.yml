@@ -1,0 +1,6 @@
+# Who takes part in this commons, by shell, and the Federation's MCP (mcp.md part 5, R24).
+# Nothing is public until the commons says so; the founders add themselves under users at the founding.
+classes: {public: ROAM, member: OPEN, internal: CORE, personal: CORE}
+public: none
+federation: https://mcp.commons.engineering/mcp
+users: []

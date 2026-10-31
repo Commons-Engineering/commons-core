@@ -1,67 +1,84 @@
 # Commons Core
 
-**The starting point for a commons: an organisation, a city district, a care network, any community that wants to see and steer how it creates value.**
+**Keep shared value creation relevant.**
 
-Commons Core gives a commons a home for its own model of shared value creation, built on the body of knowledge of [Commons Engineering](https://commons.engineering). People and their agents work in it side by side.
+A commons is shared value creation: a life, an organisation, a community, a city or an ecosystem. Commons Engineering is the discipline of systematically keeping it relevant. A Commons CORE is its cybernetic model: a shared basis for understanding how value is created, exploring futures and guiding real change.
 
-## What a commons can do with it
+This template is the starting point for your own CORE. It begins as one small Git repository, with plain files that people and agents can read and work on together. Your commons controls its model, its decisions and its access.
 
-| | |
-|---|---|
-| **See itself whole** | a Living Blueprint of who it is, whom it serves and how value flows — five dimensions, thirteen value-stream families, the same in every domain, so houses stay comparable |
-| **Work with an agent that knows the discipline** | the Purpose Agent reads the canon and the patterns this commons has installed, and asks the Federation's Commons MCP for more — offline when it must, connected when it can |
-| **Stand on proven practice** | thousands of patterns from Commons Engineering, and an essentials pack for its domain: Business, Health, Life, Place, Urban or Ecology |
-| **Steer, not just describe** | measures, loops and value streams that turn the model into decisions — and futures it can walk through before choosing one |
-| **Show itself** | portals and documents generated from its own model, in its own language |
-| **Stay its own** | everything it builds belongs to it. It runs on what it has installed, for as long as it chooses |
+## Why a Commons CORE
 
----
+AI and robotics change what people and machines can do together. Needs, expectations and ways of creating value can change with them. Continuing yesterday's work gives little guidance on where your commons' value creation could or should go.
 
-## Start in three steps
+![Illustrative trajectories of available intelligence, the unit cost of cognitive and machine work, and possible gains or losses in a commons' relevance.](docs/images/why-relevance.svg)
 
-| | What to do | What happens |
-|---|---|---|
-| **1** | Press **Use this template** (top right) → choose an owner, a name, and **Private** | Your commons gets its own repository. It belongs to you. |
-| **2** | In your new repository, open `.commons/identity.yml` and fill in **`domain`** and **`instance_type`** | You say what your commons is. The file explains each choice. |
-| **3** | Open **Actions** → **Install** → **Run workflow**, then merge the pull request it opens | Your commons receives the canon, the patterns and the pack that fit what you declared. |
+*Development hypotheses, not forecasts. Each curve has its own relative scale; intersections imply no quantitative comparison.*
 
-Then read **`BOOT.md`**. It walks you and your agent through the founding conversation.
+A CORE gives people and agents a shared context for asking better questions: whom do we create value for, what must work together, what is changing, and which next step will help? The aim is better alignment, useful work and a more resilient future.
 
-You don't need to know git for any of this. Everything happens in the GitHub interface.
+## How it works
 
-## Or let an agent set you up
+The CORE first learns from reality. Its current model then describes the near future and gives orientation to the work. Its Git history records earlier states of the model; observations provide evidence of what actually happened.
 
-Any of these three ways gives you a working environment, with your AI agent ready to build with you. The agent then runs [`commons/setup/ONBOARDING.md`](commons/setup/ONBOARDING.md) to set you up — including your own commons.
+From experience, evidence and scenarios, people and agents **project possible futures**. From the commons' identity, purpose and design intent, they **give desired futures concrete form**. Alternative futures live as worlds, in structurally comparable COREs, so their differences, dependencies and promising increments can be explored together.
 
-📖 **Read first:** [`commons/setup/INSTALL_GUIDE.md`](commons/setup/INSTALL_GUIDE.md) — what the installer does, and what you'll see and decide along the way.
+Loops turn findings into work. People and agents investigate, draft and build within their mandates; accountability always resolves to a human. Progress in the model and impact in lived practice are reviewed separately. Change succeeds when people can put it into practice.
 
-| Way | Where it runs | How |
-|---|---|---|
-| **One-click installer** | your own computer | Run [`commons/setup/commons-setup.cmd`](commons/setup/commons-setup.cmd) (Windows) or [`commons/setup/commons-setup.command`](commons/setup/commons-setup.command) (macOS) |
-| **Browser — Claude Code on the web** | locked-down machines, no install rights | Open this repository in [claude.ai/code](https://claude.ai/code), connect GitHub, and say *"set up my Commons environment from ONBOARDING.md"* |
-| **Browser — Codespaces** | any agent | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Commons-Engineering/commons-core?quickstart=1) |
+## Start with one real question
 
----
+You can begin with a concrete need: understand a service, explore a new offer, prepare for an interruption, or work out which capabilities a desired future will require. Follow its relationships and build a useful view of the whole as you go.
 
-## What lives where
+1. Choose **Use this template**, create a repository under your own owner, choose a name ending in `.core`, and select **Private**.
+2. Open it with an agent that can read and work on its files. Start from [AGENT.md](AGENT.md), the common orientation for every agent.
+3. Install the Commons Essentials release declared in `.commons/commons.yml`, from the Releases of this repository (`commons-essentials-0.2.0.zip`). Use its guidance to establish the commons' identity and purpose, name its founders in `people.yml` and under SEED in `.commons/access.yml`, record the founding and choose a first piece of work.
 
-| | |
-|---|---|
-| **This repository** | the frame of a commons: its skeleton, its settings, the scripts that keep it current |
-| **[commons-library](https://github.com/Commons-Engineering/commons-library)** | what your commons *installs*: the canon, the guides, the patterns, the essentials pack of your domain. Each release is versioned, so your commons always knows which one it runs on |
-| **The Commons MCP** | what is *served*: deeper patterns and the enhanced packs, through the Federation's MCP, according to your membership |
+You can start the conversation with:
 
-Your commons runs on what it has installed, with or without a connection, for as long as you choose.
+```text
+Read AGENT.md and the records in this repository.
+Help me establish the commons this CORE will represent.
+Check the pinned Commons Essentials release and explain what must be installed first.
+Ask about its purpose, boundaries, accountable people and one real question.
+Propose the smallest useful model and a first piece of work.
+Keep evidence, assumptions and open questions distinct.
+Work in small, reviewable increments and name the decisions you need from me.
+```
 
-## Staying current
+Commons Essentials supplies the discipline's specifications and checking tools. A suitable domain extension can then offer value streams, capabilities and other archetypes to adopt into your own model. Installed copies remain unchanged; your adaptations retain their origin.
 
-| Workflow | What it does | Run |
-|---|---|---|
-| **Install** | brings the newest library release, or the one you name, as a pull request | whenever you want newer content |
-| **Sync** | brings updates to the frame — scripts, workflows, skeleton — as a pull request | weekly, by itself |
+After Commons Essentials is installed, run its published tools from the repository root:
 
-Nothing reaches your commons without a merge you choose. The first Sync also connects your repository to Commons Core once, so later updates arrive cleanly.
+```sh
+python specs/tools/check_core.py .
+python specs/tools/make_agent.py .
+```
 
----
+The check reports failures and gaps; the generator refreshes `AGENT.md` from the records. A missing answer is a question to work on, not an invitation for an agent to invent one.
 
-Licensed under CC BY-SA 4.0. Distributed by [cloudsters](https://cloudsters.net) through [Commons Engineering](https://commons.engineering).
+## What your CORE holds
+
+The model uses **five dimensions, thirteen value-stream families and nine elements**. It connects stakeholders, journeys, touchpoints and value exchanges with value streams and steps, capabilities, entities, solutions, and responsible Bodies and Posts.
+
+| Place | Purpose |
+| --- | --- |
+| `.commons/` | Identity, settings, access and the lock of installed releases. |
+| `registry/` | The commons' own model, one record per file. |
+| `lifecycle/` | Founding, stage and dated events. |
+| `operations/` | Loops and their readings. |
+| `workshop/` | Work, studies and the continuity of roles. |
+| `people.yml` | The register of people, kept apart from the model. |
+| `AGENT.md` | Generated orientation, followed by the commons' own guidance. |
+
+As needed, **FABRIC** adds operational readings, **GRAPH** connects registered sources, **LIBRARY** offers checked releases, and **MCP** serves permitted context and receives proposals. Components can begin inside the CORE and move as they grow. Existing AI platforms and systems of record keep their responsibilities.
+
+## Work independently and learn together
+
+Your CORE can work offline from what it holds. A connection to `federation.mcp` provides a route to the shared canon and knowledge available to your user; access to the canon at ROAM requires no membership. Each commons controls what it shares. Reading another CORE follows the grant recorded by its holder.
+
+Versioned releases make change explicit. Your commons decides when to adopt an update and what to adapt. The CORE follows the releases it installs, rather than continuously copying this template. Connected services, operational integrations and platform permissions are configured and qualified for the commons that uses them.
+
+Learn more about the discipline at [Commons Engineering](https://commons.engineering).
+
+## License
+
+See [LICENSE](LICENSE) for the terms applying to content and code.
