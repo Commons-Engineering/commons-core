@@ -10,4 +10,4 @@ extensions:
   version: 0.2.0
   primary: true
 libraries:
-  commons-engineering: Commons-Engineering/commons.o
+  commons-engineering: Commons-Engineering/commons-core   # where its releases are published; see Releases

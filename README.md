@@ -30,7 +30,7 @@ You can begin with a concrete need: understand a service, explore a new offer, p
 
 1. Choose **Use this template**, create a repository under your own owner, choose a name ending in `.core`, and select **Private**.
 2. Open it with an agent that can read and work on its files. Start from [AGENT.md](AGENT.md), the common orientation for every agent.
-3. Install the Commons Essentials release declared in `.commons/commons.yml`. Use its guidance to establish the commons' identity and purpose, name its founders in `people.yml` and under SEED in `.commons/access.yml`, record the founding and choose a first piece of work.
+3. Install the Commons Essentials release declared in `.commons/commons.yml`, from the Releases of this repository (`commons-essentials-0.2.0.zip`). Use its guidance to establish the commons' identity and purpose, name its founders in `people.yml` and under SEED in `.commons/access.yml`, record the founding and choose a first piece of work.
 
 You can start the conversation with:
 
