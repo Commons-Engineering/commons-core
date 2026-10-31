@@ -6,6 +6,8 @@ instance_type: commons
 language: en
 structure: 0.3.0
 extensions:
-- id: commons-essentials
-  version: 0.1.0
+- id: commons-engineering/commons-essentials
+  version: 0.2.0
   primary: true
+libraries:
+  commons-engineering: Commons-Engineering/commons.o
