@@ -4,6 +4,20 @@
 
 A CORE is one repository that holds the commons' own model of its shared value creation, on the body of knowledge of [Commons Engineering](https://commons.engineering). People and their agents work in it side by side. Everything in it belongs to the commons.
 
+## Why a Commons Core
+
+Every organisation, community or city creates value together with others. What carried it yesterday does not carry it tomorrow by itself: needs change, and cognitive and machine work becomes cheaper and available everywhere. A commons that only continues can lose its relevance without doing anything wrong.
+
+A Commons Core is where a commons keeps one shared picture of how it creates value: whom it serves, how value flows, what it relies on, who answers for what. The picture is kept as plain files that its people and any AI agent can read. With it, people and agents test alternatives before change is forced on them, decide the next step together, and see afterwards what actually changed.
+
+| What a commons gets | |
+|---|---|
+| **One shared model** | its value creation in one grammar, comparable with every other commons |
+| **People and agents on the same page** | one generated `AGENT.md` for agents of any vendor; access by shell; decisions stay with people |
+| **Its own, always** | a private repository it owns; works offline; nothing is written into it from outside |
+| **Shared knowledge on its own terms** | takes up checked releases by its own decision; reads other commons only under their grant |
+| **Staying current** | release notes say what changed; the commons decides when it takes them up |
+
 ## Start
 
 | | What to do | What it does |
