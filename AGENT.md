@@ -29,7 +29,7 @@ From this CORE's graph over all its sources, of which an installed extract is on
 
 **Served:** no MCP of its own declared.
 
-**Federation:** `federation.mcp` at `https://mcp.commons.engineering/mcp` (`access.yml`) serves the canon of the Commons, which this CORE does not hold. At the start of each session, ask it for a qualified connection; reached, take a new reading of what it offers each shell into `.commons/federation.yml`; out of reach, work from the last reading and name its age (`core` R38).
+**Federation:** `federation.mcp` at `https://mcp.cloudsters.net/federation` (`access.yml`) serves the canon of the Commons, which this CORE does not hold. At the start of each session, ask it for a qualified connection; reached, take a new reading of what it offers each shell into `.commons/federation.yml`; out of reach, work from the last reading and name its age (`core` R38).
 
 ## 4 · What it never does
 
