@@ -2,5 +2,5 @@
 # Nothing is public until the commons says so; the founders add themselves under users at the founding.
 classes: {public: ROAM, member: OPEN, internal: CORE, personal: CORE}
 public: none
-federation: https://mcp.commons.engineering/mcp
+federation: https://mcp.cloudsters.net/federation
 users: []
