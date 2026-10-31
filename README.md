@@ -30,7 +30,7 @@ You can begin with a concrete need: understand a service, explore a new offer, p
 
 1. Choose **Use this template**, create a repository under your own owner, choose a name ending in `.core`, and select **Private**.
 2. Open it with an agent that can read and work on its files. Start from [AGENT.md](AGENT.md), the common orientation for every agent.
-3. Install the Commons Essentials release declared in `.commons/commons.yml`, from the Releases of this repository (`commons-essentials-0.2.0.zip`). Use its guidance to establish the commons' identity and purpose, name its founders in `people.yml` and under SEED in `.commons/access.yml`, record the founding and choose a first piece of work.
+3. Install the Commons Essentials release declared in `.commons/commons.yml`, from the Releases of this repository (`commons-essentials-0.2.0.zip`): unpack it whole and unchanged into `extensions/commons-engineering/commons-essentials/` and record it in `.commons/lock.yml`. Use its guidance to establish the commons' identity and purpose, name its founders in `people.yml` and under SEED in `.commons/access.yml`, record the founding and choose a first piece of work.
 
 You can start the conversation with:
 
@@ -49,8 +49,8 @@ Commons Essentials supplies the discipline's specifications and checking tools. 
 After Commons Essentials is installed, run its published tools from the repository root:
 
 ```sh
-python specs/tools/check_core.py .
-python specs/tools/make_agent.py .
+python extensions/commons-engineering/commons-essentials/specs/tools/check_core.py .
+python extensions/commons-engineering/commons-essentials/specs/tools/make_agent.py .
 ```
 
 The check reports failures and gaps; the generator refreshes `AGENT.md` from the records. A missing answer is a question to work on, not an invitation for an agent to invent one.
@@ -66,6 +66,7 @@ The model uses **five dimensions, thirteen value-stream families and nine elemen
 | `lifecycle/` | Founding, stage and dated events. |
 | `operations/` | Loops and their readings. |
 | `workshop/` | Work, studies and the continuity of roles. |
+| `extensions/` | Installed releases, whole and read-only. |
 | `people.yml` | The register of people, kept apart from the model. |
 | `AGENT.md` | Generated orientation, followed by the commons' own guidance. |
 
