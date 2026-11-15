@@ -1,13 +1,11 @@
-# The settings of this CORE (core.md R1, part 5). Fill in id, name, code and language when the commons is founded.
+# The settings of this CORE. Fill in id, name, code and language; the README's set-up says the form of each.
 id: my-commons
 name: My Commons
+# purpose:   # in the person's own words, from the founding dialogue (core R41); the agent writes it here and removes the '#'
 code: MC
 instance_type: commons
 language: en
-structure: 0.3.0
-extensions:
-- id: commons-engineering/commons-essentials
-  version: 0.2.0
-  primary: true
+structure: 0.4.0
+models: []   # bootstrap.py installs the Commons model, the patterns extract and a domain model, each pinned with its lock entry
 libraries:
-  commons-engineering: Commons-Engineering/commons-core   # where its releases are published; see Releases
+  commons-engineering: cloudsters/federation.library   # where the releases of Commons Engineering are published

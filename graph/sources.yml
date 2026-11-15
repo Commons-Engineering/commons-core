@@ -1,0 +1,6 @@
+# The register of this commons' graph (graph.md R1-R3, CORE R33); the commons writes it. With no run yet, its answers
+# are lexical and stated-only, over its runtime, its knowledge and the installed patterns extract.
+sources:
+  - {id: runtime,   kind: runtime,   ref: models/runtime/,                       class: member}
+  - {id: knowledge, kind: knowledge, ref: knowledge/,                            class: member}
+  - {id: patterns,  kind: patterns,  ref: patterns/commons/commons-engineering/, class: public, pin: lock}

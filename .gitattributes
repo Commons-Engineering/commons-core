@@ -1,5 +1,5 @@
-# One line ending everywhere in the chain. The same file differed between links in CRLF only,
-# which makes every merge between links report a conflict that is not one.
+# One line ending everywhere: a release copy, its digest and every merge are the same on every platform and
+# whatever a checkout's core.autocrlf, since a copy cut from a CRLF checkout would carry another digest.
 * text=auto eol=lf
 *.pdf  binary
 *.png  binary

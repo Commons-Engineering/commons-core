@@ -1,0 +1,11 @@
+{
+  "definitions": {
+    "agent": "0.3.0",
+    "structure": "0.4.0"
+  },
+  "inputs": {
+    ".commons/access.yml": "80055979d8714d6fcaad4b4c23c2106cf3e43ad08dfde7a059b912bbe7d58464",
+    ".commons/commons.yml": "d7221091c8d1f16ea15251a4417150e9ab26280c0849f173b5c6348f545ba96a"
+  },
+  "output": "0e815ff8205729386a5444b6a4746ef4adf1d9553bc6fb6106d782eb47ccd279"
+}
