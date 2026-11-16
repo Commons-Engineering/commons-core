@@ -128,6 +128,12 @@ When the check names `check_model.py`, run it on your own model to see each find
 python models/commons/commons-engineering/commons/specs/tools/check_model.py models/runtime
 ```
 
+**The plan.** The plan of your CORE has three layers: the frame comes with the Commons model, the domain layer with the domain model, and `blueprint.yml` at the root holds your commons' own layer, created when you first add to it. `render_blueprint.py` renders the plan into the briefing in `views/briefing/`, and shows for each section how your model answers it, and where it does not yet:
+
+```sh
+python models/commons/commons-engineering/commons/specs/tools/render_blueprint.py .
+```
+
 **7 · The connector for your agent.** Your CORE serves itself to agents through its own MCP. Locally, over stdio, it needs no account at any service. The script writes the connector entry into `.mcp.json` at the root of the CORE. Clients that read `.mcp.json` pick it up from there:
 
 ```json
@@ -203,7 +209,8 @@ The model uses **five dimensions, thirteen value-stream families and nine elemen
 | `knowledge/` | evidence, sources and claims, kept apart from the model |
 | `lifecycle/` | the founding, the stage and dated events |
 | `workshop/` | work, studies and the continuity of roles |
-| `views/` | views of the model for people, created when first needed |
+| `views/` | views of the model for people, created when first needed; the briefing of the plan in `views/briefing/` |
+| `blueprint.yml` | the commons' own layer of its plan, created when first needed |
 | `people.yml` | the register of people, kept apart from the model |
 | `AGENT.md` | the generated orientation, followed by the commons' own guidance |
 
